@@ -1,0 +1,97 @@
+name: Build & Release ZenDev
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'           # Triggers on version tags: v1.0.0, v2.4.3, etc.
+  workflow_dispatch:        # Manual trigger for testing builds without a tag
+    inputs:
+      draft:
+        description: 'Create as draft release'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write           # Required to create GitHub Releases and upload artifacts
+
+jobs:
+  # ────────────────────────────────────────────────────────────────────────────
+  # Windows Build (Tauri v2 + Rust)
+  # ────────────────────────────────────────────────────────────────────────────
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Setup Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-pc-windows-msvc
+
+      - name: Rust Cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri -> target
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build & Package (Windows Tauri NSIS)
+        run: npm run dist:win
+
+      - name: Prepare Release Artifacts & Bridge latest.yml
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path dist_release
+          $tag = if ($env:GITHUB_REF -like "refs/tags/*") { $env:GITHUB_REF.Replace("refs/tags/", "") } else { "v2.5.5" }
+          $version = $tag.TrimStart("v")
+          
+          # Find Tauri output NSIS installer
+          $nsisInstaller = Get-ChildItem -Path "src-tauri/target/release/bundle/nsis/*.exe" | Select-Object -First 1
+          if (-not $nsisInstaller) {
+            Write-Error "NSIS installer was not found in src-tauri/target/release/bundle/nsis/"
+            exit 1
+          }
+          
+          $targetName = "ZenDev-Setup-$version.exe"
+          $destination = Join-Path "dist_release" $targetName
+          Copy-Item $nsisInstaller.FullName -Destination $destination
+          
+          # Calculate SHA-512 for legacy electron-updater compatibility
+          $hashBytes = (Get-FileHash -Path $destination -Algorithm SHA512).Hash.ToLower()
+          $size = (Get-Item $destination).Length
+          $releaseDate = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+          
+          $lines = @(
+            "version: $version",
+            "files:",
+            "  - url: $targetName",
+            "    sha512: $hashBytes",
+            "    size: $size",
+            "path: $targetName",
+            "sha512: $hashBytes",
+            "releaseDate: '$releaseDate'"
+          )
+          [System.IO.File]::WriteAllLines("dist_release/latest.yml", $lines, [System.Text.Encoding]::UTF8)
+          Write-Host "Created dist_release/latest.yml and $targetName successfully."
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          make_latest: true
+          files: |
+            dist_release/ZenDev-Setup-*.exe
+            dist_release/latest.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

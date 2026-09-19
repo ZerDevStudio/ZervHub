@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --nexus-accent: #8b5cf6;
+  --nexus-accent-rgb: 139, 92, 246;
+  --nexus-accent-light: #a78bfa;
+  --nexus-cyan: #06b6d4;
+  --nexus-cyan-rgb: 6, 182, 212;
+  --nexus-cyan-light: #22d3ee;
+  --nexus-muted: #9494b8;
+  --nexus-muted-rgb: 148, 148, 184;
+}
+
+[data-theme="matrix"] {
+  --nexus-accent: #10b981;
+  --nexus-accent-rgb: 16, 185, 129;
+  --nexus-accent-light: #34d399;
+  --nexus-cyan: #00ff66;
+  --nexus-cyan-rgb: 0, 255, 102;
+  --nexus-cyan-light: #6ee7b7;
+}
+
+[data-theme="cyberpunk"] {
+  --nexus-accent: #facc15;
+  --nexus-accent-rgb: 250, 204, 21;
+  --nexus-accent-light: #fde047;
+  --nexus-cyan: #06b6d4;
+  --nexus-cyan-rgb: 6, 182, 212;
+  --nexus-cyan-light: #67e8f9;
+}
+
+[data-theme="synthwave"] {
+  --nexus-accent: #ec4899;
+  --nexus-accent-rgb: 236, 72, 153;
+  --nexus-accent-light: #f472b6;
+  --nexus-cyan: #f97316;
+  --nexus-cyan-rgb: 249, 115, 22;
+  --nexus-cyan-light: #fb923c;
+}
+
+[data-theme="crimson"] {
+  --nexus-accent: #f43f5e;
+  --nexus-accent-rgb: 244, 63, 94;
+  --nexus-accent-light: #fb7185;
+  --nexus-cyan: #fbbf24;
+  --nexus-cyan-rgb: 251, 191, 36;
+  --nexus-cyan-light: #fde68a;
+}
+
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: #0a0a0f;
+    color: #e4e4ed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar — thin, accent-colored */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--nexus-accent, rgba(var(--nexus-accent-rgb, 139, 92, 246), 0.4));
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--nexus-accent-light, rgba(var(--nexus-accent-rgb, 139, 92, 246), 0.7));
+  }
+
+  /* Selection highlight */
+  ::selection {
+    background: var(--nexus-accent, rgba(var(--nexus-accent-rgb, 139, 92, 246), 0.4));
+    color: #fff;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-panel {
+    @apply bg-nexus-surface/70 backdrop-blur-xl border border-white/5 rounded-2xl;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-card {
+    @apply bg-nexus-card/60 backdrop-blur-xl border border-nexus-border/50 rounded-2xl;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.03),
+      0 4px 24px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+
+  /* Gradient border (pseudo-element technique) */
+  .gradient-border {
+    position: relative;
+    background: #1a1a2e;
+    border-radius: 1rem;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(var(--nexus-accent-rgb, 139, 92, 246), 0.4), rgba(var(--nexus-cyan-rgb, 6, 182, 212), 0.4));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  /* Glow effects */
+  .glow-accent {
+    box-shadow: 0 0 20px rgba(var(--nexus-accent-rgb, 139, 92, 246), 0.2), 0 0 60px rgba(var(--nexus-accent-rgb, 139, 92, 246), 0.1);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(var(--nexus-cyan-rgb, 6, 182, 212), 0.2), 0 0 60px rgba(var(--nexus-cyan-rgb, 6, 182, 212), 0.1);
+  }
+
+  /* Shimmer background animation */
+  .shimmer-bg {
+    background: linear-gradient(
+      90deg,
+      rgba(var(--nexus-accent-rgb, 139, 92, 246), 0) 0%,
+      rgba(var(--nexus-accent-rgb, 139, 92, 246), 0.08) 50%,
+      rgba(var(--nexus-accent-rgb, 139, 92, 246), 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Animated gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--nexus-accent), var(--nexus-cyan), var(--nexus-accent));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* Tactile Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm
+           bg-gradient-to-r from-nexus-accent to-nexus-cyan text-white shadow-lg
+           hover:shadow-nexus-accent/25 hover:brightness-110
+           active:scale-[0.97] active:brightness-95
+           transition-all duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm
+           bg-nexus-surface/80 hover:bg-nexus-surface border border-nexus-border/60 hover:border-nexus-cyan/40 text-white
+           active:scale-[0.97] transition-all duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium
+           text-nexus-muted hover:text-white hover:bg-white/5
+           active:scale-[0.97] transition-all duration-150 cursor-pointer;
+  }
+
+  .hud-badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase border;
+  }
+}
+
+@layer utilities {
+  .no-drag {
+    -webkit-app-region: no-drag;
+  }
+
+  .drag {
+    -webkit-app-region: drag;
+  }
+
+  .scrollbar-hidden {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Elevated contrast for muted text tokens (WCAG 2.1 AA >= 4.5:1 on #0a0a0f) */
+  .text-nexus-muted,
+  .text-nexus-text-muted,
+  .text-muted {
+    color: var(--nexus-muted, #9494b8) !important;
+  }
+}
+

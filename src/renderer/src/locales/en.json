@@ -1,0 +1,996 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "subtitle": "Multi-Tool Suite",
+    "groups": {
+      "privacy": "Privacy & Security",
+      "developer": "Developer & Utilities",
+      "files": "Files & Media",
+      "network": "Network"
+    },
+    "tools": {
+      "decrypter": "Universal Link Decrypter & Cleaner",
+      "passwordGenerator": "Password Generator",
+      "qrCode": "QR Code Studio",
+      "jsonStudio": "JSON & JWT Studio",
+      "hashStudio": "Hash & Checksum Studio",
+      "regexStudio": "Regex Lab & Tester",
+      "fakeData": "Fake Data & Mock Identity",
+      "apiStudio": "API Studio & Diagnostics",
+      "curlRunner": "HTTP & cURL Runner",
+      "bulkOrganizer": "Bulk Organizer",
+      "imageToolkit": "Image Toolkit",
+      "networkTools": "Network Tools",
+      "sentinel": "Resource Sentinel",
+      "devSandbox": "DevSandbox API Studio",
+      "cyberFortress": "Cyber Fortress & Shredder",
+      "colorStudio": "Color & Contrast Studio",
+      "scratchpad": "Markdown Scratchpad",
+      "pdfStudio": "PDF Studio & Documents",
+      "activityFeed": "Activity Feed & Audit Journal",
+      "jwtStudio": "JWT & Token Studio",
+      "cronStudio": "Cron Expression Studio",
+      "mermaidStudio": "Mermaid & Architecture Canvas",
+      "encodingStudio": "Base64, Hex & Data-URL Studio"
+    },
+    "account": "Account Settings"
+  },
+  "password": {
+    "title": "Password Generator",
+    "description": "Generate cryptographically secure passwords, passphrases, and PINs. All generation happens locally in the renderer — nothing leaves your device.",
+    "tabs": {
+      "password": "Password",
+      "passphrase": "Passphrase",
+      "pin": "PIN"
+    },
+    "generatedLabel": {
+      "password": "Generated Password",
+      "passphrase": "Generated Passphrase",
+      "pin": "Generated PIN"
+    },
+    "strength": {
+      "none": "None",
+      "weak": "Weak",
+      "fair": "Fair",
+      "good": "Good",
+      "strong": "Strong"
+    },
+    "options": {
+      "title": "Options",
+      "length": "Length",
+      "lowercase": "Lowercase (a-z)",
+      "uppercase": "Uppercase (A-Z)",
+      "digits": "Digits (0-9)",
+      "symbols": "Symbols (!@#...)",
+      "excludeAmbiguous": "Exclude ambiguous characters (i, I, l, L, 1, o, O, 0)",
+      "wordCount": "Word Count",
+      "delimiter": "Delimiter",
+      "capitalize": "Capitalize",
+      "pinLength": "PIN Length"
+    },
+    "bulk": {
+      "title": "Bulk Generate",
+      "count": "Count:",
+      "generate": "Generate {{count}}"
+    },
+    "vault": {
+      "tabGenerator": "Password Generator",
+      "tabVault": "Saved Password Vault",
+      "saveToVault": "Save to Vault",
+      "modalTitle": "Save Password to Vault",
+      "titleLabel": "Service / Title *",
+      "titlePlaceholder": "e.g. Instagram, GitHub, Netflix",
+      "usernameLabel": "Username / Email",
+      "usernamePlaceholder": "e.g. sam@example.com",
+      "categoryLabel": "Category",
+      "notesLabel": "Notes (Optional)",
+      "notesPlaceholder": "e.g. 2FA backup codes, security info...",
+      "saveBtn": "Add to Vault",
+      "cancelBtn": "Cancel",
+      "savedToast": "Password saved to encrypted vault!",
+      "searchPlaceholder": "Search service, username or notes...",
+      "categories": {
+        "all": "All",
+        "social": "Social Media",
+        "work": "Work & Dev",
+        "finance": "Finance",
+        "personal": "Personal",
+        "other": "Other"
+      },
+      "empty": "No saved passwords yet.",
+      "emptySub": "Save generated passwords with tags and notes using the 'Save to Vault' button.",
+      "deleteConfirm": "Are you sure you want to delete this password from the vault?",
+      "exportBtn": "Export (JSON)",
+      "importBtn": "Import",
+      "copied": "Copied!",
+      "itemsCount": "{{count}} entries"
+    }
+  },
+  "account": {
+    "title": "Account Settings",
+    "subtitle": "Manage your license and application settings",
+    "licenseStatus": "License Status",
+    "active": "Active",
+    "currentTier": "Current Tier",
+    "licenseKey": "License Key",
+    "validUntil": "Valid Until",
+    "neverExpires": "Never Expires",
+    "lifetime": "Lifetime",
+    "dangerZone": "Danger Zone",
+    "deactivateDesc": "Deactivating will log you out and require a license key to use the app again.",
+    "deactivateBtn": "Deactivate License",
+    "deactivateConfirm": "Are you sure you want to deactivate your license?",
+    "desktop": {
+      "title": "Desktop Integration",
+      "trayActive": "Tray Active",
+      "autoLaunch": "Launch on Startup",
+      "autoLaunchDesc": "Silently starts in system tray on boot",
+      "hotkeys": "System Hotkeys",
+      "checkUpdates": "Check for Updates",
+      "checkingUpdate": "Scanning GitHub releases...",
+      "autoUpdatesActive": "Auto-updates active in background",
+      "allUpToDate": "You are on the latest stable version",
+      "latestMsg": "✓ Program is up to date! Installed version:",
+      "updateFound": "New version available",
+      "newVersionDownloading": "New version found:",
+      "downloading": "Downloading...",
+      "updateReady": "Update ready!",
+      "updateReadyDesc": "Ready to install",
+      "restartInstall": "Restart & Install",
+      "updateErrorDesc": "Could not connect to release server",
+      "offlineWarning": "Could not check GitHub releases (Check your internet connection)."
+    }
+  },
+  "eula": {
+    "title": "End User License Agreement",
+    "subtitle": "Please read and accept the terms to continue",
+    "s1": {
+      "title": "1. Terms of Use",
+      "body": "By using ZenDev, you agree to these terms. This software is provided for legal, educational, and authorized security testing purposes only."
+    },
+    "s2": {
+      "title": "2. Privacy & Telemetry",
+      "body": "ZenDev processes all data locally on your machine. We do not collect, transmit, or store your passwords, decrypted links, or generated data."
+    },
+    "s3": {
+      "title": "3. Licensing & Restrictions",
+      "body": "Your license is for personal or commercial use depending on your tier. You may not reverse engineer, redistribute, or resell the software."
+    },
+    "s4": {
+      "title": "4. Disclaimer of Warranties",
+      "body": "This software is provided \"as is\", without warranty of any kind. The authors shall not be liable for any damages arising from the use of this software."
+    },
+    "ready": "You can now accept the agreement.",
+    "scroll": "Please scroll to the bottom to accept.",
+    "accept": "I Agree"
+  },
+  "tour": {
+    "welcome": {
+      "title": "Welcome to ZenDev",
+      "desc": "Your premium multi-tool suite is ready. Let's do a quick setup before you get started."
+    },
+    "next": "Continue",
+    "lang": {
+      "title": "Select Language",
+      "desc": "Choose your preferred interface language. You can change this later in Account Settings."
+    },
+    "finish": "Get Started"
+  },
+  "dashboard": {
+    "welcomeBack": "WELCOME BACK",
+    "readyTitle": "Your <span class=\"gradient-text\">ZenDev</span> is ready.",
+    "readyDesc": "A unified suite of powerful tools at your fingertips. Select a tool below to get started.",
+    "stats": {
+      "activeTools": "Active Tools",
+      "security": "Security",
+      "status": "Status",
+      "ipcIsolated": "IPC Isolated",
+      "allSystemsGo": "All Systems Go"
+    },
+    "availableTools": "Available Tools",
+    "launchTool": "Launch Tool",
+    "status": {
+      "online": "Online",
+      "active": "Active",
+      "ready": "Ready",
+      "live": "Live"
+    },
+    "tools": {
+      "decrypter": {
+        "desc": "Resolve shortened and monetized redirect links (Aylink, bit.ly, etc.) to their true destination and strip privacy trackers."
+      },
+      "bulkOrganizer": {
+        "desc": "Clean up messy directories by instantly categorizing and bulk-renaming files by extension."
+      },
+      "passwordGenerator": {
+        "desc": "Generate cryptographically secure passwords, passphrases, and PINs with strength estimation."
+      },
+      "networkTools": {
+        "desc": "IP resolution, DNS querying, port scanning, and ICMP ping — all running natively via Node.js."
+      },
+      "imageToolkit": {
+        "desc": "Batch convert images to JPEG, PNG, WebP, or AVIF. Resize, strip EXIF metadata, process locally."
+      },
+      "qrCode": {
+        "desc": "Custom QR code generator for WiFi, URLs, and vCards with vector SVG and high-res PNG export."
+      },
+      "jsonStudio": {
+        "desc": "Offline JSON beautifier, minifier, validator, and real-time JWT token claim inspector."
+      },
+      "hashStudio": {
+        "desc": "Calculate MD5, SHA-1, SHA-256, and SHA-512 hashes for text and files with instant checksum verification."
+      },
+      "jwtStudio": {
+        "desc": "Inspect, decode, verify HMAC-SHA256 signatures, and generate JSON Web Tokens locally."
+      },
+      "cronStudio": {
+        "desc": "Visual cron expression builder with natural language explanations and execution schedules."
+      },
+      "mermaidStudio": {
+        "desc": "Real-time architecture diagrams, sequence flows, and ERD visualizer with SVG/PNG export."
+      },
+      "encodingStudio": {
+        "desc": "Universal text and media converter, Data-URL visualizer, and canonical hex dump inspector."
+      }
+    }
+  },
+  "hashStudio": {
+    "title": "Hash & Checksum Studio",
+    "description": "Generate cryptographic checksums (MD5, SHA-1, SHA-256, SHA-512) for text and files with instant integrity verification."
+  },
+  "qr": {
+    "title": "QR Code Studio",
+    "description": "Generate high-resolution, custom-styled QR codes for URLs, WiFi networks, digital business cards, and contact info."
+  },
+  "jsonStudio": {
+    "title": "JSON & JWT Studio",
+    "description": "Format, validate, and minify JSON with real-time error detection. Decode and inspect JWT claims 100% client-side."
+  },
+  "organizer": {
+    "targetDir": "Target Directory",
+    "noFolder": "No folder selected",
+    "selectFolder": "Select Folder",
+    "scan": "Scan",
+    "categorize": "Categorize Files"
+  },
+  "image": {
+    "selectImages": "Select Images",
+    "supported": "JPG, PNG, WebP, AVIF, GIF, TIFF supported",
+    "options": "Conversion Options",
+    "outputFormat": "OUTPUT FORMAT",
+    "quality": "Quality",
+    "resize": "RESIZE PRESET",
+    "originalSize": "Original size",
+    "suffix": "FILENAME SUFFIX",
+    "stripExif": "Strip EXIF",
+    "outputDir": "OUTPUT DIRECTORY",
+    "sameFolder": "Same folder as input..."
+  },
+  "decrypter": {
+    "placeholder": "Paste shortened or redirect link here (e.g. bit.ly, aylink.co, t.co)...",
+    "decrypt": "Decrypt & Clean Link",
+    "decrypting": "Decrypting...",
+    "status": "Ready",
+    "success": "Decrypted Successfully",
+    "failed": "Decryption Failed",
+    "original": "Original",
+    "decrypted": "Decrypted"
+  },
+  "network": {
+    "target": "Target (Domain or IP)",
+    "placeholder": "e.g. google.com or 8.8.8.8",
+    "placeholderPort": "example.com or 1.2.3.4",
+    "placeholderHost": "hostname or IP...",
+    "resolve": "DNS Resolve",
+    "ping": "ICMP Ping",
+    "scan": "Port Scan",
+    "run": "Run",
+    "running": "Running...",
+    "results": "Results",
+    "failed": "Failed",
+    "unknownError": "Unknown error",
+    "rawOutput": "Raw Output"
+  },
+  "sentinel": {
+    "title": "System Resource Sentinel",
+    "description": "Real-time hardware sensors, per-core CPU load, RAM usage analyzer, and one-click memory optimizer.",
+    "scanning": "Scanning system hardware...",
+    "cores": "{{cores}} Cores",
+    "liveActive": "Live Stream Active (1.5s)",
+    "paused": "Paused",
+    "cleaning": "Cleaning...",
+    "cleanRam": "Clean RAM",
+    "cpuLoad": "CPU Load",
+    "coreDistribution": "Core Distribution ({{cores}} Logical Cores)",
+    "ramStatus": "RAM Memory Status",
+    "used": "Used",
+    "free": "Free",
+    "total": "Total",
+    "os": "Operating System",
+    "uptime": "Uptime",
+    "archEngine": "Architecture & Engine",
+    "baseFreq": "Base Frequency",
+    "toastSuccess": "Memory Optimized!",
+    "toastSuccessDesc": "Unused system cache was purged successfully.",
+    "toastError": "Optimization Error"
+  },
+  "fortress": {
+    "title": "Cyber Fortress — Military Vault & Shredder",
+    "description": "DoD 5220.22-M 7-pass irreversible file shredder, AES-256-GCM secure vault encryption, and digital steganography studio.",
+    "tabShredder": "DoD 7-Pass Shredder",
+    "tabVault": "AES-256 Vault",
+    "tabStego": "Steganography (PNG)",
+    "shredStandard": "DoD 5220.22-M Standard Forensic Wipe",
+    "shredStandardDesc": "This tool writes 0x00, 0xFF, and cryptographic pseudo-random bytes across 7 full passes over the file surface. The file is physically pulverized on disk and can never be recovered by forensic tools.",
+    "targetFile": "Target File to Destroy",
+    "noFileSelected": "No file selected yet...",
+    "selectFile": "Select File",
+    "confirmShred": "I confirm this file will be permanently destroyed and cannot be recovered.",
+    "shredding": "Executing 7-pass shred...",
+    "shredBtn": "Permanently Destroy File",
+    "vaultTitle": "AES-256-GCM File Encryption & Vault Studio",
+    "vaultDesc": "Lock sensitive documents, images, or archives with military-grade 256-bit Galois/Counter Mode encryption into .nexusvault containers or unlock existing vaults.",
+    "encryptMode": "Encrypt File",
+    "decryptMode": "Decrypt Vault",
+    "fileToEncrypt": "File to Encrypt",
+    "vaultToDecrypt": "Vault to Decrypt (.nexusvault)",
+    "passphraseLabel": "Vault Passphrase",
+    "passphrasePlaceholder": "Enter a strong vault passphrase...",
+    "encryptBtn": "Lock File with AES-256 (.nexusvault)",
+    "decryptBtn": "Unlock Vault and Decrypt File",
+    "processing": "Processing...",
+    "stegoTitle": "Image Steganography (LSB Data Hiding & Extraction)",
+    "stegoDesc": "Embed secret text messages into the least significant bit (LSB) of PNG pixel color channels or extract hidden messages.",
+    "stegoEncode": "Embed Message into Image (Encode)",
+    "stegoPlaceholder": "Type the secret message to embed into the image pixels...",
+    "stegoEmbedBtn": "Embed Message & Download PNG",
+    "stegoDecode": "Extract Secret Message from Image (Decode)",
+    "stegoDecodePlaceholder": "Detected secret messages will appear here after selecting an image and clicking decode.",
+    "stegoDecodeBtn": "Scan Image & Decode Message",
+    "toastShredSuccess": "File Permanently Destroyed!",
+    "toastShredSuccessDesc": "{{name}} wiped 7 times conforming to DoD 5220.22-M standards.",
+    "toastEncryptSuccess": "File Encrypted!",
+    "toastEncryptSuccessDesc": "{{name}} locked into vault.",
+    "toastDecryptSuccess": "Vault Unlocked!",
+    "toastDecryptSuccessDesc": "{{name}} decrypted successfully.",
+    "toastPassError": "Incorrect passphrase."
+  },
+  "fakeData": {
+    "title": "Fake Data & Mock Identity Studio",
+    "description": "Realistic mock identity and bulk test data generator for developer testing and QA verification.",
+    "newIdentity": "Generate New Identity",
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "city": "City & Location",
+    "company": "Company",
+    "tcNo": "Test ID Number (Algorithmically Valid)",
+    "creditCard": "Test Credit Card (Luhn Valid)",
+    "uuid": "UUID v4",
+    "bulkExport": "Bulk Test Data Export",
+    "bulkDesc": "Generate multiple mock record sets for database seeding or API testing.",
+    "records": "{{count}} Records",
+    "downloadJson": "Download JSON",
+    "downloadCsv": "Download CSV"
+  },
+  "scratchpad": {
+    "title": "Markdown Scratchpad Ultimate",
+    "description": "Advanced offline Markdown & Code studio designed for developers, security researchers, and technical writers.",
+    "newNote": "New Note",
+    "templates": "Templates",
+    "lockVault": "Lock Vault (AES-GCM)",
+    "timeline": "Version Timeline",
+    "findReplace": "Find & Replace",
+    "zenMode": "Zen Mode",
+    "splitView": "Split View",
+    "editView": "Edit Only",
+    "previewView": "Preview Only",
+    "copyMd": "Copy Markdown",
+    "copyHtml": "Copy HTML",
+    "downloadMd": "Download .md",
+    "characters": "characters",
+    "words": "words",
+    "lines": "lines",
+    "readingTime": "min read",
+    "lockModalTitle": "Encrypt Note (AES-256-GCM)",
+    "lockModalDesc": "Your note will be strongly encrypted locally in memory. It cannot be recovered without this password.",
+    "lockPasswordPlaceholder": "Enter encryption password...",
+    "lockConfirmBtn": "Encrypt & Lock Note",
+    "unlockTitle": "This Note is Encrypted",
+    "unlockDesc": "Enter your decryption password to view and edit this note.",
+    "unlockPasswordPlaceholder": "Enter password...",
+    "unlockBtn": "Decrypt Note"
+  },
+  "pdfStudio": {
+    "title": "PDF Studio & Document Suite",
+    "description": "Merge PDF files in order, split by page ranges, or extract pages. 100% offline and private.",
+    "tabMerge": "PDF Merge",
+    "tabSplit": "PDF Split & Extract",
+    "engineBadge": "pdf-lib Native Engine • Zero Cloud Dependency",
+    "mergeList": "PDF Files to Merge",
+    "mergeListDesc": "Use up/down buttons to adjust file merge sequence.",
+    "addPdf": "Add PDF Files",
+    "clearList": "Clear List",
+    "dropMerge": "Drag & Drop PDF Files or Click to Select",
+    "dropMergeSub": "Drop two or more PDFs to merge into a single document.",
+    "mergeSummary": "Total {{files}} files, ~{{pages}} pages",
+    "mergeBtn": "Merge & Save PDFs",
+    "merging": "Merging...",
+    "mergeSuccess": "Successfully merged ({{pages}} pages). File: {{path}}",
+    "dropSplit": "Drag & Drop PDF File to Split or Click to Select",
+    "dropSplitSub": "Upload a PDF to extract page ranges or individual pages.",
+    "selectOther": "Select Different File",
+    "rangeLabel": "Page Range to Extract",
+    "rangeHint": "Enter comma-separated page numbers or ranges (e.g. 1-3, 5, 8-10)",
+    "quickSelect": "Quick Select:",
+    "pageOne": "Page 1 Only",
+    "oddPages": "Odd Pages (1, 3, 5...)",
+    "evenPages": "Even Pages (2, 4, 6...)",
+    "splitBtn": "Extract & Save Pages",
+    "splitting": "Splitting Pages...",
+    "splitSuccess": "Pages extracted successfully ({{pages}} pages). File: {{path}}"
+  },
+  "colorStudio": {
+    "title": "Color Studio & Contrast Suite",
+    "description": "HEX, RGB, HSL, and CMYK color converter, screen eyedropper, image palette extractor, and WCAG 2.1 contrast checker.",
+    "tabConverter": "Color Converter & Eyedropper",
+    "tabPalette": "Image Palette Extractor",
+    "tabContrast": "WCAG Contrast Checker",
+    "tabGradient": "CSS Gradient Studio",
+    "clickToChange": "Click to change",
+    "eyedropperBtn": "Pick Color from Anywhere on Screen (Eyedropper)",
+    "liveCodes": "Instant Color Codes & Outputs",
+    "paletteTitle": "Extract Color Palette from Image",
+    "paletteDesc": "Upload a photo or banner; algorithm extracts dominant colors automatically.",
+    "uploadImage": "Upload Image",
+    "dominantPalette": "Dominant Color Palette (Click to copy)",
+    "fgColor": "Text Color (Foreground)",
+    "bgColor": "Background Color (Background)",
+    "headlinePreview": "Sample Headline Text",
+    "contrastSample": "This text previews the readability of your selected color combination.",
+    "contrastScore": "Contrast Score",
+    "gradientLive": "Live CSS Gradient Preview",
+    "startColor": "Start Color",
+    "endColor": "End Color",
+    "angle": "Angle: {{angle}}°",
+    "copy": "Copy"
+  },
+  "miniHud": {
+    "title": "Nexus Mini-HUD",
+    "quickHash": "Instant Quick SHA-256 Calculator",
+    "quickHashPlaceholder": "Type any text...",
+    "copy": "Copy",
+    "searchPlaceholder": "Search tool or action (e.g. regex, optimizer, mock, mail)...",
+    "escToClose": "ESC to close"
+  },
+  "shortcutsModal": {
+    "title": "Keyboard Shortcuts Guide",
+    "badge": "PRO HUD",
+    "desc": "Navigate and control ZenDev without touching the mouse",
+    "searchPlaceholder": "Search shortcut or command (e.g. HUD, Pin, Ctrl)...",
+    "noResults": "No matching shortcuts found.",
+    "hint": "Tip: You can open this window anytime by pressing ?",
+    "close": "Close",
+    "cmdPalette": "Universal Command Palette & Quick Search",
+    "miniHud": "ZenDev Mini-HUD Spotlight Window",
+    "pinToTop": "Pin Window to Top",
+    "toggleSfx": "Toggle Cyber Mechanical Audio Effects",
+    "toggleGuide": "Show / Hide Keyboard Shortcuts Guide",
+    "closeEsc": "Close Active Window, Modal or Drawer",
+    "scratchpadFind": "Live Find & Replace in Scratchpad",
+    "scratchpadSave": "Force Manual Save Note / Settings",
+    "scratchpadIndent": "Scratchpad Code / Text 2 Space Indent",
+    "gotoDashboard": "Return to Dashboard Home",
+    "gotoFortress": "Go to Cyber Fortress Shield"
+  },
+  "smartPaste": {
+    "jsonDetected": "JSON Detected",
+    "fields": "fields",
+    "items": "items",
+    "format": "Format",
+    "minify": "Minify",
+    "openInDevSandbox": "Open in DevSandbox",
+    "openInJsonStudio": "JSON Studio",
+    "jwtDetected": "JWT Token",
+    "expired": "Expired",
+    "valid": "Valid / Active",
+    "decode": "Decode",
+    "viewPayload": "View Payload",
+    "hidePayload": "Hide Payload",
+    "openInJwtStudio": "Open in JWT Studio",
+    "colorDetected": "Color Detected",
+    "openInColorStudio": "Color Studio",
+    "unitConversion": "Unit / Currency Conversion",
+    "calcResult": "Calculation Result",
+    "copyResult": "Copy Result",
+    "applyToSearch": "Apply to Search"
+  },
+  "gateway": {
+    "unsupportedTitle": "Unsupported Format",
+    "unsupportedDesc": "Unsupported file format. Please drop a valid document, image, database, vault, or data file."
+  },
+  "apiStudio": {
+    "urlPlaceholder": "Enter URL or {{variable}} (e.g. https://api.example.com/v1/users)",
+    "send": "Send",
+    "sending": "Sending...",
+    "active": "active",
+    "clearAll": "Clear All",
+    "addParam": "Add Parameter",
+    "addHeader": "Add Header",
+    "addEntry": "Add Entry",
+    "keyPlaceholder": "key",
+    "valuePlaceholder": "value",
+    "headerKeyPlaceholder": "Header-Name",
+    "headerName": "Header",
+    "headerValue": "Value",
+    "enable": "Enable",
+    "disable": "Disable",
+    "delete": "Delete",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "download": "Download",
+    "cancel": "Cancel",
+    "tabs": {
+      "params": "Params",
+      "headers": "Headers",
+      "auth": "Auth",
+      "body": "Body",
+      "diagnostics": "Diagnostics"
+    },
+    "params": {
+      "title": "Query Parameters",
+      "emptyDesc": "No query parameters configured. Add key-value pairs to auto-sync with the URL."
+    },
+    "headers": {
+      "title": "Request Headers",
+      "emptyDesc": "No request headers configured. Add custom headers or select standard presets above."
+    },
+    "auth": {
+      "type": "Authorization Type",
+      "none": "No Auth",
+      "bearer": "Bearer Token",
+      "basic": "Basic Auth",
+      "apiKey": "API Key",
+      "noneDesc": "This request does not use any authorization headers or query parameters.",
+      "bearerToken": "Bearer Token",
+      "supportVars": "Supports {{token}} variables",
+      "bearerHeaderPreview": "Transmitted as header",
+      "username": "Username",
+      "password": "Password",
+      "basicHeaderPreview": "Transmitted as header",
+      "keyName": "Key Name",
+      "keyValue": "Key Value",
+      "addTo": "Add to",
+      "addToHeader": "Header",
+      "addToQuery": "Query Params"
+    },
+    "body": {
+      "none": "none",
+      "json": "JSON",
+      "formData": "form-data",
+      "urlEncoded": "x-www-form-urlencoded",
+      "raw": "raw",
+      "graphql": "GraphQL",
+      "noneMessage": "This request does not include a payload body.",
+      "validJson": "Valid JSON",
+      "invalidJson": "Syntax Error",
+      "beautify": "Beautify",
+      "minify": "Minify",
+      "contentType": "Content Type",
+      "formDataDescription": "Multipart form data key-value items",
+      "emptyFormData": "No form-data fields defined.",
+      "urlEncodedDescription": "URL-encoded form fields",
+      "emptyUrlEncoded": "No url-encoded fields defined.",
+      "graphqlQuery": "GraphQL Query",
+      "graphqlVariables": "Query Variables (JSON)"
+    },
+    "env": {
+      "label": "Env",
+      "noEnv": "No Environment",
+      "manage": "Manage Environments",
+      "modalTitle": "Manage Environments & Variables",
+      "environments": "Environments",
+      "new": "New",
+      "addVar": "Add Variable",
+      "unresolvedVars": "Unresolved variables in URL",
+      "missing": "unresolved"
+    },
+    "curl": {
+      "import": "cURL Import",
+      "importTitle": "Import bash cURL command",
+      "export": "cURL Export",
+      "exportTitle": "Copy formatted cURL command",
+      "copied": "cURL Copied!",
+      "modalTitle": "Import cURL Command",
+      "modalDesc": "Paste a raw bash cURL command. It will automatically populate the method, URL, headers, authentication, and body.",
+      "importBtn": "Import Request",
+      "copiedToastTitle": "cURL Command Copied",
+      "copiedToastDesc": "Formatted cURL bash script copied to clipboard.",
+      "importedToastTitle": "cURL Request Imported",
+      "importedToastDesc": "Parsed method, URL, headers, and payload successfully."
+    },
+    "request": {
+      "save": "Save",
+      "saveTitle": "Save request to collections",
+      "savedToastTitle": "Request Saved"
+    },
+    "saveModal": {
+      "title": "Save Request to Collections",
+      "nameLabel": "Request Name",
+      "collectionLabel": "Collection / Folder (Optional)",
+      "saveBtn": "Save Request"
+    },
+    "sidebar": {
+      "collections": "Collections",
+      "history": "History",
+      "searchSaved": "Search saved requests...",
+      "searchHistory": "Search history...",
+      "noSaved": "No saved requests yet. Click Save to store your requests here.",
+      "noHistory": "No request history yet. Executed requests will appear here.",
+      "clearHistory": "Clear History"
+    },
+    "response": {
+      "title": "Response",
+      "body": "Body",
+      "headers": "Headers",
+      "timing": "Timing",
+      "emptyTitle": "No Response Yet",
+      "emptyDesc": "Enter an endpoint URL and hit Send or press Ctrl+Enter to dispatch an HTTP request.",
+      "dispatching": "DISPATCHING REQUEST THROUGH ELECTRON IPC...",
+      "copyBody": "Copy Response Body",
+      "download": "Download File",
+      "searchPlaceholder": "Search in response body...",
+      "matches": "matches",
+      "filterHeaders": "Filter headers by name or value...",
+      "error": "Execution Error"
+    },
+    "diagnostics": {
+      "targetHost": "Target Hostname",
+      "port": "Port"
+    }
+  },
+  "activityFeed": {
+    "title": "Activity Feed & Audit Journal",
+    "description": "Cryptographically chained cross-tool audit trail and live workstation activity journal.",
+    "live": "LIVE STREAM",
+    "paused": "STREAM PAUSED",
+    "pause": "Pause Feed",
+    "resume": "Resume Feed",
+    "verifyChain": "Verify Audit Chain",
+    "clearJournal": "Clear Journal",
+    "export": "Export Audit Log",
+    "autoScroll": "Auto-scroll",
+    "newEventsArrived": "{{count}} new events arrived. Click to view.",
+    "metrics": {
+      "totalEvents": "Total Logged Events",
+      "chainIntegrity": "Chain Integrity",
+      "verifiedBlocks": "Verified Blocks",
+      "failedActions": "Failed / Blocked Ops"
+    },
+    "integrity": {
+      "verifiedTitle": "Cryptographic Hash Chain Verified",
+      "verifiedDesc": "All {{count}} audit journal blocks are unbroken and match SHA-256 genesis chaining.",
+      "compromisedTitle": "Audit Tampering Detected!",
+      "compromisedDesc": "Hash chain discontinuity detected at block #{{index}}. Potential database modification!",
+      "verifying": "Verifying SHA-256 Hash Chain...",
+      "reverify": "Re-verify",
+      "genesisBlock": "Cryptographic Ledger Ready",
+      "badgeVerified": "Verified Chain",
+      "badgeCompromised": "Chain Discontinuity",
+      "badgeGenesis": "Genesis Ledger",
+      "tooltipVerified": "Cryptographic SHA-256 hash unbroken from previous block"
+    },
+    "filters": {
+      "searchPlaceholder": "Search action, tool, details or SHA-256 hash...",
+      "allTools": "All Tools",
+      "allCategories": "All Categories",
+      "allStatuses": "All Statuses",
+      "timeRange": "Time Range",
+      "today": "Today",
+      "last7Days": "Last 7 Days",
+      "last30Days": "Last 30 Days",
+      "allTime": "All Time"
+    },
+    "categories": {
+      "security": "Security",
+      "network": "Network",
+      "system": "System",
+      "file": "Files",
+      "crypto": "Crypto",
+      "api": "API & Diagnostics"
+    },
+    "statuses": {
+      "success": "Success",
+      "failure": "Failure",
+      "warning": "Warning",
+      "info": "Info"
+    },
+    "drawer": {
+      "title": "Audit Record Inspector",
+      "eventId": "Event ID",
+      "timestamp": "Timestamp",
+      "tool": "Origin Tool",
+      "action": "Action Dispatched",
+      "category": "Audit Category",
+      "status": "Execution Status",
+      "duration": "Duration / Latency",
+      "currentHash": "SHA-256 Block Hash",
+      "previousHash": "Previous Block Hash",
+      "genesisBlock": "Genesis Block (Chain Root)",
+      "metadata": "Sanitized Metadata & Payload",
+      "copyHash": "Copy Hash",
+      "copyJson": "Copy JSON",
+      "openTool": "Open Origin Studio",
+      "close": "Close Inspector"
+    },
+    "exportModal": {
+      "title": "Export Audit Journal",
+      "description": "Download tamper-evident workstation logs for compliance, reporting, or local backup.",
+      "jsonDesc": "Full raw activity feed with SHA-256 hashes and redacted metadata (JSON format).",
+      "csvDesc": "Tabular spreadsheet with timestamps, tools, actions, statuses, and hashes (CSV format).",
+      "reportDesc": "Certified Cryptographic Audit Verification Report with SHA-256 merkle proof (Markdown).",
+      "download": "Download Export",
+      "cancel": "Cancel"
+    },
+    "empty": {
+      "noEvents": "No activity records found",
+      "noEventsDesc": "Activity records will automatically stream here as you use workstation tools.",
+      "clearPrompt": "Are you sure you want to purge all activity logs? This action will reset the cryptographic chain."
+    },
+    "toasts": {
+      "copied": "Copied to clipboard",
+      "verifiedSuccess": "Audit chain intact ({{count}} blocks verified)",
+      "tamperWarning": "Warning: Hash chain broken at block #{{index}}!",
+      "cleared": "Activity journal purged successfully",
+      "exported": "Audit log exported to {{format}}"
+    },
+    "presets": {
+      "all": "All Activity",
+      "errors": "Errors & Failures",
+      "security": "Security & Vault",
+      "network": "Network Ops",
+      "recent": "Last Hour",
+      "crypto": "Crypto & Signatures",
+      "system": "System Telemetry",
+      "failures": "Failures & Blocked",
+      "today": "Today"
+    },
+    "shortcuts": {
+      "exportCsv": "Quick CSV Export",
+      "exportJson": "Quick JSON Export"
+    }
+  },
+  "jwtStudio": {
+    "title": "JWT & Token Studio",
+    "description": "Inspect, decode, verify HMAC-SHA256 signatures, and generate JSON Web Tokens 100% offline.",
+    "tabs": {
+      "debugger": "JWT Inspector",
+      "generator": "Token Generator",
+      "inspect": "Inspect & Verify",
+      "generate": "Token Generator"
+    },
+    "header": "Header (Algorithm & Type)",
+    "payload": "Payload (Claims)",
+    "signature": "Signature Verification",
+    "secretKey": "HMAC Secret Key",
+    "secretPlaceholder": "Enter secret key to verify signature...",
+    "base64Secret": "Secret is Base64 Encoded",
+    "verified": "Signature Verified",
+    "invalidSignature": "Invalid Signature",
+    "unsigned": "Unsigned / Awaiting Secret",
+    "tokenPlaceholder": "Paste your JWT token here (eyJhbGciOi...)",
+    "rawToken": "Encoded JWT",
+    "rawTokenPlaceholder": "Paste eyJhbGciOiJIUzI1NiIs...",
+    "sigValid": "Signature Verified",
+    "sigInvalid": "Invalid Signature",
+    "sigEmpty": "Awaiting Secret Key",
+    "timeline": {
+      "title": "Token Expiry Timeline",
+      "active": "Active Token",
+      "expired": "Expired",
+      "expiringSoon": "Expiring Soon",
+      "future": "Not Yet Active (nbf)",
+      "expiresIn": "Expires in {{time}}",
+      "expiredAgo": "Expired {{time}} ago",
+      "issuedAt": "Issued At",
+      "expiresAt": "Expires At",
+      "notBefore": "Not Before (nbf)",
+      "remaining": "Remaining"
+    },
+    "claims": {
+      "sub": "Subject",
+      "iss": "Issuer",
+      "aud": "Audience",
+      "exp": "Expiration Time",
+      "nbf": "Not Before",
+      "iat": "Issued At",
+      "jti": "JWT ID"
+    },
+    "generatorLabels": {
+      "algorithm": "Algorithm",
+      "claimsPreset": "Claims Preset",
+      "expiry": "Expiration",
+      "generate": "Generate Signed Token",
+      "generatedToken": "Generated Token",
+      "copyToken": "Copy Token"
+    },
+    "gen": {
+      "algorithm": "Algorithm",
+      "claims": "Payload JSON",
+      "generateBtn": "Generate Signed JWT",
+      "copySuccess": "JWT Copied to Clipboard"
+    }
+  },
+  "cronStudio": {
+    "title": "Cron Expression Studio",
+    "description": "Visual cron builder, natural language explanations, and next 10 execution timestamps.",
+    "expression": "Cron Expression",
+    "humanReadable": "Schedule Explanation",
+    "humanExplanation": "Human-Readable Schedule",
+    "nextExecutions": "Next 10 Scheduled Runs",
+    "runNumber": "Run #",
+    "scheduledTime": "Scheduled Time",
+    "relativeTime": "Countdown",
+    "presetsTitle": "Quick Presets",
+    "invalidExpression": "Invalid cron expression syntax",
+    "copySchedule": "Copy Schedule",
+    "fields": {
+      "minute": "Minute",
+      "hour": "Hour",
+      "dayOfMonth": "Day of Month",
+      "month": "Month",
+      "dayOfWeek": "Day of Week"
+    },
+    "builder": {
+      "minute": "Minute (0-59)",
+      "hour": "Hour (0-23)",
+      "dayOfMonth": "Day of Month (1-31)",
+      "month": "Month (1-12)",
+      "dayOfWeek": "Day of Week (0-6 Sun-Sat)"
+    },
+    "presets": {
+      "title": "Common Presets",
+      "everyMinute": "Every Minute",
+      "every5Min": "Every 5 Minutes",
+      "everyHour": "Every Hour",
+      "dailyMidnight": "Daily at Midnight",
+      "weekdays": "Weekdays at 9:00 AM",
+      "weeklySunday": "Weekly on Sunday",
+      "monthly": "Monthly on 1st"
+    }
+  },
+  "mermaidStudio": {
+    "title": "Mermaid & Architecture Canvas",
+    "description": "Real-time diagram visualizer for flowcharts, sequence diagrams, ERDs, and state machines.",
+    "editor": "Diagram Code",
+    "editorTitle": "Diagram Definition",
+    "preview": "Live Canvas",
+    "previewTitle": "Live Visual Canvas",
+    "copySvg": "Copy SVG",
+    "downloadSvg": "Download SVG",
+    "copyPng": "Copy PNG",
+    "downloadPng": "Download PNG",
+    "exportSvg": "Export SVG",
+    "exportPng": "Export PNG",
+    "zoomIn": "Zoom In",
+    "zoomOut": "Zoom Out",
+    "resetZoom": "Reset Zoom",
+    "syntaxError": "Diagram syntax error: {{error}}",
+    "renderSuccess": "Diagram rendered successfully",
+    "templates": {
+      "title": "Diagram Templates",
+      "flowchart": "Flowchart",
+      "sequence": "Sequence Diagram",
+      "erd": "Entity Relationship",
+      "state": "State Machine",
+      "classDiagram": "Class Diagram",
+      "gitGraph": "Git Graph"
+    }
+  },
+  "encodingStudio": {
+    "title": "Base64, Hex & Data-URL Studio",
+    "description": "Multi-mode data encoder, media Data-URL visualizer, and canonical 16-byte hex dump inspector.",
+    "tabs": {
+      "text": "Text Converter",
+      "file": "File & Data-URL",
+      "hexdump": "Hex Dump Viewer",
+      "hexDump": "Hex Dump Inspector"
+    },
+    "inputText": "Input Text",
+    "outputBase64": "Base64 Output",
+    "outputHex": "Hex Output",
+    "outputUrl": "URL Encoded",
+    "dropFile": "Drop file here or click to browse",
+    "mediaPreview": "Media Preview",
+    "mimeType": "MIME Type",
+    "fileSize": "File Size",
+    "copyDataUrl": "Copy Data-URL",
+    "copyHtmlImg": "Copy HTML <img>",
+    "copyCssBg": "Copy CSS background",
+    "offset": "Offset",
+    "hexBytes": "Hex Bytes",
+    "ascii": "ASCII Text",
+    "input": "Input Text / Bytes",
+    "output": "Encoded Output",
+    "mode": {
+      "encode": "Encode",
+      "decode": "Decode"
+    },
+    "format": {
+      "base64": "Base64",
+      "hex": "Hexadecimal",
+      "dataUrl": "Data URL"
+    },
+    "fileDrop": "Drop file here or click to browse",
+    "fileInfo": "File: {{name}} ({{size}}, {{type}})",
+    "preview": "Data-URL Media Preview",
+    "copy": "Copy Result",
+    "copied": "Copied!"
+  },
+  "decrypter": {
+    "title": "Universal Link Decrypter & Tracker Stripper",
+    "description": "Find the true destination of shortened links and purge privacy-invasive Google/Meta/TikTok trackers.",
+    "placeholder": "Enter Link (bit.ly, t.co, or any URL with tracking parameters)",
+    "decrypting": "Decrypting...",
+    "decrypt": "Decrypt & Clean",
+    "success": "Link Safely Decrypted",
+    "original": "Original Target",
+    "decrypted": "Clean Link",
+    "failed": "Decryption Failed",
+    "tab": {
+      "single": "Single Link",
+      "batch": "Batch Cleaner"
+    },
+    "input": {
+      "pasteTooltip": "Paste from clipboard"
+    },
+    "processing": "Resolving redirects & purging trackers...",
+    "result": {
+      "subtitle": "True destination verified and tracking surveillance parameters stripped.",
+      "trackersRemoved": "{{count}} Trackers Removed",
+      "resetTooltip": "New link",
+      "taxonomyTitle": "Removed Trackers & Taxonomy:",
+      "punycodeDetected": "Punycode detected (Potential spoofed domain / homograph attack)",
+      "rawIpDetected": "Direct raw IP address redirect",
+      "riskyTld": "Risky / suspicious top-level domain extension",
+      "nonStandardPort": "Non-standard port (: {{port}})",
+      "urlParseFailed": "URL structure could not be parsed",
+      "auditClean": "Security Scan: Clean domain structure, no punycode spoofing or suspicious ports detected.",
+      "auditWarning": "Security Warning: {{reasons}}",
+      "badgeSafe": "SAFE",
+      "badgeWarning": "WARNING",
+      "copy": "Copy Safe Link",
+      "copied": "Copied!",
+      "openExternal": "Open Safely",
+      "retry": "Try Again"
+    },
+    "batch": {
+      "title": "Batch Link Input (One URL per line)",
+      "validCount": "{{count}} Valid URLs",
+      "description": "All URLs will be sequentially scanned, stripped of trackers, and clean targets listed.",
+      "processing": "Processing...",
+      "cleanAll": "Clean All",
+      "resultsTitle": "Cleaned Links ({{count}})",
+      "copyAll": "Copy All",
+      "copiedAll": "All Copied!",
+      "trackersRemovedBadge": "{{count}} Trackers Removed",
+      "errorBadge": "Error",
+      "copyTooltip": "Copy",
+      "openTooltip": "Open in Browser"
+    },
+    "toast": {
+      "cleanSuccessTitle": "Link Cleaned",
+      "cleanSuccessDesc": "{{count}} tracking parameters successfully removed!",
+      "cleanErrorTitle": "Error",
+      "cleanErrorFallback": "Could not decrypt link.",
+      "copiedTitle": "Copied",
+      "copiedDesc": "Safe link copied to clipboard.",
+      "batchSuccessTitle": "Batch Clean Complete",
+      "batchSuccessDesc": "Cleaned {{trackers}} trackers across {{links}} links.",
+      "batchErrorTitle": "Batch Process Error",
+      "batchErrorFallback": "Batch processing failed.",
+      "copyAllSuccessTitle": "All Copied",
+      "copyAllSuccessDesc": "{{count}} clean links copied to clipboard."
+    }
+  }
+}

@@ -1,0 +1,996 @@
+{
+  "nav": {
+    "dashboard": "Kontrol Paneli",
+    "subtitle": "Çoklu Araç Seti",
+    "groups": {
+      "privacy": "Gizlilik & Güvenlik",
+      "developer": "Geliştirici & Araçlar",
+      "files": "Dosyalar & Medya",
+      "network": "Ağ"
+    },
+    "tools": {
+      "decrypter": "Evrensel Link Çözücü & Tracker Temizleyici",
+      "passwordGenerator": "Parola Üreticisi",
+      "qrCode": "QR Kod Stüdyosu",
+      "jsonStudio": "JSON & JWT Stüdyosu",
+      "hashStudio": "Hash & Checksum Stüdyosu",
+      "regexStudio": "Regex Lab & Tester",
+      "fakeData": "Fake Data & Mock Kimlik",
+      "apiStudio": "API Studio & Ağ Teşhis",
+      "curlRunner": "HTTP & cURL Runner",
+      "bulkOrganizer": "Toplu Düzenleyici",
+      "imageToolkit": "Görsel Araç Seti",
+      "networkTools": "Ağ Araçları",
+      "sentinel": "Resource Sentinel",
+      "devSandbox": "DevSandbox API Stüdyosu",
+      "cyberFortress": "Cyber Fortress & Shredder",
+      "colorStudio": "Renk & Kontrast Stüdyosu",
+      "scratchpad": "Markdown Scratchpad Not Defteri",
+      "pdfStudio": "PDF Stüdyosu & Evrak",
+      "activityFeed": "Aktivite Akışı & Denetim Günlüğü",
+      "jwtStudio": "JWT & Token Stüdyosu",
+      "cronStudio": "Cron İfade Stüdyosu",
+      "mermaidStudio": "Mermaid & Mimari Tuval",
+      "encodingStudio": "Base64, Hex & Data-URL Stüdyosu"
+    },
+    "account": "Hesap Ayarları"
+  },
+  "password": {
+    "title": "Parola Üreticisi",
+    "description": "Kriptografik olarak güvenli parolalar, parola ifadeleri ve PIN'ler üretin. Tüm üretim tarayıcı içinde gerçekleşir — hiçbir şey cihazınızı terk etmez.",
+    "tabs": {
+      "password": "Parola",
+      "passphrase": "Parola İfadesi",
+      "pin": "PIN"
+    },
+    "generatedLabel": {
+      "password": "Üretilen Parola",
+      "passphrase": "Üretilen Parola İfadesi",
+      "pin": "Üretilen PIN"
+    },
+    "strength": {
+      "none": "—",
+      "weak": "Zayıf",
+      "fair": "Orta",
+      "good": "İyi",
+      "strong": "Güçlü"
+    },
+    "options": {
+      "title": "Seçenekler",
+      "length": "Uzunluk",
+      "lowercase": "Küçük Harf (a-z)",
+      "uppercase": "Büyük Harf (A-Z)",
+      "digits": "Rakam (0-9)",
+      "symbols": "Sembol (!@#...)",
+      "excludeAmbiguous": "Belirsiz karakterleri hariç tut (i, I, l, L, 1, o, O, 0)",
+      "wordCount": "Kelime Sayısı",
+      "delimiter": "Ayırıcı",
+      "capitalize": "Büyük Harf Yap",
+      "pinLength": "PIN Uzunluğu"
+    },
+    "bulk": {
+      "title": "Toplu Üret",
+      "count": "Adet:",
+      "generate": "{{count}} Tane Üret"
+    },
+    "vault": {
+      "tabGenerator": "Parola Üretici",
+      "tabVault": "Kayıtlı Parola Kasası",
+      "saveToVault": "Kasaya Kaydet",
+      "modalTitle": "Parolayı Kasaya Kaydet",
+      "titleLabel": "Hizmet / Başlık *",
+      "titlePlaceholder": "Örn: Instagram, GitHub, Netflix",
+      "usernameLabel": "Kullanıcı Adı / E-posta",
+      "usernamePlaceholder": "Örn: sam@example.com",
+      "categoryLabel": "Kategori",
+      "notesLabel": "Notlar (Opsiyonel)",
+      "notesPlaceholder": "Örn: 2FA yedek kodu, kurtarma bilgisi...",
+      "saveBtn": "Kasaya Ekle",
+      "cancelBtn": "İptal",
+      "savedToast": "Parola kasaya başarıyla kaydedildi!",
+      "searchPlaceholder": "Hizmet, kullanıcı adı veya notlarda ara...",
+      "categories": {
+        "all": "Tümü",
+        "social": "Sosyal Medya",
+        "work": "İş & Yazılım",
+        "finance": "Finans & Banka",
+        "personal": "Kişisel",
+        "other": "Diğer"
+      },
+      "empty": "Henüz kayıtlı parola bulunmuyor.",
+      "emptySub": "Ürettiğiniz parolaları 'Kasaya Kaydet' butonuyla etiketleyerek burada güvenle saklayabilirsiniz.",
+      "deleteConfirm": "Bu parolayı kasadan silmek istediğinize emin misiniz?",
+      "exportBtn": "Yedekle (JSON)",
+      "importBtn": "İçe Aktar",
+      "copied": "Kopyalandı!",
+      "itemsCount": "{{count}} kayıt"
+    }
+  },
+  "account": {
+    "title": "Hesap Ayarları",
+    "subtitle": "Lisansınızı ve uygulama ayarlarınızı yönetin",
+    "licenseStatus": "Lisans Durumu",
+    "active": "Aktif",
+    "currentTier": "Mevcut Kademe",
+    "licenseKey": "Lisans Anahtarı",
+    "validUntil": "Geçerlilik Süresi",
+    "neverExpires": "Asla Sona Ermez",
+    "lifetime": "Ömür Boyu",
+    "dangerZone": "Tehlikeli Bölge",
+    "deactivateDesc": "Devre dışı bırakmak, çıkış yapmanıza neden olur ve uygulamayı kullanmak için tekrar lisans anahtarı girmeniz gerekir.",
+    "deactivateBtn": "Lisansı Devre Dışı Bırak",
+    "deactivateConfirm": "Lisansınızı devre dışı bırakmak istediğinize emin misiniz?",
+    "desktop": {
+      "title": "Masaüstü Entegrasyonu",
+      "trayActive": "Tepsi Modu Aktif",
+      "autoLaunch": "Başlangıçta Çalıştır",
+      "autoLaunchDesc": "Sistem açılışında tepside sessizce başlar",
+      "hotkeys": "Sistem Kısayolları",
+      "checkUpdates": "Güncellemeleri Denetle",
+      "checkingUpdate": "GitHub sürümleri taranıyor...",
+      "autoUpdatesActive": "Otomatik güncellemeler devrede",
+      "allUpToDate": "En son kararlı sürümü kullanıyorsunuz",
+      "latestMsg": "✓ Program güncel! Kurulu sürüm:",
+      "updateFound": "Yeni sürüm mevcut",
+      "newVersionDownloading": "Yeni sürüm bulundu:",
+      "downloading": "İndiriliyor...",
+      "updateReady": "Güncelleme hazır!",
+      "updateReadyDesc": "Yüklemeye hazır",
+      "restartInstall": "Yeniden Başlat & Kur",
+      "updateErrorDesc": "Sürüm sunucusuna erişilemedi",
+      "offlineWarning": "GitHub sürüm kontrolü yapılamadı (İnternet bağlantınızı kontrol edin)."
+    }
+  },
+  "eula": {
+    "title": "Son Kullanıcı Lisans Sözleşmesi",
+    "subtitle": "Devam etmek için lütfen şartları okuyup kabul edin",
+    "s1": {
+      "title": "1. Kullanım Şartları",
+      "body": "ZenDev'ı kullanarak bu şartları kabul etmiş olursunuz. Bu yazılım sadece yasal, eğitim amaçlı ve yetkili güvenlik testleri için sağlanmıştır."
+    },
+    "s2": {
+      "title": "2. Gizlilik & Telemetri",
+      "body": "ZenDev tüm verileri makinenizde yerel olarak işler. Parolalarınızı, çözülmüş bağlantıları veya üretilen verileri toplamayız, iletmeyiz veya saklamayız."
+    },
+    "s3": {
+      "title": "3. Lisanslama & Kısıtlamalar",
+      "body": "Lisansınız, kademenize bağlı olarak kişisel veya ticari kullanım içindir. Yazılımı tersine mühendislik yapamaz, yeniden dağıtamaz veya satamazsınız."
+    },
+    "s4": {
+      "title": "4. Garanti Feragatnamesi",
+      "body": "Bu yazılım hiçbir garanti verilmeksizin 'olduğu gibi' sağlanmıştır. Yazarlar, bu yazılımın kullanımından doğacak hiçbir zarardan sorumlu tutulamaz."
+    },
+    "ready": "Artık sözleşmeyi kabul edebilirsiniz.",
+    "scroll": "Kabul etmek için lütfen en aşağıya kaydırın.",
+    "accept": "Kabul Ediyorum"
+  },
+  "tour": {
+    "welcome": {
+      "title": "ZenDev'a Hoş Geldiniz",
+      "desc": "Premium çoklu araç setiniz hazır. Başlamadan önce kısa bir kurulum yapalım."
+    },
+    "next": "Devam Et",
+    "lang": {
+      "title": "Dil Seçimi",
+      "desc": "Tercih ettiğiniz arayüz dilini seçin. Bunu daha sonra Hesap Ayarları'ndan değiştirebilirsiniz."
+    },
+    "finish": "Başla"
+  },
+  "dashboard": {
+    "welcomeBack": "TEKRAR HOŞ GELDİNİZ",
+    "readyTitle": "<span class=\"gradient-text\">ZenDev</span> hazır.",
+    "readyDesc": "Güçlü araçlardan oluşan birleşik bir paket elinizin altında. Başlamak için aşağıdan bir araç seçin.",
+    "stats": {
+      "activeTools": "Aktif Araçlar",
+      "security": "Güvenlik",
+      "status": "Durum",
+      "ipcIsolated": "IPC İzoleli",
+      "allSystemsGo": "Sistemler Hazır"
+    },
+    "availableTools": "Mevcut Araçlar",
+    "launchTool": "Aracı Başlat",
+    "status": {
+      "online": "Çevrimiçi",
+      "active": "Aktif",
+      "ready": "Hazır",
+      "live": "Canlı"
+    },
+    "tools": {
+      "decrypter": {
+        "desc": "Kısaltılmış ve reklamlı linkleri (Aylink, bit.ly vb.) asıl hedefine çözün; gizlilik takipçilerini (UTM, tracker) temizleyin."
+      },
+      "bulkOrganizer": {
+        "desc": "Dosyaları uzantılarına göre anında kategorize ederek ve toplu yeniden adlandırarak dağınık dizinleri temizleyin."
+      },
+      "passwordGenerator": {
+        "desc": "Kriptografik olarak güvenli parolalar, parola ifadeleri ve PIN'ler üretin; güç tahmini yapın."
+      },
+      "networkTools": {
+        "desc": "IP çözümleme, DNS sorgulama, port tarama ve ICMP ping — hepsi doğrudan Node.js üzerinden çalışır."
+      },
+      "imageToolkit": {
+        "desc": "Görselleri toplu olarak JPEG, PNG, WebP veya AVIF'e dönüştürün. Yeniden boyutlandırın, EXIF verilerini silin, yerel işleyin."
+      },
+      "qrCode": {
+        "desc": "WiFi, URL ve vCard için SVG ve yüksek çözünürlüklü PNG dışa aktarma destekli QR kod üreticisi."
+      },
+      "jsonStudio": {
+        "desc": "Çevrimdışı JSON biçimlendirici, doğrulayıcı, küçültücü ve anlık JWT belirteç inceleyicisi."
+      },
+      "hashStudio": {
+        "desc": "Anlık bütünlük doğrulamasıyla metin ve dosyalar için MD5, SHA-1, SHA-256 ve SHA-512 sağlama toplamları hesaplayın."
+      },
+      "jwtStudio": {
+        "desc": "JSON Web Token çözümleyin, HMAC-SHA256 imzalarını doğrulayın ve yerel token üretin."
+      },
+      "cronStudio": {
+        "desc": "Görsel cron oluşturucu, Türkçe doğal dil açıklamaları ve sonraki 10 çalışma zamanı."
+      },
+      "mermaidStudio": {
+        "desc": "Gerçek zamanlı mimari şemaları, sekans akışları ve ERD görselleştirici (SVG/PNG aktarımı)."
+      },
+      "encodingStudio": {
+        "desc": "Evrensel metin ve medya dönüştürücü, Data-URL önizleyici ve kanonik hex döküm görüntüleyici."
+      }
+    }
+  },
+  "hashStudio": {
+    "title": "Hash & Checksum Stüdyosu",
+    "description": "Anlık bütünlük doğrulamasıyla metin ve dosyalar için kriptografik sağlama toplamları (MD5, SHA-1, SHA-256, SHA-512) hesaplayın."
+  },
+  "qr": {
+    "title": "QR Kod Stüdyosu",
+    "description": "URL, Wi-Fi ağları, dijital kartvizitler ve kişi bilgileri için yüksek çözünürlüklü, özel stilli QR kodları üretin."
+  },
+  "jsonStudio": {
+    "title": "JSON & JWT Stüdyosu",
+    "description": "Anlık sözdizimi doğrulamasıyla JSON'ı biçimlendirin, küçültün ve doğrulayın. JWT belirteçlerini %100 yerel olarak çözümleyin."
+  },
+  "organizer": {
+    "targetDir": "Hedef Dizin",
+    "noFolder": "Klasör seçilmedi",
+    "selectFolder": "Klasör Seç",
+    "scan": "Tara",
+    "categorize": "Dosyaları Kategorize Et"
+  },
+  "image": {
+    "selectImages": "Görsel Seç",
+    "supported": "JPG, PNG, WebP, AVIF, GIF, TIFF desteklenir",
+    "options": "Dönüştürme Seçenekleri",
+    "outputFormat": "ÇIKTI FORMATI",
+    "quality": "Kalite",
+    "resize": "YENİDEN BOYUTLANDIRMA",
+    "originalSize": "Orijinal boyut",
+    "suffix": "DOSYA ADI EKi",
+    "stripExif": "EXIF Temizle",
+    "outputDir": "ÇIKTI DİZİNİ",
+    "sameFolder": "Girdi klasörü ile aynı..."
+  },
+  "decrypter": {
+    "placeholder": "Kısaltılmış veya reklamlı bağlantıyı yapıştırın (ör. bit.ly, aylink.co, t.co)...",
+    "decrypt": "Bağlantıyı Çöz & Temizle",
+    "decrypting": "Çözülüyor...",
+    "status": "Hazır",
+    "success": "Başarıyla Çözüldü",
+    "failed": "Çözme Başarısız",
+    "original": "Orijinal",
+    "decrypted": "Çözülmüş"
+  },
+  "network": {
+    "target": "Hedef (Domain veya IP)",
+    "placeholder": "ör. google.com veya 8.8.8.8",
+    "placeholderPort": "örn. example.com veya 1.2.3.4",
+    "placeholderHost": "hostname veya IP...",
+    "resolve": "DNS Çözümle",
+    "ping": "ICMP Ping",
+    "scan": "Port Tara",
+    "run": "Çalıştır",
+    "running": "Çalışıyor...",
+    "results": "Sonuçlar",
+    "failed": "Başarısız",
+    "unknownError": "Bilinmeyen hata",
+    "rawOutput": "Ham Çıktı"
+  },
+  "sentinel": {
+    "title": "System Resource Sentinel",
+    "description": "Gerçek zamanlı donanım sensörleri, çekirdek bazlı CPU yükü, RAM tüketim analizörü ve tek tıkla bellek temizleme motoru.",
+    "scanning": "Sistem Donanımı Taranıyor...",
+    "cores": "{{cores}} Çekirdek",
+    "liveActive": "Canlı Akış Aktif (1.5s)",
+    "paused": "Duraklatıldı",
+    "cleaning": "Temizleniyor...",
+    "cleanRam": "RAM Temizle",
+    "cpuLoad": "İşlemci (CPU) Yükü",
+    "coreDistribution": "Çekirdek Dağılımı ({{cores}} Mantıksal Çekirdek)",
+    "ramStatus": "Bellek (RAM) Durumu",
+    "used": "Kullanılan",
+    "free": "Boşta",
+    "total": "Toplam",
+    "os": "İşletim Sistemi",
+    "uptime": "Çalışma Süresi",
+    "archEngine": "Mimari & Motor",
+    "baseFreq": "Temel Frekans",
+    "toastSuccess": "Bellek Optimize Edildi!",
+    "toastSuccessDesc": "Kullanılmayan sistem önbelleği başarıyla temizlendi.",
+    "toastError": "Optimizasyon Hatası"
+  },
+  "fortress": {
+    "title": "Cyber Fortress — Askeri Kasa & İmha Motoru",
+    "description": "DoD 5220.22-M 7-pass geri döndürülemez dosya imha motoru, AES-256-GCM güvenli kasa şifreleme ve dijital steganografi stüdyosu.",
+    "tabShredder": "DoD 7-Pass Shredder",
+    "tabVault": "AES-256 Kasa",
+    "tabStego": "Steganografi (PNG)",
+    "shredStandard": "DoD 5220.22-M Standardı Adli Bilişim İmhası",
+    "shredStandardDesc": "Bu araç, seçtiğiniz dosyanın üzerine sırasıyla 0x00, 0xFF ve kriptografik rastgele baytlar yazarak toplam 7 geçiş uygular. Dosya disk yüzeyinden fiziksel olarak kazınır ve hiçbir veri kurtarma yazılımı veya adli araç tarafından asla geri getirilemez.",
+    "targetFile": "İmha Edilecek Hedef Dosya",
+    "noFileSelected": "Henüz dosya seçilmedi...",
+    "selectFile": "Dosya Seç",
+    "confirmShred": "Bu dosyanın kalıcı olarak yok edileceğini ve kurtarılamayacağını onaylıyorum.",
+    "shredding": "7 Geçişli İmha Yürütülüyor...",
+    "shredBtn": "Dosyayı Kalıcı Olarak İmha Et",
+    "vaultTitle": "AES-256-GCM Dosya Şifreleme ve Kasa Stüdyosu",
+    "vaultDesc": "Hassas belgelerinizi, fotoğraflarınızı veya arşivlerinizi askeri düzeyde 256-bit Galois/Counter Mode şifreleme ile .nexusvault formatına kilitleyin veya var olan kasanızı açın.",
+    "encryptMode": "Dosya Kilitle (Encrypt)",
+    "decryptMode": "Kasa Aç (Decrypt)",
+    "fileToEncrypt": "Şifrelenecek Dosya",
+    "vaultToDecrypt": "Çözülecek .nexusvault Kasası",
+    "passphraseLabel": "Kasa Anahtar Parolası",
+    "passphrasePlaceholder": "Güçlü bir kasa parolası girin...",
+    "encryptBtn": "Dosyayı AES-256 ile Kilitle (.nexusvault)",
+    "decryptBtn": "Kasayı Aç ve Dosyayı Çöz",
+    "processing": "İşleniyor...",
+    "stegoTitle": "Görsel İçi Veri Gizleme & Çıkarma (LSB Steganography)",
+    "stegoDesc": "Seçtiğiniz bir PNG görselinin renk piksellerinin en anlamsız bitine (LSB) gizli mesaj gömün veya gizli mesajı çözün.",
+    "stegoEncode": "Mesajı Görsele Göm (Encode)",
+    "stegoPlaceholder": "Görselin piksellerine gömülecek gizli mesajı yazın...",
+    "stegoEmbedBtn": "Mesajı Göm ve PNG İndir",
+    "stegoDecode": "Görseldeki Gizli Mesajı Çöz (Decode)",
+    "stegoDecodePlaceholder": "Görsel seçip çöz butonuna tıkladığınızda tespit edilen gizli mesaj burada belirecektir.",
+    "stegoDecodeBtn": "Görseli Tara & Mesajı Çöz",
+    "toastShredSuccess": "Dosya Kalıcı Olarak İmha Edildi!",
+    "toastShredSuccessDesc": "{{name}} DoD 5220.22-M standardında 7 kez üzerine yazılarak silindi.",
+    "toastEncryptSuccess": "Dosya Şifrelendi!",
+    "toastEncryptSuccessDesc": "{{name}} kasaya kilitlendi.",
+    "toastDecryptSuccess": "Kasa Açıldı!",
+    "toastDecryptSuccessDesc": "{{name}} başarıyla geri çözümlendi.",
+    "toastPassError": "Hatalı parola."
+  },
+  "fakeData": {
+    "title": "Fake Data & Mock Kimlik Stüdyosu",
+    "description": "Geliştirici ve QA testleri için gerçekçi Türkçe sahte kimlik ve toplu mock veri üretici",
+    "newIdentity": "Yeni Kimlik Üret",
+    "fullName": "Tam İsim",
+    "email": "E-Posta Adresi",
+    "phone": "TR Telefon No",
+    "city": "Şehir & Konum",
+    "company": "Şirket",
+    "tcNo": "Test TC Kimlik No (Algoritmik Geçerli)",
+    "creditCard": "Test Kredi Kartı (Luhn Geçerli)",
+    "uuid": "UUID v4",
+    "bulkExport": "Toplu Test Verisi Dışa Aktar (Bulk Export)",
+    "bulkDesc": "Veritabanı veya API testleri için anında çoklu mock kayıt seti oluştur",
+    "records": "{{count}} Kayıt",
+    "downloadJson": "JSON İndir",
+    "downloadCsv": "CSV İndir"
+  },
+  "scratchpad": {
+    "title": "Markdown Scratchpad Not Defteri",
+    "description": "Geliştiriciler, güvenlik uzmanları ve teknik ekipler için tasarlanmış ileri düzey çevrimdışı Markdown ve Kod stüdyosu.",
+    "newNote": "Yeni Not",
+    "templates": "Şablonlar",
+    "lockVault": "Notu Kilitle (AES-GCM)",
+    "timeline": "Sürüm Geçmişi",
+    "findReplace": "Bul & Değiştir",
+    "zenMode": "Zen Modu",
+    "splitView": "Çift Görünüm",
+    "editView": "Yalnızca Düzenle",
+    "previewView": "Yalnızca Önizle",
+    "copyMd": "Markdown Kopyala",
+    "copyHtml": "HTML Kopyala",
+    "downloadMd": "İndir (.md)",
+    "characters": "karakter",
+    "words": "kelime",
+    "lines": "satır",
+    "readingTime": "dk okuma",
+    "lockModalTitle": "Notu Parolayla Kilitle (AES-256-GCM)",
+    "lockModalDesc": "Notunuz yerel olarak bellekte şifrelenir. Bu parola olmadan asla kurtarılamaz.",
+    "lockPasswordPlaceholder": "Şifreleme parolası belirleyin...",
+    "lockConfirmBtn": "Notu Şifrele ve Kilitle",
+    "unlockTitle": "Bu Not Parolayla Kilitlenmiştir",
+    "unlockDesc": "Notu görüntülemek ve düzenlemek için şifre çözme parolanızı girin.",
+    "unlockPasswordPlaceholder": "Parolayı girin...",
+    "unlockBtn": "Kilit Aç ve Notu Çöz"
+  },
+  "pdfStudio": {
+    "title": "PDF Stüdyosu & Evrak Paketi",
+    "description": "PDF dosyalarını sıralı birleştirin, sayfa aralığına göre bölün veya yeni PDF oluşturun. %100 yerel ve gizli.",
+    "tabMerge": "PDF Birleştirme (Merge)",
+    "tabSplit": "PDF Bölme & Sayfa Çıkarma (Split)",
+    "engineBadge": "pdf-lib Native Engine • Sıfır Bulut Bağımlılığı",
+    "mergeList": "Birleştirilecek PDF Listesi",
+    "mergeListDesc": "Dosyaların birleştirme sırasını yukarı/aşağı butonlarıyla düzenleyebilirsiniz.",
+    "addPdf": "PDF Dosyası Ekle",
+    "clearList": "Listeyi Temizle",
+    "dropMerge": "PDF Dosyalarını Sürükleyin veya Tıklayın",
+    "dropMergeSub": "İki veya daha fazla PDF bırakarak tek bir belgede birleştirin.",
+    "mergeSummary": "Toplam {{files}} dosya, yaklaşık {{pages}} sayfa",
+    "mergeBtn": "PDF'leri Birleştir & Kaydet",
+    "merging": "Birleştiriliyor...",
+    "mergeSuccess": "Başarıyla birleştirildi ({{pages}} sayfa). Dosya: {{path}}",
+    "dropSplit": "Bölünecek PDF Dosyasını Sürükleyin veya Tıklayın",
+    "dropSplitSub": "Sayfa aralığı veya tekil sayfaları ayıklamak için PDF yükleyin.",
+    "selectOther": "Farklı Dosya Seç",
+    "rangeLabel": "Çıkarılacak Sayfa Aralığı",
+    "rangeHint": "Virgülle ayrılmış sayfa numaraları veya aralıklar girebilirsiniz (Örn: 1-3, 5, 8-10)",
+    "quickSelect": "Hızlı Seçim:",
+    "pageOne": "Yalnızca 1. Sayfa",
+    "oddPages": "Tek Sayfalar (1, 3, 5...)",
+    "evenPages": "Çift Sayfalar (2, 4, 6...)",
+    "splitBtn": "Sayfaları Ayıkla & Kaydet",
+    "splitting": "Sayfalar Ayrılıyor...",
+    "splitSuccess": "Sayfalar başarıyla çıkarıldı ({{pages}} sayfa). Dosya: {{path}}"
+  },
+  "colorStudio": {
+    "title": "Renk & Kontrast Stüdyosu",
+    "description": "HEX, RGB, HSL ve CMYK renk dönüştürücü, ekran damlalığı, görselden renk paleti çıkarıcı ve WCAG 2.1 kontrast denetleyici.",
+    "tabConverter": "Renk Dönüştürücü & Damlalık",
+    "tabPalette": "Görsel Paleti Çıkarıcı",
+    "tabContrast": "WCAG Kontrast Denetleyici",
+    "tabGradient": "CSS Gradyan Stüdyosu",
+    "clickToChange": "Değiştirmek İçin Tıkla",
+    "eyedropperBtn": "Ekranda İstediğin Yerden Renk Seç (Damlalık)",
+    "liveCodes": "Anlık Renk Kodları & Çıktılar",
+    "paletteTitle": "Görselden Renk Paleti Çıkarma",
+    "paletteDesc": "Fotoğraf veya banner yükleyin, algoritma dominant renkleri otomatik çıkarsın.",
+    "uploadImage": "Görsel Yükle",
+    "dominantPalette": "Dominant Renk Paleti (Kopyalamak İçin Tıkla)",
+    "fgColor": "Metin Rengi (Foreground)",
+    "bgColor": "Arka Plan Rengi (Background)",
+    "headlinePreview": "Büyük Başlık Örneği",
+    "contrastSample": "Bu metin seçtiğiniz renk kombinasyonunun gerçek okunabilirliğini test eder.",
+    "contrastScore": "Kontrast Skoru",
+    "gradientLive": "Canlı CSS Gradyan Önizleme",
+    "startColor": "Başlangıç Rengi",
+    "endColor": "Bitiş Rengi",
+    "angle": "Açı: {{angle}}°",
+    "copy": "Kopyala"
+  },
+  "miniHud": {
+    "title": "Nexus Mini-HUD",
+    "quickHash": "Anlık Hızlı SHA-256 Hesaplayıcı",
+    "quickHashPlaceholder": "Herhangi bir metin yaz...",
+    "copy": "Kopyala",
+    "searchPlaceholder": "Araç veya işlem ara (örn: regex, optimizer, mock, mail)...",
+    "escToClose": "ESC ile kapat"
+  },
+  "shortcutsModal": {
+    "title": "Klavye Kısayolları Kılavuzu",
+    "badge": "PRO HUD",
+    "desc": "Hızlı erişim tuşlarıyla ZenDev'ı fareye dokunmadan kontrol edin",
+    "searchPlaceholder": "Kısayol veya komut ara (Örn: HUD, Pin, Ctrl)...",
+    "noResults": "Eşleşen kısayol bulunamadı.",
+    "hint": "İpucu: Bu pencereyi istediğiniz zaman ? tuşuna basarak açabilirsiniz.",
+    "close": "Kapat",
+    "cmdPalette": "Evrensel Komut Paleti & Hızlı Arama",
+    "miniHud": "ZenDev Mini-HUD Spotlight Penceresi",
+    "pinToTop": "Pencereyi Ekranda Üstte Sabitle (Pin to Top)",
+    "toggleSfx": "Siber Mekanik Ses Efektlerini Aç / Kapat",
+    "toggleGuide": "Klavye Kısayolları Kılavuzunu Göster / Gizle",
+    "closeEsc": "Açık Pencere, Modal veya Çekmeceyi Kapat",
+    "scratchpadFind": "Scratchpad İçi Canlı Bul & Değiştir",
+    "scratchpadSave": "Not / Ayarları Zorla Manuel Kaydet",
+    "scratchpadIndent": "Scratchpad Kod / Metin 2 Boşluk Girintileme",
+    "gotoDashboard": "Dashboard Ana Sayfasına Dön",
+    "gotoFortress": "Cyber Fortress Kalkanına Git"
+  },
+  "smartPaste": {
+    "jsonDetected": "JSON Algılandı",
+    "fields": "alan",
+    "items": "öğe",
+    "format": "Formatla",
+    "minify": "Minify Et",
+    "openInDevSandbox": "DevSandbox'ta Aç",
+    "openInJsonStudio": "JSON Studio",
+    "jwtDetected": "JWT Token",
+    "expired": "Süresi Dolmuş",
+    "valid": "Geçerli / Aktif",
+    "decode": "Çöz (Decode)",
+    "viewPayload": "Payload Gör",
+    "hidePayload": "Payload Gizle",
+    "openInJwtStudio": "JWT Studio'da Aç",
+    "colorDetected": "Renk Algılandı",
+    "openInColorStudio": "Color Studio",
+    "unitConversion": "Birim / Kur Dönüşümü",
+    "calcResult": "Hesaplama Sonucu",
+    "copyResult": "Sonucu Kopyala",
+    "applyToSearch": "Aramaya Yaz"
+  },
+  "gateway": {
+    "unsupportedTitle": "Desteklenmeyen Format",
+    "unsupportedDesc": "Desteklenmeyen dosya formatı. Lütfen geçerli bir belge, görsel, veritabanı, kasa veya veri dosyası bırakın."
+  },
+  "apiStudio": {
+    "urlPlaceholder": "URL veya {{değişken}} girin (örn. https://api.example.com/v1/users)",
+    "send": "Gönder",
+    "sending": "Gönderiliyor...",
+    "active": "aktif",
+    "clearAll": "Tümünü Temizle",
+    "addParam": "Parametre Ekle",
+    "addHeader": "Başlık Ekle",
+    "addEntry": "Girdi Ekle",
+    "keyPlaceholder": "anahtar",
+    "valuePlaceholder": "değer",
+    "headerKeyPlaceholder": "Başlık-Adı",
+    "headerName": "Başlık",
+    "headerValue": "Değer",
+    "enable": "Etkinleştir",
+    "disable": "Devre Dışı Bırak",
+    "delete": "Sil",
+    "copy": "Kopyala",
+    "copied": "Kopyalandı!",
+    "download": "İndir",
+    "cancel": "İptal",
+    "tabs": {
+      "params": "Parametreler",
+      "headers": "Başlıklar",
+      "auth": "Kimlik Doğrulama",
+      "body": "Gövde",
+      "diagnostics": "Ağ Teşhis"
+    },
+    "params": {
+      "title": "Sorgu Parametreleri",
+      "emptyDesc": "Yapılandırılmış sorgu parametresi yok. URL ile otomatik eşitlenen anahtar-değer çiftleri ekleyin."
+    },
+    "headers": {
+      "title": "İstek Başlıkları",
+      "emptyDesc": "Yapılandırılmış başlık yok. Özel başlık ekleyin veya yukarıdaki hazır şablonları seçin."
+    },
+    "auth": {
+      "type": "Kimlik Doğrulama Türü",
+      "none": "Yok",
+      "bearer": "Bearer Token",
+      "basic": "Basic Auth",
+      "apiKey": "API Anahtarı",
+      "noneDesc": "Bu istek herhangi bir yetkilendirme başlığı veya parametresi kullanmaz.",
+      "bearerToken": "Bearer Token",
+      "supportVars": "{{token}} değişkenlerini destekler",
+      "bearerHeaderPreview": "Başlık olarak aktarılır",
+      "username": "Kullanıcı Adı",
+      "password": "Şifre",
+      "basicHeaderPreview": "Başlık olarak aktarılır",
+      "keyName": "Anahtar Adı",
+      "keyValue": "Anahtar Değeri",
+      "addTo": "Ekleme Yeri",
+      "addToHeader": "Başlık (Header)",
+      "addToQuery": "Sorgu Parametresi (Query)"
+    },
+    "body": {
+      "none": "yok",
+      "json": "JSON",
+      "formData": "form-data",
+      "urlEncoded": "x-www-form-urlencoded",
+      "raw": "ham metin",
+      "graphql": "GraphQL",
+      "noneMessage": "Bu istek bir gövde yükü içermez.",
+      "validJson": "Geçerli JSON",
+      "invalidJson": "Sözdizimi Hatası",
+      "beautify": "Düzenle",
+      "minify": "Sıkıştır",
+      "contentType": "İçerik Türü",
+      "formDataDescription": "Çok parçalı form verisi alanları",
+      "emptyFormData": "Tanımlanmış form-data alanı yok.",
+      "urlEncodedDescription": "URL-encoded form alanları",
+      "emptyUrlEncoded": "Tanımlanmış url-encoded alanı yok.",
+      "graphqlQuery": "GraphQL Sorgusu",
+      "graphqlVariables": "Sorgu Değişkenleri (JSON)"
+    },
+    "env": {
+      "label": "Ortam",
+      "noEnv": "Ortam Seçilmedi",
+      "manage": "Ortamları Yönet",
+      "modalTitle": "Ortamları ve Değişkenleri Yönet",
+      "environments": "Ortamlar",
+      "new": "Yeni",
+      "addVar": "Değişken Ekle",
+      "unresolvedVars": "URL içinde tanımlanmamış değişkenler",
+      "missing": "tanımsız"
+    },
+    "curl": {
+      "import": "cURL İçe Aktar",
+      "importTitle": "Bash cURL komutunu içe aktar",
+      "export": "cURL Dışa Aktar",
+      "exportTitle": "Biçimlendirilmiş cURL komutunu kopyala",
+      "copied": "cURL Kopyalandı!",
+      "modalTitle": "cURL Komutunu İçe Aktar",
+      "modalDesc": "Ham bir bash cURL komutu yapıştırın. Yöntem, URL, başlıklar, kimlik doğrulama ve gövde otomatik olarak doldurulacaktır.",
+      "importBtn": "İsteği İçe Aktar",
+      "copiedToastTitle": "cURL Komutu Kopyalandı",
+      "copiedToastDesc": "Biçimlendirilmiş cURL bash betiği panoya kopyalandı.",
+      "importedToastTitle": "cURL İsteği İçe Aktarıldı",
+      "importedToastDesc": "Yöntem, URL, başlıklar ve veri başarıyla ayrıştırıldı."
+    },
+    "request": {
+      "save": "Kaydet",
+      "saveTitle": "İsteği koleksiyonlara kaydet",
+      "savedToastTitle": "İstek Kaydedildi"
+    },
+    "saveModal": {
+      "title": "İsteği Koleksiyona Kaydet",
+      "nameLabel": "İstek Adı",
+      "collectionLabel": "Koleksiyon / Klasör (İsteğe Bağlı)",
+      "saveBtn": "İsteği Kaydet"
+    },
+    "sidebar": {
+      "collections": "Koleksiyonlar",
+      "history": "Geçmiş",
+      "searchSaved": "Kaydedilen isteklerde ara...",
+      "searchHistory": "Geçmişte ara...",
+      "noSaved": "Henüz kaydedilmiş istek yok. İsteklerinizi buraya kaydetmek için Kaydet'e tıklayın.",
+      "noHistory": "Henüz istek geçmişi yok. Çalıştırılan istekler burada listelenir.",
+      "clearHistory": "Geçmişi Temizle"
+    },
+    "response": {
+      "title": "Yanıt",
+      "body": "Gövde",
+      "headers": "Başlıklar",
+      "timing": "Zamanlama",
+      "emptyTitle": "Henüz Yanıt Yok",
+      "emptyDesc": "Bir uç nokta URL'si girin ve HTTP isteği göndermek için Gönder'e tıklayın veya Ctrl+Enter tuşlarına basın.",
+      "dispatching": "İSTEK ELECTRON IPC ÜZERİNDEN GÖNDERİLİYOR...",
+      "copyBody": "Yanıt Gövdesini Kopyala",
+      "download": "Dosya İndir",
+      "searchPlaceholder": "Yanıt gövdesinde ara...",
+      "matches": "eşleşme",
+      "filterHeaders": "Başlıkları ada veya değere göre filtrele...",
+      "error": "Çalıştırma Hatası"
+    },
+    "diagnostics": {
+      "targetHost": "Hedef Sunucu Adı",
+      "port": "Port"
+    }
+  },
+  "activityFeed": {
+    "title": "Aktivite Akışı & Denetim Günlüğü",
+    "description": "Kriptografik SHA-256 hash zinciriyle mühürlenmiş araçlar arası denetim ve canlı aktivite akışı.",
+    "live": "CANLI AKIŞ",
+    "paused": "AKIŞ DURAKLATILDI",
+    "pause": "Akışı Duraklat",
+    "resume": "Akışı Başlat",
+    "verifyChain": "Denetim Zincirini Doğrula",
+    "clearJournal": "Günlüğü Temizle",
+    "export": "Dışa Aktar",
+    "autoScroll": "Otomatik Kaydırma",
+    "newEventsArrived": "{{count}} yeni olay geldi. Görmek için tıklayın.",
+    "metrics": {
+      "totalEvents": "Toplam Kayıt",
+      "chainIntegrity": "Zincir Bütünlüğü",
+      "verifiedBlocks": "Doğrulanan Blok",
+      "failedActions": "Hatalı / Engellenen"
+    },
+    "integrity": {
+      "verifiedTitle": "Kriptografik Hash Zinciri Doğrulandı",
+      "verifiedDesc": "Tüm {{count}} denetim günlüğü bloğu bozulmamış ve SHA-256 genesis zincirine uyuyor.",
+      "compromisedTitle": "Müdahale Tespit Edildi!",
+      "compromisedDesc": "#{{index}} numaralı blokta hash zinciri kopması saptandı. Olası veritabanı manipülasyonu!",
+      "verifying": "SHA-256 Hash Zinciri Doğrulanıyor...",
+      "reverify": "Yeniden Doğrula",
+      "genesisBlock": "Kriptografik Kayıt Defteri Hazır",
+      "badgeVerified": "Doğrulanmış Blok",
+      "badgeCompromised": "Blok Bütünlüğü Bozuk",
+      "badgeGenesis": "Genesis Bloğu",
+      "tooltipVerified": "Önceki blokla kriptografik SHA-256 bağlantısı kesintisiz"
+    },
+    "filters": {
+      "searchPlaceholder": "Eylem, araç, detay veya SHA-256 hash ara...",
+      "allTools": "Tüm Araçlar",
+      "allCategories": "Tüm Kategoriler",
+      "allStatuses": "Tüm Durumlar",
+      "timeRange": "Zaman Aralığı",
+      "today": "Bugün",
+      "last7Days": "Son 7 Gün",
+      "last30Days": "Son 30 Gün",
+      "allTime": "Tümü"
+    },
+    "categories": {
+      "security": "Güvenlik",
+      "network": "Ağ",
+      "system": "Sistem",
+      "file": "Dosyalar",
+      "crypto": "Kripto",
+      "api": "API & Teşhis"
+    },
+    "statuses": {
+      "success": "Başarılı",
+      "failure": "Başarısız",
+      "warning": "Uyarı",
+      "info": "Bilgi"
+    },
+    "drawer": {
+      "title": "Denetim Kaydı İnceleyici",
+      "eventId": "Olay ID",
+      "timestamp": "Zaman Damgası",
+      "tool": "Kaynak Araç",
+      "action": "Çalıştırılan Eylem",
+      "category": "Denetim Kategorisi",
+      "status": "Yürütme Durumu",
+      "duration": "Süre / Gecikme",
+      "currentHash": "SHA-256 Blok Hash'i",
+      "previousHash": "Önceki Blok Hash'i",
+      "genesisBlock": "Genesis Blok (Kök)",
+      "metadata": "Ayıklanmış Meta Veri & Yük",
+      "copyHash": "Hash'i Kopyala",
+      "copyJson": "JSON'ı Kopyala",
+      "openTool": "Kaynak Stüdyoyu Aç",
+      "close": "İnceleyiciyi Kapat"
+    },
+    "exportModal": {
+      "title": "Denetim Günlüğünü Dışa Aktar",
+      "description": "Uyumluluk, raporlama veya yerel yedekleme için müdahaleye dayanıklı iş istasyonu günlüklerini indirin.",
+      "jsonDesc": "SHA-256 hash'leri ve ayıklanmış meta verileri içeren ham aktivite akışı (JSON formatı).",
+      "csvDesc": "Zaman damgası, araç, eylem, durum ve hash içeren tablosal döküm (CSV formatı).",
+      "reportDesc": "SHA-256 kanıtlı sertifikalı kriptografik denetim doğrulama raporu (Markdown).",
+      "download": "İndir",
+      "cancel": "İptal"
+    },
+    "empty": {
+      "noEvents": "Aktivite kaydı bulunamadı",
+      "noEventsDesc": "İş istasyonu araçlarını kullandıkça aktivite kayıtları otomatik olarak buraya akacaktır.",
+      "clearPrompt": "Tüm aktivite günlüklerini silmek istediğinizden emin misiniz? Bu işlem kriptografik zinciri sıfırlayacaktır."
+    },
+    "toasts": {
+      "copied": "Panoya kopyalandı",
+      "verifiedSuccess": "Denetim zinciri sağlam ({{count}} blok doğrulandı)",
+      "tamperWarning": "Uyarı: #{{index}} numaralı blokta hash zinciri kopmuş!",
+      "cleared": "Aktivite günlüğü başarıyla temizlendi",
+      "exported": "Denetim günlüğü {{format}} olarak dışa aktarıldı"
+    },
+    "presets": {
+      "all": "Tüm Aktiviteler",
+      "errors": "Hatalar ve Başarısızlıklar",
+      "security": "Siber Güvenlik & Kasa",
+      "network": "Ağ İşlemleri",
+      "recent": "Son 1 Saat",
+      "crypto": "Kripto ve İmzalar",
+      "system": "Sistem Telemetrisi",
+      "failures": "Başarısız ve Engellenenler",
+      "today": "Bugün"
+    },
+    "shortcuts": {
+      "exportCsv": "Hızlı CSV Dışa Aktar",
+      "exportJson": "Hızlı JSON Dışa Aktar"
+    }
+  },
+  "jwtStudio": {
+    "title": "JWT & Token Stüdyosu",
+    "description": "JSON Web Token'ları inceleyin, HMAC-SHA256 imzalarını doğrulayın ve %100 çevrimdışı token üretin.",
+    "tabs": {
+      "debugger": "JWT İnceleyici",
+      "generator": "Token Üretici",
+      "inspect": "İncele & Doğrula",
+      "generate": "Token Üretici"
+    },
+    "header": "Başlık (Header - Algoritma & Tip)",
+    "payload": "Yük (Payload - Veriler & Talepler)",
+    "signature": "İmza Doğrulama",
+    "secretKey": "HMAC Gizli Anahtarı",
+    "secretPlaceholder": "İmzayı doğrulamak için gizli anahtarı girin...",
+    "base64Secret": "Anahtar Base64 Formatında",
+    "verified": "İmza Doğrulandı",
+    "invalidSignature": "Geçersiz İmza",
+    "unsigned": "İmzasız / Anahtar Bekleniyor",
+    "tokenPlaceholder": "JWT tokenınızı buraya yapıştırın (eyJhbGciOi...)",
+    "rawToken": "Kodlanmış JWT",
+    "rawTokenPlaceholder": "eyJhbGciOiJIUzI1NiIs... yapıştırın",
+    "sigValid": "İmza Doğrulandı",
+    "sigInvalid": "Geçersiz İmza",
+    "sigEmpty": "Gizli Anahtar Bekleniyor",
+    "timeline": {
+      "title": "Token Geçerlilik Zaman Çizelgesi",
+      "active": "Aktif Token",
+      "expired": "Süresi Dolmuş",
+      "expiringSoon": "Yakında Dolacak",
+      "future": "Henüz Aktif Değil (nbf)",
+      "expiresIn": "{{time}} sonra süresi dolacak",
+      "expiredAgo": "{{time}} önce süresi doldu",
+      "issuedAt": "Üretim Zamanı",
+      "expiresAt": "Bitiş Zamanı",
+      "notBefore": "Öncesinde Geçersiz (nbf)",
+      "remaining": "Kalan Süre"
+    },
+    "claims": {
+      "sub": "Özne (Subject)",
+      "iss": "Dağıtıcı (Issuer)",
+      "aud": "Hedef Kitle (Audience)",
+      "exp": "Bitiş Zamanı (Expiration)",
+      "nbf": "Geçerlilik Başlangıcı (Not Before)",
+      "iat": "Üretilme Zamanı (Issued At)",
+      "jti": "Benzersiz Token ID (JWT ID)"
+    },
+    "generatorLabels": {
+      "algorithm": "Algoritma",
+      "claimsPreset": "Hazır Talep Şablonu",
+      "expiry": "Geçerlilik Süresi",
+      "generate": "İmzalı Token Üret",
+      "generatedToken": "Üretilen Token",
+      "copyToken": "Tokenı Kopyala"
+    },
+    "gen": {
+      "algorithm": "Algoritma",
+      "claims": "Yük JSON",
+      "generateBtn": "İmzalı JWT Üret",
+      "copySuccess": "JWT Panoya Kopyalandı"
+    }
+  },
+  "cronStudio": {
+    "title": "Cron İfade Stüdyosu",
+    "description": "Görsel cron oluşturucu, Türkçe açıklamalar ve sonraki 10 çalışma zamanı çizelgesi.",
+    "expression": "Cron İfadesi",
+    "humanReadable": "Zamanlama Açıklaması",
+    "humanExplanation": "İnsan Diliyle Açıklama",
+    "nextExecutions": "Sonraki 10 Çalışma Zamanı",
+    "runNumber": "Sıra #",
+    "scheduledTime": "Planlanan Zaman",
+    "relativeTime": "Kalan Süre",
+    "presetsTitle": "Hazır Şablonlar",
+    "invalidExpression": "Geçersiz cron ifadesi sözdizimi",
+    "copySchedule": "Takvimi Kopyala",
+    "fields": {
+      "minute": "Dakika",
+      "hour": "Saat",
+      "dayOfMonth": "Ayın Günü",
+      "month": "Ay",
+      "dayOfWeek": "Haftanın Günü"
+    },
+    "builder": {
+      "minute": "Dakika (0-59)",
+      "hour": "Saat (0-23)",
+      "dayOfMonth": "Ayın Günü (1-31)",
+      "month": "Ay (1-12)",
+      "dayOfWeek": "Haftanın Günü (0-6 Paz-Cmt)"
+    },
+    "presets": {
+      "title": "Popüler Şablonlar",
+      "everyMinute": "Her Dakika",
+      "every5Min": "Her 5 Dakikada Bir",
+      "everyHour": "Her Saat Başı",
+      "dailyMidnight": "Her Gece Yarısı (00:00)",
+      "weekdays": "Hafta İçi Her Gün 09:00",
+      "weeklySunday": "Haftalık (Pazar Gece Yarısı)",
+      "monthly": "Her Ayın 1'inde"
+    }
+  },
+  "mermaidStudio": {
+    "title": "Mermaid & Mimari Tuval",
+    "description": "Akış şemaları, sekans diyagramları, ERD ve durum makineleri için gerçek zamanlı görselleştirici.",
+    "editor": "Diyagram Kodu",
+    "editorTitle": "Diyagram Tanımı",
+    "preview": "Canlı Tuval",
+    "previewTitle": "Canlı Görsel Tuval",
+    "copySvg": "SVG Kopyala",
+    "downloadSvg": "SVG İndir",
+    "copyPng": "PNG Kopyala",
+    "downloadPng": "PNG İndir",
+    "exportSvg": "SVG Olarak İndir",
+    "exportPng": "PNG Olarak İndir",
+    "zoomIn": "Yakınlaştır",
+    "zoomOut": "Uzaklaştır",
+    "resetZoom": "Yakınlaştırmayı Sıfırla",
+    "syntaxError": "Diyagram sözdizimi hatası: {{error}}",
+    "renderSuccess": "Diyagram başarıyla çizildi",
+    "templates": {
+      "title": "Diyagram Şablonları",
+      "flowchart": "Akış Şeması (Flowchart)",
+      "sequence": "Sekans Diyagramı",
+      "erd": "Varlık İlişki (ERD)",
+      "state": "Durum Makinesi",
+      "classDiagram": "Sınıf Diyagramı",
+      "gitGraph": "Git Dallanma Şeması"
+    }
+  },
+  "encodingStudio": {
+    "title": "Base64, Hex & Data-URL Stüdyosu",
+    "description": "Çok modlu veri dönüştürücü, medya Data-URL önizleyici ve kanonik 16 bayt hex döküm aracı.",
+    "tabs": {
+      "text": "Metin Dönüştürücü",
+      "file": "Dosya & Data-URL",
+      "hexdump": "Hex Döküm Görüntüleyici",
+      "hexDump": "Hex Döküm Analizörü"
+    },
+    "inputText": "Girdi Metni",
+    "outputBase64": "Base64 Çıktısı",
+    "outputHex": "Hex Çıktısı",
+    "outputUrl": "URL Kodlu Çıktı",
+    "dropFile": "Dosyayı buraya bırakın veya seçin",
+    "mediaPreview": "Medya Önizleme",
+    "mimeType": "MIME Türü",
+    "fileSize": "Dosya Boyutu",
+    "copyDataUrl": "Data-URL Kopyala",
+    "copyHtmlImg": "HTML <img> Kopyala",
+    "copyCssBg": "CSS Background Kopyala",
+    "offset": "Ofset",
+    "hexBytes": "Hex Baytları",
+    "ascii": "ASCII Metni",
+    "input": "Girdi Metni / Baytlar",
+    "output": "Kodlanmış Çıktı",
+    "mode": {
+      "encode": "Kodla",
+      "decode": "Çöz"
+    },
+    "format": {
+      "base64": "Base64",
+      "hex": "Onaltılık (Hex)",
+      "dataUrl": "Veri URL'si (Data-URL)"
+    },
+    "fileDrop": "Dosyayı buraya sürükleyin veya seçin",
+    "fileInfo": "Dosya: {{name}} ({{size}}, {{type}})",
+    "preview": "Data-URL Medya Önizlemesi",
+    "copy": "Sonucu Kopyala",
+    "copied": "Kopyalandı!"
+  },
+  "decrypter": {
+    "title": "Evrensel Link Çözücü & Tracker Temizleyici",
+    "description": "Kısaltılmış linklerin gerçek hedefini bulun, gizlilik istilacısı Google/Meta/TikTok izleyicilerini arındırın.",
+    "placeholder": "Bağlantıyı Girin (bit.ly, t.co veya izleyicili herhangi bir URL)",
+    "decrypting": "Çözülüyor...",
+    "decrypt": "Çöz & Temizle",
+    "success": "Bağlantı Güvenle Temizlendi",
+    "original": "Orijinal Hedef",
+    "decrypted": "Temiz Bağlantı",
+    "failed": "Çözümleme Başarısız",
+    "tab": {
+      "single": "Tekil Bağlantı",
+      "batch": "Toplu Temizleme (Batch)"
+    },
+    "input": {
+      "pasteTooltip": "Panodan yapıştır"
+    },
+    "processing": "Yönlendirmeler çözülüyor & izleyiciler arındırılıyor...",
+    "result": {
+      "subtitle": "Gerçek hedef tespit edildi ve tüm gözetim parametreleri budandı.",
+      "trackersRemoved": "{{count}} İzleyici Kaldırıldı",
+      "resetTooltip": "Yeni bağlantı",
+      "taxonomyTitle": "Kaldırılan Takipçiler & Taksonomi:",
+      "punycodeDetected": "Punycode tespit edildi (Olası sahte alan adı / homograf saldırısı)",
+      "rawIpDetected": "Doğrudan ham IP adresi yönlendirmesi",
+      "riskyTld": "Riskli / spam amaçlı tercih edilen TLD uzantısı",
+      "nonStandardPort": "Standart dışı port (: {{port}})",
+      "urlParseFailed": "URL yapısı çözümlenemedi",
+      "auditClean": "Güvenlik Taraması: Temiz alan adı yapısı, sahte punycode ve şüpheli port tespit edilmedi.",
+      "auditWarning": "Güvenlik Uyarısı: {{reasons}}",
+      "badgeSafe": "GÜVENLİ",
+      "badgeWarning": "DİKKAT",
+      "copy": "Güvenli Linki Kopyala",
+      "copied": "Kopyalandı!",
+      "openExternal": "Güvenle Aç",
+      "retry": "Tekrar Dene"
+    },
+    "batch": {
+      "title": "Toplu Bağlantı Girişi (Her satıra bir URL)",
+      "validCount": "{{count}} Geçerli URL",
+      "description": "Tüm URL'ler sırayla taranacak, izleyicileri arındırılacak ve temiz halleri listelenecektir.",
+      "processing": "İşleniyor...",
+      "cleanAll": "Tümünü Temizle",
+      "resultsTitle": "Temizlenen Bağlantılar ({{count}})",
+      "copyAll": "Tümünü Kopyala",
+      "copiedAll": "Tümü Kopyalandı!",
+      "trackersRemovedBadge": "{{count}} İzleyici Silindi",
+      "errorBadge": "Hata",
+      "copyTooltip": "Kopyala",
+      "openTooltip": "Tarayıcıda Aç"
+    },
+    "toast": {
+      "cleanSuccessTitle": "Bağlantı Temizlendi",
+      "cleanSuccessDesc": "{{count}} takipçi parametresi başarıyla kaldırıldı!",
+      "cleanErrorTitle": "Hata",
+      "cleanErrorFallback": "Bağlantı çözülemedi.",
+      "copiedTitle": "Kopyalandı",
+      "copiedDesc": "Güvenli bağlantı panoya kopyalandı.",
+      "batchSuccessTitle": "Toplu Temizleme Tamamlandı",
+      "batchSuccessDesc": "{{links}} bağlantıdan toplam {{trackers}} takipçi temizlendi.",
+      "batchErrorTitle": "Toplu İşlem Hatası",
+      "batchErrorFallback": "Toplu işlem başarısız oldu.",
+      "copyAllSuccessTitle": "Tümü Kopyalandı",
+      "copyAllSuccessDesc": "{{count}} temiz bağlantı panoya aktarıldı."
+    }
+  }
+}

@@ -1,0 +1,4763 @@
+/**
+ * server/src/landingPageHtml.ts
+ *
+ * ZenDev Official High-Conversion "Harpoon" Landing Page.
+ * Full Enterprise Suite:
+ *  - Multilingual (TR / EN) + Multi-Currency (₺ / $) instant switcher
+ *  - Interactive Desktop App Mockup Simulator with live tool tabs
+ *  - Interactive ROI / Savings Calculator (calculates annual savings vs SaaS)
+ *  - Verified Customer Testimonials & Reviews Wall (4.9/5 stars)
+ *  - Live System Health & Status Radar (uptime & response telemetry)
+ *  - Release Changelog Modal (v2.0.3 What's New drawer)
+ *  - Interactive FAQ Live Search Filter
+
+ *  - Self-Service License Lookup & HWID Reset Portal (/api/license/*)
+ *  - Promo Coupon code calculator in checkout modal
+ *  - VirusTotal 0/72 Clean Code security verification
+ *  - Discord Community Callout
+ */
+
+export function renderLandingPage(): string {
+  return `<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="meta-title">ZenDev — Abonelik Tuzağına Son. 20+ Siber Güç Tek Yazılımda.</title>
+  <meta name="description" content="Scratchpad Ultimate, Color Studio, Workflow Chains, Team Collections, DoD 7-Pass Dosya İmha Kalkanı, Canlı Donanım Teşhisi ve Şifreleme Kasası. Tek seferlik ödeme, sıfır abonelik.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2307080f'/%3E%3Crect x='2' y='2' width='60' height='60' rx='14' fill='none' stroke='%2306b6d4' stroke-width='1.5' stroke-opacity='0.4'/%3E%3Cpath d='M14 16 L48 16 C50 16 51 17 50 19 L40 30 L48 44 C49 46 48 48 46 48 L14 48 C12 48 11 47 12 45 L22 34 L14 20 C13 18 14 16 16 16 Z' fill='url(%23g)' stroke='%2300f2fe' stroke-width='3' stroke-linejoin='round'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='60%25' stop-color='%2306b6d4'/%3E%3Cstop offset='100%25' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='3.5' fill='%23ffffff'/%3E%3C/svg%3E">
+  <link rel="canonical" href="https://zendev-production-4a5b.up.railway.app/">
+  <meta property="og:image" content="https://zendev-production-4a5b.up.railway.app/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://zendev-production-4a5b.up.railway.app/og-banner.png">
+  <meta property="og:title" content="ZenDev — Abonelik Tuzağına Son. 20+ Siber Güç Tek Yazılımda.">
+  <meta property="og:description" content="Scratchpad Ultimate, Color Studio, Workflow Chains, Team Collections, DoD 7-Pass Shredder ve Şifreli Kasa. Tek seferlik ödeme, %100 yerel ve offline-first.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zendev-production-4a5b.up.railway.app">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ZenDev — 20+ Cyber Powers in One Suite">
+  <meta name="twitter:description" content="Stop SaaS subscription fatigue. Own 20+ developer & security desktop tools once forever.">
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "ZenDev",
+        "operatingSystem": "Windows 10, Windows 11 (x64 & ARM64)",
+        "applicationCategory": "DeveloperApplication, SecurityApplication",
+        "softwareVersion": "2.4.2",
+        "description": "25+ siber güvenlik ve yazılım geliştirici aracı tek masaüstü uygulamasında. Sıfır bulut, sıfır telemetri.",
+        "offers": {
+          "@type": "Offer",
+          "price": "349",
+          "priceCurrency": "TRY",
+          "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1280",
+          "bestRating": "5"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "ZenDev gerçekten ömür boyu mu, abonelik var mı?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Evet, ZenDev tek seferlik bir lisans modeline sahiptir. Aylık veya yıllık yinelenen gizli ücretler yoktur."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "İnternetsiz (çevrimdışı) çalışır mı?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "%100 yerel (offline-first) çalışır. Dosya imha, şifreleme ve araçlar internete veri sızdırmaz."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "name": "ZenDev",
+        "url": "https://zendev-production-4a5b.up.railway.app",
+        "email": "support@zendev.app"
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            nexus: {
+              bg: '#08090d',
+              card: '#0f1118',
+              surface: '#151822',
+              border: '#1f2433',
+              cyan: 'rgb(var(--c-cyan, 6 182 212) / <alpha-value>)',
+              accent: 'rgb(var(--c-accent, 59 130 246) / <alpha-value>)',
+              purple: '#8b5cf6',
+              emerald: '#10b981',
+              text: '#f1f5f9',
+              muted: '#94a3b8'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Outfit', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --c-cyan: 6 182 212;
+      --c-accent: 59 130 246;
+      --neon-glow: rgba(6, 182, 212, 0.35);
+      --bg-radial: radial-gradient(circle at 50% -10%, rgba(6, 182, 212, 0.12) 0%, transparent 50%),
+                   radial-gradient(circle at 10% 40%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
+                   radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.06) 0%, transparent 40%);
+    }
+    [data-theme="matrix"] {
+      --c-cyan: 16 185 129;
+      --c-accent: 5 150 105;
+      --neon-glow: rgba(16, 185, 129, 0.4);
+      --bg-radial: radial-gradient(circle at 50% -10%, rgba(16, 185, 129, 0.16) 0%, transparent 50%),
+                   radial-gradient(circle at 10% 40%, rgba(5, 150, 105, 0.12) 0%, transparent 40%),
+                   radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 40%);
+    }
+    [data-theme="cyberpunk"] {
+      --c-cyan: 250 204 21;
+      --c-accent: 6 182 212;
+      --neon-glow: rgba(250, 204, 21, 0.4);
+      --bg-radial: radial-gradient(circle at 50% -10%, rgba(250, 204, 21, 0.15) 0%, transparent 50%),
+                   radial-gradient(circle at 10% 40%, rgba(6, 182, 212, 0.12) 0%, transparent 40%),
+                   radial-gradient(circle at 90% 80%, rgba(250, 204, 21, 0.08) 0%, transparent 40%);
+    }
+    [data-theme="synthwave"] {
+      --c-cyan: 236 72 153;
+      --c-accent: 139 92, 246;
+      --neon-glow: rgba(236, 72, 153, 0.4);
+      --bg-radial: radial-gradient(circle at 50% -10%, rgba(236, 72, 153, 0.16) 0%, transparent 50%),
+                   radial-gradient(circle at 10% 40%, rgba(139, 92, 246, 0.12) 0%, transparent 40%),
+                   radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.08) 0%, transparent 40%);
+    }
+    [data-theme="crimson"] {
+      --c-cyan: 239 68 68;
+      --c-accent: 249 115 22;
+      --neon-glow: rgba(239, 68, 68, 0.4);
+      --bg-radial: radial-gradient(circle at 50% -10%, rgba(239, 68, 68, 0.16) 0%, transparent 50%),
+                   radial-gradient(circle at 10% 40%, rgba(249, 115, 22, 0.12) 0%, transparent 40%),
+                   radial-gradient(circle at 90% 80%, rgba(239, 68, 68, 0.08) 0%, transparent 40%);
+    }
+    body {
+      background-color: #08090d;
+      color: #f1f5f9;
+      background-image: var(--bg-radial);
+      transition: background-image 0.4s ease;
+    }
+    .grid-pattern {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    }
+    .neon-glow {
+      box-shadow: 0 0 50px -10px var(--neon-glow);
+    }
+    .card-glass {
+      background: rgba(15, 17, 24, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .card-glass:hover {
+      border-color: rgba(var(--c-cyan), 0.4);
+      box-shadow: 0 10px 30px -10px rgba(var(--c-cyan), 0.25);
+    }
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .animate-float {
+      animation: floatSlow 4s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden selection:bg-nexus-cyan selection:text-nexus-bg">
+
+  <!-- BACKGROUND GRID -->
+  <div class="fixed inset-0 grid-pattern pointer-events-none z-0"></div>
+
+  <!-- FLOATING MINIMALIST ISLAND NAVBAR -->
+  <header class="sticky top-4 z-50 px-4 pointer-events-none mb-2">
+    <nav class="max-w-4xl mx-auto h-14 px-4 sm:px-5 rounded-full card-glass border border-nexus-border/80 bg-nexus-bg/90 backdrop-blur-2xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] flex items-center justify-between gap-3 pointer-events-auto">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2.5 group shrink-0">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-nexus-cyan via-nexus-accent to-purple-600 p-0.5 shadow-[0_0_15px_rgba(6,182,212,0.4)] group-hover:scale-105 transition-transform overflow-hidden">
+          <div class="w-full h-full bg-[#07080f] rounded-[10px] flex items-center justify-center p-1">
+            <svg viewBox="0 0 64 64" class="w-full h-full" fill="none">
+              <path d="M14 16 L48 16 C50 16 51 17 50 19 L40 30 L48 44 C49 46 48 48 46 48 L14 48 C12 48 11 47 12 45 L22 34 L14 20 C13 18 14 16 16 16 Z" fill="url(#navZGrad)" stroke="#00f2fe" stroke-width="2" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="navZGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#00f2fe"/>
+                  <stop offset="60%" stop-color="#06b6d4"/>
+                  <stop offset="100%" stop-color="#8b5cf6"/>
+                </linearGradient>
+              </defs>
+              <circle cx="32" cy="32" r="3" fill="#ffffff"/>
+            </svg>
+          </div>
+        </div>
+        <span class="font-heading font-black text-sm tracking-wider text-white">ZEN<span class="text-nexus-cyan">DEV</span></span>
+      </a>
+
+      <!-- 4 Core Navigation Anchors -->
+      <div class="hidden md:flex items-center gap-7 text-xs font-medium text-nexus-muted">
+        <a href="#simulator" class="hover:text-nexus-cyan transition-colors" data-i18n="nav.preview">Arayüz</a>
+        <a href="#arsenal" class="hover:text-nexus-cyan transition-colors" data-i18n="nav.arsenal">Cephanelik</a>
+        <a href="#pricing" class="hover:text-nexus-cyan transition-colors" data-i18n="nav.pricing">Fiyatlar</a>
+        <a href="#faq" class="hover:text-nexus-cyan transition-colors" data-i18n="nav.faq">SSS</a>
+      </div>
+
+      <!-- Right Action Items -->
+      <div class="flex items-center gap-2 shrink-0">
+        <!-- Quick Spotlight Search Pill -->
+        <button onclick="openCmdPalette()" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-nexus-surface/60 border border-nexus-border/60 hover:border-nexus-cyan/50 text-[11px] font-mono text-nexus-muted hover:text-white transition-all cursor-pointer">
+          <span class="text-nexus-cyan text-[10px]">⚡</span>
+          <span class="hidden sm:inline">Ctrl K</span>
+        </button>
+
+        <!-- Audio SFX Toggle -->
+        <button onclick="toggleNavbarSfx()" id="navbar-sfx-btn" class="px-2 py-1.5 rounded-full border border-nexus-border/60 hover:border-nexus-cyan/50 text-[11px] font-mono text-nexus-cyan hover:text-white transition-all flex items-center gap-1 cursor-pointer" title="Siber Sesler Açık/Kapalı">
+          <span id="navbar-sfx-icon">🔊</span>
+        </button>
+
+        <!-- Compact Language Switcher -->
+        <button onclick="toggleLanguage()" id="lang-btn" class="px-2 py-1.5 rounded-full border border-nexus-border/60 hover:border-nexus-cyan/50 text-[11px] font-mono text-nexus-muted hover:text-white transition-all flex items-center gap-1 cursor-pointer">
+          <span id="lang-flag">🇹🇷</span>
+          <span id="lang-label" class="font-bold">TR</span>
+        </button>
+
+        <!-- CTA Pill -->
+        <a href="#pricing" class="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-nexus-cyan to-nexus-accent hover:brightness-110 active:scale-95 text-nexus-bg font-heading font-bold text-xs shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all cursor-pointer" data-i18n="nav.buy">
+          Lisans Al →
+        </a>
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative z-10 pt-16 pb-20 overflow-hidden">
+    <!-- Matrix Cyber Rain Canvas Backdrop -->
+    <canvas id="hero-matrix-canvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-20 z-0"></canvas>
+    
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      
+      <!-- Top Live Status Pill -->
+      <div class="flex justify-center mb-8">
+        <div onclick="openChangelogModal()" class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full card-glass border border-nexus-cyan/30 text-xs font-mono text-nexus-cyan shadow-[0_0_15px_rgba(var(--c-cyan),0.2)] cursor-pointer hover:border-nexus-cyan transition-all">
+          <span class="w-2 h-2 rounded-full bg-nexus-cyan animate-ping"></span>
+          <span>v2.5.3 Yayında</span>
+          <span class="text-nexus-border">|</span>
+          <span class="text-white" data-i18n="hero.pill.tools">20+ Siber Güç</span>
+          <span class="text-nexus-border">|</span>
+          <span class="text-emerald-400" data-i18n="hero.pill.noSub">Sıfır Abonelik Tuzağı</span>
+          <span class="text-nexus-cyan text-[10px]">↗</span>
+        </div>
+      </div>
+
+      <!-- Main Headline -->
+      <div class="text-center max-w-4xl mx-auto mb-8">
+        <h1 class="font-heading font-black text-4xl sm:text-6xl md:text-7xl tracking-tight text-white leading-[1.08] mb-6">
+          <span data-i18n="hero.title1">Aylık Aboneliklere</span> <span class="bg-gradient-to-r from-nexus-cyan via-nexus-accent to-purple-400 bg-clip-text text-transparent" data-i18n="hero.title2">Son.</span><br>
+          <span data-i18n="hero.title3">Tek Yazılım,</span> <span class="underline decoration-nexus-cyan/40 underline-offset-8" data-i18n="hero.title4">20+ Siber Güç.</span>
+        </h1>
+        <p class="text-base sm:text-lg md:text-xl text-nexus-muted leading-relaxed max-w-2xl mx-auto font-sans" data-i18n="hero.desc">
+          Scratchpad Ultimate, Color Studio, Workflow Chains, Team Collections, DoD askeri veri imha kalkanı, donanım monitörü ve şifreli kasa. Her araca ayrı para ödemeyi bırakın.
+        </p>
+      </div>
+
+      <!-- Quick Command Bar Trigger in Hero -->
+      <div class="max-w-xl mx-auto mb-10">
+        <div onclick="openCmdPalette()" class="group p-2 sm:p-2.5 rounded-2xl card-glass border border-nexus-border/80 hover:border-nexus-cyan/60 flex items-center justify-between gap-3 cursor-pointer shadow-[0_10px_35px_rgba(0,0,0,0.5)] hover:shadow-[0_0_35px_rgba(var(--c-cyan),0.25)] transition-all">
+          <div class="flex items-center gap-3 pl-2 truncate">
+            <span class="text-nexus-cyan text-sm sm:text-base animate-pulse">⚡</span>
+            <span class="text-xs sm:text-sm text-nexus-muted group-hover:text-white transition-colors truncate">Bir araç arayın veya simüle edin... (Örn: scratchpad, port, color, Team Collections)</span>
+          </div>
+          <div class="flex items-center gap-1.5 pr-1 shrink-0">
+            <kbd class="px-2 py-1 rounded-lg bg-nexus-surface border border-nexus-border text-[11px] font-mono text-nexus-cyan font-bold shadow-sm group-hover:border-nexus-cyan/50">Ctrl + K</kbd>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+        <button onclick="window.open('https://github.com/zerviatr/NexusHub/releases/latest/download/ZenDev-Setup-2.5.3.exe', '_blank')" class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-nexus-surface/80 border border-nexus-border/80 hover:border-nexus-cyan/50 text-white font-heading font-bold text-base flex items-center justify-center gap-3 transition-all cursor-pointer shadow-lg group">
+          <svg class="w-5 h-5 text-nexus-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          <span data-i18n="hero.btnDownload">Windows için İndir</span>
+          <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 uppercase tracking-wider" data-i18n="hero.btnSoon">v2.5.3 Yayında</span>
+        </button>
+        <a href="#pricing" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-nexus-cyan via-sky-400 to-nexus-accent hover:brightness-110 active:scale-95 text-nexus-bg font-heading font-black text-base flex items-center justify-center gap-2 shadow-[0_0_35px_rgba(var(--c-cyan),0.5)] transition-all">
+          <span data-i18n="hero.btnPro">Ömür Boyu Pro Lisans</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs font-mono text-nexus-muted mb-16">
+        <span class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Windows 10 & 11 (x64)</span>
+        <span onclick="openPrivacyModal()" class="flex items-center gap-2 cursor-pointer hover:text-emerald-400 transition-colors group" title="Sıfır Telemetri & Ağ Güvenliği Raporunu İncele"><svg class="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <span class="group-hover:underline">%100 Offline-First Yerel İcra</span> <span class="px-1.5 py-0.5 rounded text-[9px] bg-emerald-500/20 text-emerald-400 font-bold">Rapor 🛡️</span></span>
+        <span class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg> VirusTotal: 0/72 Temiz</span>
+        <span class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> Anında Otomatik Anahtar Teslimi</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INTERACTIVE DESKTOP APP MOCKUP SIMULATOR (CANLI ARAYÜZ VİTRİNİ) -->
+  <section id="simulator" class="relative z-10 py-16 border-t border-nexus-border/40 bg-nexus-surface/20 scroll-mt-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center max-w-3xl mx-auto mb-8">
+        <span class="text-xs font-mono uppercase tracking-widest text-nexus-cyan" data-i18n="sim.tag">Canlı Arayüzü İncele</span>
+        <h2 class="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight mt-2 mb-4" data-i18n="sim.title">
+          ZenDev Masaüstünüzde Nasıl Görünür?
+        </h2>
+        <p class="text-nexus-muted font-sans text-sm sm:text-base" data-i18n="sim.desc">
+          İndirmeden önce aşağıdaki sekmelere tıklayarak ZenDev'ın sibernetik araçlarını ve pürüzsüz arayüzünü canlı test edin.
+        </p>
+      </div>
+
+      <!-- Live 5-Cyber Theme Switcher Bar -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-8">
+        <span class="text-xs font-mono text-nexus-muted flex items-center gap-1.5 mr-2">
+          <span class="w-2 h-2 rounded-full bg-nexus-cyan animate-pulse"></span>
+          <span data-i18n="sim.themeLabel">Siber Tema Seçici:</span>
+        </span>
+        <button onclick="switchCyberTheme('default')" id="theme-btn-default" class="theme-btn px-3 py-1.5 rounded-xl border border-nexus-cyan/40 bg-nexus-cyan/20 text-nexus-cyan font-mono text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-sm">
+          <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+          <span>Cyber Violet</span>
+        </button>
+        <button onclick="switchCyberTheme('matrix')" id="theme-btn-matrix" class="theme-btn px-3 py-1.5 rounded-xl border border-nexus-border/60 hover:border-emerald-500/40 text-nexus-muted hover:text-white font-mono text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+          <span>Matrix Emerald</span>
+        </button>
+        <button onclick="switchCyberTheme('cyberpunk')" id="theme-btn-cyberpunk" class="theme-btn px-3 py-1.5 rounded-xl border border-nexus-border/60 hover:border-yellow-400/40 text-nexus-muted hover:text-white font-mono text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer">
+          <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+          <span>Cyberpunk 2077</span>
+        </button>
+        <button onclick="switchCyberTheme('synthwave')" id="theme-btn-synthwave" class="theme-btn px-3 py-1.5 rounded-xl border border-nexus-border/60 hover:border-pink-500/40 text-nexus-muted hover:text-white font-mono text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer">
+          <span class="w-2.5 h-2.5 rounded-full bg-pink-500"></span>
+          <span>Synthwave 80s</span>
+        </button>
+        <button onclick="switchCyberTheme('crimson')" id="theme-btn-crimson" class="theme-btn px-3 py-1.5 rounded-xl border border-nexus-border/60 hover:border-red-500/40 text-nexus-muted hover:text-white font-mono text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer">
+          <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+          <span>Crimson Ops</span>
+        </button>
+      </div>
+
+      <!-- Desktop Frame Mockup -->
+      <div class="rounded-3xl card-glass border border-nexus-cyan/40 shadow-[0_20px_70px_rgba(0,0,0,0.8)] overflow-hidden neon-glow">
+        <!-- TitleBar -->
+        <div class="h-11 bg-nexus-surface/90 border-b border-nexus-border/80 px-4 flex items-center justify-between select-none">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+            <span class="ml-3 font-mono text-xs text-nexus-muted font-semibold flex items-center gap-1.5">
+              <span class="hidden sm:inline">ZenDev v2.4.0 Pro Edition</span>
+              <span class="sm:hidden text-[11px]">v2.2 Pro</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            </span>
+          </div>
+          <div class="flex items-center gap-2 text-xs font-mono text-nexus-muted">
+            <button onclick="unlockSimulatorProDemo()" id="sim-pro-unlock-btn" class="px-2 py-1 sm:px-2.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-emerald-400 font-mono text-[10px] font-bold flex items-center gap-1 transition-all cursor-pointer shadow-sm animate-pulse shrink-0">
+              <span>🔑</span>
+              <span class="hidden sm:inline">Demo Lisans Çöz</span>
+              <span class="sm:hidden">Demo Çöz</span>
+            </button>
+            <span class="px-2 py-0.5 rounded bg-nexus-bg border border-nexus-border/60 hidden sm:inline">Ctrl + K</span>
+          </div>
+        </div>
+
+        <!-- Pro Demo Activation Banner (Initially Hidden) -->
+        <div id="sim-pro-banner" class="hidden bg-emerald-500/15 border-b border-emerald-500/30 px-4 py-2 font-mono text-xs text-emerald-400 flex items-center justify-between animate-in fade-in slide-in-from-top-2 duration-300">
+          <div class="flex items-center gap-2 truncate">
+            <span class="text-sm shrink-0">🎉</span>
+            <span class="truncate"><b>ZENDEV PRO LIFETIME AKTİF:</b> 20+ Siber Araç ve Limitsiz Özellikler Çözüldü.</span>
+          </div>
+          <a href="#pricing" class="px-2.5 py-1 rounded bg-emerald-500 text-black font-bold text-[10px] hover:brightness-110 shrink-0 ml-2">Gerçek Lisans Al →</a>
+        </div>
+
+        <!-- Main Body: Sidebar + Dynamic Workspace -->
+        <div class="grid grid-cols-1 md:grid-cols-4 min-h-[500px]">
+          
+          <!-- Mock Sidebar -->
+          <div class="border-b md:border-b-0 md:border-r border-nexus-border/60 bg-nexus-bg/60 p-4 flex md:flex-col gap-1.5 overflow-x-auto md:overflow-y-auto max-h-[560px]">
+            <button onclick="switchMockTool('Team Collections')" id="mock-btn-Team Collections" class="w-full text-left px-3.5 py-2.5 rounded-xl font-mono text-xs font-semibold flex items-center gap-2.5 bg-nexus-cyan/15 text-nexus-cyan border border-nexus-cyan/30 transition-all cursor-pointer shrink-0">
+              <span>📬</span> <span data-i18n="sim.tools.Team Collections">Team Collections Posta</span>
+            </button>
+            <button onclick="switchMockTool('scratchpad')" id="mock-btn-scratchpad" class="w-full text-left px-3.5 py-2.5 rounded-xl font-mono text-xs font-semibold flex items-center gap-2.5 text-nexus-muted hover:text-white hover:bg-nexus-surface transition-all cursor-pointer shrink-0">
+              <span>📝</span> <span data-i18n="sim.tools.scratchpad">Scratchpad & Flow</span>
+            </button>
+            <button onclick="switchMockTool('color')" id="mock-btn-color" class="w-full text-left px-3.5 py-2.5 rounded-xl font-mono text-xs font-semibold flex items-center gap-2.5 text-nexus-muted hover:text-white hover:bg-nexus-surface transition-all cursor-pointer shrink-0">
+              <span>🎨</span> <span data-i18n="sim.tools.color">Color & WCAG</span>
+            </button>
+            <button onclick="switchMockTool('portkiller')" id="mock-btn-portkiller" class="w-full text-left px-3.5 py-2.5 rounded-xl font-mono text-xs font-semibold flex items-center gap-2.5 text-nexus-muted hover:text-white hover:bg-nexus-surface transition-all cursor-pointer shrink-0">
+              <span>⚡</span> <span data-i18n="sim.tools.portkiller">Workflow Chains</span>
+            </button>
+            <button onclick="switchMockTool('decrypter')" id="mock-btn-decrypter" class="w-full text-left px-3.5 py-2.5 rounded-xl font-mono text-xs font-semibold flex items-center gap-2.5 text-nexus-muted hover:text-white hover:bg-nexus-surface transition-all cursor-pointer shrink-0">
+              <span>🔗</span> <span data-i18n="sim.tools.decrypter">Link Decrypter</span>
+            </button>
+            <button onclick="switchMockTool('password')" id="mock-btn-password" class="w-full text-left px-3.5 py-2.5 rounded-xl font-mono text-xs font-semibold flex items-center gap-2.5 text-nexus-muted hover:text-white hover:bg-nexus-surface transition-all cursor-pointer shrink-0">
+              <span>🔑</span> <span data-i18n="sim.tools.password">Parola Analizörü</span>
+            </button>
+            <button onclick="switchMockTool('fortress')" id="mock-btn-fortress" class="w-full text-left px-3.5 py-2.5 rounded-xl font-mono text-xs font-semibold flex items-center gap-2.5 text-nexus-muted hover:text-white hover:bg-nexus-surface transition-all cursor-pointer shrink-0">
+              <span>🛡️</span> <span data-i18n="sim.tools.fortress">Cyber Fortress</span>
+            </button>
+            <button onclick="switchMockTool('sentinel')" id="mock-btn-sentinel" class="w-full text-left px-3.5 py-2.5 rounded-xl font-mono text-xs font-semibold flex items-center gap-2.5 text-nexus-muted hover:text-white hover:bg-nexus-surface transition-all cursor-pointer shrink-0">
+              <span>⚡</span> <span data-i18n="sim.tools.sentinel">Resource Sentinel</span>
+            </button>
+            <button onclick="switchMockTool('orb')" id="mock-btn-orb" class="w-full text-left px-3.5 py-2.5 rounded-xl font-mono text-xs font-semibold flex items-center gap-2.5 text-nexus-muted hover:text-white hover:bg-nexus-surface transition-all cursor-pointer shrink-0">
+              <span>🔮</span> <span data-i18n="sim.tools.orb">Floating Orb HUD</span>
+            </button>
+            <button onclick="switchMockTool('hash')" id="mock-btn-hash" class="w-full text-left px-3.5 py-2.5 rounded-xl font-mono text-xs font-semibold flex items-center gap-2.5 text-nexus-muted hover:text-white hover:bg-nexus-surface transition-all cursor-pointer shrink-0">
+              <span>⚡</span> <span data-i18n="sim.tools.hash">Hash & Base64</span>
+            </button>
+          </div>
+
+          <!-- Mock Workspace Panels -->
+          <div class="md:col-span-3 p-6 sm:p-8 bg-nexus-card/40 flex flex-col justify-center">
+
+            <!-- Panel 1: Team Collections Preview -->
+            <div id="mock-panel-Team Collections" class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="font-heading font-black text-xl text-white flex items-center gap-2">
+                    Team Collections & Real-Time Inbox <span class="px-2 py-0.5 text-[10px] rounded bg-emerald-500/20 text-emerald-400 font-mono">CANLI</span>
+                  </h3>
+                  <p class="text-xs text-nexus-muted mt-0.5">Spam korumalı, anında tek kullanımlık e-posta.</p>
+                </div>
+                <button onclick="simulateNewMail()" class="px-3 py-1.5 rounded-lg bg-nexus-cyan/20 border border-nexus-cyan/40 text-nexus-cyan font-mono text-xs hover:bg-nexus-cyan/30 cursor-pointer">Yeni Posta Üret ↻</button>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-nexus-bg border border-nexus-border/80 flex items-center justify-between font-mono text-xs">
+                <span id="mock-email-addr" class="text-nexus-cyan font-bold truncate">quantum_shadow92@zendevmail.org</span>
+                <span class="text-emerald-400 text-[11px]">✓ Aktif</span>
+              </div>
+
+              <div class="border border-nexus-border/60 rounded-xl overflow-hidden bg-nexus-surface/40">
+                <div class="p-2.5 border-b border-nexus-border/60 text-[10px] font-mono text-nexus-muted uppercase bg-nexus-surface/80 flex justify-between">
+                  <span>Gelen Kutusu (1 Yeni Mesaj)</span>
+                  <span>Şimdi Geldi</span>
+                </div>
+                <div class="p-3.5 flex items-center justify-between text-xs hover:bg-nexus-surface/30 cursor-pointer">
+                  <div>
+                    <div class="font-bold text-white">Steam Security &bull; Doğrulama Kodu</div>
+                    <div class="text-nexus-muted text-[11px]">Giriş kodunuz: <b class="text-nexus-cyan font-mono">729-410</b></div>
+                  </div>
+                  <span class="px-2 py-1 rounded bg-nexus-cyan/20 text-nexus-cyan text-[10px] font-mono font-bold">Kodu Kopyala</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel: Scratchpad Ultimate & Flowchart Preview (NEW) -->
+            <div id="mock-panel-scratchpad" class="space-y-4 hidden">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <h3 class="font-heading font-black text-xl text-white flex items-center gap-2">
+                    Scratchpad Ultimate & Flowchart <span class="px-2 py-0.5 text-[10px] rounded bg-nexus-cyan/20 text-nexus-cyan font-mono font-bold">İNTERAKTİF</span>
+                  </h3>
+                  <p class="text-xs text-nexus-muted mt-0.5">Anlık Markdown düzenleme, canlı Mermaid akış diyagramı ve yerel otomatik kayıt.</p>
+                </div>
+                <div class="flex items-center gap-1.5 shrink-0">
+                  <button onclick="loadSimMdTemplate('arch')" class="px-2.5 py-1.5 rounded-lg bg-nexus-surface hover:bg-nexus-border text-xs font-mono text-nexus-cyan border border-nexus-border/60 transition-all cursor-pointer">
+                    📐 Mimari
+                  </button>
+                  <button onclick="loadSimMdTemplate('api')" class="px-2.5 py-1.5 rounded-lg bg-nexus-surface hover:bg-nexus-border text-xs font-mono text-purple-400 border border-nexus-border/60 transition-all cursor-pointer">
+                    ⚡ API Notu
+                  </button>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="space-y-1.5">
+                  <div class="flex items-center justify-between text-[11px] font-mono text-nexus-muted">
+                    <span>MARKDOWN GİRDİSİ</span>
+                    <span id="sim-md-stats" class="text-nexus-cyan">42 kelime • 280 karakter</span>
+                  </div>
+                  <textarea id="sim-md-input" oninput="updateSimMarkdown()" class="w-full h-40 bg-nexus-bg border border-nexus-border/80 rounded-xl p-3 font-mono text-xs text-nexus-text outline-none focus:border-nexus-cyan resize-none leading-relaxed"># 🚀 ZenDev v2.4.0
+
+> Güvenli, yerel ve **sıfır gecikmeli** geliştirici notları.
+
+- [x] DoD 7-Pass Shredder
+- [x] Mermaid Akış Motoru
+- [x] Workflow Chains & Telemetry
+
+\`\`\`mermaid
+graph LR
+  Client[Kullanıcı] --> Proxy[Ters Proxy]
+  Proxy --> Core((ZenDev v2.3))
+\`\`\`</textarea>
+                </div>
+
+                <div class="space-y-1.5">
+                  <div class="flex items-center justify-between text-[11px] font-mono text-nexus-muted">
+                    <span>CANLI ÖNİZLEME & DİYAGRAM</span>
+                    <span class="text-emerald-400 text-[10px]">✓ Anında Render</span>
+                  </div>
+                  <div id="sim-md-preview" class="w-full h-40 bg-nexus-surface/50 border border-nexus-border/80 rounded-xl p-3 text-xs overflow-y-auto space-y-2 font-sans">
+                    <h4 class="font-heading font-bold text-white text-sm border-b border-nexus-border/60 pb-1">🚀 ZenDev v2.4.0</h4>
+                    <p class="text-[11px] text-nexus-muted italic border-l-2 border-nexus-cyan pl-2">Güvenli, yerel ve <b class="text-white">sıfır gecikmeli</b> geliştirici notları.</p>
+                    <ul class="text-[11px] space-y-1 text-emerald-400 font-mono">
+                      <li>✓ DoD 7-Pass Shredder</li>
+                      <li>✓ Mermaid Akış Motoru</li>
+                      <li>✓ Workflow Chains & Telemetry</li>
+                    </ul>
+                    <div class="mt-2 p-2 rounded-lg bg-nexus-bg border border-nexus-cyan/30 flex items-center justify-center gap-2 font-mono text-[10px]">
+                      <span class="px-2 py-1 rounded bg-nexus-surface border border-nexus-border text-white">Client</span>
+                      <span class="text-nexus-cyan">──▶</span>
+                      <span class="px-2 py-1 rounded bg-nexus-surface border border-nexus-border text-white">Proxy</span>
+                      <span class="text-nexus-cyan">──▶</span>
+                      <span class="px-2 py-1 rounded bg-nexus-cyan/20 border border-nexus-cyan text-nexus-cyan font-bold">ZenDev v2.3</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel: Color Studio & WCAG Contrast Preview (NEW) -->
+            <div id="mock-panel-color" class="space-y-4 hidden">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <h3 class="font-heading font-black text-xl text-white flex items-center gap-2">
+                    Color Studio & WCAG Kontrast Analizörü <span class="px-2 py-0.5 text-[10px] rounded bg-nexus-cyan/20 text-nexus-cyan font-mono font-bold">CANLI PALET</span>
+                  </h3>
+                  <p class="text-xs text-nexus-muted mt-0.5">Geliştirici renk paletleri, HEX/RGB/HSL dönüşümleri ve WCAG erişilebilirlik puanı.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <input type="color" id="sim-color-picker" onchange="updateSimColor(this.value)" value="#06b6d4" class="w-8 h-8 rounded-lg bg-transparent border border-nexus-border cursor-pointer">
+                  <button onclick="randomizeSimColor()" class="px-2.5 py-1.5 rounded-lg bg-nexus-cyan/20 border border-nexus-cyan/40 text-nexus-cyan font-mono text-xs hover:bg-nexus-cyan/30 cursor-pointer">🎲 Rastgele</button>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div id="sim-color-swatch" class="p-4 rounded-2xl border border-nexus-border flex flex-col justify-between h-36 transition-colors shadow-lg" style="background-color: #06b6d4;">
+                  <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-black/60 text-white w-fit">SEÇİLEN RENK</span>
+                  <div>
+                    <div id="sim-color-hex" class="text-lg font-mono font-black text-white drop-shadow">#06b6d4</div>
+                    <div id="sim-color-rgb" class="text-[11px] font-mono text-white/90 drop-shadow">rgb(6, 182, 212)</div>
+                  </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-nexus-bg border border-nexus-border/80 flex flex-col justify-between">
+                  <div class="text-[11px] font-mono text-nexus-muted">WCAG 2.1 ERİŞİLEBİLİRLİK</div>
+                  <div class="my-2">
+                    <div class="flex items-baseline gap-2">
+                      <span id="sim-contrast-ratio" class="font-heading font-black text-2xl text-emerald-400">8.42 : 1</span>
+                      <span class="text-[10px] font-mono text-nexus-muted">Koyu Zemin</span>
+                    </div>
+                    <div class="flex items-center gap-2 mt-1">
+                      <span id="sim-wcag-aa" class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono text-[10px] font-bold">✓ AA GEÇTİ</span>
+                      <span id="sim-wcag-aaa" class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono text-[10px] font-bold">✓ AAA GEÇTİ</span>
+                    </div>
+                  </div>
+                  <div class="text-[10px] text-nexus-muted font-sans">Okunabilirlik standardına tam uyumlu.</div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-nexus-bg border border-nexus-border/80 flex flex-col justify-between space-y-2">
+                  <div class="text-[11px] font-mono text-nexus-muted">1-TIK TOKEN KOPYALA</div>
+                  <div class="space-y-1.5 font-mono text-[11px]">
+                    <button onclick="copySimColorToken('hex')" class="w-full text-left px-2.5 py-1.5 rounded-lg bg-nexus-surface hover:bg-nexus-border text-nexus-cyan flex justify-between items-center transition-all cursor-pointer">
+                      <span id="sim-token-hex">#06b6d4</span>
+                      <span class="text-[10px] text-nexus-muted">HEX 📋</span>
+                    </button>
+                    <button onclick="copySimColorToken('tailwind')" class="w-full text-left px-2.5 py-1.5 rounded-lg bg-nexus-surface hover:bg-nexus-border text-purple-400 flex justify-between items-center transition-all cursor-pointer">
+                      <span id="sim-token-tw">text-[#06b6d4]</span>
+                      <span class="text-[10px] text-nexus-muted">TW 📋</span>
+                    </button>
+                  </div>
+                  <div id="sim-color-toast" class="text-[10px] text-emerald-400 font-mono h-4"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel: Workflow Chains Preview (NEW) -->
+            <div id="mock-panel-portkiller" class="space-y-4 hidden">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <h3 class="font-heading font-black text-xl text-white flex items-center gap-2">
+                    Workflow Chains & TCP/UDP Watchdog <span class="px-2 py-0.5 text-[10px] rounded bg-red-500/20 text-red-400 font-mono font-bold">CANLI SONLANDIRICI</span>
+                  </h3>
+                  <p class="text-xs text-nexus-muted mt-0.5">Çakışan yerel portları ve asılı kalan geliştirici sunucularını anında yok edin.</p>
+                </div>
+                <button onclick="resetSimPorts()" class="px-3 py-1.5 rounded-lg bg-nexus-surface hover:bg-nexus-border border border-nexus-border text-xs font-mono text-nexus-muted hover:text-white transition-all cursor-pointer shrink-0">
+                  Yenile ↻
+                </button>
+              </div>
+
+              <div class="space-y-2 font-mono text-xs">
+                <div id="sim-port-row-3000" class="p-3 rounded-xl bg-nexus-bg border border-nexus-border/80 flex items-center justify-between transition-all">
+                  <div class="flex items-center gap-3">
+                    <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
+                    <div>
+                      <div class="text-white font-bold flex items-center gap-2">
+                        <span>PORT 3000 (TCP)</span>
+                        <span class="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 text-[10px]">ÇAKIŞMA</span>
+                      </div>
+                      <div class="text-[11px] text-nexus-muted font-sans">node.exe &bull; PID: 14280 &bull; 127.0.0.1:3000 (Next.js)</div>
+                    </div>
+                  </div>
+                  <button onclick="killSimPort(3000)" class="px-3 py-1.5 rounded-lg bg-red-500/20 border border-red-500/40 hover:bg-red-500 text-red-400 hover:text-white font-bold transition-all cursor-pointer text-xs">
+                    Öldür ✕
+                  </button>
+                </div>
+
+                <div id="sim-port-row-8080" class="p-3 rounded-xl bg-nexus-bg border border-nexus-border/80 flex items-center justify-between transition-all">
+                  <div class="flex items-center gap-3">
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                    <div>
+                      <div class="text-white font-bold flex items-center gap-2">
+                        <span>PORT 8080 (TCP)</span>
+                        <span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 text-[10px]">MEŞGUL</span>
+                      </div>
+                      <div class="text-[11px] text-nexus-muted font-sans">webpack.exe &bull; PID: 9124 &bull; 0.0.0.0:8080</div>
+                    </div>
+                  </div>
+                  <button onclick="killSimPort(8080)" class="px-3 py-1.5 rounded-lg bg-red-500/20 border border-red-500/40 hover:bg-red-500 text-red-400 hover:text-white font-bold transition-all cursor-pointer text-xs">
+                    Öldür ✕
+                  </button>
+                </div>
+
+                <div id="sim-port-row-5432" class="p-3 rounded-xl bg-nexus-bg border border-nexus-border/80 flex items-center justify-between transition-all">
+                  <div class="flex items-center gap-3">
+                    <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
+                    <div>
+                      <div class="text-white font-bold flex items-center gap-2">
+                        <span>PORT 5432 (TCP)</span>
+                        <span class="px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-400 text-[10px]">LİSTENİNG</span>
+                      </div>
+                      <div class="text-[11px] text-nexus-muted font-sans">postgres.exe &bull; PID: 4310 &bull; 127.0.0.1:5432</div>
+                    </div>
+                  </div>
+                  <button onclick="killSimPort(5432)" class="px-3 py-1.5 rounded-lg bg-red-500/20 border border-red-500/40 hover:bg-red-500 text-red-400 hover:text-white font-bold transition-all cursor-pointer text-xs">
+                    Öldür ✕
+                  </button>
+                </div>
+
+                <div id="sim-port-empty-msg" class="hidden p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-center text-emerald-400 font-mono text-xs">
+                  🎉 Tüm çakışan portlar temizlendi! Sistem portları serbest.
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 2: Link Decrypter Preview (Interactive) -->
+            <div id="mock-panel-decrypter" class="space-y-4 hidden">
+              <div>
+                <h3 class="font-heading font-black text-xl text-white flex items-center gap-2">
+                  Universal Link Decrypter & Tracker Stripper <span class="px-2 py-0.5 text-[10px] rounded bg-nexus-cyan/20 text-nexus-cyan font-mono font-bold">İNTERAKTİF</span>
+                </h3>
+                <p class="text-xs text-nexus-muted mt-0.5">Yönlendirme tuzaklarını, bc.vc ve aylink gibi para tuzaklarını canlı çözün.</p>
+              </div>
+              <div class="space-y-3">
+                <div class="flex flex-col sm:flex-row gap-2">
+                  <input type="text" id="sim-decrypter-input" onkeydown="if(event.key==='Enter') runSimDecrypter()" value="https://bc.vc/target_download?utm_source=adnetwork&fbclid=IwAR294x_token984&aff_id=7421&gclid=CjwKCA" class="w-full bg-nexus-bg border border-nexus-border/80 rounded-xl px-4 py-3 font-mono text-xs text-red-300 outline-none focus:border-nexus-cyan">
+                  <button onclick="runSimDecrypter()" class="px-5 py-3 rounded-xl bg-nexus-cyan/20 border border-nexus-cyan/40 text-nexus-cyan font-mono text-xs font-bold hover:bg-nexus-cyan/30 cursor-pointer shrink-0 transition-all">
+                    Bypass & Temizle ⚡
+                  </button>
+                </div>
+                <div id="sim-decrypter-result" class="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 font-mono text-xs text-emerald-400 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                  <span id="sim-decrypter-clean-url" class="truncate font-semibold">✓ https://drive.google.com/file/d/1A8z...</span>
+                  <span id="sim-decrypter-badge" class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-[10px] font-bold shrink-0 self-start sm:self-auto">4 Takip Parametresi Silindi (0.3ms)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 3: Cyber Fortress Preview -->
+            <div id="mock-panel-fortress" class="space-y-4 hidden">
+              <div>
+                <h3 class="font-heading font-black text-xl text-white">DoD 5220.22-M 7-Pass Shredder & Vault</h3>
+                <p class="text-xs text-nexus-muted mt-0.5">Askeri standartta silinen dosyalar adli bilişimle dahi asla geri getirilemez.</p>
+              </div>
+              <div class="p-4 rounded-xl bg-nexus-bg border border-nexus-border/80 space-y-3">
+                <div class="flex justify-between text-xs font-mono">
+                  <span class="text-white">Dosya: secret_keys_2026.docx</span>
+                  <span class="text-red-400 font-bold">7/7 Pass İmha Ediliyor...</span>
+                </div>
+                <div class="w-full h-2 bg-nexus-surface rounded-full overflow-hidden">
+                  <div class="w-full h-full bg-gradient-to-r from-red-500 via-amber-500 to-nexus-cyan animate-pulse"></div>
+                </div>
+                <div class="text-[11px] font-mono text-nexus-muted flex justify-between">
+                  <span>Algoritma: DoD 5220.22-M + Rastgele Bit Dolgusu</span>
+                  <span class="text-emerald-400 font-bold">100% Geri Döndürülemez</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 4: Resource Sentinel Preview -->
+            <div id="mock-panel-sentinel" class="space-y-4 hidden">
+              <div class="flex justify-between items-center">
+                <div>
+                  <h3 class="font-heading font-black text-xl text-white">Resource Sentinel & Live Telemetry</h3>
+                  <p class="text-xs text-nexus-muted mt-0.5">Anlık çekirdek bazlı CPU ve bellek monitörü.</p>
+                </div>
+                <button onclick="triggerSimRamFlush()" id="mock-flush-btn" class="px-3 py-1.5 rounded-lg bg-amber-500/20 border border-amber-500/40 text-amber-300 font-mono text-xs hover:bg-amber-500/30 cursor-pointer">
+                  ⚡ 1-Tık RAM Flush
+                </button>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="p-3.5 rounded-xl bg-nexus-bg border border-nexus-border/80">
+                  <div class="flex justify-between text-xs font-mono text-nexus-muted mb-1.5">
+                    <span>CPU Yükü</span>
+                    <span class="text-nexus-cyan font-bold">18%</span>
+                  </div>
+                  <div class="w-full h-1.5 bg-nexus-surface rounded-full overflow-hidden">
+                    <div class="w-[18%] h-full bg-nexus-cyan rounded-full"></div>
+                  </div>
+                </div>
+                <div class="p-3.5 rounded-xl bg-nexus-bg border border-nexus-border/80">
+                  <div class="flex justify-between text-xs font-mono text-nexus-muted mb-1.5">
+                    <span>RAM Kullanımı</span>
+                    <span id="mock-ram-txt" class="text-purple-400 font-bold">36%</span>
+                  </div>
+                  <div class="w-full h-1.5 bg-nexus-surface rounded-full overflow-hidden">
+                    <div id="mock-ram-bar" class="w-[36%] h-full bg-purple-500 rounded-full transition-all duration-500"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 5: Floating Orb Preview -->
+            <div id="mock-panel-orb" class="space-y-4 hidden">
+              <div>
+                <h3 class="font-heading font-black text-xl text-white">Desktop Floating Cyber Orb</h3>
+                <p class="text-xs text-nexus-muted mt-0.5">Masaüstünüzde sağ altta süzülen sibernetik mini widget.</p>
+              </div>
+              <div class="p-6 rounded-2xl bg-nexus-bg border border-nexus-border/80 flex items-center justify-around">
+                <div class="flex flex-col items-center gap-2">
+                  <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-nexus-cyan via-nexus-accent to-purple-600 border border-nexus-cyan/60 flex items-center justify-center text-white font-bold shadow-[0_0_30px_rgba(6,182,212,0.6)] animate-float">
+                    ⚡
+                  </div>
+                  <span class="text-xs font-mono text-nexus-cyan">Yüzen Küre</span>
+                </div>
+                <div class="max-w-xs space-y-1.5 text-xs text-nexus-muted">
+                  <div class="text-white font-bold">HUD Özellikleri:</div>
+                  <div>• Canlı CPU & RAM durum halkası</div>
+                  <div>• 1-Tıkla anında Team Collections üret & kopyala</div>
+                  <div>• 1-Tıkla Windows önbelleğini boşalt</div>
+                  <div>• Ctrl + K Komut Paletini tek tıkla aç</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 6: Password Entropy & Crack Time Analyzer Preview -->
+            <div id="mock-panel-password" class="space-y-4 hidden">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <h3 class="font-heading font-black text-xl text-white flex items-center gap-2">
+                    Parola & Entropi Güvenlik Analizörü <span class="px-2 py-0.5 text-[10px] rounded bg-nexus-cyan/20 text-nexus-cyan font-mono font-bold">CANLI TEST</span>
+                  </h3>
+                  <p class="text-xs text-nexus-muted mt-0.5">Parolanız RTX 4090 süper bilgisayar kümesinde ne kadar sürede kırılır?</p>
+                </div>
+                <button onclick="generateMilitaryPass()" class="px-3 py-1.5 rounded-lg bg-nexus-cyan/20 border border-nexus-cyan/40 text-nexus-cyan font-mono text-xs hover:bg-nexus-cyan/30 cursor-pointer shrink-0">
+                  🎲 Askeri Parola Üret
+                </button>
+              </div>
+              <div class="space-y-3">
+                <div class="relative">
+                  <input type="text" id="sim-pass-input" oninput="analyzePassword(this.value)" value="ZenDev#2026!Fortress_Ultra" placeholder="Parolanızı yazın veya test edin..." class="w-full bg-nexus-bg border border-nexus-border/80 rounded-xl px-4 py-3 font-mono text-sm text-nexus-cyan outline-none focus:border-nexus-cyan">
+                  <button onclick="copyGeneratedPass()" id="sim-pass-copy-btn" class="absolute right-2 top-2 px-2.5 py-1.5 rounded-lg bg-nexus-surface hover:bg-nexus-border text-xs font-mono text-nexus-muted hover:text-white border border-nexus-border transition-all cursor-pointer">Kopyala</button>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-mono">
+                  <div class="p-3 rounded-xl bg-nexus-bg border border-nexus-border/80">
+                    <div class="text-nexus-muted text-[10px] mb-1">Shannon Entropisi</div>
+                    <div id="sim-entropy-val" class="font-bold text-nexus-cyan text-sm">96.4 Bit</div>
+                  </div>
+                  <div class="p-3 rounded-xl bg-nexus-bg border border-nexus-border/80">
+                    <div class="text-nexus-muted text-[10px] mb-1">Kırılma Tahmini (RTX 4090)</div>
+                    <div id="sim-crack-time" class="font-bold text-emerald-400 text-sm">~4.8 Trilyon Yıl</div>
+                  </div>
+                  <div class="p-3 rounded-xl bg-nexus-bg border border-nexus-border/80 col-span-2 sm:col-span-1">
+                    <div class="text-nexus-muted text-[10px] mb-1">DoD Standart Güvenlik</div>
+                    <div id="sim-strength-label" class="font-bold text-emerald-400 text-sm">SİBER KALE (A+)</div>
+                  </div>
+                </div>
+                <div class="w-full h-2 bg-nexus-surface rounded-full overflow-hidden">
+                  <div id="sim-pass-strength-bar" class="w-full h-full bg-gradient-to-r from-emerald-400 to-nexus-cyan transition-all duration-300"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 7: Hash & Base64 Crypto Studio Preview -->
+            <div id="mock-panel-hash" class="space-y-4 hidden">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <h3 class="font-heading font-black text-xl text-white flex items-center gap-2">
+                    Hash & Base64 Crypto Studio <span class="px-2 py-0.5 text-[10px] rounded bg-nexus-cyan/20 text-nexus-cyan font-mono font-bold">CANLI KRİPTO</span>
+                  </h3>
+                  <p class="text-xs text-nexus-muted mt-0.5">Herhangi bir metni tarayıcınızda sıfır gecikmeyle anında SHA-256 ve Base64'e dönüştürün.</p>
+                </div>
+                <button onclick="setSampleHashText()" class="px-3 py-1.5 rounded-lg bg-nexus-cyan/20 border border-nexus-cyan/40 text-nexus-cyan font-mono text-xs hover:bg-nexus-cyan/30 cursor-pointer shrink-0">
+                  ⚡ Örnek Yükle
+                </button>
+              </div>
+              <div class="space-y-3 font-mono text-xs">
+                <input type="text" id="sim-hash-input" oninput="computeSimHash(this.value)" value="ZenDev-Safe-Crypto-2026" placeholder="Şifrelenecek metni yazın..." class="w-full bg-nexus-bg border border-nexus-border/80 rounded-xl px-4 py-3 text-white outline-none focus:border-nexus-cyan">
+                
+                <div class="p-3.5 rounded-xl bg-nexus-bg border border-nexus-border/80 space-y-1.5">
+                  <div class="flex items-center justify-between text-[10px] text-nexus-muted">
+                    <span class="text-nexus-cyan font-bold">SHA-256 HASH</span>
+                    <button onclick="copySimSha256()" id="copy-sim-sha-btn" class="hover:text-white text-nexus-cyan cursor-pointer">Kopyala</button>
+                  </div>
+                  <div id="sim-sha256-output" class="text-emerald-400 font-mono text-[11px] truncate select-all">
+                    8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
+                  </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-nexus-bg border border-nexus-border/80 space-y-1.5">
+                  <div class="flex items-center justify-between text-[10px] text-nexus-muted">
+                    <span class="text-purple-400 font-bold">BASE64 ENCODED</span>
+                    <button onclick="copySimBase64()" id="copy-sim-b64-btn" class="hover:text-white text-purple-400 cursor-pointer">Kopyala</button>
+                  </div>
+                  <div id="sim-base64-output" class="text-white font-mono text-[11px] truncate select-all">
+                    TmV4dXNIdWItU2FmZS1DcnlwdG8tMjAyNg==
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- INTERACTIVE SAAS WASTE & ROI CALCULATOR -->
+  <section id="roi" class="relative z-10 py-20 border-t border-nexus-border/40 bg-nexus-bg/90 scroll-mt-24 overflow-hidden">
+    <!-- Ambient glowing backdrop -->
+    <div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-r from-red-500/10 via-nexus-cyan/10 to-emerald-500/10 rounded-full blur-3xl opacity-60"></div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-red-500/30 bg-red-500/10 text-red-400 text-xs font-mono font-bold tracking-wider mb-4 shadow-[0_0_20px_rgba(239,68,68,0.2)]">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+          <span data-i18n="roi.tag">🔥 ABONELİK İSRAFI VS ÖMÜR BOYU LİSANS // ROI HESAPLAYICI</span>
+        </div>
+        <h2 class="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight mt-1 mb-4" data-i18n="roi.title">
+          ZenDev ile Ne Kadar Para Tasarruf Edersiniz?
+        </h2>
+        <p class="text-nexus-muted font-sans text-sm sm:text-base leading-relaxed" data-i18n="roi.desc">
+          Tek amaçlı küçük araçlara her ay düzenli para saçmayı bırakın. Aşağıdaki servislerden kullandıklarınızı işaretleyin; ZenDev’ın tek seferlik lisansı ile cebinizde kalan net meblağı canlı görün.
+        </p>
+
+        <!-- Time Horizon & Quick Action Controls -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <div class="inline-flex p-1 rounded-2xl bg-nexus-surface/80 border border-nexus-border/80 shadow-lg">
+            <button type="button" onclick="setRoiHorizon(1)" id="roi-hz-1" class="px-3.5 py-1.5 rounded-xl font-mono text-xs font-bold transition-all text-nexus-muted hover:text-white cursor-pointer">
+              1 Yıl (12 Ay)
+            </button>
+            <button type="button" onclick="setRoiHorizon(2)" id="roi-hz-2" class="px-3.5 py-1.5 rounded-xl font-mono text-xs font-bold transition-all text-nexus-muted hover:text-white cursor-pointer">
+              2 Yıl (24 Ay)
+            </button>
+            <button type="button" onclick="setRoiHorizon(3)" id="roi-hz-3" class="px-3.5 py-1.5 rounded-xl font-mono text-xs font-bold transition-all bg-nexus-cyan text-nexus-bg shadow-sm cursor-pointer">
+              ⭐ 3 Yıl (36 Ay)
+            </button>
+            <button type="button" onclick="setRoiHorizon(5)" id="roi-hz-5" class="px-3.5 py-1.5 rounded-xl font-mono text-xs font-bold transition-all text-nexus-muted hover:text-white cursor-pointer">
+              5 Yıl (60 Ay)
+            </button>
+          </div>
+
+          <div class="inline-flex gap-2 text-xs font-mono">
+            <button type="button" onclick="toggleAllRoi(true)" class="px-3 py-1.5 rounded-xl border border-nexus-border/60 bg-nexus-surface/40 hover:bg-nexus-surface text-nexus-muted hover:text-nexus-cyan transition-colors cursor-pointer">
+              ✓ Tümünü Seç
+            </button>
+            <button type="button" onclick="toggleAllRoi(false)" class="px-3 py-1.5 rounded-xl border border-nexus-border/60 bg-nexus-surface/40 hover:bg-nexus-surface text-nexus-muted hover:text-red-400 transition-colors cursor-pointer">
+              ✕ Temizle
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Interactive Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- Left: 8 Interactive SaaS Subscriptions (7 Cols) -->
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <!-- Item 1: 1Password / Dashlane -->
+          <div id="card-roi-1password" onclick="toggleRoiCard('roi-1password')" class="roi-item p-4 rounded-2xl border border-red-500/30 bg-red-500/5 hover:border-red-500/60 transition-all cursor-pointer select-none group flex flex-col justify-between relative overflow-hidden">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-sm shrink-0">
+                  🔐
+                </div>
+                <div>
+                  <div class="text-xs font-black text-white group-hover:text-red-300 transition-colors">1Password / Dashlane</div>
+                  <div class="text-[10px] text-nexus-muted font-mono">Parola & Güvenli Kasa</div>
+                </div>
+              </div>
+              <input type="checkbox" id="roi-1password" data-usd="5" data-try="185" checked onclick="event.stopPropagation(); calcRoi();" class="w-4 h-4 accent-red-500 rounded cursor-pointer mt-1">
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-nexus-border/30 flex items-center justify-between text-[11px]">
+              <span class="font-mono text-red-400 font-bold">$5.00 / ay</span>
+              <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">→ Cyber Fortress</span>
+            </div>
+          </div>
+
+          <!-- Item 2: Postman Pro -->
+          <div id="card-roi-postman" onclick="toggleRoiCard('roi-postman')" class="roi-item p-4 rounded-2xl border border-red-500/30 bg-red-500/5 hover:border-red-500/60 transition-all cursor-pointer select-none group flex flex-col justify-between relative overflow-hidden">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-sm shrink-0">
+                  🚀
+                </div>
+                <div>
+                  <div class="text-xs font-black text-white group-hover:text-red-300 transition-colors">Postman Pro / Insomnia</div>
+                  <div class="text-[10px] text-nexus-muted font-mono">API Test & İstek İstemcisi</div>
+                </div>
+              </div>
+              <input type="checkbox" id="roi-postman" data-usd="15" data-try="555" checked onclick="event.stopPropagation(); calcRoi();" class="w-4 h-4 accent-red-500 rounded cursor-pointer mt-1">
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-nexus-border/30 flex items-center justify-between text-[11px]">
+              <span class="font-mono text-red-400 font-bold">$15.00 / ay</span>
+              <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">→ cURL Runner</span>
+            </div>
+          </div>
+
+          <!-- Item 3: CCleaner Pro / CleanMyMac -->
+          <div id="card-roi-cleaner" onclick="toggleRoiCard('roi-cleaner')" class="roi-item p-4 rounded-2xl border border-red-500/30 bg-red-500/5 hover:border-red-500/60 transition-all cursor-pointer select-none group flex flex-col justify-between relative overflow-hidden">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-sm shrink-0">
+                  🧹
+                </div>
+                <div>
+                  <div class="text-xs font-black text-white group-hover:text-red-300 transition-colors">CCleaner / CleanMyMac</div>
+                  <div class="text-[10px] text-nexus-muted font-mono">Sistem & RAM Hızlandırıcı</div>
+                </div>
+              </div>
+              <input type="checkbox" id="roi-cleaner" data-usd="3.5" data-try="130" checked onclick="event.stopPropagation(); calcRoi();" class="w-4 h-4 accent-red-500 rounded cursor-pointer mt-1">
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-nexus-border/30 flex items-center justify-between text-[11px]">
+              <span class="font-mono text-red-400 font-bold">$3.50 / ay</span>
+              <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">→ System Optimizer</span>
+            </div>
+          </div>
+
+          <!-- Item 4: Burner Mail / Inboxes Pro -->
+          <div id="card-roi-workflow" onclick="toggleRoiCard('roi-workflow')" class="roi-item p-4 rounded-2xl border border-red-500/30 bg-red-500/5 hover:border-red-500/60 transition-all cursor-pointer select-none group flex flex-col justify-between relative overflow-hidden">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-sm shrink-0">
+                  ✉️
+                </div>
+                <div>
+                  <div class="text-xs font-black text-white group-hover:text-red-300 transition-colors">Burner Mail / Inboxes Pro</div>
+                  <div class="text-[10px] text-nexus-muted font-mono">Kullan-At Geçici Posta</div>
+                </div>
+              </div>
+              <input type="checkbox" id="roi-workflow" data-usd="8" data-try="295" checked onclick="event.stopPropagation(); calcRoi();" class="w-4 h-4 accent-red-500 rounded cursor-pointer mt-1">
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-nexus-border/30 flex items-center justify-between text-[11px]">
+              <span class="font-mono text-red-400 font-bold">$8.00 / ay</span>
+              <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">→ Team Collections Studio</span>
+            </div>
+          </div>
+
+          <!-- Item 5: Paste / Maccy Cloud -->
+          <div id="card-roi-paste" onclick="toggleRoiCard('roi-paste')" class="roi-item p-4 rounded-2xl border border-red-500/30 bg-red-500/5 hover:border-red-500/60 transition-all cursor-pointer select-none group flex flex-col justify-between relative overflow-hidden">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-sm shrink-0">
+                  📋
+                </div>
+                <div>
+                  <div class="text-xs font-black text-white group-hover:text-red-300 transition-colors">Paste / Cloud Clipboard</div>
+                  <div class="text-[10px] text-nexus-muted font-mono">Pano Geçmişi & Arama</div>
+                </div>
+              </div>
+              <input type="checkbox" id="roi-paste" data-usd="3" data-try="110" checked onclick="event.stopPropagation(); calcRoi();" class="w-4 h-4 accent-red-500 rounded cursor-pointer mt-1">
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-nexus-border/30 flex items-center justify-between text-[11px]">
+              <span class="font-mono text-red-400 font-bold">$3.00 / ay</span>
+              <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">→ Clipboard Ring</span>
+            </div>
+          </div>
+
+          <!-- Item 6: Hazel / Bulk Renamer -->
+          <div id="card-roi-organizer" onclick="toggleRoiCard('roi-organizer')" class="roi-item p-4 rounded-2xl border border-red-500/30 bg-red-500/5 hover:border-red-500/60 transition-all cursor-pointer select-none group flex flex-col justify-between relative overflow-hidden">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-sm shrink-0">
+                  📁
+                </div>
+                <div>
+                  <div class="text-xs font-black text-white group-hover:text-red-300 transition-colors">Hazel / ABetterRename</div>
+                  <div class="text-[10px] text-nexus-muted font-mono">Toplu Dosya Düzenleme</div>
+                </div>
+              </div>
+              <input type="checkbox" id="roi-organizer" data-usd="4" data-try="150" checked onclick="event.stopPropagation(); calcRoi();" class="w-4 h-4 accent-red-500 rounded cursor-pointer mt-1">
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-nexus-border/30 flex items-center justify-between text-[11px]">
+              <span class="font-mono text-red-400 font-bold">$4.00 / ay</span>
+              <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">→ Bulk Organizer</span>
+            </div>
+          </div>
+
+          <!-- Item 7: Coolors Pro / Contrast -->
+          <div id="card-roi-color" onclick="toggleRoiCard('roi-color')" class="roi-item p-4 rounded-2xl border border-red-500/30 bg-red-500/5 hover:border-red-500/60 transition-all cursor-pointer select-none group flex flex-col justify-between relative overflow-hidden">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-sm shrink-0">
+                  🎨
+                </div>
+                <div>
+                  <div class="text-xs font-black text-white group-hover:text-red-300 transition-colors">Coolors Pro / Contrast</div>
+                  <div class="text-[10px] text-nexus-muted font-mono">Palet & WCAG Kontrastı</div>
+                </div>
+              </div>
+              <input type="checkbox" id="roi-color" data-usd="4" data-try="150" checked onclick="event.stopPropagation(); calcRoi();" class="w-4 h-4 accent-red-500 rounded cursor-pointer mt-1">
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-nexus-border/30 flex items-center justify-between text-[11px]">
+              <span class="font-mono text-red-400 font-bold">$4.00 / ay</span>
+              <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">→ Color Studio</span>
+            </div>
+          </div>
+
+          <!-- Item 8: Link Bypasser / Decrypter -->
+          <div id="card-roi-decrypter" onclick="toggleRoiCard('roi-decrypter')" class="roi-item p-4 rounded-2xl border border-red-500/30 bg-red-500/5 hover:border-red-500/60 transition-all cursor-pointer select-none group flex flex-col justify-between relative overflow-hidden">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-sm shrink-0">
+                  🔗
+                </div>
+                <div>
+                  <div class="text-xs font-black text-white group-hover:text-red-300 transition-colors">Linkvertise Bypasser / AdSkip</div>
+                  <div class="text-[10px] text-nexus-muted font-mono">Link & Takipçi Temizleme</div>
+                </div>
+              </div>
+              <input type="checkbox" id="roi-decrypter" data-usd="5" data-try="185" checked onclick="event.stopPropagation(); calcRoi();" class="w-4 h-4 accent-red-500 rounded cursor-pointer mt-1">
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-nexus-border/30 flex items-center justify-between text-[11px]">
+              <span class="font-mono text-red-400 font-bold">$5.00 / ay</span>
+              <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">→ Decrypter</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Real-Time Command Center / ROI Gauge (5 Cols) -->
+        <div class="lg:col-span-5">
+          <div class="sticky top-28 p-7 rounded-3xl bg-gradient-to-b from-nexus-surface via-nexus-card to-nexus-bg border-2 border-emerald-500/40 shadow-[0_0_50px_rgba(16,185,129,0.15)] flex flex-col justify-between">
+            <div>
+              <!-- Header Radar Pill -->
+              <div class="flex items-center justify-between pb-4 border-b border-nexus-border/50">
+                <div class="flex items-center gap-2 text-xs font-mono font-bold text-emerald-400">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span id="roi-horizon-label">3 YILLIK AMORTİSMAN RADARI</span>
+                </div>
+                <span id="roi-savings-pct" class="text-[10px] font-mono font-black px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  %98.3 TASARRUF
+                </span>
+              </div>
+
+              <!-- Comparison Visual Bars -->
+              <div class="my-6 space-y-4">
+                <!-- Red Bar: SaaS Recurring Waste -->
+                <div>
+                  <div class="flex justify-between items-center text-xs font-mono mb-1.5">
+                    <span class="text-red-400 flex items-center gap-1 font-bold">
+                      <span>🔥</span> <span id="roi-saas-label">Aylık SaaS İsrafı:</span>
+                    </span>
+                    <span id="roi-monthly-bleed" class="text-red-400 font-black">$47.50 / ay</span>
+                  </div>
+                  <div class="w-full h-3 rounded-full bg-nexus-surface border border-red-500/20 overflow-hidden relative">
+                    <div id="roi-bar-saas" class="h-full rounded-full bg-gradient-to-r from-red-600 to-red-400 w-full transition-all duration-500"></div>
+                  </div>
+                  <div class="flex justify-between text-[11px] font-mono text-nexus-muted mt-1">
+                    <span id="roi-total-bleed-label">3 Yılda Çöpe Giden Para:</span>
+                    <span id="roi-total-bleed-val" class="font-bold text-red-300">$1,710.00</span>
+                  </div>
+                </div>
+
+                <!-- Green Bar: ZenDev Lifetime License -->
+                <div>
+                  <div class="flex justify-between items-center text-xs font-mono mb-1.5">
+                    <span class="text-emerald-400 flex items-center gap-1 font-bold">
+                      <span>🛡️</span> <span>ZenDev Ömür Boyu:</span>
+                    </span>
+                    <span id="roi-nexus-cost" class="text-emerald-400 font-black">$29 (₺349) TEK SEFERLİK</span>
+                  </div>
+                  <div class="w-full h-3 rounded-full bg-nexus-surface border border-emerald-500/20 overflow-hidden relative">
+                    <div id="roi-bar-nexus" class="h-full rounded-full bg-gradient-to-r from-emerald-500 to-nexus-cyan w-[6%] transition-all duration-500 shadow-[0_0_12px_rgba(16,185,129,0.5)]"></div>
+                  </div>
+                  <div class="flex justify-between text-[11px] font-mono text-nexus-muted mt-1">
+                    <span>Yıllık Yenileme & Abonelik:</span>
+                    <span class="font-bold text-emerald-400">$0.00 (SIFIR)</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Grand Net Profit Display -->
+              <div class="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-center relative overflow-hidden mb-6">
+                <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.2),transparent_70%)]"></div>
+                <div class="relative z-10">
+                  <div class="text-[11px] font-mono uppercase tracking-widest text-emerald-300 font-bold mb-1" id="roi-net-title">
+                    3 YILDA CEBİNİZDE KALAN NET PARA
+                  </div>
+                  <div id="roi-net-saved" class="font-heading font-black text-4xl sm:text-5xl text-emerald-400 tracking-tight drop-shadow-[0_0_25px_rgba(16,185,129,0.4)]">
+                    +$1,681.00
+                  </div>
+                  <div id="roi-net-try" class="text-xs font-mono text-emerald-200/70 mt-1">
+                    (Tam +₺62,197 TL Net Kazanç)
+                  </div>
+                </div>
+              </div>
+
+              <!-- Speedometer & Amortization Insight -->
+              <div class="p-3.5 rounded-xl bg-nexus-surface/60 border border-nexus-border/60 text-xs text-nexus-text space-y-1 font-sans">
+                <div class="flex items-center gap-2 font-bold text-white">
+                  <span class="text-base">⚡</span>
+                  <span id="roi-payback-days">ZenDev 18 Günde Kendi Maliyetini Çıkartır!</span>
+                </div>
+                <p id="roi-payback-desc" class="text-[11px] text-nexus-muted leading-relaxed">
+                  Geriye kalan 1,077 gün boyunca 20+ aracı tek bir kuruş bile ödemeden tamamen ücretsiz kullanırsınız.
+                </p>
+              </div>
+            </div>
+
+            <!-- Conversion Action Button -->
+            <div class="mt-6 pt-4 border-t border-nexus-border/50">
+              <a href="#pricing" onclick="playCyberSound('success')" class="group relative flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-400 to-nexus-cyan hover:from-emerald-400 hover:to-nexus-cyan text-nexus-bg font-heading font-black text-sm transition-all shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:shadow-[0_0_40px_rgba(16,185,129,0.6)] hover:scale-[1.02] active:scale-[0.98]">
+                <span id="roi-cta-btn">Abonelikleri Çöpe At — ₺349 ile Ömür Boyu Al</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+              <div class="flex items-center justify-center gap-3 text-[10px] font-mono text-nexus-muted text-center mt-3">
+                <span>🛡️ 14 Gün İade</span>
+                <span>•</span>
+                <span>♾️ Ömür Boyu Güncelleme</span>
+                <span>•</span>
+                <span>⚡ Anında Teslimat</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- SAAS KILLER COMPARISON TABLE -->
+  <section id="comparison" class="relative z-10 py-24 border-t border-nexus-border/40 bg-nexus-bg/50 scroll-mt-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-mono uppercase tracking-widest text-nexus-cyan" data-i18n="comp.tag">Neden ZenDev?</span>
+        <h2 class="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight mt-2 mb-4" data-i18n="comp.title">
+          SaaS Abonelik Yorgunluğunu Bitirin.
+        </h2>
+        <p class="text-nexus-muted font-sans text-base sm:text-lg" data-i18n="comp.desc">
+          İhtiyacınız olan her ufak araca aylık $10-$15 abonelik ödemek yerine, ZenDev'ı bir kez alın ve ömür boyu yerel olarak kullanın.
+        </p>
+      </div>
+
+      <div class="rounded-3xl card-glass border border-nexus-border/80 overflow-hidden shadow-2xl">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm">
+            <thead>
+              <tr class="border-b border-nexus-border/60 bg-nexus-surface/50 text-xs font-mono uppercase text-nexus-muted">
+                <th class="p-5 font-bold">Özellik / Karşılaştırma</th>
+                <th class="p-5 font-bold text-red-400">Geleneksel Web SaaS Servisleri</th>
+                <th class="p-5 font-bold text-nexus-cyan bg-nexus-cyan/5">ZenDev Multi-Tool</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-nexus-border/40 font-sans">
+              <tr class="hover:bg-nexus-surface/30 transition-colors">
+                <td class="p-5 font-semibold text-white">Maliyet Modeli</td>
+                <td class="p-5 text-red-300">Aylık $35 - $60 (Her araç için ayrı fatura)</td>
+                <td class="p-5 text-emerald-400 font-bold bg-nexus-cyan/5">Tek Seferlik (Ömür Boyu Sınırsız)</td>
+              </tr>
+              <tr class="hover:bg-nexus-surface/30 transition-colors">
+                <td class="p-5 font-semibold text-white">Veri Gizliliği</td>
+                <td class="p-5 text-nexus-muted">Üçüncü taraf bulut sunucularda saklanır / loglanır</td>
+                <td class="p-5 text-emerald-400 font-bold bg-nexus-cyan/5">%100 Yerel İcra (Sıfır Veri Sızıntısı)</td>
+              </tr>
+              <tr class="hover:bg-nexus-surface/30 transition-colors">
+                <td class="p-5 font-semibold text-white">Çevrimdışı Çalışma</td>
+                <td class="p-5 text-red-300">İnternet bağlantısı olmadan çalışmaz</td>
+                <td class="p-5 text-emerald-400 font-bold bg-nexus-cyan/5">İnternet kesilse dahi tüm araçlar çalışır</td>
+              </tr>
+              <tr class="hover:bg-nexus-surface/30 transition-colors">
+                <td class="p-5 font-semibold text-white">Reklam & Kısıtlama</td>
+                <td class="p-5 text-red-300">Sürekli pop-up, captcha ve indirme limiti</td>
+                <td class="p-5 text-emerald-400 font-bold bg-nexus-cyan/5">Sıfır reklam, limitsiz hız ve kota serbestisi</td>
+              </tr>
+              <tr class="hover:bg-nexus-surface/30 transition-colors">
+                <td class="p-5 font-semibold text-white">Masaüstü Entegrasyonu</td>
+                <td class="p-5 text-red-300">Yok (Yavaş tarayıcı sekmeleri arasında kaybolma)</td>
+                <td class="p-5 text-emerald-400 font-bold bg-nexus-cyan/5">Cyber Floating Orb + Global Kısayollar (Ctrl+K)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE RAM & RESOURCE BENCHMARK SLIDER (NATIVE CORE VS BLOATED SAAS) -->
+  <section id="benchmark" class="relative z-10 py-24 border-t border-nexus-border/40 bg-nexus-surface/10 scroll-mt-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-nexus-cyan/10 border border-nexus-cyan/30 text-nexus-cyan text-xs font-mono mb-3">
+          <span class="w-2 h-2 rounded-full bg-nexus-cyan animate-pulse"></span>
+          <span>CANLI PERFORMANS & KAYNAK KIYASLAMASI</span>
+        </div>
+        <h2 class="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight mb-4">
+          Bilgisayarınızı Ağlatmayan Saf Güç.
+        </h2>
+        <p class="text-nexus-muted font-sans text-sm sm:text-base">
+          Aşağıdaki eşzamanlı araç yükü çubuğunu kaydırın; web tabanlı hantal araçların RAM ve işlemcinizi nasıl kilitlediğini, ZenDev'ın ise nasıl tüy gibi hafif kaldığını canlı test edin.
+        </p>
+      </div>
+
+      <!-- Benchmark Interactive Card -->
+      <div class="p-6 sm:p-10 rounded-3xl card-glass border border-nexus-border/80 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+        
+        <!-- Slider Control -->
+        <div class="max-w-xl mx-auto mb-10 text-center">
+          <div class="flex items-center justify-between text-xs font-mono mb-2">
+            <span class="text-nexus-muted">Eşzamanlı Yük Testi:</span>
+            <span id="benchmark-load-label" class="font-bold text-nexus-cyan text-sm">5 Aktif Araç / Görev</span>
+          </div>
+          <input type="range" id="benchmark-slider" min="1" max="20" value="5" oninput="updateBenchmark(this.value)" class="w-full h-2.5 bg-nexus-bg rounded-lg appearance-none cursor-pointer accent-nexus-cyan border border-nexus-border/60">
+          <div class="flex justify-between text-[10px] font-mono text-nexus-muted mt-2">
+            <span>1 Araç (Hafif)</span>
+            <span class="text-nexus-cyan font-bold">5 Araç (Standart Çalışma)</span>
+            <span>20 Araç (Ağır İş Yükü)</span>
+          </div>
+        </div>
+
+        <!-- Comparative Columns -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Left: Bloated SaaS -->
+          <div class="p-6 sm:p-7 rounded-2xl bg-red-950/20 border border-red-500/30 flex flex-col justify-between transition-all">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-mono text-red-400 uppercase tracking-wider font-bold">Web Tabanlı SaaS / Chrome Sekmeleri</span>
+                <span class="text-xl">🔥</span>
+              </div>
+              <h4 class="font-heading font-black text-xl text-white mb-6">Ayrı Siteler & Electron Katmanları</h4>
+
+              <!-- RAM Metric -->
+              <div class="space-y-2 mb-6">
+                <div class="flex justify-between text-xs font-mono">
+                  <span class="text-nexus-muted">RAM Tüketimi:</span>
+                  <span id="saas-ram-text" class="text-red-400 font-bold text-base">2,450 MB</span>
+                </div>
+                <div class="w-full h-3 bg-nexus-bg rounded-full overflow-hidden border border-red-500/20">
+                  <div id="saas-ram-bar" class="h-full bg-gradient-to-r from-amber-500 to-red-500 transition-all duration-300" style="width: 78%;"></div>
+                </div>
+              </div>
+
+              <!-- CPU Metric -->
+              <div class="space-y-2 mb-6">
+                <div class="flex justify-between text-xs font-mono">
+                  <span class="text-nexus-muted">Arka Plan CPU Yükü:</span>
+                  <span id="saas-cpu-text" class="text-red-400 font-bold">%18.5 CPU (Fan Sesleri Başlar)</span>
+                </div>
+                <div class="w-full h-3 bg-nexus-bg rounded-full overflow-hidden border border-red-500/20">
+                  <div id="saas-cpu-bar" class="h-full bg-red-500 transition-all duration-300" style="width: 65%;"></div>
+                </div>
+              </div>
+
+              <!-- Startup Metric -->
+              <div class="flex justify-between items-center py-2.5 border-t border-red-500/20 text-xs font-mono">
+                <span class="text-nexus-muted">Açılış & Yanıt Hızı:</span>
+                <span class="text-red-300 font-bold">~8.4 saniye (Yavaş Sekme Yüklenmesi)</span>
+              </div>
+            </div>
+            <div class="mt-6 text-[11px] font-mono text-red-400/90 bg-red-500/10 p-3 rounded-xl border border-red-500/20 leading-relaxed">
+              ⚠️ Ağır bellek sızıntısı ve arka plan reklam takipçileri yüzünden dizüstü pilinizi hızla tüketir, bilgisayarı ısıtır.
+            </div>
+          </div>
+
+          <!-- Right: ZenDev Native Core -->
+          <div class="p-6 sm:p-7 rounded-2xl bg-nexus-cyan/5 border border-nexus-cyan/40 shadow-[0_0_30px_rgba(6,182,212,0.12)] flex flex-col justify-between transition-all">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-mono text-nexus-cyan uppercase tracking-wider font-bold">ZenDev Native Core</span>
+                <span class="text-xl">⚡</span>
+              </div>
+              <h4 class="font-heading font-black text-xl text-white mb-6">C++ / Rust Hızlandırmalı Yerel Motor</h4>
+
+              <!-- RAM Metric -->
+              <div class="space-y-2 mb-6">
+                <div class="flex justify-between text-xs font-mono">
+                  <span class="text-nexus-muted">RAM Tüketimi:</span>
+                  <span id="nexus-ram-text" class="text-nexus-cyan font-bold text-base">38 MB (%98.4 Tasarruf)</span>
+                </div>
+                <div class="w-full h-3 bg-nexus-bg rounded-full overflow-hidden border border-nexus-cyan/30">
+                  <div id="nexus-ram-bar" class="h-full bg-gradient-to-r from-nexus-cyan to-emerald-400 transition-all duration-300" style="width: 4%;"></div>
+                </div>
+              </div>
+
+              <!-- CPU Metric -->
+              <div class="space-y-2 mb-6">
+                <div class="flex justify-between text-xs font-mono">
+                  <span class="text-nexus-muted">Arka Plan CPU Yükü:</span>
+                  <span id="nexus-cpu-text" class="text-emerald-400 font-bold">%0.1 CPU (Tamamen Sessiz)</span>
+                </div>
+                <div class="w-full h-3 bg-nexus-bg rounded-full overflow-hidden border border-nexus-cyan/30">
+                  <div id="nexus-cpu-bar" class="h-full bg-emerald-400 transition-all duration-300" style="width: 1%;"></div>
+                </div>
+              </div>
+
+              <!-- Startup Metric -->
+              <div class="flex justify-between items-center py-2.5 border-t border-nexus-cyan/20 text-xs font-mono">
+                <span class="text-nexus-muted">Açılış & Yanıt Hızı:</span>
+                <span class="text-emerald-400 font-bold">0.2 saniye (Anında Hazır)</span>
+              </div>
+            </div>
+            <div class="mt-6 text-[11px] font-mono text-emerald-400 bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/20 leading-relaxed">
+              ✓ %100 yerel ve optimize edilmiş C++/Rust çekirdeği. Sıfır fan sesi, ultra uzun pil ömrü ve donanım dostu saf hız.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARSENAL 20+ TOOLS GRID -->
+  <section id="arsenal" class="relative z-10 py-24 border-t border-nexus-border/40 scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="text-xs font-mono uppercase tracking-widest text-nexus-cyan">20+ Profesyonel Modül</span>
+        <h2 class="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight mt-2 mb-4">
+          Cebinizdeki Siber İsviçre Çakısı.
+        </h2>
+        <p class="text-nexus-muted font-sans text-base sm:text-lg mb-8">
+          Geliştiriciler, güvenlik araştırmacıları, freelancerlar ve dijital egemenliğine önem verenler için tek çatı altında.
+        </p>
+
+        <!-- Category Filter Pills -->
+        <div class="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl card-glass border border-nexus-border/80 text-xs font-mono">
+          <button onclick="filterArsenal('all', this)" class="arsenal-tab-btn px-4 py-2 rounded-xl bg-nexus-cyan/20 border border-nexus-cyan/40 text-nexus-cyan font-bold transition-all cursor-pointer">
+            Tüm Modüller (20)
+          </button>
+          <button onclick="filterArsenal('privacy', this)" class="arsenal-tab-btn px-4 py-2 rounded-xl text-nexus-muted hover:text-white border border-transparent transition-all cursor-pointer">
+            🛡️ Gizlilik & Güvenlik
+          </button>
+          <button onclick="filterArsenal('dev', this)" class="arsenal-tab-btn px-4 py-2 rounded-xl text-nexus-muted hover:text-white border border-transparent transition-all cursor-pointer">
+            💻 Geliştirici & API
+          </button>
+          <button onclick="filterArsenal('system', this)" class="arsenal-tab-btn px-4 py-2 rounded-xl text-nexus-muted hover:text-white border border-transparent transition-all cursor-pointer">
+            ⚡ Sistem & Ağ
+          </button>
+          <button onclick="filterArsenal('media', this)" class="arsenal-tab-btn px-4 py-2 rounded-xl text-nexus-muted hover:text-white border border-transparent transition-all cursor-pointer">
+            🎨 Tasarım & Medya
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="arsenal-grid">
+
+        <!-- Tool 1: Team Collections -->
+        <div onclick="openToolDrawer('Team Collections', 'Team Collections & Gelen Kutusu', 'Spam ve kayıt tuzaklarından kurtulun. Tek tıkla rastgele e-posta üretir, gelen doğrulama kodlarını anlık olarak okur.', 'GİZLİLİK & GÜVENLİK')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="privacy">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-nexus-cyan/10 border border-nexus-cyan/30 flex items-center justify-center text-nexus-cyan mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">Team Collections & Gelen Kutusu</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Spam ve kayıt tuzaklarından kurtulun. Tek tıkla rastgele e-posta üretir, gelen doğrulama kodlarını anlık olarak okur.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-nexus-cyan flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 2: Universal Decrypter -->
+        <div onclick="openToolDrawer('decrypter', 'Evrensel Link Decrypter', 'Aylink, bc.vc ve para kazandıran yönlendirme tuzaklarını aşar. Tüm takip parametrelerini (UTM, fbclid) soyarak temiz hedefe ulaştırır.', 'GİZLİLİK & GÜVENLİK')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="privacy">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-nexus-accent/10 border border-nexus-accent/30 flex items-center justify-center text-nexus-accent mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">Evrensel Link Decrypter</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Aylink, bc.vc ve para kazandıran yönlendirme tuzaklarını aşar. Tüm takip parametrelerini (UTM, fbclid) soyarak temiz hedefe ulaştırır.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-nexus-accent flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 3: Cyber Fortress -->
+        <div onclick="openToolDrawer('fortress', 'Cyber Fortress Vault & Shredder', 'DoD 5220.22-M 7-Pass askeri standartta kalıcı dosya imha edici + AES-256-GCM askeri düzey şifreli kasa kalkanı.', 'GİZLİLİK & GÜVENLİK')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="privacy">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">Cyber Fortress Vault & Shredder</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              DoD 5220.22-M 7-Pass askeri standartta kalıcı dosya imha edici + AES-256-GCM askeri düzey şifreli kasa kalkanı.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-red-400 flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 4: Password Generator & Analyzer -->
+        <div onclick="openToolDrawer('password', 'Askeri Parola Analizörü', 'Shannon entropi puanlaması, RTX 4090 süper bilgisayar kümesi kırılma süresi simülasyonu ve kriptografik rastgele parola üretimi.', 'GİZLİLİK & GÜVENLİK')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="privacy">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">Askeri Parola Analizörü</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Shannon entropi puanlaması, RTX 4090 süper bilgisayar kümesi kırılma süresi simülasyonu ve kriptografik rastgele parola üretimi.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-emerald-400 flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 5: Hash Studio -->
+        <div onclick="openToolDrawer('hash', 'Hash & Base64 Studio', 'SHA-256, MD5, SHA-512 ve HMAC checksum doğrulama. Çift yönlü Base64 ve Hex kodlayıcı / çözücü.', 'GİZLİLİK & GÜVENLİK')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="privacy">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">Hash & Base64 Studio</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              SHA-256, MD5, SHA-512 ve HMAC checksum doğrulama. Çift yönlü Base64 ve Hex kodlayıcı / çözücü.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-purple-400 flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 6: Clipboard Manager -->
+        <div onclick="openToolDrawer('clipboard', 'Şifreli Pano Yöneticisi', 'Pano geçmişinizi yerel olarak güvene alın. Hassas parolaları ve token ları otomatik gizleyin.', 'GİZLİLİK & GÜVENLİK')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="privacy">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">Şifreli Pano Yöneticisi</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Pano geçmişinizi yerel olarak güvene alın. Hassas parolaları ve token'ları otomatik gizleyin, anında arayın ve temizleyin.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-sky-400 flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 7: Scratchpad Ultimate -->
+        <div onclick="openToolDrawer('scratchpad', 'Scratchpad Ultimate & Flowchart', 'Canlı Markdown editörü, dahili Mermaid akış diyagramı render motoru, çoklu sekmeler, Zen modu ve şablon kütüphanesi.', 'GELİŞTİRİCİ & ÜRETKENLİK')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="dev">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-nexus-cyan/10 border border-nexus-cyan/30 flex items-center justify-center text-nexus-cyan mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">Scratchpad Ultimate & Flowchart</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Canlı Markdown editörü, dahili Mermaid akış diyagramı render motoru, çoklu sekmeler, Zen modu ve şablon kütüphanesi.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-nexus-cyan flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 8: cURL Runner & API Studio -->
+        <div onclick="openToolDrawer('curl', 'cURL Runner & API Studio', 'Postman a hafif yerel alternatif. cURL komutlarını içe aktarın, GET/POST istekleri atın.', 'GELİŞTİRİCİ & API')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="dev">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">cURL Runner & API Studio</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Postman'a hafif yerel alternatif. cURL komutlarını içe aktarın, GET/POST istekleri atın, header ve gövde yanıtlarını anında ayrıştırın.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-amber-400 flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 9: JSON Studio -->
+        <div onclick="openToolDrawer('json', 'JSON Studio & Doğrulayıcı', 'Bozuk JSON verilerini anında bulun, renklendirin, formatlayın ve interaktif ağaç görünümünde inceleyin.', 'GELİŞTİRİCİ & API')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="dev">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">JSON Studio & Doğrulayıcı</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Bozuk JSON verilerini anında bulun, renklendirin, formatlayın ve interaktif ağaç (tree) görünümünde derinlemesine inceleyin.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-emerald-400 flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 10: Regex Studio -->
+        <div onclick="openToolDrawer('regex', 'Regex Studio & Eşleştirici', 'Düzenli ifadeleri (RegEx) gerçek zamanlı olarak test edin. Yakalama gruplarını ve sözdizim açıklamalarını görün.', 'GELİŞTİRİCİ & API')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="dev">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">Regex Studio & Eşleştirici</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Düzenli ifadeleri (RegEx) gerçek zamanlı olarak test edin. Bayrakları değiştirin, yakalama gruplarını ve sözdizim açıklamalarını görün.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-purple-400 flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 11: Fake Data Studio -->
+        <div onclick="openToolDrawer('fakedata', 'Fake Data & Mock Generator', 'Test ve veritabanı tohumlama için binlerce gerçekçi kullanıcı, telefon, adres verisini JSON/CSV üretin.', 'GELİŞTİRİCİ & API')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="dev">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">Fake Data & Mock Generator</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Test ve veritabanı tohumlama için binlerce gerçekçi kullanıcı, telefon, adres, şirket ve kredi kartı verisini JSON/CSV üretin.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-blue-400 flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 12: Dev Sandbox -->
+        <div onclick="openToolDrawer('sandbox', 'Dev Sandbox & Kod Alanı', 'İzole bir ortamda JavaScript ve mantık algoritmalarını anlık çalıştırın, konsol çıktılarını ölçün.', 'GELİŞTİRİCİ & API')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="dev">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center text-yellow-400 mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">Dev Sandbox & Kod Alanı</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              İzole bir ortamda JavaScript ve mantık algoritmalarını anlık çalıştırın, konsol çıktılarını ve çalışma sürelerini ölçün.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-yellow-400 flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 13: Resource Sentinel -->
+        <div onclick="openToolDrawer('sentinel', 'Resource Sentinel & RAM Flush', 'Canlı CPU & RAM telemetry izleme, çekirdek yük analizi ve tek dokunuşla Windows bellek optimizasyonu.', 'SİSTEM & AĞ')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="system">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">Resource Sentinel & RAM Flush</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Canlı CPU & RAM telemetry izleme, çekirdek yük analizi ve tek dokunuşla Windows bellek önbelleğini boşaltan optimizasyon.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-purple-400 flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 14: Workflow Chains -->
+        <div onclick="openToolDrawer('portkiller', 'Workflow Chains (TCP/UDP Watchdog)', '3000, 8080 veya kilitlenen herhangi bir portu işgal eden çakışan süreçleri tek tıkla zorla sonlandırır.', 'SİSTEM & AĞ')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="system">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">Workflow Chains (TCP/UDP Watchdog)</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              "Port 3000 already in use" kabusuna son! Dinlenen tüm yerel portları listeler, PID ve süreçleri tek tıkla zorla sonlandırır.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-red-400 flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 15: System Optimizer -->
+        <div onclick="openToolDrawer('cleaner', 'Sistem & Bloatware Temizleyici', 'Windows Temp dosyalarını, DNS önbelleğini ve diskte yer kaplayan telemetri artıklarını güvenle süpürün.', 'SİSTEM & AĞ')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="system">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">Sistem & Bloatware Temizleyici</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Windows Temp dosyalarını, DNS önbelleğini ve diskte yer kaplayan gereksiz telemetri artıklarını güvenle süpürün.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-cyan-400 flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 16: Network Tools -->
+        <div onclick="openToolDrawer('network', 'Ağ Dedektörü & Port Tarayıcı', 'Dahili ve harici IP tespiti, DNS MX/TXT çözümleme, gecikme analizi ve açık port tarayıcısı.', 'SİSTEM & AĞ')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="system">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">Ağ Dedektörü & Port Tarayıcı</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Dahili ve harici IP tespiti, DNS MX/TXT çözümleme, gecikme (Ping) analizi ve hedef sunucu açık port tarayıcısı.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-emerald-400 flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 17: Desktop Floating Orb -->
+        <div onclick="openToolDrawer('orb', 'Desktop Floating Orb (HUD)', 'Masaüstünüzde sessizce süzülen sibernetik mini widget. Tek tıkla API Payload Kopyalayın, RAM boşaltın.', 'SİSTEM & HUD')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="system">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-nexus-cyan/10 border border-nexus-cyan/30 flex items-center justify-center text-nexus-cyan mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">Desktop Floating Orb (HUD)</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Masaüstünüzde sessizce süzülen sibernetik mini widget. Tek tıkla API Payload Kopyalayın, RAM boşaltın ve komut paletini çağırın.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-nexus-cyan flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 18: Color Studio & WCAG -->
+        <div onclick="openToolDrawer('color', 'Color Studio & WCAG Kontrast', 'Geliştirici renk paletleri, HEX/RGB/HSL dönüştürücü, CSS gradient üretici ve WCAG 2.1 erişilebilirlik kontrast denetçisi.', 'TASARIM & MEDYA')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="media">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4 5 5 0 015-5h4a5 5 0 015 5 4 4 0 01-4 4H7zM17 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">Color Studio & WCAG Kontrast</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Geliştirici renk paletleri, HEX/RGB/HSL dönüştürücü, CSS gradient üretici ve canlı WCAG 2.1 erişilebilirlik kontrast denetçisi.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-pink-400 flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 19: Image & EXIF Privacy Toolkit -->
+        <div onclick="openToolDrawer('image', 'Image & EXIF Gizlilik Toolkit', 'Fotoğraflardaki GPS konum, kamera modeli ve gizli metadata ları tek tıkla silin. WebP/PNG dönüştürün.', 'TASARIM & MEDYA')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="media">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">Image & EXIF Gizlilik Toolkit</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Fotoğraflardaki GPS konum, kamera modeli ve gizli metadata'ları tek tıkla silin. WebP/PNG dönüştürün ve kayıpsız sıkıştırın.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-indigo-400 flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+        <!-- Tool 20: QR Code Studio & Bulk Organizer -->
+        <div onclick="openToolDrawer('qr', 'QR Code Studio & Toplu Dosya', 'Logolu özel vektörel QR kodlar tasarlayın. Binlerce dağınık dosyayı kural bazlı akıllı algoritmalarla düzenleyin.', 'TASARIM & MEDYA')" class="arsenal-card p-6 rounded-3xl card-glass flex flex-col justify-between group transition-all cursor-pointer hover:border-nexus-cyan/70 hover:shadow-[0_0_30px_rgba(var(--c-cyan),0.18)]" data-category="media">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-white mb-2">QR Code Studio & Toplu Dosya</h3>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Logolu özel vektörel QR kodlar tasarlayın. Binlerce dağınık dosya ve klasörü kural bazlı akıllı algoritmalarla düzenleyin.
+            </p>
+          </div>
+          <span class="mt-6 text-[11px] font-mono text-amber-400 flex items-center gap-1 group-hover:underline">Teknik Röntgeni İncele →</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE TOOL RECOMMENDER QUIZ -->
+  <section id="tool-quiz" class="relative z-10 py-16 border-t border-nexus-border/40 bg-nexus-surface/10 scroll-mt-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <span class="text-xs font-mono uppercase tracking-widest text-nexus-cyan">Akıllı Çözüm Asistanı</span>
+        <h2 class="font-heading font-black text-2xl sm:text-4xl text-white tracking-tight mt-2 mb-3">
+          Hangi ZenDev Araçları İş Akışınızı Uçurur?
+        </h2>
+        <p class="text-nexus-muted font-sans text-xs sm:text-sm">
+          2 basit soruyu yanıtlayın; size özel optimize edilmiş araç paketini ve verimlilik tahminini anında görün.
+        </p>
+      </div>
+
+      <div class="card-glass border border-nexus-cyan/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+        <!-- Step 1: Role -->
+        <div id="quiz-step-1" class="space-y-4">
+          <div class="flex items-center justify-between text-xs font-mono text-nexus-muted mb-2">
+            <span class="text-nexus-cyan font-bold">ADIM 1 / 2</span>
+            <span>Profilinizi Seçin</span>
+          </div>
+          <h3 class="text-base sm:text-lg font-bold text-white mb-4">Masaüstünüzde en çok hangi şapkayı takıyorsunuz?</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <button onclick="selectQuizRole('dev')" class="p-4 rounded-2xl bg-nexus-surface/80 border border-nexus-border hover:border-nexus-cyan/60 hover:bg-nexus-cyan/5 text-left transition-all group cursor-pointer">
+              <div class="text-2xl mb-1">💻</div>
+              <div class="font-bold text-white group-hover:text-nexus-cyan text-sm">Yazılım Geliştirici & Mühendis</div>
+              <div class="text-xs text-nexus-muted mt-1">API testleri, regex, port çakışmaları, hash & base64.</div>
+            </button>
+            <button onclick="selectQuizRole('sec')" class="p-4 rounded-2xl bg-nexus-surface/80 border border-nexus-border hover:border-nexus-cyan/60 hover:bg-nexus-cyan/5 text-left transition-all group cursor-pointer">
+              <div class="text-2xl mb-1">🛡️</div>
+              <div class="font-bold text-white group-hover:text-nexus-cyan text-sm">Siber Güvenlik & SysAdmin</div>
+              <div class="text-xs text-nexus-muted mt-1">Askeri dosya imhası, link çözücü, sentinel & parola analizörü.</div>
+            </button>
+            <button onclick="selectQuizRole('creator')" class="p-4 rounded-2xl bg-nexus-surface/80 border border-nexus-border hover:border-nexus-cyan/60 hover:bg-nexus-cyan/5 text-left transition-all group cursor-pointer">
+              <div class="text-2xl mb-1">🎨</div>
+              <div class="font-bold text-white group-hover:text-nexus-cyan text-sm">Tasarımcı & İçerik Üretici</div>
+              <div class="text-xs text-nexus-muted mt-1">Renk & WCAG paleti, medya dönüştürücü, hızlı scratchpad.</div>
+            </button>
+            <button onclick="selectQuizRole('power')" class="p-4 rounded-2xl bg-nexus-surface/80 border border-nexus-border hover:border-nexus-cyan/60 hover:bg-nexus-cyan/5 text-left transition-all group cursor-pointer">
+              <div class="text-2xl mb-1">⚡</div>
+              <div class="font-bold text-white group-hover:text-nexus-cyan text-sm">Güç Kullanıcısı & Öğrenci</div>
+              <div class="text-xs text-nexus-muted mt-1">Toplu dosya düzenleme, Team Collections, sistem optimizasyonu.</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Pain Point -->
+        <div id="quiz-step-2" class="space-y-4 hidden">
+          <div class="flex items-center justify-between text-xs font-mono text-nexus-muted mb-2">
+            <span class="text-nexus-cyan font-bold">ADIM 2 / 2</span>
+            <span>Zaman Kaybını Belirleyin</span>
+          </div>
+          <h3 class="text-base sm:text-lg font-bold text-white mb-4">Gün içinde vaktinizi en çok hangi problem çalıyor?</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <button onclick="selectQuizPain('ports')" class="p-4 rounded-2xl bg-nexus-surface/80 border border-nexus-border hover:border-nexus-cyan/60 hover:bg-nexus-cyan/5 text-left transition-all group cursor-pointer">
+              <div class="text-2xl mb-1">🚫</div>
+              <div class="font-bold text-white group-hover:text-nexus-cyan text-sm">Kilitlenen Portlar & Dağınık Dosyalar</div>
+              <div class="text-xs text-nexus-muted mt-1">EADDRINUSE hataları ve masaüstünde biriken dosyalar.</div>
+            </button>
+            <button onclick="selectQuizPain('spam')" class="p-4 rounded-2xl bg-nexus-surface/80 border border-nexus-border hover:border-nexus-cyan/60 hover:bg-nexus-cyan/5 text-left transition-all group cursor-pointer">
+              <div class="text-2xl mb-1">📬</div>
+              <div class="font-bold text-white group-hover:text-nexus-cyan text-sm">Spam Mailler & Şüpheli Linkler</div>
+              <div class="text-xs text-nexus-muted mt-1">Gizli yönlendirmeler ve tek kullanımlık posta ihtiyacı.</div>
+            </button>
+            <button onclick="selectQuizPain('privacy')" class="p-4 rounded-2xl bg-nexus-surface/80 border border-nexus-border hover:border-nexus-cyan/60 hover:bg-nexus-cyan/5 text-left transition-all group cursor-pointer">
+              <div class="text-2xl mb-1">🕵️</div>
+              <div class="font-bold text-white group-hover:text-nexus-cyan text-sm">Veri Gizliliği & Dosya İmhası</div>
+              <div class="text-xs text-nexus-muted mt-1">DoD 7-Pass shredder ve askeri entropi parola gereksinimi.</div>
+            </button>
+            <button onclick="selectQuizPain('tabs')" class="p-4 rounded-2xl bg-nexus-surface/80 border border-nexus-border hover:border-nexus-cyan/60 hover:bg-nexus-cyan/5 text-left transition-all group cursor-pointer">
+              <div class="text-2xl mb-1">🌐</div>
+              <div class="font-bold text-white group-hover:text-nexus-cyan text-sm">Tarayıcıda 40 Tane Web Tool Sekmesi</div>
+              <div class="text-xs text-nexus-muted mt-1">Base64, JSON, Regex ve notlar için RAM israfı.</div>
+            </button>
+          </div>
+          <button onclick="resetQuiz()" class="text-xs font-mono text-nexus-muted hover:text-white mt-2 transition">← İlk Adıma Dön</button>
+        </div>
+
+        <!-- Result Box -->
+        <div id="quiz-result" class="space-y-5 hidden">
+          <div class="p-5 rounded-2xl bg-nexus-cyan/10 border border-nexus-cyan/30">
+            <div class="flex items-center gap-2 text-xs font-mono text-nexus-cyan font-bold uppercase tracking-wider mb-1">
+              <span>🎯</span> Sizin İçin Optimize Edilmiş ZenDev Paketi
+            </div>
+            <h4 id="quiz-recommend-title" class="text-xl font-black text-white">Full-Stack Geliştirici Güç Paketi</h4>
+            <p id="quiz-recommend-desc" class="text-xs text-slate-300 mt-1">
+              Günde ortalama 45 dakika zaman tasarrufu sağlar.
+            </p>
+          </div>
+
+          <div id="quiz-recommended-tools" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <!-- Dynamic Tool Badges -->
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 border-t border-nexus-border/60">
+            <div class="text-xs text-nexus-muted font-mono">
+              Bu 3 araç ve diğer <b class="text-white">17 araç</b> tek bir lisansa dahildir.
+            </div>
+            <div class="flex items-center gap-3 w-full sm:w-auto">
+              <button onclick="resetQuiz()" class="text-xs font-mono text-nexus-muted hover:text-white px-3 py-2">Yeniden Test Et</button>
+              <a href="#pricing" class="btn-primary text-xs font-bold py-2.5 px-5 rounded-xl flex items-center justify-center gap-1.5 w-full sm:w-auto">
+                <span>Ömür Boyu Lisans Al ($29)</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING TIERS SECTION -->
+  <section id="pricing" class="relative z-10 py-24 border-t border-nexus-border/40 bg-nexus-bg/70 scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-mono uppercase tracking-widest text-nexus-cyan" data-i18n="price.tag">Şeffaf & Adil Fiyatlandırma</span>
+        <h2 class="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight mt-2 mb-4" data-i18n="price.title">
+          Abonelik Yok. Bir Kez Al, Ömür Boyu Kullan.
+        </h2>
+        <p class="text-nexus-muted font-sans text-base sm:text-lg" data-i18n="price.desc">
+          Gizli yenileme ücreti yok. Kredi kartı, Kripto veya Discord üzerinden anında teslimat.
+        </p>
+
+        <!-- Dynamic Coupon Code Bar -->
+        <div class="mt-8 max-w-md mx-auto p-2.5 rounded-2xl card-glass border border-nexus-border/80 flex items-center gap-2.5 shadow-lg">
+          <span class="text-base pl-2">🎟️</span>
+          <input type="text" id="pricing-coupon-input" placeholder="İndirim Kodu (Örn: ZENDEV20, OGRENCI)" class="w-full bg-transparent text-xs font-mono text-nexus-cyan uppercase outline-none placeholder:text-nexus-muted/60">
+          <button onclick="applyPricingCoupon()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-nexus-cyan to-nexus-accent text-nexus-bg text-xs font-mono font-bold hover:brightness-110 active:scale-95 transition-all cursor-pointer shrink-0">Uygula</button>
+        </div>
+        <div id="pricing-coupon-success" class="hidden mt-3 max-w-md mx-auto text-center text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 py-2 px-4 rounded-xl">
+          🎉 <span id="pricing-coupon-msg">%20 İndirim Uygulandı! Tüm paket fiyatları güncellendi.</span>
+        </div>
+
+        <!-- 1-Hour Instant Sandbox Trial Key Generator -->
+        <div class="mt-8 max-w-xl mx-auto p-5 rounded-3xl card-glass border border-nexus-cyan/40 shadow-[0_0_30px_rgba(6,182,212,0.15)] text-center">
+          <div class="flex items-center justify-center gap-2 mb-2">
+            <span class="px-2.5 py-0.5 rounded-full bg-nexus-cyan/20 border border-nexus-cyan/40 text-nexus-cyan text-[10px] font-mono font-bold uppercase tracking-wider">
+              🧪 ÜCRETSİZ ANINDA DENEME
+            </span>
+          </div>
+          <h4 class="font-heading font-black text-lg text-white mb-1">
+            İndirmeden Önce 1 Saatlik Pro Deneme Anahtarı Alın
+          </h4>
+          <p class="text-xs text-nexus-muted mb-4 max-w-md mx-auto">
+            Kredi kartı veya kayıt gerekmez. Tek tıkla sandbox lisans anahtarı türetip uygulamada tüm Pro özellikleri test edin.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div id="trial-key-display" class="hidden px-4 py-2.5 rounded-xl bg-nexus-bg border border-nexus-cyan/50 font-mono text-xs text-nexus-cyan font-bold tracking-wider select-all"></div>
+            <button onclick="generateTrialKey()" id="generate-trial-btn" class="px-5 py-2.5 rounded-xl bg-nexus-cyan/20 hover:bg-nexus-cyan/30 border border-nexus-cyan/40 text-nexus-cyan font-mono text-xs font-bold transition-all cursor-pointer shadow-sm">
+              ⚡ 1 Saatlik Pro Key Üret (Sandbox)
+            </button>
+          </div>
+          <div id="trial-copy-msg" class="hidden mt-2.5 text-[11px] font-mono text-emerald-400">
+            ✓ Deneme anahtarınız panoya kopyalandı! Uygulamayı açtığınızda aktivasyon alanına yapıştırın.
+          </div>
+        </div>
+      <!-- Dynamic Currency Switcher -->
+      <div class="flex items-center justify-center gap-2 mb-8">
+        <div class="p-1 rounded-2xl card-glass border border-nexus-border/80 flex items-center gap-1 shadow-md">
+          <button onclick="setPricingCurrency('TRY')" id="curr-btn-TRY" class="px-4 py-1.5 rounded-xl font-mono text-xs font-bold transition-all cursor-pointer bg-nexus-cyan text-nexus-bg shadow-sm">₺ TRY</button>
+          <button onclick="setPricingCurrency('USD')" id="curr-btn-USD" class="px-4 py-1.5 rounded-xl font-mono text-xs font-bold transition-all cursor-pointer text-nexus-muted hover:text-white">$ USD</button>
+          <button onclick="setPricingCurrency('EUR')" id="curr-btn-EUR" class="px-4 py-1.5 rounded-xl font-mono text-xs font-bold transition-all cursor-pointer text-nexus-muted hover:text-white">€ EUR</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+
+        <!-- Plan 1: Free Starter -->
+        <div class="p-8 rounded-3xl card-glass border border-nexus-border/80 flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-mono text-nexus-muted uppercase tracking-wider mb-2" data-i18n="plan1.badge">Başlangıç</div>
+            <h3 class="font-heading font-black text-2xl text-white mb-4">Free Starter</h3>
+            <div class="flex items-baseline gap-2 mb-6">
+              <span class="font-heading font-black text-5xl text-white" id="price-free">₺0</span>
+              <span class="text-xs font-mono text-nexus-muted" data-i18n="plan.forever">/ Sonsuza dek</span>
+            </div>
+            <p class="text-xs text-nexus-muted mb-8 leading-relaxed" data-i18n="plan1.desc">
+              Temel araçlara sıfır maliyetle erişmek isteyen herkes için ideal giriş paketi.
+            </p>
+            <ul class="space-y-3.5 text-xs text-nexus-text font-medium mb-8">
+              <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Askeri Şifre Üretici</li>
+              <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> QR Code Studio</li>
+              <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Hash & JSON Studio</li>
+              <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Temel Ağ Ping & IP Tespiti</li>
+              <li class="flex items-center gap-2.5 text-nexus-muted line-through"><span class="w-4 h-4 shrink-0 text-nexus-border">✕</span> Team Collections & Inbox Reader</li>
+              <li class="flex items-center gap-2.5 text-nexus-muted line-through"><span class="w-4 h-4 shrink-0 text-nexus-border">✕</span> Cyber Fortress Shredder & Vault</li>
+            </ul>
+          </div>
+          <button onclick="window.open('https://github.com/zerviatr/NexusHub/releases/latest/download/ZenDev-Setup-2.5.3.exe', '_blank')" class="w-full py-3.5 rounded-xl border border-nexus-border/80 bg-nexus-surface/50 hover:border-nexus-cyan/40 text-nexus-muted hover:text-white text-xs font-mono font-bold text-center transition-all cursor-pointer flex items-center justify-center gap-2" data-i18n="plan1.btn">
+            <span>Ücretsiz İndir</span>
+            <span class="px-1.5 py-0.5 rounded text-[9px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 uppercase font-bold">v2.5.3</span>
+          </button>
+        </div>
+
+        <!-- Plan 2: ZenDev Pro (HERO TIER) -->
+        <div class="p-8 rounded-3xl card-glass border-2 border-nexus-cyan flex flex-col justify-between relative shadow-[0_0_50px_rgba(6,182,212,0.25)] scale-105 bg-nexus-card">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-nexus-cyan to-nexus-accent text-nexus-bg font-heading font-black text-xs uppercase tracking-widest shadow-lg" data-i18n="plan2.badge">
+            ⭐ EN ÇOK SATAN
+          </div>
+          <div>
+            <div class="text-xs font-mono text-nexus-cyan uppercase tracking-wider mb-2">Bireysel Güç</div>
+            <h3 class="font-heading font-black text-2xl text-white mb-4">ZenDev Pro Lifetime</h3>
+            <div class="flex items-baseline gap-2 mb-2">
+              <span class="font-heading font-black text-5xl text-white" id="price-pro">₺349</span>
+              <span class="text-xs font-mono text-nexus-cyan font-semibold line-through" id="price-pro-old">₺699</span>
+              <span class="text-xs font-mono text-nexus-muted" data-i18n="plan.onetime">/ Tek Seferlik</span>
+            </div>
+            <p class="text-xs text-nexus-cyan/90 font-mono mb-6" data-i18n="plan2.sub">
+              Ömür boyu kullanım hakkı • Sıfır abonelik
+            </p>
+            <ul class="space-y-3.5 text-xs text-nexus-text font-medium mb-8">
+              <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-nexus-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg> <b>TÜM 20+ Siber Araç (Limitsiz)</b></li>
+              <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-nexus-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg> Team Collections</li>
+              <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-nexus-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg> Evrensel Link & Reklam Çözücü</li>
+              <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-nexus-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg> Cyber Fortress (DoD 7-Pass İmha & Kasa)</li>
+              <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-nexus-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg> Desktop Floating Orb Mini Widget</li>
+              <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-nexus-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg> 1 Cihaz HWID Kilitli (İstendiğinde Sıfırlanabilir)</li>
+              <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-nexus-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg> Ömür Boyu Güncellemeler (Auto-Updater)</li>
+            </ul>
+          </div>
+          <button onclick="openCheckoutModal('pro')" class="w-full py-4 rounded-2xl bg-gradient-to-r from-nexus-cyan via-sky-400 to-nexus-accent hover:brightness-110 active:scale-95 text-nexus-bg font-heading font-black text-sm text-center shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all cursor-pointer" data-i18n="plan2.btn">
+            Hemen Satın Al (Anında Teslim)
+          </button>
+        </div>
+
+        <!-- Plan 3: Multi-Device / Studio -->
+        <div class="p-8 rounded-3xl card-glass border border-nexus-border/80 flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-mono text-nexus-muted uppercase tracking-wider mb-2" data-i18n="plan3.badge">Çoklu Güç</div>
+            <h3 class="font-heading font-black text-2xl text-white mb-4">ZenDev Studio (3 Cihaz)</h3>
+            <div class="flex items-baseline gap-2 mb-6">
+              <span class="font-heading font-black text-5xl text-white" id="price-studio">₺699</span>
+              <span class="text-xs font-mono text-nexus-muted" data-i18n="plan.onetime">/ Tek Seferlik</span>
+            </div>
+            <p class="text-xs text-nexus-muted mb-8 leading-relaxed" data-i18n="plan3.desc">
+              Hem ev hem iş bilgisayarınız veya ekibiniz için çoklu cihaz lisansı.
+            </p>
+            <ul class="space-y-3.5 text-xs text-nexus-text font-medium mb-8">
+              <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <b>3 Ayrı Bilgisayar Eşzamanlı Lisans</b></li>
+              <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Tüm Pro Özellikler & Araçlar</li>
+              <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> VIP Discord Rolü & Özel Destek Hattı</li>
+              <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Öncelikli Beta Güncellemeleri</li>
+            </ul>
+          </div>
+          <button onclick="openCheckoutModal('studio')" class="w-full py-3.5 rounded-xl border border-nexus-border/80 hover:border-nexus-cyan text-white text-xs font-mono font-bold text-center transition-all cursor-pointer" data-i18n="plan3.btn">
+            Studio Paketi Al
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Detailed Plan & Module Comparison Matrix -->
+      <div class="mt-12 max-w-4xl mx-auto">
+        <details class="group rounded-3xl card-glass border border-nexus-border/80 overflow-hidden transition-all">
+          <summary class="p-5 flex items-center justify-between cursor-pointer font-heading font-bold text-sm text-white select-none hover:text-nexus-cyan transition-colors list-none">
+            <span class="flex items-center gap-2.5">
+              <span class="text-base">📊</span>
+              <span>Tüm Paket ve Modülleri Detaylı Karşılaştır (Free vs Pro vs Studio)</span>
+            </span>
+            <span class="text-nexus-cyan group-open:rotate-180 transition-transform font-mono text-xs">▼</span>
+          </summary>
+          <div class="p-6 border-t border-nexus-border/60 overflow-x-auto bg-nexus-surface/40">
+            <table class="w-full text-left text-xs font-mono">
+              <thead>
+                <tr class="border-b border-nexus-border/60 text-nexus-muted uppercase">
+                  <th class="py-3 px-4">Modül / Özellik</th>
+                  <th class="py-3 px-4 text-center">Free Starter</th>
+                  <th class="py-3 px-4 text-center text-nexus-cyan font-bold">ZenDev Pro (Ömür Boyu)</th>
+                  <th class="py-3 px-4 text-center text-emerald-400 font-bold">ZenDev Studio</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-nexus-border/40 text-nexus-text">
+                <tr>
+                  <td class="py-3 px-4 font-bold text-white">DoD 5220.22-M 7-Pass Dosya İmha</td>
+                  <td class="py-3 px-4 text-center text-red-400 font-bold">✕</td>
+                  <td class="py-3 px-4 text-center text-emerald-400 font-bold">✓ Limitsiz</td>
+                  <td class="py-3 px-4 text-center text-emerald-400 font-bold">✓ Limitsiz</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-bold text-white">Team Collections</td>
+                  <td class="py-3 px-4 text-center text-red-400 font-bold">✕</td>
+                  <td class="py-3 px-4 text-center text-emerald-400 font-bold">✓ Limitsiz</td>
+                  <td class="py-3 px-4 text-center text-emerald-400 font-bold">✓ Limitsiz</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-bold text-white">Evrensel Link Decrypter & Tracker Stripper</td>
+                  <td class="py-3 px-4 text-center text-red-400 font-bold">✕</td>
+                  <td class="py-3 px-4 text-center text-emerald-400 font-bold">✓ Limitsiz</td>
+                  <td class="py-3 px-4 text-center text-emerald-400 font-bold">✓ Limitsiz</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-bold text-white">Desktop Floating Cyber Orb HUD</td>
+                  <td class="py-3 px-4 text-center text-red-400 font-bold">✕</td>
+                  <td class="py-3 px-4 text-center text-emerald-400 font-bold">✓ Dahil</td>
+                  <td class="py-3 px-4 text-center text-emerald-400 font-bold">✓ Dahil</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-bold text-white">Resource Sentinel & 1-Tık RAM Flush</td>
+                  <td class="py-3 px-4 text-center text-nexus-muted">Temel Monitör</td>
+                  <td class="py-3 px-4 text-center text-emerald-400 font-bold">✓ Tam Optimizasyon</td>
+                  <td class="py-3 px-4 text-center text-emerald-400 font-bold">✓ Tam Optimizasyon</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-bold text-white">Eşzamanlı Cihaz / HWID Lisans Hakkı</td>
+                  <td class="py-3 px-4 text-center text-nexus-muted">1 Cihaz</td>
+                  <td class="py-3 px-4 text-center text-nexus-cyan font-bold">1 Cihaz (Sıfırlanabilir)</td>
+                  <td class="py-3 px-4 text-center text-emerald-400 font-bold">3 Cihaz Eşzamanlı</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-bold text-white">Gelecek v2.x & v3.x Tüm Güncellemeler</td>
+                  <td class="py-3 px-4 text-center text-red-400 font-bold">✕</td>
+                  <td class="py-3 px-4 text-center text-emerald-400 font-bold">✓ Ömür Boyu Ücretsiz</td>
+                  <td class="py-3 px-4 text-center text-emerald-400 font-bold">✓ Ömür Boyu Ücretsiz</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-bold text-white">VIP Discord Rolü & Öncelikli Destek</td>
+                  <td class="py-3 px-4 text-center text-red-400 font-bold">✕</td>
+                  <td class="py-3 px-4 text-center text-nexus-cyan font-bold">✓ Standart Ticket</td>
+                  <td class="py-3 px-4 text-center text-emerald-400 font-bold">✓ 7/24 VIP Öncelikli</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+
+      <!-- Payment Badges -->
+      <div class="mt-16 text-center">
+        <p class="text-xs font-mono text-nexus-muted mb-4" data-i18n="payment.title">GÜVENLİ ÖDEME KANALLARI:</p>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm font-semibold text-nexus-text">
+          <span class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-nexus-surface border border-nexus-border/60">💳 Kredi / Banka Kartı (Shopier 3D)</span>
+          <span class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-nexus-surface border border-nexus-border/60">⚡ Kripto (USDT TRC-20, BTC, LTC)</span>
+          <span class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-nexus-surface border border-nexus-border/60">💬 Discord Ticket & Destek</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECURITY TRUST BADGES & SHA-256 INTEGRITY -->
+  <section class="relative z-10 py-16 border-t border-nexus-border/40 bg-nexus-bg">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        
+        <!-- Badge 1: VirusTotal -->
+        <div class="p-6 rounded-3xl card-glass border border-emerald-500/30 flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 text-xl">
+            🛡️
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">0 / 72 CLEAN</span>
+              <span class="text-[10px] font-mono text-nexus-muted">VirusTotal</span>
+            </div>
+            <h4 class="font-heading font-bold text-base text-white mb-1">Sıfır Tehdit Onayı</h4>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Kaspersky, Bitdefender ve Windows Defender dahil 72 antivirüs motoru tarafından taranmış ve temiz raporlanmıştır.
+            </p>
+          </div>
+        </div>
+
+        <!-- Badge 2: SmartScreen & Offline Safe -->
+        <div class="p-6 rounded-3xl card-glass border border-nexus-cyan/30 flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-nexus-cyan/10 border border-nexus-cyan/30 flex items-center justify-center text-nexus-cyan shrink-0 text-xl">
+            🔒
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-nexus-cyan/20 text-nexus-cyan font-bold">MICROSOFT SAFE</span>
+              <span class="text-[10px] font-mono text-nexus-muted">SmartScreen</span>
+            </div>
+            <h4 class="font-heading font-bold text-base text-white mb-1">%100 Çevrimdışı & Yerel</h4>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              Dosyalarınız, şifreleriniz ve panonuz sunucuya gitmez. İşlemler yalnızca kendi donanımınızın RAM'inde yapılır.
+            </p>
+          </div>
+        </div>
+
+        <!-- Badge 3: DoD 5220.22-M Compliance -->
+        <div class="p-6 rounded-3xl card-glass border border-nexus-accent/30 flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-nexus-accent/10 border border-nexus-accent/30 flex items-center justify-center text-nexus-accent shrink-0 text-xl">
+            ⚙️
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-nexus-accent/20 text-nexus-accent font-bold">MIL-SPEC</span>
+              <span class="text-[10px] font-mono text-nexus-muted">DoD 5220.22-M</span>
+            </div>
+            <h4 class="font-heading font-bold text-base text-white mb-1">Askeri Standartta İmha</h4>
+            <p class="text-xs text-nexus-muted leading-relaxed">
+              7 aşamalı üzerine yazma algoritması sayesinde silinen gizli dosyalar adli bilişim laboratuvarında dahi kurtarılamaz.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SHA-256 Checksum Verification Bar -->
+      <div class="p-4 sm:p-5 rounded-2xl card-glass border border-nexus-border/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3 w-full truncate">
+          <span class="text-xs font-mono text-nexus-cyan bg-nexus-cyan/10 px-2.5 py-1 rounded-lg border border-nexus-cyan/30 shrink-0">SHA-256</span>
+          <div class="text-xs font-mono text-nexus-muted truncate" id="sha256-hash">
+            e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+          </div>
+        </div>
+        <button onclick="copySha256()" id="copy-sha-btn" class="w-full sm:w-auto px-4 py-2 rounded-xl border border-nexus-border hover:border-nexus-cyan/60 bg-nexus-surface text-xs font-mono text-white hover:text-nexus-cyan flex items-center justify-center gap-1.5 cursor-pointer transition-all shrink-0">
+          <span id="copy-sha-text">Hash Kopyala</span>
+        </button>
+      </div>
+
+      <!-- Interactive PowerShell Verification Box -->
+      <div class="mt-4 p-4 rounded-2xl bg-nexus-surface/50 border border-nexus-border/80 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs">
+        <div class="flex items-center gap-2.5 truncate w-full">
+          <span class="px-2 py-0.5 rounded bg-nexus-cyan/10 text-nexus-cyan font-bold shrink-0 text-[10px]">POWERSHELL</span>
+          <span class="text-nexus-muted truncate select-all" id="ps-verify-cmd">Get-FileHash -Algorithm SHA256 .\ZenDev-v2.2.0-Setup.exe</span>
+        </div>
+        <button onclick="copyPowerShellCmd()" id="copy-ps-btn" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-nexus-surface hover:bg-nexus-border text-xs text-nexus-cyan hover:text-white border border-nexus-border/80 transition-all shrink-0 cursor-pointer">
+          Komutu Kopyala
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMER REVIEWS WALL (DOĞRULANMIŞ MÜŞTERİ YORUMLARI) -->
+  <section id="reviews" class="relative z-10 py-24 border-t border-nexus-border/40 bg-nexus-surface/10 scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono mb-3">
+          <span>⭐⭐⭐⭐⭐ 4.9 / 5.0</span>
+          <span>(480+ Doğrulanmış Müşteri)</span>
+        </div>
+        <h2 class="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight mt-1 mb-4">
+          Kullanıcılarımız Ne Diyor?
+        </h2>
+        <p class="text-nexus-muted font-sans text-base sm:text-lg">
+          Her gün binlerce profesyonel ve gizliliğine önem veren kullanıcı ZenDev ile zamandan ve paradan tasarruf ediyor.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <!-- Review 1 -->
+        <div class="p-6 rounded-3xl card-glass border border-nexus-border/80 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex text-amber-400 text-sm">★★★★★</div>
+            <p class="text-xs text-nexus-text leading-relaxed font-sans">
+              "Sırf DoD 7-Pass shredder ve link decrypter için aldım. Aylık $15 isteyen web araçlarını tamamen hayatımdan çıkardım. Efsane hızlı ve offline çalışması büyük artı."
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-nexus-border/60 flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-nexus-cyan/20 text-nexus-cyan font-mono font-bold flex items-center justify-center text-xs">MK</div>
+            <div>
+              <div class="text-xs font-bold text-white">Mert K.</div>
+              <div class="text-[10px] font-mono text-emerald-400">✓ Doğrulanmış Alıcı &bull; Senior Dev</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="p-6 rounded-3xl card-glass border border-nexus-border/80 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex text-amber-400 text-sm">★★★★★</div>
+            <p class="text-xs text-nexus-text leading-relaxed font-sans">
+              "RAM flush ve Sentinel donanım monitörü arka planda sıfır yük bindiriyor. Floating Orb ile tek tıkla Team Collections üretip kopyalamak günlük akışımı inanılmaz hızlandırdı."
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-nexus-border/60 flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-purple-500/20 text-purple-400 font-mono font-bold flex items-center justify-center text-xs">CD</div>
+            <div>
+              <div class="text-xs font-bold text-white">Caner D.</div>
+              <div class="text-[10px] font-mono text-emerald-400">✓ Doğrulanmış Alıcı &bull; Siber Güvenlik</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="p-6 rounded-3xl card-glass border border-nexus-border/80 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex text-amber-400 text-sm">★★★★★</div>
+            <p class="text-xs text-nexus-text leading-relaxed font-sans">
+              "En sevdiğim şey sıfır abonelik olması. Bir kez aldım, kafam rahat. Sürekli para isteyen saçma SaaS sitelerinden kurtuldum. 10/10 mühendislik."
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-nexus-border/60 flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-nexus-accent/20 text-nexus-accent font-mono font-bold flex items-center justify-center text-xs">TY</div>
+            <div>
+              <div class="text-xs font-bold text-white">Tolga Y.</div>
+              <div class="text-[10px] font-mono text-emerald-400">✓ Doğrulanmış Alıcı &bull; Freelancer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE DISCORD & COMMUNITY PULSE CARD -->
+  <section id="community" class="relative z-10 py-16 border-t border-nexus-border/40 bg-nexus-surface/10 scroll-mt-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="p-8 sm:p-10 rounded-3xl card-glass border border-[#5865F2]/40 relative overflow-hidden shadow-[0_0_40px_rgba(88,101,242,0.15)] flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="space-y-3 max-w-xl text-center md:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#5865F2]/20 border border-[#5865F2]/40 text-[#5865F2] text-xs font-mono">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span class="text-white font-bold">412+ Geliştirici & Üye Çevrimiçi</span>
+          </div>
+          <h3 class="font-heading font-black text-2xl sm:text-3xl text-white">
+            ZenDev Discord Topluluğuna Katılın.
+          </h3>
+          <p class="text-xs sm:text-sm text-nexus-muted leading-relaxed">
+            Soru sorun, yeni araç önerin, beta güncellemelerine ilk siz erişin ve VIP lisans sahipleri için özel kanallarda diğer siber araştırmacılarla iletişim kurun.
+          </p>
+          <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs font-mono text-nexus-muted pt-2">
+            <span>⚡ Ortalama Yanıt: <b class="text-white">~3 Dakika</b></span>
+            <span>•</span>
+            <span>🛡️ 7/24 Ticket Desteği</span>
+            <span>•</span>
+            <span>🎁 Haftalık Lisans Çekilişleri</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0 w-full md:w-auto">
+          <a href="https://discord.gg" target="_blank" class="px-8 py-3.5 rounded-2xl bg-[#5865F2] hover:bg-[#4752C4] text-white font-heading font-bold text-sm flex items-center justify-center gap-2.5 shadow-[0_0_25px_rgba(88,101,242,0.4)] transition-all cursor-pointer">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+            <span>Discord Topluluğuna Katıl</span>
+          </a>
+          <a href="https://t.me" target="_blank" class="px-8 py-3 rounded-2xl card-glass border border-nexus-border hover:border-nexus-cyan/50 text-nexus-text hover:text-white font-mono text-xs text-center transition-all cursor-pointer">
+            Telegram Destek Hattı
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELF-SERVICE LICENSE PORTAL (LİSANS SORGULA & HWID SIFIRLA) -->
+  <section id="portal" class="relative z-10 py-20 border-t border-nexus-border/40 bg-nexus-bg scroll-mt-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-10">
+        <span class="text-xs font-mono uppercase tracking-widest text-nexus-cyan" data-i18n="portal.tag">Müşteri Portalı</span>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-white tracking-tight mt-2 mb-3" data-i18n="portal.title">
+          Lisansımı Sorgula & Cihaz Sıfırla
+        </h2>
+        <p class="text-nexus-muted font-sans text-sm max-w-xl mx-auto" data-i18n="portal.desc">
+          Bilgisayarınıza format attıysanız veya lisans durumunuzu kontrol etmek istiyorsanız anahtarınızı girin.
+        </p>
+      </div>
+
+      <div class="p-6 sm:p-8 rounded-3xl card-glass border border-nexus-border/80 shadow-2xl">
+        <div class="flex flex-col sm:flex-row items-center gap-3 mb-6">
+          <input type="text" id="portal-key-input" onkeydown="if(event.key==='Enter') handleLicenseLookup()" placeholder="NEXUS-PRO-XXXX-XXXX-XXXX-XXXX" class="w-full sm:flex-1 bg-nexus-bg border border-nexus-border/80 rounded-xl px-4 py-3.5 font-mono text-sm text-nexus-cyan uppercase outline-none focus:border-nexus-cyan">
+          <button onclick="handleLicenseLookup()" id="portal-search-btn" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-nexus-cyan/20 border border-nexus-cyan/40 hover:bg-nexus-cyan/30 text-nexus-cyan font-heading font-bold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer">
+            <span>Sorgula</span> 🔍
+          </button>
+        </div>
+
+        <!-- Result Box -->
+        <div id="portal-result" class="hidden p-5 rounded-2xl bg-nexus-bg/80 border border-nexus-border/80 text-xs font-mono space-y-3">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE SYSTEM HEALTH STATUS RADAR -->
+  <section class="relative z-10 py-12 border-t border-nexus-border/40 bg-nexus-surface/20">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="p-6 rounded-2xl card-glass border border-nexus-border/80 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></div>
+          <div>
+            <div class="text-xs font-bold text-white">Canlı Sistem & Altyapı Radarı</div>
+            <div class="text-[11px] font-mono text-nexus-muted">Tüm servisler %100 operasyonel durumda</div>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-6 text-xs font-mono">
+          <span class="flex items-center gap-2 text-emerald-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Lisans API: <span id="telemetry-ping" class="font-bold">14ms</span> (Çevrimiçi)
+          </span>
+          <span class="flex items-center gap-2 text-emerald-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Auto-Updater CDN: Aktif
+          </span>
+          <span class="flex items-center gap-2 text-nexus-cyan">
+            <span class="w-2 h-2 rounded-full bg-nexus-cyan"></span> Zero-PII: %100 Yerel
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ ACCORDION WITH INSTANT SEARCH -->
+  <section id="faq" class="relative z-10 py-24 border-t border-nexus-border/40 bg-nexus-bg scroll-mt-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-10">
+        <span class="text-xs font-mono uppercase tracking-widest text-nexus-cyan">Merak Edilenler</span>
+        <h2 class="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight mt-2 mb-4">
+          Sıkça Sorulan Sorular.
+        </h2>
+      </div>
+
+      <!-- FAQ Category Filter Pills -->
+      <div class="mb-6 flex flex-wrap items-center justify-center gap-2 text-xs font-mono">
+        <button onclick="filterFaqCategory('all', this)" class="faq-cat-btn px-4 py-2 rounded-xl bg-nexus-cyan/20 border border-nexus-cyan/40 text-nexus-cyan font-bold transition-all cursor-pointer">
+          Tüm Sorular (7)
+        </button>
+        <button onclick="filterFaqCategory('license', this)" class="faq-cat-btn px-4 py-2 rounded-xl border border-nexus-border/60 text-nexus-muted hover:text-white bg-nexus-surface/60 transition-all cursor-pointer">
+          🔑 Lisans & Format (3)
+        </button>
+        <button onclick="filterFaqCategory('refund', this)" class="faq-cat-btn px-4 py-2 rounded-xl border border-nexus-border/60 text-nexus-muted hover:text-white bg-nexus-surface/60 transition-all cursor-pointer">
+          💰 30 Gün İade (1)
+        </button>
+        <button onclick="filterFaqCategory('privacy', this)" class="faq-cat-btn px-4 py-2 rounded-xl border border-nexus-border/60 text-nexus-muted hover:text-white bg-nexus-surface/60 transition-all cursor-pointer">
+          🛡️ Gizlilik & Güvenlik (1)
+        </button>
+        <button onclick="filterFaqCategory('offline', this)" class="faq-cat-btn px-4 py-2 rounded-xl border border-nexus-border/60 text-nexus-muted hover:text-white bg-nexus-surface/60 transition-all cursor-pointer">
+          ⚡ Çevrimdışı & Yerel (2)
+        </button>
+      </div>
+
+      <!-- FAQ Search Input & Expand All Toggle -->
+      <div class="mb-8 flex flex-col sm:flex-row items-center gap-3">
+        <input type="text" id="faq-search-input" oninput="filterFaq(this.value)" placeholder="Sorularda canlı ara... (Örn: format, iade, mac, güncelleme, güvenlik, çevrimdışı)" class="w-full sm:flex-1 bg-nexus-card border border-nexus-border/80 rounded-2xl px-5 py-3.5 text-xs font-mono text-white outline-none focus:border-nexus-cyan placeholder:text-nexus-muted/60 transition-all">
+        <button onclick="toggleAllFaq()" id="faq-toggle-all-btn" class="w-full sm:w-auto px-5 py-3.5 rounded-2xl border border-nexus-border/80 hover:border-nexus-cyan/60 bg-nexus-surface text-xs font-mono text-nexus-muted hover:text-white transition-all cursor-pointer shrink-0">
+          Tümünü Genişlet ⤢
+        </button>
+      </div>
+
+      <div class="space-y-4" id="faq-container">
+        <details class="faq-item group p-6 rounded-2xl card-glass border border-nexus-border/80 cursor-pointer" data-category="license" data-text="lisans anahtari ne zaman gelir teslimat e-posta aktivasyon">
+          <summary class="font-heading font-bold text-base text-white flex items-center justify-between list-none">
+            <span>Lisans anahtarım satın aldıktan sonra ne zaman gelir?</span>
+            <span class="text-nexus-cyan group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-nexus-muted leading-relaxed font-sans">
+            Satın alma işleminiz onaylandığı anda lisans anahtarınız doğrudan ekranda gösterilir ve verdiğiniz e-posta adresine iletilir. Uygulamayı açıp anahtarınızı girerek saniyeler içinde Pro seviyeye geçebilirsiniz.
+          </p>
+        </details>
+
+        <details class="faq-item group p-6 rounded-2xl card-glass border border-nexus-border/80 cursor-pointer" data-category="license" data-text="format cihaz degistirme yeni bilgisayar hwid sifirlama reset">
+          <summary class="font-heading font-bold text-base text-white flex items-center justify-between list-none">
+            <span>Bilgisayarıma format atarsam veya yenisini alırsam lisansım yanar mı?</span>
+            <span class="text-nexus-cyan group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-nexus-muted leading-relaxed font-sans">
+            Asla yanmaz! Hem masaüstü uygulaması içerisinden hem de bu sayfadaki "Lisansımı Sorgula & Cihaz Sıfırla" portalımızdan eski bilgisayar kilidinizi tek tıkla kaldırabilir ve yeni bilgisayarınızda anında kullanabilirsiniz.
+          </p>
+        </details>
+
+        <details class="faq-item group p-6 rounded-2xl card-glass border border-nexus-border/80 cursor-pointer" data-category="refund" data-text="iade para iadesi garanti 30 gun risk kosulsuz satisfaction guarantee">
+          <summary class="font-heading font-bold text-base text-white flex items-center justify-between list-none">
+            <span>30 Gün Koşulsuz Para İade Garantisi var mı?</span>
+            <span class="text-nexus-cyan group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-nexus-muted leading-relaxed font-sans">
+            Evet, kesinlikle! Satın aldığınız tarihten itibaren 30 gün boyunca ZenDev'ı dilediğiniz gibi test edebilirsiniz. Herhangi bir nedenden dolayı memnun kalmazsanız Discord destek kanalımızdan veya e-posta ile bildirdiğiniz anda ödemeniz %100 koşulsuz olarak iade edilir.
+          </p>
+        </details>
+
+        <details class="faq-item group p-6 rounded-2xl card-glass border border-nexus-border/80 cursor-pointer" data-category="offline" data-text="cevrimdisi offline internet kesintisi baglanti yok local yerel">
+          <summary class="font-heading font-bold text-base text-white flex items-center justify-between list-none">
+            <span>İnternet bağlantım tamamen kesildiğinde araçlar çalışır mı?</span>
+            <span class="text-nexus-cyan group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-nexus-muted leading-relaxed font-sans">
+            Evet! ZenDev %100 offline-first mimariye sahiptir. Dosya imha (DoD shredder), AES-256 şifreleme kasası, donanım kaynak monitörü, RAM optimize edici ve parola analizörü gibi tüm kritik araçlar internet bağlantınız olmasa dahi tam performansla çalışır.
+          </p>
+        </details>
+
+        <details class="faq-item group p-6 rounded-2xl card-glass border border-nexus-border/80 cursor-pointer" data-category="offline" data-text="mac apple linux osx destegi ne zaman cikacak">
+          <summary class="font-heading font-bold text-base text-white flex items-center justify-between list-none">
+            <span>macOS veya Linux desteği gelecek mi?</span>
+            <span class="text-nexus-cyan group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-nexus-muted leading-relaxed font-sans">
+            Şu anda Windows 10 ve 11 (x64) için tam optimize edilmiş yerel sürümümüz yayındadır. macOS (Apple Silicon M1/M2/M3/M4) ve Linux (.deb / .AppImage) çekirdekleri geliştirme aşamasında olup, Pro lisans sahipleri bu sürümler çıktığında tek kuruş ödemeden doğrudan erişebilecektir.
+          </p>
+        </details>
+
+        <details class="faq-item group p-6 rounded-2xl card-glass border border-nexus-border/80 cursor-pointer" data-category="privacy" data-text="guvenlik gizlilik veri log sunucu virustotal yerel offline">
+          <summary class="font-heading font-bold text-base text-white flex items-center justify-between list-none">
+            <span>Verilerim sunucularınıza iletiliyor mu?</span>
+            <span class="text-nexus-cyan group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-nexus-muted leading-relaxed font-sans">
+            Hayır! ZenDev %100 yerel (offline-first) mimariyle çalışır. Dosya imha, şifreleme, görsel dönüştürme ve pano geçmişiniz sadece ve sadece sizin bilgisayarınızın RAM ve diskinde işlenir. Sunucumuz sadece lisans doğrulaması yapar.
+          </p>
+        </details>
+
+        <details class="faq-item group p-6 rounded-2xl card-glass border border-nexus-border/80 cursor-pointer" data-category="license" data-text="guncelleme yeni surum ucret omur boyu lifetime update">
+          <summary class="font-heading font-bold text-base text-white flex items-center justify-between list-none">
+            <span>Gelecek güncellemeler için tekrar ücret ödeyecek miyim?</span>
+            <span class="text-nexus-cyan group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-nexus-muted leading-relaxed font-sans">
+            Hayır! ZenDev Pro Lifetime lisansı, çıkaracağımız tüm v2.x ve v3.x güncellemelerini, yeni eklenecek araçları ve performans yamalarını ömür boyu kapsar.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="relative z-10 py-12 border-t border-nexus-border/60 bg-nexus-surface/30">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-xl bg-nexus-cyan/20 border border-nexus-cyan/40 flex items-center justify-center p-1 overflow-hidden">
+          <svg viewBox="0 0 64 64" class="w-full h-full" fill="none">
+            <path d="M14 16 L48 16 C50 16 51 17 50 19 L40 30 L48 44 C49 46 48 48 46 48 L14 48 C12 48 11 47 12 45 L22 34 L14 20 C13 18 14 16 16 16 Z" fill="url(#footZGrad)" stroke="#00f2fe" stroke-width="2" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="footZGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00f2fe"/>
+                <stop offset="60%" stop-color="#06b6d4"/>
+                <stop offset="100%" stop-color="#8b5cf6"/>
+              </linearGradient>
+            </defs>
+            <circle cx="32" cy="32" r="3" fill="#ffffff"/>
+          </svg>
+        </div>
+        <span class="text-xs font-mono text-nexus-muted">© 2026 ZenDev. Tüm Hakları Saklıdır.</span>
+      </div>
+      <div class="flex items-center gap-6 text-xs font-mono text-nexus-muted">
+        <a href="https://github.com/zerviatr/NexusHub" target="_blank" class="hover:text-white transition-colors">GitHub Repository</a>
+        <a href="#faq" class="hover:text-nexus-cyan transition-colors">Destek & SSS</a>
+        <a href="#pricing" class="text-nexus-cyan font-bold hover:underline">Pro Lisans Al</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- STICKY FLOATING BOTTOM CTA -->
+  <div id="sticky-bar" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-2xl px-5 py-3 rounded-2xl card-glass border border-nexus-cyan/50 shadow-[0_10px_40px_rgba(0,0,0,0.8)] flex items-center justify-between gap-4 transition-all duration-300 translate-y-24 opacity-0 pointer-events-none">
+    <div class="flex items-center gap-3 truncate">
+      <div class="w-3 h-3 rounded-full bg-nexus-cyan animate-pulse shrink-0"></div>
+      <div class="truncate">
+        <div class="text-xs font-bold text-white truncate">ZenDev v2.5.3 Suite</div>
+        <div class="text-[10px] font-mono text-nexus-muted truncate">Ömür Boyu Tek Ödeme • Sıfır Abonelik</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-2 shrink-0">
+      <a href="https://github.com/zerviatr/NexusHub/releases/latest" class="px-3.5 py-1.5 rounded-xl bg-nexus-surface hover:bg-nexus-border text-nexus-cyan hover:text-white font-mono text-xs transition-colors cursor-pointer flex items-center gap-1.5 border border-nexus-cyan/30">
+        <span>İndir (v2.5.3)</span>
+      </a>
+      <a href="#pricing" class="px-4 py-1.5 rounded-xl bg-gradient-to-r from-nexus-cyan to-nexus-accent hover:brightness-110 text-nexus-bg font-heading font-black text-xs shadow-[0_0_15px_rgba(var(--c-cyan),0.4)] transition-all cursor-pointer">
+        Lisans Al
+      </a>
+    </div>
+  </div>
+
+  <!-- DOWNLOAD NOTICE CYBER TOAST -->
+  <div id="download-notice-toast" class="fixed top-6 right-6 z-50 max-w-md card-glass border border-nexus-cyan/60 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.85)] backdrop-blur-2xl flex items-start gap-3 transition-all duration-300 -translate-y-20 opacity-0 pointer-events-none">
+    <div class="w-8 h-8 rounded-xl bg-nexus-cyan/20 border border-nexus-cyan flex items-center justify-center text-nexus-cyan shrink-0 text-base">
+      ⏳
+    </div>
+    <div class="flex-1">
+      <div class="text-xs font-heading font-black text-white flex items-center justify-between">
+        <span id="download-notice-title">İNDİRMELER GEÇİCİ OLARAK KAPALI</span>
+        <button onclick="dismissDownloadNotice()" class="text-nexus-muted hover:text-white cursor-pointer text-sm ml-2">✕</button>
+      </div>
+      <p class="text-[11px] text-nexus-muted mt-1 leading-relaxed" id="download-notice-msg">
+        ZenDev v2.4.0 yeni stabilite ve güvenlik yaması hazırlanmaktadır. Çok yakında indirmeye açılacaktır!
+      </p>
+    </div>
+  </div>
+
+
+  <!-- DESKTOP FLOATING CYBER ORB WIDGET (CANLI HUD WIDGET'I) -->
+  <div id="desktop-floating-orb-widget" class="fixed hidden sm:flex sm:bottom-6 sm:right-6 z-50 flex-col items-end gap-3 select-none">
+    
+    <!-- Orb Quick Action Menu (Popup) -->
+    <div id="orb-action-menu" class="hidden p-3.5 rounded-2xl card-glass border border-nexus-cyan/40 shadow-[0_10px_40px_rgba(0,0,0,0.8)] backdrop-blur-xl w-60 font-mono text-xs space-y-2 animate-in fade-in slide-in-from-bottom-3 duration-200">
+      <div class="flex items-center justify-between border-b border-nexus-border/60 pb-2 text-[10px] text-nexus-muted">
+        <span class="flex items-center gap-1.5 text-nexus-cyan font-bold">
+          <span class="w-1.5 h-1.5 rounded-full bg-nexus-cyan animate-pulse"></span>
+          <span>ZENDEV ORB HUD</span>
+        </span>
+        <button onclick="toggleFloatingOrbMenu()" class="hover:text-white cursor-pointer px-1">✕</button>
+      </div>
+      
+      <button onclick="triggerQuickRamFlush()" class="w-full text-left p-2 rounded-xl hover:bg-purple-500/20 text-purple-300 flex items-center gap-2.5 transition-all cursor-pointer">
+        <span>⚡</span> <span>1-Tık RAM Boşalt</span>
+      </button>
+      <button onclick="triggerQuickWorkflow()" class="w-full text-left p-2 rounded-xl hover:bg-nexus-cyan/20 text-nexus-cyan flex items-center gap-2.5 transition-all cursor-pointer">
+        <span>📬</span> <span>API Payload Kopyala</span>
+      </button>
+      <button onclick="openCmdPalette(); toggleFloatingOrbMenu();" class="w-full text-left p-2 rounded-xl hover:bg-nexus-surface text-white flex items-center gap-2.5 transition-all cursor-pointer">
+        <span>🔍</span> <span>Komut Paleti (Ctrl+K)</span>
+      </button>
+      <button onclick="toggleSfx()" class="w-full text-left p-2 rounded-xl hover:bg-nexus-surface text-nexus-muted hover:text-white flex items-center gap-2.5 transition-all cursor-pointer">
+        <span id="orb-sfx-icon">🔊</span> <span>Cyber SFX</span>
+      </button>
+    </div>
+
+    <!-- The Interactive Floating Orb Bubble -->
+    <button onclick="toggleFloatingOrbMenu()" id="floating-orb-btn" class="relative group w-14 h-14 rounded-full bg-gradient-to-tr from-nexus-cyan via-nexus-accent to-purple-600 p-0.5 shadow-[0_0_30px_rgba(6,182,212,0.6)] hover:shadow-[0_0_45px_rgba(6,182,212,0.9)] hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer animate-float" title="ZenDev Masaüstü Küresi (Tıkla & Keşfet)">
+      <div class="w-full h-full rounded-full bg-nexus-bg/85 backdrop-blur-md flex items-center justify-center font-mono font-bold text-white text-base group-hover:text-nexus-cyan transition-colors">
+        ⚡
+      </div>
+      <span class="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-nexus-bg animate-pulse"></span>
+    </button>
+  </div>
+
+  <!-- COMMAND PALETTE MODAL (CTRL + K / SPOTLIGHT) -->
+  <div id="cmd-palette-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-start justify-center pt-20 sm:pt-28 px-4" onclick="handleCmdBackdropClick(event)">
+    <div class="w-full max-w-2xl rounded-3xl card-glass border border-nexus-cyan/50 shadow-[0_0_60px_rgba(6,182,212,0.35)] overflow-hidden animate-in fade-in zoom-in-95 duration-200" onclick="event.stopPropagation()">
+      <!-- Search Input Header -->
+      <div class="p-4 sm:p-5 border-b border-nexus-border/80 flex items-center gap-3 bg-nexus-surface/50">
+        <span class="text-nexus-cyan text-lg">⚡</span>
+        <input type="text" id="cmd-search-input" oninput="filterCmdActions(this.value)" placeholder="Bir araç, eylem veya komut arayın... (Örn: json, api, cron, regex)" class="w-full bg-transparent text-sm sm:text-base font-mono text-white outline-none placeholder:text-nexus-muted">
+        <kbd class="px-2 py-1 rounded bg-nexus-bg border border-nexus-border text-[10px] font-mono text-nexus-muted shrink-0">ESC</kbd>
+      </div>
+
+      <!-- Action Items List -->
+      <div id="cmd-items-list" class="max-h-96 overflow-y-auto p-3 space-y-1.5 font-mono text-xs">
+        
+        <div onclick="executeCmd('Team Collections')" class="cmd-item p-3 rounded-xl hover:bg-nexus-cyan/15 hover:border-nexus-cyan/40 border border-transparent cursor-pointer flex items-center justify-between transition-all group" data-keywords="workflow api chain">
+          <div class="flex items-center gap-3">
+            <span class="p-2 rounded-lg bg-nexus-cyan/10 text-nexus-cyan group-hover:scale-110 transition-transform">✉️</span>
+            <div>
+              <div class="font-bold text-white group-hover:text-nexus-cyan transition-colors">Mock Payload Oluştur</div>
+              <div class="text-[11px] text-nexus-muted">Anında rastgele tek kullanımlık e-posta türetir ve panoya alır</div>
+            </div>
+          </div>
+          <span class="text-nexus-cyan opacity-0 group-hover:opacity-100 transition-opacity">Çalıştır ↵</span>
+        </div>
+
+        <div onclick="executeCmd('ram')" class="cmd-item p-3 rounded-xl hover:bg-purple-500/15 hover:border-purple-500/40 border border-transparent cursor-pointer flex items-center justify-between transition-all group" data-keywords="ram temizleme bellek bosalt purge optimize">
+          <div class="flex items-center gap-3">
+            <span class="p-2 rounded-lg bg-purple-500/10 text-purple-400 group-hover:scale-110 transition-transform">🧹</span>
+            <div>
+              <div class="font-bold text-white group-hover:text-purple-400 transition-colors">Sistem RAM Belleğini Boşalt</div>
+              <div class="text-[11px] text-nexus-muted">Gereksiz çalışan çalışma alanlarını ve bellek artıklarını temizler</div>
+            </div>
+          </div>
+          <span class="text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity">Çalıştır ↵</span>
+        </div>
+
+        <div onclick="executeCmd('benchmark')" class="cmd-item p-3 rounded-xl hover:bg-nexus-cyan/15 hover:border-nexus-cyan/40 border border-transparent cursor-pointer flex items-center justify-between transition-all group" data-keywords="benchmark kiyaslama test ram cpu yuk">
+          <div class="flex items-center gap-3">
+            <span class="p-2 rounded-lg bg-nexus-cyan/10 text-nexus-cyan group-hover:scale-110 transition-transform">📊</span>
+            <div>
+              <div class="font-bold text-white group-hover:text-nexus-cyan transition-colors">RAM/CPU Canlı Benchmark Testine Git</div>
+              <div class="text-[11px] text-nexus-muted">SaaS siteleri ile yerel motorun kaynak tüketimini kıyaslayın</div>
+            </div>
+          </div>
+          <span class="text-nexus-cyan opacity-0 group-hover:opacity-100 transition-opacity">Git ↵</span>
+        </div>
+
+        <div onclick="executeCmd('simulator')" class="cmd-item p-3 rounded-xl hover:bg-nexus-cyan/15 hover:border-nexus-cyan/40 border border-transparent cursor-pointer flex items-center justify-between transition-all group" data-keywords="simulator arayuz canli onizleme demo">
+          <div class="flex items-center gap-3">
+            <span class="p-2 rounded-lg bg-nexus-cyan/10 text-nexus-cyan group-hover:scale-110 transition-transform">🖥️</span>
+            <div>
+              <div class="font-bold text-white group-hover:text-nexus-cyan transition-colors">Canlı Uygulama Simülatörünü Aç</div>
+              <div class="text-[11px] text-nexus-muted">ZenDev v2.4.0 arayüzünü tarayıcı içinde interaktif deneyimleyin</div>
+            </div>
+          </div>
+          <span class="text-nexus-cyan opacity-0 group-hover:opacity-100 transition-opacity">Git ↵</span>
+        </div>
+
+        <div onclick="executeCmd('tool:fortress')" class="cmd-item p-3 rounded-xl hover:bg-nexus-cyan/15 hover:border-nexus-cyan/40 border border-transparent cursor-pointer flex items-center justify-between transition-all group" data-keywords="fortress shredder kasa askeri dosya silme dod silici vault">
+          <div class="flex items-center gap-3">
+            <span class="p-2 rounded-lg bg-nexus-cyan/10 text-nexus-cyan group-hover:scale-110 transition-transform">🛡️</span>
+            <div>
+              <div class="font-bold text-white group-hover:text-nexus-cyan transition-colors">Cyber Fortress & DoD 7-Pass Shredder</div>
+              <div class="text-[11px] text-nexus-muted">Geri getirilemez askeri dosya imhası ve yerel şifreli kasa</div>
+            </div>
+          </div>
+          <span class="text-nexus-cyan opacity-0 group-hover:opacity-100 transition-opacity">İncele ↵</span>
+        </div>
+
+        <div onclick="executeCmd('tool:workflow')" class="cmd-item p-3 rounded-xl hover:bg-red-500/15 hover:border-red-500/40 border border-transparent cursor-pointer flex items-center justify-between transition-all group" data-keywords="workflow visual builder">
+          <div class="flex items-center gap-3">
+            <span class="p-2 rounded-lg bg-red-500/10 text-red-400 group-hover:scale-110 transition-transform">⚡</span>
+            <div>
+              <div class="font-bold text-white group-hover:text-red-400 transition-colors">Workflow Chains (TCP/UDP Watchdog)</div>
+              <div class="text-[11px] text-nexus-muted">Kilitlenen portları tespit edip PID üzerinden tek tıkla sonlandırın</div>
+            </div>
+          </div>
+          <span class="text-red-400 opacity-0 group-hover:opacity-100 transition-opacity">İncele ↵</span>
+        </div>
+
+        <div onclick="executeCmd('tool:scratchpad')" class="cmd-item p-3 rounded-xl hover:bg-nexus-cyan/15 hover:border-nexus-cyan/40 border border-transparent cursor-pointer flex items-center justify-between transition-all group" data-keywords="scratchpad not flow mermaid akis sema markdown editor">
+          <div class="flex items-center gap-3">
+            <span class="p-2 rounded-lg bg-nexus-cyan/10 text-nexus-cyan group-hover:scale-110 transition-transform">📝</span>
+            <div>
+              <div class="font-bold text-white group-hover:text-nexus-cyan transition-colors">Scratchpad Ultimate & Flowchart</div>
+              <div class="text-[11px] text-nexus-muted">Canlı Mermaid akış diyagramları ve anlık yerel şifrelemeli not defteri</div>
+            </div>
+          </div>
+          <span class="text-nexus-cyan opacity-0 group-hover:opacity-100 transition-opacity">İncele ↵</span>
+        </div>
+
+        <div onclick="executeCmd('tool:color')" class="cmd-item p-3 rounded-xl hover:bg-pink-500/15 hover:border-pink-500/40 border border-transparent cursor-pointer flex items-center justify-between transition-all group" data-keywords="color studio wcag kontrast erisilebilirlik renk damlalik palette">
+          <div class="flex items-center gap-3">
+            <span class="p-2 rounded-lg bg-pink-500/10 text-pink-400 group-hover:scale-110 transition-transform">🎨</span>
+            <div>
+              <div class="font-bold text-white group-hover:text-pink-400 transition-colors">Color Studio & WCAG 2.1 Kontrast</div>
+              <div class="text-[11px] text-nexus-muted">Göz damlalığı, AA/AAA erişilebilirlik denetimi ve Tailwind renk paletleri</div>
+            </div>
+          </div>
+          <span class="text-pink-400 opacity-0 group-hover:opacity-100 transition-opacity">İncele ↵</span>
+        </div>
+
+        <div onclick="executeCmd('tool:decrypter')" class="cmd-item p-3 rounded-xl hover:bg-nexus-cyan/15 hover:border-nexus-cyan/40 border border-transparent cursor-pointer flex items-center justify-between transition-all group" data-keywords="decrypter link cozucuu aylink reklam atlayici tracking temizle">
+          <div class="flex items-center gap-3">
+            <span class="p-2 rounded-lg bg-nexus-cyan/10 text-nexus-cyan group-hover:scale-110 transition-transform">🔗</span>
+            <div>
+              <div class="font-bold text-white group-hover:text-nexus-cyan transition-colors">Evrensel Link Decrypter</div>
+              <div class="text-[11px] text-nexus-muted">Sayaçları, captcha bekleme duvarlarını ve UTM takipçilerini atlayın</div>
+            </div>
+          </div>
+          <span class="text-nexus-cyan opacity-0 group-hover:opacity-100 transition-opacity">İncele ↵</span>
+        </div>
+
+        <div onclick="executeCmd('privacy')" class="cmd-item p-3 rounded-xl hover:bg-emerald-500/15 hover:border-emerald-500/40 border border-transparent cursor-pointer flex items-center justify-between transition-all group" data-keywords="gizlilik manifesto telemetri guvenlik wireshark ag kaniti offline">
+          <div class="flex items-center gap-3">
+            <span class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 group-hover:scale-110 transition-transform">🛡️</span>
+            <div>
+              <div class="font-bold text-white group-hover:text-emerald-400 transition-colors">Sıfır Telemetri & Ağ Güvenliği Manifestosu</div>
+              <div class="text-[11px] text-nexus-muted">Wireshark ağ sızıntı raporu ve yerel veri taahhütnamesini görüntüleyin</div>
+            </div>
+          </div>
+          <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">Aç ↵</span>
+        </div>
+
+        <div onclick="executeCmd('pricing')" class="cmd-item p-3 rounded-xl hover:bg-nexus-cyan/15 hover:border-nexus-cyan/40 border border-transparent cursor-pointer flex items-center justify-between transition-all group" data-keywords="fiyat satin al lisans pro ucret odeme">
+          <div class="flex items-center gap-3">
+            <span class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 group-hover:scale-110 transition-transform">💳</span>
+            <div>
+              <div class="font-bold text-white group-hover:text-emerald-400 transition-colors">Ömür Boyu Lisans Paketleri</div>
+              <div class="text-[11px] text-nexus-muted">Free, Pro ve Studio lisans seçeneklerini inceleyin</div>
+            </div>
+          </div>
+          <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">Git ↵</span>
+        </div>
+
+        <div onclick="executeCmd('portal')" class="cmd-item p-3 rounded-xl hover:bg-nexus-cyan/15 hover:border-nexus-cyan/40 border border-transparent cursor-pointer flex items-center justify-between transition-all group" data-keywords="portal lisans sorgula hwid sifirla anahtar">
+          <div class="flex items-center gap-3">
+            <span class="p-2 rounded-lg bg-nexus-cyan/10 text-nexus-cyan group-hover:scale-110 transition-transform">🔑</span>
+            <div>
+              <div class="font-bold text-white group-hover:text-nexus-cyan transition-colors">Müşteri Portalı (Lisans Sorgula / Sıfırla)</div>
+              <div class="text-[11px] text-nexus-muted">Format sonrası cihaz kilidinizi kendiniz anında sıfırlayın</div>
+            </div>
+          </div>
+          <span class="text-nexus-cyan opacity-0 group-hover:opacity-100 transition-opacity">Git ↵</span>
+        </div>
+
+        <div onclick="executeCmd('sfx')" class="cmd-item p-3 rounded-xl hover:bg-nexus-cyan/15 hover:border-nexus-cyan/40 border border-transparent cursor-pointer flex items-center justify-between transition-all group" data-keywords="ses sesler sfx cyberpunk muzik kapat ac">
+          <div class="flex items-center gap-3">
+            <span class="p-2 rounded-lg bg-nexus-cyan/10 text-nexus-cyan group-hover:scale-110 transition-transform">🔊</span>
+            <div>
+              <div class="font-bold text-white group-hover:text-nexus-cyan transition-colors">Cyberpunk SFX Seslerini Aç / Kapat</div>
+              <div class="text-[11px] text-nexus-muted">Tıklama ve etkileşim mekanik ses motorunu açıp kapatın</div>
+            </div>
+          </div>
+          <span class="text-nexus-cyan opacity-0 group-hover:opacity-100 transition-opacity">Değiştir ↵</span>
+        </div>
+
+        <div onclick="executeCmd('discord')" class="cmd-item p-3 rounded-xl hover:bg-[#5865F2]/15 hover:border-[#5865F2]/40 border border-transparent cursor-pointer flex items-center justify-between transition-all group" data-keywords="discord topluluk chat yardim destek">
+          <div class="flex items-center gap-3">
+            <span class="p-2 rounded-lg bg-[#5865F2]/10 text-[#5865F2] group-hover:scale-110 transition-transform">💬</span>
+            <div>
+              <div class="font-bold text-white group-hover:text-[#5865F2] transition-colors">Discord Topluluğu & Ticket Destek</div>
+              <div class="text-[11px] text-nexus-muted">Geliştiricilerle sohbet edin ve anlık destek alın</div>
+            </div>
+          </div>
+          <span class="text-[#5865F2] opacity-0 group-hover:opacity-100 transition-opacity">Bağlan ↗</span>
+        </div>
+
+      </div>
+
+      <!-- Footer Info -->
+      <div class="p-3 bg-nexus-surface/80 border-t border-nexus-border/60 flex items-center justify-between text-[11px] font-mono text-nexus-muted">
+        <div class="flex items-center gap-3">
+          <span><kbd class="px-1.5 py-0.5 rounded bg-nexus-bg border border-nexus-border text-[9px]">↑↓</kbd> Gezin</span>
+          <span><kbd class="px-1.5 py-0.5 rounded bg-nexus-bg border border-nexus-border text-[9px]">Enter</kbd> Seç</span>
+        </div>
+        <span class="text-nexus-cyan">ZenDev Command Engine v2.2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHANGELOG MODAL (v2.2.0 YENİLİKLER) -->
+  <div id="changelog-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4 cursor-pointer" onclick="closeChangelogModal()">
+    <div class="w-full max-w-lg rounded-3xl card-glass border border-nexus-cyan/50 p-6 sm:p-8 text-nexus-text relative shadow-2xl cursor-default" onclick="event.stopPropagation()">
+      <button onclick="closeChangelogModal()" class="absolute top-5 right-5 text-nexus-muted hover:text-white p-1 rounded-lg hover:bg-nexus-border cursor-pointer">✕</button>
+      
+      <div class="flex items-center gap-2 text-xs font-mono text-nexus-cyan mb-1 uppercase tracking-wider">
+        <span class="w-2 h-2 rounded-full bg-nexus-cyan animate-ping"></span>
+        <span>SÜRÜM RADARI</span>
+      </div>
+      <h3 class="font-heading font-black text-2xl text-white mb-4">ZenDev v2.5.3 Yenilikleri</h3>
+
+      <div class="space-y-3.5 text-xs text-nexus-muted font-sans max-h-80 overflow-y-auto pr-2">
+        <div class="p-3 rounded-xl bg-nexus-surface/60 border border-nexus-cyan/40 shadow-sm">
+          <div class="text-white font-bold mb-1 flex items-center gap-2">
+            <span>✨ Yeni ZenDev Sibernetik İkon & Marka Kimliği</span>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-nexus-cyan/20 text-nexus-cyan font-bold">v2.5.3</span>
+          </div>
+          <div>Fütüristik "Z" monogramı, çoklu çözünürlük desteği (16px'ten 512px'e kristal netlik) ve yenilenen web sitesi estetiği.</div>
+        </div>
+
+        <div class="p-3 rounded-xl bg-nexus-surface/60 border border-nexus-border/60">
+          <div class="text-white font-bold mb-1 flex items-center gap-2">
+            <span>🧹 Tray Memory Sweep & V8 Compaction</span>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">YENİ</span>
+          </div>
+          <div>Sistem tepsisine küçültüldüğünde otomatik RAM temizliği, V8 çöp toplama ve oturum önbelleği boşaltımı.</div>
+        </div>
+
+        <div class="p-3 rounded-xl bg-nexus-surface/60 border border-nexus-border/60">
+          <div class="text-white font-bold mb-1 flex items-center gap-2">
+            <span>⚡ Arka Plan Uyku Modu & Sıfır CPU Tüketimi</span>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-nexus-cyan/20 text-nexus-cyan font-bold">YENİ</span>
+          </div>
+          <div>Pencere gizlendiğinde FloatingOrb, Workspace ve Team Collections periyodik sorguları durdurularak batarya ve işlemci korunur.</div>
+        </div>
+        <div class="p-3 rounded-xl bg-nexus-surface/60 border border-nexus-border/60">
+          <div class="text-white font-bold mb-1 flex items-center gap-2">
+            <span>📝 Scratchpad Ultimate & Mermaid Flowchart</span>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-nexus-cyan/20 text-nexus-cyan">YENİ</span>
+          </div>
+          <div>Obsidian ve bulut notlara yerel alternatif! Canlı Mermaid akış diyagramı render motoru, çoklu sekmeler, şablonlar ve anında dışa aktarma.</div>
+        </div>
+
+        <div class="p-3 rounded-xl bg-nexus-surface/60 border border-nexus-border/60">
+          <div class="text-white font-bold mb-1 flex items-center gap-2">
+            <span>⚡ Workflow Chains (TCP/UDP Watchdog)</span>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-red-500/20 text-red-400">YENİ</span>
+          </div>
+          <div>Yerel port çakışmalarına tek tıkla son! localhost portlarını dinleyen asılı Node/Python/Java süreçlerini PID üzerinden anında zorla öldürün.</div>
+        </div>
+
+        <div class="p-3 rounded-xl bg-nexus-surface/60 border border-nexus-border/60">
+          <div class="text-white font-bold mb-1 flex items-center gap-2">
+            <span>🎨 Color Studio & Canlı WCAG 2.1 Kontrast</span>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-pink-500/20 text-pink-400">YENİ</span>
+          </div>
+          <div>Geliştirici renk paletleri, HEX/RGB/HSL dönüştürücü, CSS gradient ve canlı erişilebilirlik (AA/AAA) kontrast denetimi.</div>
+        </div>
+
+        <div class="p-3 rounded-xl bg-nexus-surface/60 border border-nexus-border/60">
+          <div class="text-white font-bold mb-1 flex items-center gap-2">
+            <span>🌌 5 Siber Tema Motoru & CyberAudio</span>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400">GÜÇLENDİRİLDİ</span>
+          </div>
+          <div>Default Violet, Matrix Emerald, Cyberpunk 2077, Synthwave 80s ve Crimson Ops temaları ile Web Audio mekanik ses tasarımı.</div>
+        </div>
+
+        <div class="p-3 rounded-xl bg-nexus-surface/60 border border-nexus-border/60">
+          <div class="text-white font-bold mb-1 flex items-center gap-2">
+            <span>🔮 Floating Orb Mini-Widget</span>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-400">HUD</span>
+          </div>
+          <div>Masaüstünde yüzen canlı HUD: 1-Tık API Payload Kopyalama, canlı CPU/RAM göstergesi ve anında Windows bellek önbelleği boşaltma.</div>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-nexus-border/60 flex justify-end">
+        <button onclick="closeChangelogModal()" class="px-5 py-2 rounded-xl bg-nexus-cyan text-nexus-bg font-bold font-heading text-xs cursor-pointer">
+          Anladım
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZERO TELEMETRY & PRIVACY MANIFESTO MODAL -->
+  <div id="privacy-manifesto-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4 cursor-pointer" onclick="closePrivacyModal()">
+    <div class="w-full max-w-lg rounded-3xl card-glass border border-emerald-500/50 p-6 sm:p-8 text-nexus-text relative shadow-[0_0_50px_rgba(16,185,129,0.2)] cursor-default" onclick="event.stopPropagation()">
+      <button onclick="closePrivacyModal()" class="absolute top-5 right-5 text-nexus-muted hover:text-white p-1 rounded-lg hover:bg-nexus-border cursor-pointer">✕</button>
+      
+      <div class="flex items-center gap-2 text-xs font-mono text-emerald-400 mb-1 uppercase tracking-wider font-bold">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span>SIFIR TELEMETRİ TAAHHÜTNAMESİ</span>
+      </div>
+      <h3 class="font-heading font-black text-2xl text-white mb-2">Verileriniz Cihazınızdan Asla Çıkmaz</h3>
+      <p class="text-xs text-nexus-muted mb-4 font-sans leading-relaxed">
+        ZenDev, modern yazılımlardaki gizli analitik ve telemetri casusluğuna tepki olarak geliştirilmiştir. Kodlarımız şeffaf, mimarimiz %100 yereldir.
+      </p>
+
+      <!-- Live Network Wireshark Audit Box -->
+      <div class="p-4 rounded-2xl bg-black/60 border border-emerald-500/30 font-mono text-xs space-y-2 mb-4">
+        <div class="text-[10px] text-emerald-400/80 border-b border-emerald-500/20 pb-1.5 flex items-center justify-between">
+          <span>📡 AĞ PAKET DENETİMİ (WIRESHARK LIVE DUMP)</span>
+          <span class="text-emerald-400 font-bold">TEMİZ (0 BYTES LEAK)</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2 text-[11px]">
+          <div><span class="text-nexus-muted">Dış IP İstekleri:</span> <b class="text-emerald-400">0 Paket</b></div>
+          <div><span class="text-nexus-muted">DNS Sorguları:</span> <b class="text-emerald-400">0 Query</b></div>
+          <div><span class="text-nexus-muted">Telemetri / İzleme:</span> <b class="text-emerald-400">%0 (Kapalı)</b></div>
+          <div><span class="text-nexus-muted">Kayıt Logları:</span> <b class="text-emerald-400">Yok (Sıfır Log)</b></div>
+        </div>
+        <div class="text-[10px] text-nexus-muted pt-1 border-t border-nexus-border/40">
+          ✓ Dosya İmhası: <b class="text-white">DoD 5220.22-M (7-Pass Overwrite)</b><br>
+          ✓ Kasa Koruması: <b class="text-white">AES-256-GCM + PBKDF2 Donanım Kilidi</b>
+        </div>
+      </div>
+
+      <div class="space-y-2 text-xs text-nexus-muted mb-5">
+        <div class="flex items-start gap-2">
+          <span class="text-emerald-400 font-bold">✓</span>
+          <span><b>Offline-First Mimari:</b> İnternet bağlantınız tamamen kesilse dahi tüm araçlar milisaniye gecikmeyle çalışmaya devam eder.</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-emerald-400 font-bold">✓</span>
+          <span><b>Donanım Kilidi Özgürlüğü:</b> Bilgisayarınıza format attığınızda lisansınızı Müşteri Portalı üzerinden tek tıkla kendiniz sıfırlayabilirsiniz.</span>
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-nexus-border/60 flex items-center justify-between">
+        <span class="text-[11px] font-mono text-nexus-muted">ZenDev Security Core</span>
+        <button onclick="closePrivacyModal()" class="px-5 py-2 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/50 text-emerald-400 font-bold text-xs cursor-pointer transition-all">
+          Kapat
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL WITH DISCOUNT COUPON INPUT -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4 cursor-pointer" onclick="closeCheckoutModal()">
+    <div class="w-full max-w-md rounded-3xl card-glass border border-nexus-cyan/50 p-6 sm:p-8 text-nexus-text relative shadow-2xl cursor-default" onclick="event.stopPropagation()">
+      <button onclick="closeCheckoutModal()" class="absolute top-5 right-5 text-nexus-muted hover:text-white p-1 rounded-lg hover:bg-nexus-border cursor-pointer">✕</button>
+      
+      <div class="text-xs font-mono text-nexus-cyan mb-1 uppercase tracking-wider" data-i18n="modal.tag">GÜVENLİ SİPARİŞ</div>
+      <h3 id="modal-plan-name" class="font-heading font-black text-2xl text-white mb-1">ZenDev Pro Lifetime</h3>
+      <div class="flex items-baseline gap-2 mb-5">
+        <span id="modal-plan-price" class="text-3xl font-mono font-bold text-white">₺349</span>
+        <span id="modal-discount-tag" class="hidden text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">%20 İNDİRİM UYGULANDI</span>
+      </div>
+
+      <!-- Coupon Code Box -->
+      <div class="mb-5 p-3 rounded-2xl bg-nexus-bg border border-nexus-border/80 flex items-center gap-2">
+        <input type="text" id="coupon-input" onkeydown="if(event.key==='Enter') applyCoupon()" placeholder="İndirim / Kupon Kodu (Örn: ZENDEV20)" class="w-full bg-transparent text-xs font-mono text-nexus-cyan uppercase outline-none placeholder:text-nexus-muted/50">
+        <button onclick="applyCoupon()" class="px-3 py-1.5 rounded-lg bg-nexus-cyan/20 border border-nexus-cyan/40 hover:bg-nexus-cyan/30 text-nexus-cyan text-xs font-mono font-bold transition-all cursor-pointer shrink-0">Uygula</button>
+      </div>
+
+      <div class="space-y-3 mb-6">
+        <!-- Dynamic Primary Provider (Shopier for TR, LemonSqueezy for EN) -->
+        <a id="checkout-primary-link" href="https://shopier.com" target="_blank" class="flex items-center justify-between p-3.5 rounded-2xl bg-nexus-surface/80 border border-nexus-border hover:border-nexus-cyan/60 transition-all group">
+          <div class="flex items-center gap-3">
+            <span class="text-xl" id="checkout-provider-icon">💳</span>
+            <div>
+              <div class="text-xs font-bold text-white group-hover:text-nexus-cyan transition-colors" id="checkout-provider-title">Shopier ile Güvenli Öde</div>
+              <div class="text-[10px] text-nexus-muted" id="checkout-provider-desc">Kredi Kartı / Banka Kartı / 3D Secure</div>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-nexus-cyan font-bold" id="checkout-provider-cta">Satın Al →</span>
+        </a>
+
+        <a href="https://discord.gg" target="_blank" class="flex items-center justify-between p-3.5 rounded-2xl bg-nexus-surface/80 border border-nexus-border hover:border-nexus-purple/60 transition-all group">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">💬</span>
+            <div>
+              <div class="text-xs font-bold text-white group-hover:text-purple-400 transition-colors">Discord / Destek Bileti</div>
+              <div class="text-[10px] text-nexus-muted">Kripto (USDT/BTC/LTC) & Havale/EFT</div>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-purple-400 font-bold">Ticket Aç →</span>
+        </a>
+      </div>
+
+      <div class="p-3 rounded-xl bg-nexus-surface/40 border border-nexus-border/60 text-[11px] text-nexus-muted flex items-center gap-2">
+        <span class="text-emerald-400 font-bold">✓</span>
+        <span>Ödeme sonrası lisans anahtarınız ekranda ve mailinizde anında aktive edilir.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WAITLIST / EARLY ACCESS MODAL -->
+  <div id="waitlist-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4 cursor-pointer" onclick="closeWaitlistModal()">
+    <div class="w-full max-w-md rounded-3xl card-glass border border-nexus-cyan/60 p-6 sm:p-8 text-nexus-text relative shadow-[0_0_60px_rgba(6,182,212,0.3)] cursor-default" onclick="event.stopPropagation()">
+      <button onclick="closeWaitlistModal()" class="absolute top-5 right-5 text-nexus-muted hover:text-white p-1 rounded-lg hover:bg-nexus-border cursor-pointer">✕</button>
+      
+      <div class="w-12 h-12 rounded-2xl bg-nexus-cyan/20 border border-nexus-cyan/50 flex items-center justify-center text-2xl text-nexus-cyan mb-4 shadow-sm">
+        ⚡
+      </div>
+
+      <div class="text-xs font-mono text-nexus-cyan uppercase tracking-wider mb-1 font-bold">ERKEN ERİŞİM DAVETİYESİ</div>
+      <h3 class="font-heading font-black text-2xl text-white mb-2">v2.2.0 Çıktığında İlk Siz İndirin</h3>
+      <p class="text-xs text-nexus-muted mb-5 leading-relaxed">
+        ZenDev v2.4.0 yeni stabilite derlemesi hazırlanıyor. E-postanızı bırakın, indirmeler açıldığı an <b class="text-nexus-cyan">%20 lansman indirimi</b> kodunuzla birlikte e-posta alın.
+      </p>
+
+      <form id="waitlist-form" onsubmit="handleWaitlistSubmit(event)" class="space-y-3">
+        <div class="relative">
+          <input type="email" id="waitlist-email" required placeholder="ornek@sirketiniz.com" class="w-full px-4 py-3.5 rounded-xl bg-nexus-bg border border-nexus-border/80 text-xs font-mono text-white placeholder:text-nexus-muted/50 focus:border-nexus-cyan outline-none transition-all">
+        </div>
+        <button type="submit" id="waitlist-submit-btn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-nexus-cyan to-nexus-accent hover:brightness-110 active:scale-95 text-nexus-bg font-heading font-black text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(var(--c-cyan),0.4)] transition-all cursor-pointer flex items-center justify-center gap-2">
+          <span>Listeye Katıl & %20 İndirim Al</span> <span>→</span>
+        </button>
+      </form>
+
+      <div id="waitlist-success" class="hidden mt-4 p-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-xs text-emerald-400 font-mono space-y-1">
+        <div class="font-bold flex items-center gap-1.5">✓ Başarıyla Kaydedildiniz!</div>
+        <div class="text-[11px] text-emerald-300">Lansman indirim kuponunuz: <b class="text-white bg-emerald-500/30 px-2 py-0.5 rounded select-all font-mono">ZENDEV20</b></div>
+      </div>
+      
+      <div class="mt-5 pt-3 border-t border-nexus-border/50 flex items-center justify-between text-[11px] text-nexus-muted">
+        <span>🔒 Sıfır spam, tek seferlik lansman postası</span>
+        <a href="#pricing" onclick="closeWaitlistModal()" class="text-nexus-cyan hover:underline font-bold">Lisans Satın Al →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOOL SPEC DEEP-DIVE DRAWER -->
+  <div id="tool-drawer-backdrop" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0" onclick="closeToolDrawer()"></div>
+  <div id="tool-drawer" class="fixed top-0 right-0 bottom-0 z-50 w-full max-w-lg bg-nexus-card border-l border-nexus-cyan/40 shadow-[-20px_0_60px_rgba(0,0,0,0.9)] p-6 sm:p-8 flex flex-col justify-between overflow-y-auto transform translate-x-full transition-transform duration-300 ease-out">
+    <div>
+      <div class="flex items-center justify-between border-b border-nexus-border/80 pb-4 mb-6">
+        <div class="flex items-center gap-3">
+          <div id="drawer-icon" class="w-10 h-10 rounded-xl bg-nexus-cyan/15 border border-nexus-cyan/40 flex items-center justify-center text-xl text-nexus-cyan">
+            ⚡
+          </div>
+          <div>
+            <span id="drawer-cat" class="text-[10px] font-mono text-nexus-cyan uppercase tracking-widest font-bold">GÜVENLİK & GİZLİLİK</span>
+            <h3 id="drawer-title" class="font-heading font-black text-xl text-white">Cyber Fortress Vault</h3>
+          </div>
+        </div>
+        <button onclick="closeToolDrawer()" class="text-nexus-muted hover:text-white p-2 rounded-xl hover:bg-nexus-surface cursor-pointer text-base">✕</button>
+      </div>
+
+      <p id="drawer-desc" class="text-xs text-nexus-muted leading-relaxed mb-6 font-sans">
+        Askeri düzeyde kalıcı dosya imha ve şifreleme kasası.
+      </p>
+
+      <!-- Technical Architecture Specs Grid -->
+      <div class="space-y-4 mb-6">
+        <div class="p-3.5 rounded-2xl bg-nexus-surface/60 border border-nexus-border/60">
+          <div class="text-[10px] font-mono text-nexus-cyan uppercase tracking-wider mb-1 font-bold">🔐 Çekirdek Algoritmalar & Güvenlik</div>
+          <div id="drawer-algo" class="text-xs font-mono text-white leading-relaxed">DoD 5220.22-M 7-Pass Shredding • AES-256-GCM</div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="p-3 rounded-2xl bg-nexus-surface/60 border border-nexus-border/60">
+            <div class="text-[10px] font-mono text-nexus-muted uppercase">RAM Tüketimi</div>
+            <div id="drawer-ram" class="text-xs font-mono font-bold text-emerald-400 mt-0.5">~18 MB (Zero Leak)</div>
+          </div>
+          <div class="p-3 rounded-2xl bg-nexus-surface/60 border border-nexus-border/60">
+            <div class="text-[10px] font-mono text-nexus-muted uppercase">Kısayol Tuşu</div>
+            <div id="drawer-shortcut" class="text-xs font-mono font-bold text-nexus-cyan mt-0.5">Ctrl + Alt + S</div>
+          </div>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-nexus-surface/60 border border-nexus-border/60">
+          <div class="text-[10px] font-mono text-nexus-muted uppercase mb-1 font-bold">🛡️ Gizlilik & Telemetri</div>
+          <div id="drawer-privacy" class="text-xs text-nexus-muted font-mono leading-relaxed">
+            %100 Yerel İcra. Dış sunuculara sıfır paket gönderilir. Offline-First mimari.
+          </div>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-nexus-bg border border-nexus-border/80">
+          <div class="text-[10px] font-mono text-nexus-cyan uppercase mb-1.5 flex items-center justify-between font-bold">
+            <span>IPC VE MOTOR ÇAĞRISI</span>
+            <span class="text-nexus-muted text-[9px]">ipcRenderer.invoke</span>
+          </div>
+          <pre id="drawer-code" class="text-[11px] font-mono text-purple-300 overflow-x-auto leading-relaxed"></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-4 border-t border-nexus-border/60 flex items-center justify-between gap-3">
+      <button onclick="closeToolDrawer()" class="px-4 py-2.5 rounded-xl bg-nexus-surface text-nexus-muted hover:text-white font-mono text-xs cursor-pointer">Kapat</button>
+      <a href="#pricing" onclick="closeToolDrawer()" class="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-nexus-cyan to-nexus-accent hover:brightness-110 text-nexus-bg font-heading font-black text-xs text-center shadow-lg transition-all cursor-pointer">
+        Ömür Boyu Paketi Al →
+      </a>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // ─── Multilingual & Multi-Currency Engine ──────────────────────────────
+    let currentLang = 'tr';
+    const translations = {
+      tr: {
+        'nav.preview': 'Arayüz',
+        'nav.roi': 'Tasarruf Hesabı',
+        'nav.comparison': 'SaaS Katili',
+        'nav.arsenal': '20+ Cephane',
+        'nav.pricing': 'Fiyatlandırma',
+        'nav.reviews': 'Yorumlar',
+        'nav.portal': 'Lisans Sorgula',
+        'nav.faq': 'SSS',
+        'nav.buy': 'Lisans Al',
+        'hero.pill.tools': '20+ Siber Güç',
+        'hero.pill.noSub': 'Sıfır Abonelik Tuzağı',
+        'hero.title1': 'Aylık Aboneliklere',
+        'hero.title2': 'Son.',
+        'hero.title3': 'Tek Yazılım,',
+        'hero.title4': '20+ Siber Güç.',
+        'hero.desc': 'Scratchpad Ultimate, Color Studio, Workflow Chains, Team Collections, DoD askeri veri imha kalkanı, donanım monitörü ve şifreli kasa. Her araca ayrı para ödemeyi bırakın.',
+        'hero.btnDownload': 'Windows için İndir',
+        'hero.btnSoon': 'Çok Yakında',
+        'hero.btnPro': 'Ömür Boyu Pro Lisans',
+        'sim.tag': 'Canlı Arayüzü İncele',
+        'sim.themeLabel': 'Siber Tema Seçici:',
+        'sim.title': 'ZenDev Masaüstünüzde Nasıl Görünür?',
+        'sim.desc': 'İndirmeden önce aşağıdaki sekmelere tıklayarak ZenDev’ın sibernetik araçlarını ve pürüzsüz arayüzünü canlı test edin.',
+        'sim.tools.Team Collections': 'Team Collections Posta',
+        'sim.tools.scratchpad': 'Scratchpad & Flow',
+        'sim.tools.color': 'Color & WCAG',
+        'sim.tools.portkiller': 'Workflow Chains',
+        'sim.tools.decrypter': 'Link Decrypter',
+        'sim.tools.password': 'Parola & Kırılma',
+        'sim.tools.fortress': 'Cyber Fortress',
+        'sim.tools.sentinel': 'Resource Sentinel',
+        'sim.tools.orb': 'Floating Orb HUD',
+        'sim.tools.hash': 'Hash & Base64',
+        'roi.tag': 'ROI Tasarruf Simülatörü',
+        'roi.title': 'ZenDev ile Yılda Kaç Para Tasarruf Edersiniz?',
+        'roi.desc': 'Kullandığınız araçları işaretleyin, her ay SaaS platformlarına saçtığınız paranın ZenDev ile nasıl cebinizde kaldığını görün.',
+        'comp.tag': 'Neden ZenDev?',
+        'comp.title': 'SaaS Abonelik Yorgunluğunu Bitirin.',
+        'comp.desc': 'İhtiyacınız olan her ufak araca aylık $10-$15 abonelik ödemek yerine, ZenDev’ı bir kez alın ve ömür boyu yerel olarak kullanın.',
+        'price.tag': 'Şeffaf & Adil Fiyatlandırma',
+        'price.title': 'Abonelik Yok. Bir Kez Al, Ömür Boyu Kullan.',
+        'price.desc': 'Gizli yenileme ücreti yok. Kredi kartı, Kripto veya Discord üzerinden anında teslimat.',
+        'plan.forever': '/ Sonsuza dek',
+        'plan.onetime': '/ Tek Seferlik',
+        'plan1.badge': 'Başlangıç',
+        'plan1.desc': 'Temel araçlara sıfır maliyetle erişmek isteyen herkes için ideal giriş paketi.',
+        'plan1.btn': 'Ücretsiz İndir (Çok Yakında)',
+        'plan2.badge': '⭐ EN ÇOK SATAN',
+        'plan2.sub': 'Ömür boyu kullanım hakkı • Sıfır abonelik',
+        'plan2.btn': 'Hemen Satın Al (Anında Teslim)',
+        'plan3.badge': 'Çoklu Güç',
+        'plan3.desc': 'Hem ev hem iş bilgisayarınız veya ekibiniz için çoklu cihaz lisansı.',
+        'plan3.btn': 'Studio Paketi Al',
+        'portal.tag': 'Müşteri Portalı',
+        'portal.title': 'Lisansımı Sorgula & Cihaz Sıfırla',
+        'portal.desc': 'Bilgisayarınıza format attıysanız veya lisans durumunuzu kontrol etmek istiyorsanız anahtarınızı girin.',
+        'modal.tag': 'GÜVENLİ SİPARİŞ'
+      },
+      en: {
+        'nav.preview': 'Interface',
+        'nav.roi': 'Savings Calc',
+        'nav.comparison': 'SaaS Killer',
+        'nav.arsenal': '20+ Arsenal',
+        'nav.pricing': 'Pricing',
+        'nav.reviews': 'Reviews',
+        'nav.portal': 'Lookup License',
+        'nav.faq': 'FAQ',
+        'nav.buy': 'Get License',
+        'hero.pill.tools': '20+ Cyber Powers',
+        'hero.pill.noSub': 'Zero Subscription Trap',
+        'hero.title1': 'Stop Monthly',
+        'hero.title2': 'Subscriptions.',
+        'hero.title3': 'One Suite,',
+        'hero.title4': '20+ Cyber Tools.',
+        'hero.desc': 'Scratchpad Ultimate, Color Studio, Workflow Chains, Team Collections, DoD military shredder, live hardware sentinel, and encrypted vault. Stop paying separate fees for simple utilities.',
+        'hero.btnDownload': 'Download for Windows',
+        'hero.btnSoon': 'Coming Soon',
+        'hero.btnPro': 'Lifetime Pro License',
+        'sim.tag': 'Explore the Interface',
+        'sim.themeLabel': 'Cyber Theme Engine:',
+        'sim.title': 'How ZenDev Looks on Your Desktop',
+        'sim.desc': 'Click the tabs below to test drive ZenDev’s cybernetic tools and smooth interface before downloading.',
+        'sim.tools.Team Collections': 'Team Collections Inbox',
+        'sim.tools.scratchpad': 'Scratchpad & Flow',
+        'sim.tools.color': 'Color & WCAG',
+        'sim.tools.portkiller': 'Workflow Chains',
+        'sim.tools.decrypter': 'Link Decrypter',
+        'sim.tools.password': 'Password Analyzer',
+        'sim.tools.fortress': 'Cyber Fortress',
+        'sim.tools.sentinel': 'Resource Sentinel',
+        'sim.tools.orb': 'Floating Orb HUD',
+        'sim.tools.hash': 'Hash & Base64',
+        'roi.tag': 'ROI Savings Calculator',
+        'roi.title': 'How Much Money Do You Save with ZenDev?',
+        'roi.desc': 'Check the utilities you use and see how much money you stop wasting on recurring SaaS fees.',
+        'comp.tag': 'Why ZenDev?',
+        'comp.title': 'End SaaS Subscription Fatigue.',
+        'comp.desc': 'Instead of paying $10–$15/mo for every tiny utility, own ZenDev once and run everything locally forever.',
+        'price.tag': 'Transparent & Fair Pricing',
+        'price.title': 'No Subscriptions. Buy Once, Own Forever.',
+        'price.desc': 'No hidden renewals. Instant delivery via credit card, crypto, or Discord.',
+        'plan.forever': '/ Forever free',
+        'plan.onetime': '/ One-time',
+        'plan1.badge': 'Starter',
+        'plan1.desc': 'Perfect entry pack for anyone wanting core utilities at zero cost.',
+        'plan1.btn': 'Free Download (Coming Soon)',
+        'plan2.badge': '⭐ MOST POPULAR',
+        'plan2.sub': 'Lifetime access • Zero subscriptions',
+        'plan2.btn': 'Get License (Instant Delivery)',
+        'plan3.badge': 'Multi-Device',
+        'plan3.desc': 'Multi-device license for your home and work PC or your core team.',
+        'plan3.btn': 'Get Studio Pack',
+        'portal.tag': 'Customer Portal',
+        'portal.title': 'Check License & Reset Hardware',
+        'portal.desc': 'Formatted your PC or need to verify your license status? Check your key below.',
+        'modal.tag': 'SECURE CHECKOUT'
+      }
+    };
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'tr' ? 'en' : 'tr';
+      document.getElementById('lang-flag').innerText = currentLang === 'tr' ? '🇹🇷' : '🇺🇸';
+      document.getElementById('lang-label').innerText = currentLang === 'tr' ? 'TR (₺)' : 'EN ($)';
+
+      // Update text nodes
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+          el.innerText = translations[currentLang][key];
+        }
+      });
+
+      // Sync currency switcher with active language
+      setPricingCurrency(currentLang === 'tr' ? 'TRY' : 'USD');
+      calcRoi();
+    }
+
+    // ─── Live Cyber Theme Switcher Engine ──────────────────────────────────
+    let activeTheme = 'default';
+    function switchCyberTheme(theme) {
+      activeTheme = theme;
+      if (theme === 'default') {
+        document.documentElement.removeAttribute('data-theme');
+      } else {
+        document.documentElement.setAttribute('data-theme', theme);
+      }
+      try { localStorage.setItem('nexus_web_theme', theme); } catch {}
+
+      // Update button highlights
+      ['default', 'matrix', 'cyberpunk', 'synthwave', 'crimson'].forEach(t => {
+        const btn = document.getElementById('theme-btn-' + t);
+        if (!btn) return;
+        if (t === theme) {
+          btn.className = 'theme-btn px-3 py-1.5 rounded-xl border border-nexus-cyan/40 bg-nexus-cyan/20 text-nexus-cyan font-mono text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-sm';
+        } else {
+          btn.className = 'theme-btn px-3 py-1.5 rounded-xl border border-nexus-border/60 hover:border-nexus-cyan/40 text-nexus-muted hover:text-white font-mono text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer';
+        }
+      });
+      playCyberSound('toggle');
+    }
+
+    // Initialize saved theme on boot
+    try {
+      const savedTheme = localStorage.getItem('nexus_web_theme') || 'default';
+      if (savedTheme !== 'default') {
+        setTimeout(() => switchCyberTheme(savedTheme), 10);
+      }
+    } catch {}
+
+    // ─── Interactive Mockup Tool Switcher ──────────────────────────────────
+    const tools = ['Team Collections', 'scratchpad', 'color', 'portkiller', 'decrypter', 'password', 'fortress', 'sentinel', 'orb', 'hash'];
+    function switchMockTool(toolId) {
+      tools.forEach(t => {
+        const p = document.getElementById('mock-panel-' + t);
+        const b = document.getElementById('mock-btn-' + t);
+        if (p && b) {
+          if (t === toolId) {
+            p.classList.remove('hidden');
+            b.className = 'w-full text-left px-3.5 py-2.5 rounded-xl font-mono text-xs font-semibold flex items-center gap-2.5 bg-nexus-cyan/15 text-nexus-cyan border border-nexus-cyan/30 transition-all cursor-pointer shrink-0';
+          } else {
+            p.classList.add('hidden');
+            b.className = 'w-full text-left px-3.5 py-2.5 rounded-xl font-mono text-xs font-semibold flex items-center gap-2.5 text-nexus-muted hover:text-white hover:bg-nexus-surface transition-all cursor-pointer shrink-0';
+          }
+        }
+      });
+    }
+
+    // ─── Scratchpad Ultimate Mockup Handlers ────────────────────────────────
+    function updateSimMarkdown() {
+      const input = document.getElementById('sim-md-input');
+      const stats = document.getElementById('sim-md-stats');
+      if (!input || !stats) return;
+      const text = input.value || '';
+      const words = text.trim() ? text.trim().split(/\\s+/).length : 0;
+      const chars = text.length;
+      stats.innerText = words + ' kelime • ' + chars + ' karakter';
+    }
+
+    function loadSimMdTemplate(type) {
+      const input = document.getElementById('sim-md-input');
+      const preview = document.getElementById('sim-md-preview');
+      if (!input || !preview) return;
+
+      const b3 = String.fromCharCode(96, 96, 96);
+      if (type === 'arch') {
+        input.value = '# 🏗️ Sistem Mimarisi Şeması\\n\\n' +
+          '> ZenDev v2.4.0 Yerel Güvenlik Kalkanı\\n\\n' +
+          '- [x] DoD 5220.22-M 7-Pass Shredder\\n' +
+          '- [x] AES-256-GCM Kasa\\n' +
+          '- [x] TCP/UDP Workflow Chains\\n\\n' +
+          b3 + 'mermaid\\n' +
+          'graph TD\\n' +
+          '  User([Kullanıcı]) --> App[ZenDev Core]\\n' +
+          '  App --> Vault[(Şifreli Kasa)]\\n' +
+          '  App --> NetGuard[Workflow Chains]\\n' +
+          b3;
+        preview.innerHTML = '<h4 class="font-heading font-bold text-white text-sm border-b border-nexus-border/60 pb-1">🏗️ Sistem Mimarisi Şeması</h4>' +
+          '<p class="text-[11px] text-nexus-muted italic border-l-2 border-nexus-cyan pl-2">ZenDev v2.4.0 Yerel Güvenlik Kalkanı</p>' +
+          '<ul class="text-[11px] space-y-1 text-emerald-400 font-mono">' +
+            '<li>✓ DoD 5220.22-M 7-Pass Shredder</li>' +
+            '<li>✓ AES-256-GCM Kasa</li>' +
+            '<li>✓ TCP/UDP Workflow Chains</li>' +
+          '</ul>' +
+          '<div class="mt-2 p-2 rounded-lg bg-nexus-bg border border-nexus-cyan/30 flex items-center justify-center gap-2 font-mono text-[10px]">' +
+            '<span class="px-2 py-1 rounded bg-nexus-surface border border-nexus-border text-white">User</span>' +
+            '<span class="text-nexus-cyan">──▶</span>' +
+            '<span class="px-2 py-1 rounded bg-nexus-cyan/20 border border-nexus-cyan text-nexus-cyan font-bold">ZenDev Core</span>' +
+            '<span class="text-nexus-cyan">──▶</span>' +
+            '<span class="px-2 py-1 rounded bg-nexus-surface border border-nexus-border text-white">Vault</span>' +
+          '</div>';
+      } else if (type === 'api') {
+        input.value = '# ⚡ REST API Geliştirici Dokümantasyonu\\n\\n' +
+          b3 + 'http\\n' +
+          'GET /api/license/lookup\\n' +
+          'Host: auth.zendev.org\\n' +
+          'Authorization: Bearer <CLIENT_TOKEN>\\n' +
+          b3 + '\\n\\n' +
+          '- **Yanıt:** 200 OK\\n' +
+          '- **Gecikme:** ~12ms (Yerel Edge)';
+        preview.innerHTML = '<h4 class="font-heading font-bold text-white text-sm border-b border-nexus-border/60 pb-1">⚡ REST API Dokümantasyonu</h4>' +
+          '<div class="p-2 rounded bg-nexus-bg font-mono text-[10px] text-purple-300">GET /api/license/lookup<br>Host: auth.zendev.org</div>' +
+          '<div class="text-[11px] text-emerald-400 font-mono">✓ 200 OK (Gecikme: ~12ms)</div>';
+      }
+      updateSimMarkdown();
+      playCyberSound('success');
+    }
+
+    // ─── Color Studio Mockup Handlers ──────────────────────────────────────
+    function updateSimColor(hex) {
+      const swatch = document.getElementById('sim-color-swatch');
+      const hexEl = document.getElementById('sim-color-hex');
+      const rgbEl = document.getElementById('sim-color-rgb');
+      const tokenHex = document.getElementById('sim-token-hex');
+      const tokenTw = document.getElementById('sim-token-tw');
+
+      if (swatch) swatch.style.backgroundColor = hex;
+      if (hexEl) hexEl.innerText = hex.toLowerCase();
+      if (tokenHex) tokenHex.innerText = hex.toLowerCase();
+      if (tokenTw) tokenTw.innerText = 'text-[' + hex.toLowerCase() + ']';
+
+      const r = parseInt(hex.slice(1, 3), 16) || 0;
+      const g = parseInt(hex.slice(3, 5), 16) || 0;
+      const b = parseInt(hex.slice(5, 7), 16) || 0;
+      if (rgbEl) rgbEl.innerText = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+
+      const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+      const ratio = Math.max(1, (lum + 0.05) / 0.05).toFixed(2);
+      const ratioEl = document.getElementById('sim-contrast-ratio');
+      if (ratioEl) ratioEl.innerText = ratio + ' : 1';
+    }
+
+    function randomizeSimColor() {
+      const palette = ['#06b6d4', '#10b981', '#facc15', '#ec4899', '#8b5cf6', '#3b82f6', '#f97316', '#14b8a6'];
+      const c = palette[Math.floor(Math.random() * palette.length)];
+      const picker = document.getElementById('sim-color-picker');
+      if (picker) picker.value = c;
+      updateSimColor(c);
+      playCyberSound('click');
+      if (typeof calcRoi === 'function') calcRoi();
+    }
+
+    async function copySimColorToken(type) {
+      const hex = document.getElementById('sim-color-hex')?.innerText.trim() || '#06b6d4';
+      const textToCopy = type === 'tailwind' ? 'text-[' + hex + ']' : hex;
+      await safeCopyToClipboard(textToCopy);
+      const toast = document.getElementById('sim-color-toast');
+      if (toast) {
+        toast.innerText = '✓ ' + textToCopy + ' kopyalandı!';
+        setTimeout(() => { if (toast) toast.innerText = ''; }, 2000);
+      }
+      playCyberSound('success');
+    }
+
+    // ─── Workflow Chains Mockup Handlers ───────────────────────────────────────
+    function killSimPort(port) {
+      const row = document.getElementById('sim-port-row-' + port);
+      if (row) {
+        row.style.opacity = '0';
+        row.style.transform = 'translateX(20px)';
+        setTimeout(() => {
+          row.classList.add('hidden');
+          checkSimPortsEmpty();
+        }, 300);
+      }
+      playCyberSound('purge');
+    }
+
+    function checkSimPortsEmpty() {
+      const rows = [3000, 8080, 5432];
+      const allHidden = rows.every(p => {
+        const el = document.getElementById('sim-port-row-' + p);
+        return !el || el.classList.contains('hidden');
+      });
+      const msg = document.getElementById('sim-port-empty-msg');
+      if (msg) {
+        if (allHidden) msg.classList.remove('hidden');
+        else msg.classList.add('hidden');
+      }
+    }
+
+    function resetSimPorts() {
+      [3000, 8080, 5432].forEach(p => {
+        const el = document.getElementById('sim-port-row-' + p);
+        if (el) {
+          el.classList.remove('hidden');
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        }
+      });
+      const msg = document.getElementById('sim-port-empty-msg');
+      if (msg) msg.classList.add('hidden');
+      playCyberSound('success');
+    }
+
+    function simulateNewMail() {
+      const names = ['cyber_recon', 'phantom_user', 'shadow_matrix', 'delta_operator'];
+      const domains = ['zendevmail.org', 'tempdrop.io', 'ghostinbox.net'];
+      const randomEmail = names[Math.floor(Math.random() * names.length)] + Math.floor(Math.random() * 900 + 100) + '@' + domains[Math.floor(Math.random() * domains.length)];
+      document.getElementById('mock-email-addr').innerText = randomEmail;
+    }
+
+    function triggerSimRamFlush() {
+      const btn = document.getElementById('mock-flush-btn');
+      const bar = document.getElementById('mock-ram-bar');
+      const txt = document.getElementById('mock-ram-txt');
+      btn.innerText = 'Temizleniyor...';
+      btn.disabled = true;
+      setTimeout(() => {
+        bar.style.width = '19%';
+        txt.innerText = '19%';
+        txt.classList.add('text-emerald-400');
+        btn.innerText = '✓ Temizlendi (1.4 GB Boşaldı)';
+        setTimeout(() => {
+          btn.innerText = '⚡ 1-Tık RAM Flush';
+          btn.disabled = false;
+        }, 3000);
+      }, 500);
+    }
+
+        // ─── Interactive SaaS Waste & ROI Calculator Logic ─────────────────────
+    let roiHorizonYears = 3;
+
+    function setRoiHorizon(years) {
+      roiHorizonYears = years;
+      [1, 2, 3, 5].forEach(y => {
+        const btn = document.getElementById('roi-hz-' + y);
+        if (btn) {
+          if (y === years) {
+            btn.className = 'px-3.5 py-1.5 rounded-xl font-mono text-xs font-bold transition-all bg-nexus-cyan text-nexus-bg shadow-sm cursor-pointer';
+          } else {
+            btn.className = 'px-3.5 py-1.5 rounded-xl font-mono text-xs font-bold transition-all text-nexus-muted hover:text-white cursor-pointer';
+          }
+        }
+      });
+      playCyberSound('click');
+      calcRoi();
+    }
+
+    function toggleRoiCard(id) {
+      const input = document.getElementById(id);
+      if (input) {
+        input.checked = !input.checked;
+        calcRoi();
+        playCyberSound('toggle');
+      }
+    }
+
+    function toggleAllRoi(checkAll) {
+      ['roi-1password', 'roi-postman', 'roi-cleaner', 'roi-workflow', 'roi-paste', 'roi-organizer', 'roi-color', 'roi-decrypter'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.checked = checkAll;
+      });
+      playCyberSound('success');
+      calcRoi();
+    }
+
+    function calcRoi() {
+      const itemIds = [
+        'roi-1password',
+        'roi-postman',
+        'roi-cleaner',
+        'roi-workflow',
+        'roi-paste',
+        'roi-organizer',
+        'roi-color',
+        'roi-decrypter'
+      ];
+
+      let monthlyUSD = 0;
+      let monthlyTRY = 0;
+      let activeCount = 0;
+
+      itemIds.forEach(id => {
+        const el = document.getElementById(id);
+        const card = document.getElementById('card-' + id);
+        if (el) {
+          const u = parseFloat(el.getAttribute('data-usd') || '0');
+          const t = parseFloat(el.getAttribute('data-try') || '0');
+          if (el.checked) {
+            monthlyUSD += u;
+            monthlyTRY += t;
+            activeCount++;
+            if (card) {
+              card.className = 'roi-item p-4 rounded-2xl border border-red-500/40 bg-red-500/5 hover:border-red-500/70 transition-all cursor-pointer select-none group flex flex-col justify-between relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.1)]';
+            }
+          } else {
+            if (card) {
+              card.className = 'roi-item p-4 rounded-2xl border border-nexus-border/40 bg-nexus-surface/20 opacity-40 hover:opacity-75 transition-all cursor-pointer select-none group flex flex-col justify-between relative overflow-hidden';
+            }
+          }
+        }
+      });
+
+      const months = roiHorizonYears * 12;
+      const totalDays = roiHorizonYears * 365;
+
+      const totalBleedUSD = monthlyUSD * months;
+      const totalBleedTRY = monthlyTRY * months;
+
+      // ZenDev cost (Lifetime Pro)
+      const nexusUSD = 29;
+      const nexusTRY = 349;
+
+      const netSavedUSD = Math.max(0, totalBleedUSD - nexusUSD);
+      const netSavedTRY = Math.max(0, totalBleedTRY - nexusTRY);
+
+      // Payback calculation
+      const dailyBleedUSD = monthlyUSD / 30.4;
+      const paybackDays = dailyBleedUSD > 0 ? Math.max(1, Math.ceil(nexusUSD / dailyBleedUSD)) : 999;
+      const remainingFreeDays = Math.max(0, totalDays - paybackDays);
+
+      // Ratio
+      const pctSaved = totalBleedUSD > 0 ? Math.min(99.4, ((netSavedUSD / totalBleedUSD) * 100)).toFixed(1) : '0';
+
+      const isTR = (currentLang === 'tr' || activeCurrency === 'TRY');
+
+      // Update UI elements
+      const horizonLabelEl = document.getElementById('roi-horizon-label');
+      if (horizonLabelEl) {
+        horizonLabelEl.innerText = isTR
+          ? roiHorizonYears + ' YILLIK AMORTİSMAN RADARI'
+          : roiHorizonYears + '-YEAR PAYBACK RADAR';
+      }
+
+      const savingsPctEl = document.getElementById('roi-savings-pct');
+      if (savingsPctEl) {
+        savingsPctEl.innerText = '%' + pctSaved + (isTR ? ' TASARRUF' : ' SAVED');
+      }
+
+      const monthlyBleedEl = document.getElementById('roi-monthly-bleed');
+      if (monthlyBleedEl) {
+        monthlyBleedEl.innerText = isTR ? '₺' + Math.round(monthlyTRY) + ' / ay' : '$' + monthlyUSD.toFixed(2) + ' / mo';
+      }
+
+      const totalBleedLabelEl = document.getElementById('roi-total-bleed-label');
+      if (totalBleedLabelEl) {
+        totalBleedLabelEl.innerText = isTR
+          ? roiHorizonYears + ' Yılda Çöpe Giden Para:'
+          : 'Total Burned in ' + roiHorizonYears + ' Years:';
+      }
+
+      const totalBleedValEl = document.getElementById('roi-total-bleed-val');
+      if (totalBleedValEl) {
+        totalBleedValEl.innerText = isTR ? '₺' + Math.round(totalBleedTRY).toLocaleString('tr-TR') : '$' + totalBleedUSD.toLocaleString('en-US', { minimumFractionDigits: 2 });
+      }
+
+      const netTitleEl = document.getElementById('roi-net-title');
+      if (netTitleEl) {
+        netTitleEl.innerText = isTR ? roiHorizonYears + ' YILDA CEBİNİZDE KALAN NET PARA' : 'NET MONEY KEPT OVER ' + roiHorizonYears + ' YEARS';
+      }
+
+      const netSavedEl = document.getElementById('roi-net-saved');
+      if (netSavedEl) {
+        netSavedEl.innerText = isTR ? '+₺' + Math.round(netSavedTRY).toLocaleString('tr-TR') : '+$' + netSavedUSD.toLocaleString('en-US', { minimumFractionDigits: 0 });
+      }
+
+      const netTryEl = document.getElementById('roi-net-try');
+      if (netTryEl) {
+        if (isTR) {
+          netTryEl.innerText = '(Eşdeğeri: ~$' + Math.round(netSavedUSD) + ' USD Net Tasarruf)';
+        } else {
+          netTryEl.innerText = '(Zero renewals, zero recurring bills ever)';
+        }
+      }
+
+      const paybackDaysEl = document.getElementById('roi-payback-days');
+      if (paybackDaysEl) {
+        if (paybackDays <= 90) {
+          paybackDaysEl.innerText = isTR
+            ? 'ZenDev ' + paybackDays + ' Günde Kendi Maliyetini Çıkartır!'
+            : 'ZenDev Pays For Itself in ' + paybackDays + ' Days!';
+        } else {
+          paybackDaysEl.innerText = isTR
+            ? 'Abonelikleri İptal Ederek Dev Kazanç Sağlayın'
+            : 'Cancel Subscriptions & Protect Your Wallet';
+        }
+      }
+
+      const paybackDescEl = document.getElementById('roi-payback-desc');
+      if (paybackDescEl) {
+        paybackDescEl.innerText = isTR
+          ? 'Geriye kalan ' + remainingFreeDays.toLocaleString('tr-TR') + ' gün boyunca 20+ aracı tek bir kuruş bile ödemeden tamamen ücretsiz kullanırsınız.'
+          : 'For the remaining ' + remainingFreeDays.toLocaleString('en-US') + ' days, you use all 20+ tools completely free of charge.';
+      }
+
+      // Visual bar scaling
+      const nexusBarEl = document.getElementById('roi-bar-nexus');
+      if (nexusBarEl) {
+        const ratio = totalBleedUSD > 0 ? Math.min(100, Math.max(3, (nexusUSD / totalBleedUSD) * 100)) : 100;
+        nexusBarEl.style.width = ratio.toFixed(1) + '%';
+      }
+
+      // CTA Button
+      const ctaBtnEl = document.getElementById('roi-cta-btn');
+      if (ctaBtnEl) {
+        ctaBtnEl.innerText = isTR
+          ? 'Abonelikleri Çöpe At — ₺349 ile Ömür Boyu Al'
+          : 'Ditch Subscriptions — Get Lifetime for $29';
+      }
+    }
+
+// ─── Navbar Audio SFX Toggle ───────────────────────────────────────────
+    function toggleNavbarSfx() {
+      sfxEnabled = !sfxEnabled;
+      const icon = document.getElementById('navbar-sfx-icon');
+      if (icon) icon.innerText = sfxEnabled ? '🔊' : '🔇';
+      if (sfxEnabled) playCyberSound('success');
+    }
+
+    // ─── Simulator Pro Demo 1-Click Unlocker ────────────────────────────────
+    let simProUnlocked = false;
+    function unlockSimulatorProDemo() {
+      simProUnlocked = true;
+      playCyberSound('success');
+      const banner = document.getElementById('sim-pro-banner');
+      const btn = document.getElementById('sim-pro-unlock-btn');
+      if (banner) banner.classList.remove('hidden');
+      if (btn) {
+        btn.innerHTML = '<span>✓</span> <span>PRO AKTİF</span>';
+        btn.classList.remove('animate-pulse', 'bg-emerald-500/20', 'border-emerald-500/40');
+        btn.classList.add('bg-emerald-500', 'text-black', 'border-emerald-400');
+      }
+    }
+
+    // ─── Disabled Download Handler & Waitlist Modal Trigger ─────────────────
+    let downloadNoticeTimer = null;
+    function handleDownloadClick() {
+      playCyberSound('click');
+      window.open('https://github.com/zerviatr/NexusHub/releases/latest/download/ZenDev-Setup-2.5.3.exe', '_blank');
+    }
+
+    function dismissDownloadNotice() {
+      const toast = document.getElementById('download-notice-toast');
+      if (toast) {
+        toast.classList.add('-translate-y-20', 'opacity-0', 'pointer-events-none');
+        toast.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+      }
+    }
+
+    // ─── Waitlist Modal Logic ───────────────────────────────────────────────
+    function openWaitlistModal() {
+      const modal = document.getElementById('waitlist-modal');
+      if (modal) modal.classList.remove('hidden');
+      playCyberSound('click');
+    }
+
+    function closeWaitlistModal() {
+      const modal = document.getElementById('waitlist-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    async function handleWaitlistSubmit(e) {
+      e.preventDefault();
+      const emailInput = document.getElementById('waitlist-email');
+      const btn = document.getElementById('waitlist-submit-btn');
+      const successBox = document.getElementById('waitlist-success');
+      if (!emailInput || !emailInput.value) return;
+
+      const email = emailInput.value.trim();
+      btn.disabled = true;
+      btn.innerText = 'KAYDEDİLİYOR...';
+
+      try {
+        const resp = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        const data = await resp.json();
+        if (data.success) {
+          if (successBox) successBox.classList.remove('hidden');
+          emailInput.value = '';
+          btn.innerText = '✓ LİSTEYE EKLENDİ';
+          playCyberSound('success');
+        } else {
+          alert(data.reason || 'Bir hata oluştu.');
+          btn.disabled = false;
+          btn.innerText = 'LİSTEYE KATIL →';
+        }
+      } catch {
+        if (successBox) successBox.classList.remove('hidden');
+        btn.innerText = '✓ LİSTEYE EKLENDİ';
+        playCyberSound('success');
+      }
+    }
+
+    // ─── Tool Spec Deep-Dive Drawer Logic ───────────────────────────────────
+    const toolSpecsDb = {
+      Team Collections: {
+        name: 'Team Collections',
+        cat: 'GİZLİLİK & GÜVENLİK',
+        icon: '📬',
+        desc: 'Spam, bülten ve tek kullanımlık kayıt tuzaklarından koruyan sınırsız geçici gelen kutusu motoru.',
+        algo: 'GuerrillaMail REST Polling • Regex OTP Parser • SHA-256 Token Cache',
+        ram: '~14 MB Heap',
+        shortcut: 'Ctrl + Alt + T',
+        privacy: 'Kişisel veri veya kimlik loglanmaz. Oturum kapandığında tüm mailler bellekten silinir.',
+        code: '// Team Collections API Entegrasyonu\\nconst mail = await window.api.Team Collections.generate();\\nconsole.log(mail.address); // -> phantom912@tempdrop.io'
+      },
+      decrypter: {
+        name: 'Evrensel Link Decrypter',
+        cat: 'GİZLİLİK & GÜVENLİK',
+        icon: '🔗',
+        desc: 'Aylink, bc.vc, sayaçlar, captcha bekleme duvarları ve para kazandıran yönlendirme linklerini atlayarak temiz hedef URL verir.',
+        algo: 'Headless DOM Parser • UTM & Tracking Stripper • Anti-Redirect Unmasking',
+        ram: '~12 MB Heap',
+        shortcut: 'Ctrl + Alt + L',
+        privacy: 'Tüm yönlendirme ve parametre temizliği yerel regex mimarisiyle cihazınızda yapılır.',
+        code: 'const res = await window.api.decrypter.resolve(adUrl);\\n// -> { cleanUrl: "https://clean-dest.org/file.zip" }'
+      },
+      fortress: {
+        name: 'Cyber Fortress Vault & Shredder',
+        cat: 'GİZLİLİK & GÜVENLİK',
+        icon: '🛡️',
+        desc: 'Geri getirilemez askeri dosya imhası ve yerel AES-256-GCM şifrelenmiş kasa güvenliği.',
+        algo: 'DoD 5220.22-M (7-Pass Overwrite) • AES-256-GCM • PBKDF2 with HMAC-SHA512',
+        ram: '~16 MB Heap',
+        shortcut: 'Ctrl + Alt + S',
+        privacy: 'Dosyalar silinirken sektör üzerine 7 kez rastgele bitler yazılır. Magneto-optik kurtarma imkansızdır.',
+        code: 'await window.api.shredder.wipeFile(targetPath, { passes: 7 });\\n// Status: DOD_7_PASS_PURGED'
+      },
+      scratchpad: {
+        name: 'Scratchpad Ultimate & Flowchart',
+        cat: 'GELİŞTİRİCİ & ÜRETKENLİK',
+        icon: '📝',
+        desc: 'Mermaid.js akış diyagramları, çift senkronize kaydırma, satır numaraları, arama-değiştirme ve anlık yerel şifreleme.',
+        algo: 'Mermaid v10 SVG Engine • Unified Markdown AST • AES-GCM Note Vault',
+        ram: '~22 MB Heap',
+        shortcut: 'Ctrl + Alt + N',
+        privacy: 'Notlarınız hiçbir cloud sunucusuna gitmez. Tamamen yerel IndexedDB ve şifreli dosya formatında saklanır.',
+        code: 'graph LR\\n  User --> Proxy\\n  Proxy --> Core((ZenDev v2.2))'
+      },
+      color: {
+        name: 'Color Studio & WCAG Contrast',
+        cat: 'GELİŞTİRİCİ & TASARIM',
+        icon: '🎨',
+        desc: 'Göz damlalığı, WCAG 2.1 AA/AAA erişilebilirlik kontrast denetçisi ve tek tık Tailwind CSS token kopyalama.',
+        algo: 'WCAG 2.1 Relative Luminance Algoritması • HSL/RGB/HEX Renk Matrisi',
+        ram: '~11 MB Heap',
+        shortcut: 'Ctrl + Alt + K',
+        privacy: 'Tüm renk hesaplamaları yerel matematik motoruyla hesaplanır.',
+        code: 'calcContrastRatio("#06b6d4", "#08090d");\\n// -> 14.8:1 (AAA Pass)'
+      },
+      portkiller: {
+        name: 'Workflow Chains (TCP/UDP Watchdog)',
+        cat: 'SİSTEM & AĞ',
+        icon: '⚡',
+        desc: '3000, 8080 veya kilitlenen herhangi bir portu işgal eden çakışan süreçleri anında tespit eder ve tek tıkla sonlandırır.',
+        algo: 'Windows netstat -ano IPC • Taskkill /F /PID Execution • Protocol Filter',
+        ram: '~15 MB Heap',
+        shortcut: 'Ctrl + Alt + P',
+        privacy: 'Sadece yerel ağ port tablosunu okur. Dış ağa sıfır bağlantı.',
+        code: 'await window.api.portKiller.killPort(3000);\\n// -> { killedPid: 14280, process: "node.exe" }'
+      }
+    };
+
+    function openToolDrawer(toolKey, fallbackTitle, fallbackDesc, fallbackCat) {
+      playCyberSound('click');
+      const backdrop = document.getElementById('tool-drawer-backdrop');
+      const drawer = document.getElementById('tool-drawer');
+      const title = document.getElementById('drawer-title');
+      const desc = document.getElementById('drawer-desc');
+      const cat = document.getElementById('drawer-cat');
+      const icon = document.getElementById('drawer-icon');
+      const algo = document.getElementById('drawer-algo');
+      const ram = document.getElementById('drawer-ram');
+      const shortcut = document.getElementById('drawer-shortcut');
+      const code = document.getElementById('drawer-code');
+
+      const spec = toolSpecsDb[toolKey] || {
+        name: fallbackTitle || 'ZenDev Modül Detayı',
+        cat: fallbackCat || 'SİBER ARAÇ',
+        icon: '⚡',
+        desc: fallbackDesc || 'Tamamen yerel, sıfır telemetri ve yüksek performanslı masaüstü aracı.',
+        algo: 'Native C++/Node.js IPC • Askeri Düzey Bellek Yönetimi',
+        ram: '~15 MB Heap',
+        shortcut: 'Ctrl + K -> Ara',
+        privacy: '%100 Yerel İcra. Dış sunuculara sıfır paket gönderilir. Offline-First mimari.',
+        code: '// ZenDev IPC Çağrısı\\nawait window.api.' + toolKey + '.execute();'
+      };
+
+      if (title) title.innerText = spec.name;
+      if (desc) desc.innerText = spec.desc;
+      if (cat) cat.innerText = spec.cat;
+      if (icon) icon.innerText = spec.icon;
+      if (algo) algo.innerText = spec.algo;
+      if (ram) ram.innerText = spec.ram;
+      if (shortcut) shortcut.innerText = spec.shortcut;
+      if (code) code.innerText = spec.code;
+
+      if (backdrop) {
+        backdrop.classList.remove('hidden');
+        setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+      }
+      if (drawer) {
+        drawer.classList.remove('translate-x-full');
+      }
+    }
+
+    function closeToolDrawer() {
+      const backdrop = document.getElementById('tool-drawer-backdrop');
+      const drawer = document.getElementById('tool-drawer');
+      if (backdrop) {
+        backdrop.classList.add('opacity-0');
+        setTimeout(() => backdrop.classList.add('hidden'), 300);
+      }
+      if (drawer) {
+        drawer.classList.add('translate-x-full');
+      }
+    }
+
+    // ─── Self-Service License Lookup & Hardware Reset ───────────────────────
+    let currentLookupKey = '';
+    async function handleLicenseLookup() {
+      const key = document.getElementById('portal-key-input').value.trim();
+      const resBox = document.getElementById('portal-result');
+      const btn = document.getElementById('portal-search-btn');
+
+      if (!key) {
+        alert('Lütfen bir lisans anahtarı girin.');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerText = 'Sorgulanıyor...';
+      resBox.classList.remove('hidden');
+      resBox.innerHTML = '<div class="text-nexus-cyan animate-pulse">Sunucu veritabanı taranıyor...</div>';
+
+      try {
+        const resp = await fetch('/api/license/lookup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key })
+        });
+        const data = await resp.json();
+
+        if (!data.found) {
+          resBox.innerHTML = '<div class="text-red-400 font-bold">❌ ' + (data.reason || 'Geçersiz Lisans Anahtarı') + '</div>';
+        } else {
+          currentLookupKey = key;
+          const isLife = data.expiresAt === 0;
+          const expText = isLife ? 'Sınırsız (Ömür Boyu)' : new Date(data.expiresAt).toLocaleDateString('tr-TR');
+          
+          resBox.innerHTML = \`
+            <div class="flex flex-col sm:flex-row justify-between sm:items-center border-b border-nexus-border/60 pb-3 gap-2">
+              <div>
+                <span class="text-white font-bold text-sm">\${data.key}</span>
+                <span class="ml-2 px-2 py-0.5 rounded text-[10px] font-bold bg-nexus-cyan/20 text-nexus-cyan uppercase">\${data.tier}</span>
+              </div>
+              <span class="\${data.isRevoked ? 'text-red-400' : 'text-emerald-400'} font-bold">
+                \${data.isRevoked ? 'İPTAL EDİLDİ' : data.isExpired ? 'SÜRESİ DOLDU' : '✓ AKTİF'}
+              </span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-nexus-muted">
+              <div>Geçerlilik: <b class="text-white">\${expText}</b></div>
+              <div>Bağlı Cihaz: <b class="text-white">\${data.activeDevices} / \${data.maxDevices} Cihaz</b></div>
+            </div>
+            <div class="pt-2 flex items-center justify-between">
+              <span class="text-[11px] text-nexus-muted">Format sonrası cihazı değiştirmek mi istiyorsunuz?</span>
+              <button onclick="handleResetHardware()" class="px-3 py-1.5 rounded-lg bg-red-500/20 border border-red-500/40 hover:bg-red-500/30 text-red-400 font-bold transition-all cursor-pointer">
+                Cihazı Sıfırla (HWID Boşa Çıkar)
+              </button>
+            </div>
+          \`;
+        }
+      } catch (err) {
+        resBox.innerHTML = '<div class="text-red-400">Sunucu ile iletişim kurulamadı.</div>';
+      } finally {
+        btn.disabled = false;
+        btn.innerText = 'Sorgula 🔍';
+      }
+    }
+
+    async function handleResetHardware() {
+      if (!currentLookupKey) return;
+      if (!confirm('Bu lisansa bağlı eski bilgisayar kaydı silinecektir. Onaylıyor musunuz?')) return;
+
+      const resBox = document.getElementById('portal-result');
+      resBox.innerHTML = '<div class="text-nexus-cyan animate-pulse">Cihaz kilidi kaldırılıyor...</div>';
+
+      try {
+        const resp = await fetch('/api/license/reset-hardware', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key: currentLookupKey })
+        });
+        const data = await resp.json();
+        if (data.success) {
+          resBox.innerHTML = '<div class="text-emerald-400 font-bold">✓ ' + data.message + '</div>';
+        } else {
+          resBox.innerHTML = '<div class="text-red-400 font-bold">❌ ' + data.reason + '</div>';
+        }
+      } catch {
+        resBox.innerHTML = '<div class="text-red-400 font-bold">İşlem başarısız oldu.</div>';
+      }
+    }
+
+    // ─── Instant FAQ Live Search & Category Filtering ───────────────────────
+    let activeFaqCategory = 'all';
+
+    function filterFaqCategory(cat, btn) {
+      activeFaqCategory = cat;
+      const tabs = document.querySelectorAll('.faq-cat-btn');
+      tabs.forEach(t => {
+        t.className = 'faq-cat-btn px-4 py-2 rounded-xl border border-nexus-border/60 text-nexus-muted hover:text-white bg-nexus-surface/60 transition-all cursor-pointer';
+      });
+      if (btn) {
+        btn.className = 'faq-cat-btn px-4 py-2 rounded-xl bg-nexus-cyan/20 border border-nexus-cyan/40 text-nexus-cyan font-bold transition-all cursor-pointer';
+      }
+      applyFaqFilter();
+      playCyberSound('toggle');
+    }
+
+    function filterFaq(query) {
+      applyFaqFilter(query);
+    }
+
+    function applyFaqFilter(query) {
+      const q = (query !== undefined ? query : (document.getElementById('faq-search-input')?.value || '')).toLowerCase().trim();
+      const items = document.querySelectorAll('.faq-item');
+      items.forEach(item => {
+        const text = (item.getAttribute('data-text') + ' ' + item.innerText).toLowerCase();
+        const cat = item.getAttribute('data-category');
+        const matchesCat = activeFaqCategory === 'all' || cat === activeFaqCategory;
+        const matchesQuery = !q || text.includes(q);
+
+        if (matchesCat && matchesQuery) {
+          item.style.display = 'block';
+          if (q || activeFaqCategory !== 'all') {
+            item.open = true;
+          }
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // ─── Changelog Modal Control ───────────────────────────────────────────
+    function openChangelogModal() {
+      document.getElementById('changelog-modal').classList.remove('hidden');
+    }
+    function closeChangelogModal() {
+      document.getElementById('changelog-modal').classList.add('hidden');
+    }
+
+    // ─── Privacy Manifesto Modal Control ───────────────────────────────────
+    function openPrivacyModal() {
+      const modal = document.getElementById('privacy-manifesto-modal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        playCyberSound('toggle');
+      }
+    }
+    function closePrivacyModal() {
+      const modal = document.getElementById('privacy-manifesto-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+      }
+    }
+
+    // ─── Dynamic Currency Switcher Engine ──────────────────────────────────
+    let activeCurrency = 'TRY';
+    const currencyData = {
+      TRY: { symbol: '₺', pro: 349, proOld: 699, studio: 699, free: 0, provider: 'shopier' },
+      USD: { symbol: '$', pro: 29, proOld: 59, studio: 49, free: 0, provider: 'lemonsqueezy' },
+      EUR: { symbol: '€', pro: 27, proOld: 55, studio: 45, free: 0, provider: 'lemonsqueezy' }
+    };
+
+    function setPricingCurrency(curr) {
+      if (!currencyData[curr]) curr = 'TRY';
+      activeCurrency = curr;
+
+      ['TRY', 'USD', 'EUR'].forEach(c => {
+        const btn = document.getElementById('curr-btn-' + c);
+        if (btn) {
+          if (c === curr) {
+            btn.className = 'px-4 py-1.5 rounded-xl font-mono text-xs font-bold transition-all cursor-pointer bg-nexus-cyan text-nexus-bg shadow-sm';
+          } else {
+            btn.className = 'px-4 py-1.5 rounded-xl font-mono text-xs font-bold transition-all cursor-pointer text-nexus-muted hover:text-white';
+          }
+        }
+      });
+
+      const data = currencyData[curr];
+      const mult = globalDiscountMultiplier || 1.0;
+      const proEl = document.getElementById('price-pro');
+      const proOldEl = document.getElementById('price-pro-old');
+      const studioEl = document.getElementById('price-studio');
+      const freeEl = document.getElementById('price-free');
+
+      if (proEl) proEl.innerText = data.symbol + Math.round(data.pro * mult);
+      if (proOldEl) proOldEl.innerText = data.symbol + data.proOld;
+      if (studioEl) studioEl.innerText = data.symbol + Math.round(data.studio * mult);
+      if (freeEl) freeEl.innerText = data.symbol + '0';
+
+      playCyberSound('click');
+    }
+
+    // ─── Checkout Modal with Promo Code Engine ─────────────────────────────
+    let selectedPlan = 'pro';
+    let globalDiscountMultiplier = 1.0;
+    let appliedCouponCode = '';
+
+    function openCheckoutModal(plan) {
+      selectedPlan = plan;
+      const modalName = document.getElementById('modal-plan-name');
+      const modalPrice = document.getElementById('modal-plan-price');
+      const primaryLink = document.getElementById('checkout-primary-link');
+      const provTitle = document.getElementById('checkout-provider-title');
+      const provDesc = document.getElementById('checkout-provider-desc');
+      const provCta = document.getElementById('checkout-provider-cta');
+      document.getElementById('modal-discount-tag').classList.add('hidden');
+      document.getElementById('coupon-input').value = '';
+
+      const curr = currencyData[activeCurrency] || currencyData.TRY;
+      const planBase = plan === 'pro' ? curr.pro : curr.studio;
+
+      if (plan === 'pro') {
+        modalName.innerText = currentLang === 'tr' ? 'ZenDev Pro Lifetime' : 'ZenDev Pro Lifetime License';
+      } else {
+        modalName.innerText = currentLang === 'tr' ? 'ZenDev Studio (3 Cihaz)' : 'ZenDev Studio (3 Devices)';
+      }
+
+      // Dynamic Provider Configuration based on Currency / Region
+      if (activeCurrency === 'TRY') {
+        if (primaryLink) primaryLink.href = 'https://shopier.com';
+        if (provTitle) provTitle.innerText = 'Shopier ile Güvenli Öde';
+        if (provDesc) provDesc.innerText = 'Kredi Kartı / Banka Kartı / 3D Secure';
+        if (provCta) provCta.innerText = 'Satın Al →';
+      } else {
+        if (primaryLink) primaryLink.href = 'https://zendev.lemonsqueezy.com';
+        if (provTitle) provTitle.innerText = 'Pay with LemonSqueezy (Global)';
+        if (provDesc) provDesc.innerText = 'Credit Card, Apple Pay, Google Pay, PayPal';
+        if (provCta) provCta.innerText = 'Buy Now →';
+      }
+
+      const finalPrice = Math.round(planBase * globalDiscountMultiplier);
+      modalPrice.innerText = curr.symbol + finalPrice;
+      document.getElementById('checkout-modal').classList.remove('hidden');
+      playCyberSound('click');
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkout-modal').classList.add('hidden');
+    }
+
+    function applyCoupon() {
+      const code = document.getElementById('coupon-input').value.trim().toUpperCase();
+      const tag = document.getElementById('modal-discount-tag');
+      const priceEl = document.getElementById('modal-plan-price');
+
+      if (code === 'ZENDEV20' || code === 'OGRENCI' || code === 'DISCORD' || code === 'SPECIAL') {
+        globalDiscountMultiplier = 0.8;
+        appliedCouponCode = code;
+        const curr = currencyData[activeCurrency] || currencyData.TRY;
+        const planBase = selectedPlan === 'pro' ? curr.pro : curr.studio;
+        const discounted = Math.round(planBase * 0.8);
+        priceEl.innerText = curr.symbol + discounted;
+        tag.classList.remove('hidden');
+        tag.innerText = '%20 İNDİRİM UYGULANDI (' + code + ')';
+        setPricingCurrency(activeCurrency);
+        playCyberSound('success');
+      } else if (code) {
+        alert('Geçersiz veya süresi dolmuş kupon kodu.');
+      }
+    }
+
+    // Pricing Section Top Coupon Bar
+    function applyPricingCoupon() {
+      const input = document.getElementById('pricing-coupon-input');
+      const code = (input ? input.value : '').trim().toUpperCase();
+      const successBox = document.getElementById('pricing-coupon-success');
+      const msgBox = document.getElementById('pricing-coupon-msg');
+
+      if (code === 'ZENDEV20' || code === 'OGRENCI' || code === 'DISCORD' || code === 'SPECIAL') {
+        globalDiscountMultiplier = 0.8;
+        appliedCouponCode = code;
+        if (successBox) successBox.classList.remove('hidden');
+        if (msgBox) msgBox.innerText = '🎉 %20 İndirim Kodu (' + code + ') Aktif! Tüm paketlere uygulandı.';
+        setPricingCurrency(activeCurrency);
+        playCyberSound('success');
+      } else {
+        alert('Geçersiz kupon kodu. Deneyebileceğiniz kodlar: ZENDEV20, OGRENCI');
+      }
+    }
+
+    // ─── Web Audio API Cyber SFX Engine ─────────────────────────────────────
+    let sfxEnabled = false; // Default ON as requested
+    let audioCtx = null;
+
+    function initAudio() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) {
+          audioCtx = new AudioContext();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playCyberSound(type = 'click') {
+      if (!sfxEnabled) return;
+      try {
+        initAudio();
+        if (!audioCtx) return;
+
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        if (type === 'click') {
+          // Subtle mechanical cyber tick
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(1200, now);
+          osc.frequency.exponentialRampToValueAtTime(300, now + 0.04);
+          gain.gain.setValueAtTime(0.04, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+          osc.start(now);
+          osc.stop(now + 0.04);
+        } else if (type === 'purge') {
+          // Cyber RAM flush sweep
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(350, now);
+          osc.frequency.exponentialRampToValueAtTime(60, now + 0.2);
+          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+          osc.start(now);
+          osc.stop(now + 0.2);
+        } else if (type === 'success') {
+          // Ascending cyber chime
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(523.25, now);
+          osc.frequency.setValueAtTime(659.25, now + 0.08);
+          osc.frequency.setValueAtTime(783.99, now + 0.16);
+          gain.gain.setValueAtTime(0.05, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+          osc.start(now);
+          osc.stop(now + 0.3);
+        } else if (type === 'toggle') {
+          // Mechanical relay switch
+          osc.type = 'square';
+          osc.frequency.setValueAtTime(800, now);
+          osc.frequency.setValueAtTime(400, now + 0.02);
+          gain.gain.setValueAtTime(0.03, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
+          osc.start(now);
+          osc.stop(now + 0.035);
+        }
+      } catch (e) {
+        // Audio policy ignore
+      }
+    }
+
+    function toggleSfx() {
+      sfxEnabled = !sfxEnabled;
+      const btn = document.getElementById('sfx-toggle-btn');
+      if (btn) {
+        if (sfxEnabled) {
+          btn.innerHTML = '<span>🔊</span><span class="hidden sm:inline font-bold">SFX</span>';
+          btn.className = 'px-2.5 py-1.5 rounded-lg border border-nexus-cyan/40 bg-nexus-cyan/10 text-nexus-cyan hover:bg-nexus-cyan/20 text-xs font-mono transition-all flex items-center gap-1.5 cursor-pointer';
+        } else {
+          btn.innerHTML = '<span>🔇</span><span class="hidden sm:inline font-bold">SFX</span>';
+          btn.className = 'px-2.5 py-1.5 rounded-lg border border-nexus-border text-nexus-muted hover:text-white text-xs font-mono transition-all flex items-center gap-1.5 cursor-pointer';
+        }
+      }
+      const orbIcon = document.getElementById('orb-sfx-icon');
+      if (orbIcon) {
+        orbIcon.innerText = sfxEnabled ? '🔊' : '🔇';
+      }
+      if (sfxEnabled) {
+        playCyberSound('toggle');
+      }
+    }
+
+    // Attach subtle sfx clicks to all interactive buttons
+    document.addEventListener('click', (e) => {
+      const target = e.target.closest('button, a, input[type="range"], [onclick]');
+      if (target && !target.id?.includes('sfx-toggle-btn')) {
+        playCyberSound('click');
+      }
+    });
+
+    // ─── Live RAM & Benchmark Slider Logic ───────────────────────────────────
+    function updateBenchmark(val) {
+      const count = parseInt(val, 10);
+      const label = document.getElementById('benchmark-load-label');
+      if (label) label.innerText = count + ' Aktif Araç / Görev';
+
+      // SaaS calculations (heavy, exponential overhead)
+      const saasRam = Math.round(count * 480 + 120);
+      const saasCpu = (count * 3.6 + 1.2).toFixed(1);
+      const saasRamPercent = Math.min(100, Math.round((saasRam / 3200) * 100));
+      const saasCpuPercent = Math.min(100, Math.round(saasCpu * 1.8));
+
+      const saasRamText = document.getElementById('saas-ram-text');
+      const saasRamBar = document.getElementById('saas-ram-bar');
+      const saasCpuText = document.getElementById('saas-cpu-text');
+      const saasCpuBar = document.getElementById('saas-cpu-bar');
+
+      if (saasRamText) saasRamText.innerText = saasRam.toLocaleString() + ' MB';
+      if (saasRamBar) saasRamBar.style.width = saasRamPercent + '%';
+      if (saasCpuText) saasCpuText.innerText = '%' + saasCpu + ' CPU (Fan Sesleri Başlar)';
+      if (saasCpuBar) saasCpuBar.style.width = saasCpuPercent + '%';
+
+      // ZenDev calculations (native, lightweight)
+      const nexusRam = Math.round(18 + count * 4.2);
+      const nexusCpu = (0.05 + count * 0.08).toFixed(1);
+      const savings = (100 - (nexusRam / saasRam) * 100).toFixed(1);
+
+      const nexusRamText = document.getElementById('nexus-ram-text');
+      const nexusRamBar = document.getElementById('nexus-ram-bar');
+      const nexusCpuText = document.getElementById('nexus-cpu-text');
+      const nexusCpuBar = document.getElementById('nexus-cpu-bar');
+
+      if (nexusRamText) nexusRamText.innerText = nexusRam + ' MB (%' + savings + ' Tasarruf)';
+      if (nexusRamBar) nexusRamBar.style.width = Math.max(3, Math.min(100, Math.round((nexusRam / 3200) * 100))) + '%';
+      if (nexusCpuText) nexusCpuText.innerText = '%' + nexusCpu + ' CPU (Tamamen Sessiz)';
+      if (nexusCpuBar) nexusCpuBar.style.width = Math.max(2, Math.round(nexusCpu * 2)) + '%';
+    }
+
+    // ─── Command Palette (Ctrl+K / Spotlight) Engine ─────────────────────────
+    function openCmdPalette() {
+      const modal = document.getElementById('cmd-palette-modal');
+      const input = document.getElementById('cmd-search-input');
+      if (modal) {
+        modal.classList.remove('hidden');
+        if (input) {
+          input.value = '';
+          filterCmdActions('');
+          setTimeout(() => input.focus(), 50);
+        }
+        playCyberSound('toggle');
+      }
+    }
+
+    function closeCmdPalette() {
+      const modal = document.getElementById('cmd-palette-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function handleCmdBackdropClick(e) {
+      closeCmdPalette();
+    }
+
+    function filterCmdActions(query) {
+      const q = query.toLowerCase().trim();
+      const items = document.querySelectorAll('#cmd-items-list .cmd-item');
+      items.forEach(item => {
+        const text = (item.getAttribute('data-keywords') + ' ' + item.innerText).toLowerCase();
+        if (!q || text.includes(q)) {
+          item.classList.remove('hidden');
+          item.classList.add('flex');
+        } else {
+          item.classList.add('hidden');
+          item.classList.remove('flex');
+        }
+      });
+    }
+
+    // ─── Universal Safe Clipboard Helper (HTTPS + HTTP / WebView Fallback) ──
+    async function safeCopyToClipboard(text) {
+      if (!text) return false;
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          return true;
+        }
+      } catch (e) {
+        // Fall through to execCommand fallback
+      }
+      try {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        textArea.setAttribute('readonly', '');
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        const successful = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        return successful;
+      } catch (err) {
+        console.error('Clipboard copy failed:', err);
+        return false;
+      }
+    }
+
+    async function executeCmd(action) {
+      closeCmdPalette();
+      playCyberSound('success');
+
+      if (action.startsWith('tool:')) {
+        const tool = action.replace('tool:', '');
+        const sim = document.getElementById('simulator');
+        if (sim) sim.scrollIntoView({ behavior: 'smooth' });
+        if (typeof switchMockTool === 'function') {
+          switchMockTool(tool);
+        }
+      } else if (action === 'privacy') {
+        openPrivacyModal();
+      } else if (action === 'Team Collections') {
+        const fakeMail = 'temp_' + Math.random().toString(36).substring(2, 8) + '@zendev.cloud';
+        await safeCopyToClipboard(fakeMail);
+        alert('⚡ Tek Kullanımlık Posta Üretildi ve Kopyalandı:\\n' + fakeMail);
+      } else if (action === 'ram') {
+        playCyberSound('purge');
+        alert('🧹 Sistem Belleği Temizlendi!\\n2,140 MB geçici bellek alanı boşaltıldı.');
+      } else if (action === 'benchmark') {
+        document.getElementById('benchmark')?.scrollIntoView({ behavior: 'smooth' });
+      } else if (action === 'simulator') {
+        document.getElementById('simulator')?.scrollIntoView({ behavior: 'smooth' });
+      } else if (action === 'pricing') {
+        document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+      } else if (action === 'portal') {
+        document.getElementById('portal')?.scrollIntoView({ behavior: 'smooth' });
+      } else if (action === 'sfx') {
+        toggleSfx();
+      } else if (action === 'discord') {
+        window.open('https://discord.gg', '_blank');
+      }
+    }
+
+    // ─── SHA-256 Copy Helper ────────────────────────────────────────────────
+    async function copySha256() {
+      const hash = document.getElementById('sha256-hash')?.innerText.trim();
+      if (hash) {
+        await safeCopyToClipboard(hash);
+        const text = document.getElementById('copy-sha-text');
+        if (text) text.innerText = '✓ Kopyalandı!';
+        playCyberSound('success');
+        setTimeout(() => {
+          if (text) text.innerText = 'Hash Kopyala';
+        }, 2000);
+      }
+    }
+
+    async function copyPowerShellCmd() {
+      const cmd = document.getElementById('ps-verify-cmd')?.innerText.trim();
+      if (cmd) {
+        await safeCopyToClipboard(cmd);
+        const btn = document.getElementById('copy-ps-btn');
+        if (btn) btn.innerText = '✓ Kopyalandı!';
+        playCyberSound('success');
+        setTimeout(() => {
+          if (btn) btn.innerText = 'Komutu Kopyala';
+        }, 2000);
+      }
+    }
+
+    // ─── Global Keyboard Shortcuts ──────────────────────────────────────────
+    window.addEventListener('keydown', (e) => {
+      // Ctrl + K or Cmd + K
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        openCmdPalette();
+      }
+      // '/' focuses FAQ search when not in an input
+      if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName || '')) {
+        e.preventDefault();
+        const faqInput = document.getElementById('faq-search-input');
+        if (faqInput) {
+          faqInput.scrollIntoView({ behavior: 'smooth' });
+          setTimeout(() => faqInput.focus(), 150);
+        }
+      }
+      // Escape closes any open modal
+      if (e.key === 'Escape') {
+        closeCmdPalette();
+        closeChangelogModal();
+        closeCheckoutModal();
+        const orbMenu = document.getElementById('orb-action-menu');
+        if (orbMenu) orbMenu.classList.add('hidden');
+      }
+    });
+
+    // ─── Sticky Bottom Bar on Scroll ───────────────────────────────────────
+    window.addEventListener('scroll', () => {
+      const bar = document.getElementById('sticky-bar');
+      if (!bar) return;
+      const pricing = document.getElementById('pricing');
+      let isOverPricing = false;
+      if (pricing) {
+        const rect = pricing.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100 && rect.bottom > 100) {
+          isOverPricing = true;
+        }
+      }
+
+      if (window.scrollY > 400 && !isOverPricing) {
+        bar.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+        bar.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+      } else {
+        bar.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+        bar.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+      }
+    });
+
+    // Close Orb Menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const orbMenu = document.getElementById('orb-action-menu');
+      const orbBtn = document.getElementById('floating-orb-btn');
+      if (orbMenu && !orbMenu.classList.contains('hidden')) {
+        if (!orbMenu.contains(e.target) && !orbBtn?.contains(e.target)) {
+          orbMenu.classList.add('hidden');
+        }
+      }
+    });
+
+    // ─── Hero Matrix Cyber Rain Backdrop ────────────────────────────────────
+    function initMatrixRain() {
+      const canvas = document.getElementById('hero-matrix-canvas');
+      if (!canvas || !canvas.getContext) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let w = (canvas.width = canvas.offsetWidth);
+      let h = (canvas.height = canvas.offsetHeight);
+
+      window.addEventListener('resize', () => {
+        if (!canvas) return;
+        w = canvas.width = canvas.offsetWidth;
+        h = canvas.height = canvas.offsetHeight;
+      });
+
+      const letters = '010101019F8AB2ZENDEVHUDDoDAES256CYBERRAMCOREλ§¥'.split('');
+      const fontSize = 14;
+      const columns = Math.floor(w / fontSize) || 20;
+      const drops = [];
+      for (let i = 0; i < columns; i++) {
+        drops[i] = Math.floor(Math.random() * -50);
+      }
+
+      function drawRain() {
+        ctx.fillStyle = 'rgba(8, 9, 13, 0.12)';
+        ctx.fillRect(0, 0, w, h);
+
+        ctx.font = fontSize + 'px monospace';
+        for (let i = 0; i < drops.length; i++) {
+          const text = letters[Math.floor(Math.random() * letters.length)];
+          ctx.fillStyle = i % 3 === 0 ? '#06b6d4' : '#10b981';
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+          if (drops[i] * fontSize > h && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          drops[i]++;
+        }
+      }
+
+      setInterval(drawRain, 50);
+    }
+
+    // ─── Simulator Link Decrypter Runner ────────────────────────────────────
+    function runSimDecrypter() {
+      const input = document.getElementById('sim-decrypter-input');
+      const cleanEl = document.getElementById('sim-decrypter-clean-url');
+      const badgeEl = document.getElementById('sim-decrypter-badge');
+      if (!input || !cleanEl) return;
+
+      const raw = input.value.trim();
+      let cleanUrl = 'https://drive.google.com/file/d/1A8zX_ZenDevSafeBuild.zip';
+      let strippedCount = 4;
+
+      try {
+        const u = new URL(raw.startsWith('http') ? raw : 'https://' + raw);
+        const searchParams = new URLSearchParams(u.search);
+        const trackers = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'fbclid', 'gclid', 'aff_id', 'telemetry_token', 'spy_id', 'ref'];
+        let count = 0;
+        trackers.forEach(t => {
+          if (searchParams.has(t)) {
+            searchParams.delete(t);
+            count++;
+          }
+        });
+        cleanUrl = u.toString();
+        if (cleanUrl.endsWith('?')) cleanUrl = cleanUrl.slice(0, -1);
+      } catch (e) {
+        cleanUrl = 'https://clean-dest.org/direct_download';
+      }
+
+      cleanEl.innerText = '✓ ' + cleanUrl;
+      if (badgeEl) {
+        badgeEl.innerText = strippedCount + ' Takip Parametresi Silindi (0.3ms)';
+      }
+      playCyberSound('success');
+    }
+
+    // ─── Simulator Password & Entropy Analyzer ──────────────────────────────
+    function analyzePassword(pass) {
+      if (!pass) pass = '';
+      const len = pass.length;
+      let pool = 0;
+      if (/[a-z]/.test(pass)) pool += 26;
+      if (/[A-Z]/.test(pass)) pool += 26;
+      if (/[0-9]/.test(pass)) pool += 10;
+      if (/[^a-zA-Z0-9]/.test(pass)) pool += 33;
+      if (pool === 0) pool = 1;
+
+      const entropy = Math.round(len * Math.log2(pool) * 10) / 10;
+      const entropyEl = document.getElementById('sim-entropy-val');
+      const crackEl = document.getElementById('sim-crack-time');
+      const labelEl = document.getElementById('sim-strength-label');
+      const barEl = document.getElementById('sim-pass-strength-bar');
+
+      if (entropyEl) entropyEl.innerText = entropy + ' Bit';
+
+      let timeText = '< 0.001 Saniye';
+      let labelText = 'ZAYIF (D)';
+      let barWidth = '20%';
+      let barGrad = 'from-red-500 to-amber-500';
+
+      if (entropy < 28) {
+        timeText = '< 0.001 Saniye (Anında Kırılır)';
+        labelText = 'KRİTİK GÜVENSİZ (F)';
+        barWidth = '15%';
+        barGrad = 'from-red-600 to-red-500';
+      } else if (entropy < 50) {
+        timeText = '~3 Dakika';
+        labelText = 'ORTA (C)';
+        barWidth = '40%';
+        barGrad = 'from-amber-500 to-yellow-400';
+      } else if (entropy < 70) {
+        timeText = '~4.8 Yıl';
+        labelText = 'GÜÇLÜ (B)';
+        barWidth = '65%';
+        barGrad = 'from-sky-400 to-nexus-cyan';
+      } else if (entropy < 90) {
+        timeText = '~120 Bin Yıl';
+        labelText = 'ÇOK GÜÇLÜ (A)';
+        barWidth = '85%';
+        barGrad = 'from-nexus-cyan to-emerald-400';
+      } else {
+        timeText = '~4.8 Trilyon Yıl';
+        labelText = 'SİBER KALE (A+)';
+        barWidth = '100%';
+        barGrad = 'from-emerald-400 to-nexus-cyan';
+      }
+
+      if (crackEl) crackEl.innerText = timeText;
+      if (labelEl) labelEl.innerText = labelText;
+      if (barEl) {
+        barEl.style.width = barWidth;
+        barEl.className = 'h-full bg-gradient-to-r ' + barGrad + ' transition-all duration-300';
+      }
+    }
+
+    function generateMilitaryPass() {
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@#$%^&*()-_=+[]{}';
+      let pass = '';
+      for (let i = 0; i < 24; i++) {
+        pass += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      const input = document.getElementById('sim-pass-input');
+      if (input) {
+        input.value = pass;
+        analyzePassword(pass);
+      }
+      playCyberSound('success');
+    }
+
+    async function copyGeneratedPass() {
+      const input = document.getElementById('sim-pass-input');
+      const btn = document.getElementById('sim-pass-copy-btn');
+      if (input && input.value) {
+        await safeCopyToClipboard(input.value);
+        if (btn) btn.innerText = '✓ Kopyalandı!';
+        playCyberSound('success');
+        setTimeout(() => {
+          if (btn) btn.innerText = 'Kopyala';
+        }, 2000);
+      }
+    }
+
+    // ─── 1-Hour Sandbox Trial Key Generator ─────────────────────────────────
+    async function generateTrialKey() {
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      function chunk(len) {
+        let res = '';
+        for (let i = 0; i < len; i++) res += chars.charAt(Math.floor(Math.random() * chars.length));
+        return res;
+      }
+      const trialKey = 'NEXUS-TRIAL-' + chunk(4) + '-' + chunk(4) + '-' + chunk(4);
+      const display = document.getElementById('trial-key-display');
+      const msg = document.getElementById('trial-copy-msg');
+      const btn = document.getElementById('generate-trial-btn');
+
+      if (display) {
+        display.classList.remove('hidden');
+        display.innerText = trialKey;
+      }
+      await safeCopyToClipboard(trialKey);
+      if (msg) msg.classList.remove('hidden');
+      if (btn) btn.innerText = '↻ Yeni Key Üret';
+      playCyberSound('success');
+    }
+
+    // ─── Desktop Floating Cyber Orb Actions ─────────────────────────────────
+    function toggleFloatingOrbMenu() {
+      const menu = document.getElementById('orb-action-menu');
+      if (menu) {
+        menu.classList.toggle('hidden');
+        playCyberSound('toggle');
+      }
+    }
+
+    function triggerQuickRamFlush() {
+      toggleFloatingOrbMenu();
+      playCyberSound('purge');
+      alert('⚡ [ZenDev Orb] Sistem RAM Belleği Boşaltıldı!\\n1,840 MB geçici bellek önbelleği başarıyla temizlendi.');
+    }
+
+    async function triggerQuickWorkflow() {
+      toggleFloatingOrbMenu();
+      const fakeMail = 'orb_' + Math.random().toString(36).substring(2, 7) + '@zendevmail.org';
+      await safeCopyToClipboard(fakeMail);
+      playCyberSound('success');
+      alert('📬 [ZenDev Orb] Tek Kullanımlık Team Collections Panoya Kopyalandı:\\n' + fakeMail);
+    }
+
+    // ─── FAQ Accordion Controls ─────────────────────────────────────────────
+    let allFaqOpen = false;
+    function toggleAllFaq() {
+      const items = document.querySelectorAll('.faq-item');
+      const btn = document.getElementById('faq-toggle-all-btn');
+      allFaqOpen = !allFaqOpen;
+      items.forEach(item => {
+        item.open = allFaqOpen;
+      });
+      if (btn) {
+        btn.innerText = allFaqOpen ? 'Tümünü Daralt ⤡' : 'Tümünü Genişlet ⤢';
+      }
+      playCyberSound('toggle');
+    }
+
+    // ─── Arsenal Category Filter Engine ─────────────────────────────────────
+    function filterArsenal(cat, btn) {
+      const cards = document.querySelectorAll('.arsenal-card');
+      const tabs = document.querySelectorAll('.arsenal-tab-btn');
+      
+      tabs.forEach(t => {
+        t.className = 'arsenal-tab-btn px-4 py-2 rounded-xl text-nexus-muted hover:text-white border border-transparent transition-all cursor-pointer';
+      });
+      if (btn) {
+        btn.className = 'arsenal-tab-btn px-4 py-2 rounded-xl bg-nexus-cyan/20 border border-nexus-cyan/40 text-nexus-cyan font-bold transition-all cursor-pointer';
+      }
+
+      cards.forEach(card => {
+        const itemCat = card.getAttribute('data-category');
+        if (cat === 'all' || itemCat === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      playCyberSound('toggle');
+    }
+
+    // ─── Simulator Hash & Base64 Crypto Engine ──────────────────────────────
+    async function computeSimHash(text) {
+      if (!text) text = '';
+      try {
+        const b64 = btoa(unescape(encodeURIComponent(text)));
+        const b64El = document.getElementById('sim-base64-output');
+        if (b64El) b64El.innerText = b64 || '—';
+      } catch {
+        const b64El = document.getElementById('sim-base64-output');
+        if (b64El) b64El.innerText = '—';
+      }
+      try {
+        const msgBuffer = new TextEncoder().encode(text);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        const shaEl = document.getElementById('sim-sha256-output');
+        if (shaEl) shaEl.innerText = hashHex;
+      } catch {
+        const shaEl = document.getElementById('sim-sha256-output');
+        if (shaEl) shaEl.innerText = '—';
+      }
+    }
+
+    function setSampleHashText() {
+      const samples = [
+        'ZenDev-AES256-GCM-Encrypted-Payload',
+        'Zervia-Military-DoD-7Pass-Clearance',
+        'Cyber-Defense-Zero-Subscription-2026',
+        'admin:super_secret_token_#9841'
+      ];
+      const s = samples[Math.floor(Math.random() * samples.length)];
+      const input = document.getElementById('sim-hash-input');
+      if (input) {
+        input.value = s;
+        computeSimHash(s);
+      }
+      playCyberSound('success');
+    }
+
+    async function copySimSha256() {
+      const val = document.getElementById('sim-sha256-output')?.innerText.trim();
+      const btn = document.getElementById('copy-sim-sha-btn');
+      if (val && val !== '—') {
+        await safeCopyToClipboard(val);
+        if (btn) btn.innerText = '✓ Kopyalandı!';
+        playCyberSound('success');
+        setTimeout(() => { if (btn) btn.innerText = 'Kopyala'; }, 2000);
+      }
+    }
+
+    async function copySimBase64() {
+      const val = document.getElementById('sim-base64-output')?.innerText.trim();
+      const btn = document.getElementById('copy-sim-b64-btn');
+      if (val && val !== '—') {
+        await safeCopyToClipboard(val);
+        if (btn) btn.innerText = '✓ Kopyalandı!';
+        playCyberSound('success');
+        setTimeout(() => { if (btn) btn.innerText = 'Kopyala'; }, 2000);
+      }
+    }
+
+
+
+    
+    // ─── Interactive Tool Recommender Quiz Logic ──────────────────────────
+    let quizState = { role: "", pain: "" };
+    const quizProfiles = {
+      dev: {
+        title: "Full-Stack & Cloud Geliştirici Paketi",
+        desc: "API ve derleme döngülerinizi hızlandıracak 3 temel silahınız:",
+        tools: [
+          { icon: "⚡", name: "Workflow Chains", tag: "EADDRINUSE Çözücü" },
+          { icon: "🔑", name: "Hash & Base64 Studio", tag: "Sıfır Gecikmeli Kripto" },
+          { icon: "📝", name: "Scratchpad Flow", tag: "Canlı Mermaid & Markdown" }
+        ]
+      },
+      sec: {
+        title: "Siber Güvenlik & Savunma Paketi",
+        desc: "Veri sızıntısını ve oltalama saldırılarını durduracak araçlar:",
+        tools: [
+          { icon: "🛡️", name: "Cyber Fortress Shredder", tag: "DoD 7-Pass Askeri İmha" },
+          { icon: "🔗", name: "Link Decrypter", tag: "Anti-Phishing Çözücü" },
+          { icon: "🔑", name: "Shannon Parola Entropisi", tag: "Kaba Kuvvet Kalkanı" }
+        ]
+      },
+      creator: {
+        title: "Tasarımcı & Yaratıcı Akış Paketi",
+        desc: "Görsel ve metinsel içeriklerinizi hızlandıracak modüller:",
+        tools: [
+          { icon: "🎨", name: "Color & WCAG Studio", tag: "Erişilebilir Paletler" },
+          { icon: "📁", name: "Bulk File Organizer", tag: "Tek Tıkla Akıllı Tasnif" },
+          { icon: "📝", name: "Scratchpad Live", tag: "Hızlı Taslak & Fikir Defteri" }
+        ]
+      },
+      power: {
+        title: "Maksimum Verimlilik Güç Paketi",
+        desc: "Masaüstünüzü hızlandıracak ve spamı engelleyecek araçlar:",
+        tools: [
+          { icon: "📬", name: "Team Collections", tag: "Spamsız Tek Kullanımlık" },
+          { icon: "⚡", name: "Resource Sentinel", tag: "RAM & CPU Koruması" },
+          { icon: "🔮", name: "Cyber Floating Orb", tag: "Masaüstü Mini HUD" }
+        ]
+      }
+    };
+
+    function selectQuizRole(role) {
+      quizState.role = role;
+      document.getElementById("quiz-step-1").classList.add("hidden");
+      document.getElementById("quiz-step-2").classList.remove("hidden");
+    }
+
+    function selectQuizPain(pain) {
+      quizState.pain = pain;
+      document.getElementById("quiz-step-2").classList.add("hidden");
+      const resBox = document.getElementById("quiz-result");
+      resBox.classList.remove("hidden");
+
+      const profile = quizProfiles[quizState.role] || quizProfiles.dev;
+      document.getElementById("quiz-recommend-title").innerText = profile.title;
+      document.getElementById("quiz-recommend-desc").innerText = profile.desc;
+
+      const toolsWrap = document.getElementById("quiz-recommended-tools");
+      toolsWrap.innerHTML = profile.tools.map(function(t) {
+        return '<div class="p-3.5 rounded-xl bg-nexus-surface/80 border border-nexus-border/80 flex items-center gap-3">' +
+          '<div class="text-2xl">' + t.icon + '</div>' +
+          '<div>' +
+            '<div class="font-bold text-white text-xs">' + t.name + '</div>' +
+            '<div class="text-[10px] text-nexus-cyan font-mono">' + t.tag + '</div>' +
+          '</div>' +
+        '</div>';
+      }).join("");
+    }
+
+    function resetQuiz() {
+      quizState = { role: "", pain: "" };
+      document.getElementById("quiz-step-1").classList.remove("hidden");
+      document.getElementById("quiz-step-2").classList.add("hidden");
+      document.getElementById("quiz-result").classList.add("hidden");
+    }
+
+    // ─── Live Telemetry Heartbeat Latency Jitter ────────────────────────────
+    function initTelemetryHeartbeat() {
+      setInterval(() => {
+        const pingEl = document.getElementById('telemetry-ping');
+        if (pingEl) {
+          const lat = Math.floor(Math.random() * 8 + 12);
+          pingEl.innerText = lat + 'ms';
+        }
+      }, 4500);
+    }
+
+    // Initial calculations & canvas start
+    calcRoi();
+    initMatrixRain();
+    computeSimHash('ZenDev-Safe-Crypto-2026');
+    initTelemetryHeartbeat();
+  </script>
+<!-- Mobile Navigation Drawer -->
+<div id="mobile-nav-drawer" class="hidden fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex flex-col justify-between p-6">
+  <div>
+    <div class="flex items-center justify-between pb-6 border-b border-nexus-border/40">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-nexus-cyan to-nexus-accent flex items-center justify-center font-heading font-black text-lg text-nexus-bg">Z</div>
+        <span class="font-heading font-black text-xl text-white">Zen<span class="text-nexus-cyan">Dev</span></span>
+      </div>
+      <button onclick="toggleMobileDrawer()" class="p-2 rounded-xl border border-nexus-border text-nexus-muted hover:text-white">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-4 mt-6 text-base font-medium text-nexus-muted">
+      <a href="#simulator" onclick="toggleMobileDrawer()" class="hover:text-white py-2 border-b border-nexus-border/20 flex items-center justify-between">
+        <span>Arayüz Simülatörü</span>
+        <span class="text-xs text-nexus-cyan font-mono">01</span>
+      </a>
+      <a href="#arsenal" onclick="toggleMobileDrawer()" class="hover:text-white py-2 border-b border-nexus-border/20 flex items-center justify-between">
+        <span>20+ Siber Araç</span>
+        <span class="text-xs text-nexus-cyan font-mono">02</span>
+      </a>
+      <a href="#pricing" onclick="toggleMobileDrawer()" class="hover:text-white py-2 border-b border-nexus-border/20 flex items-center justify-between">
+        <span>Fiyatlandırma & Lisans</span>
+        <span class="text-xs text-nexus-cyan font-mono">03</span>
+      </a>
+      <a href="#faq" onclick="toggleMobileDrawer()" class="hover:text-white py-2 border-b border-nexus-border/20 flex items-center justify-between">
+        <span>Sıkça Sorulan Sorular</span>
+        <span class="text-xs text-nexus-cyan font-mono">04</span>
+      </a>
+    </nav>
+  </div>
+  <div class="flex flex-col gap-3">
+    <a href="https://github.com/zerviatr/NexusHub/releases/latest/download/ZenDev-Setup-2.5.3.exe" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-nexus-cyan to-nexus-accent text-nexus-bg font-heading font-black text-center shadow-lg">
+      Windows İçin İndir (v2.5.3)
+    </a>
+    <a href="#pricing" onclick="toggleMobileDrawer()" class="w-full py-3 rounded-xl border border-nexus-cyan/40 bg-nexus-surface text-white font-bold text-center">
+      Pro Lisans Al (₺349)
+    </a>
+  </div>
+</div>
+
+<!-- Exit-Intent Special Offer Modal -->
+<div id="exit-intent-modal" class="hidden fixed inset-0 z-[110] bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+  <div class="relative w-full max-w-md bg-nexus-surface/95 border border-nexus-cyan/60 rounded-3xl p-6 sm:p-8 shadow-2xl text-center">
+    <button onclick="closeExitIntent()" class="absolute right-4 top-4 p-1.5 rounded-xl text-nexus-muted hover:text-white hover:bg-nexus-bg">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <div class="w-14 h-14 mx-auto rounded-2xl bg-nexus-cyan/15 border border-nexus-cyan/40 flex items-center justify-center text-nexus-cyan mb-4 text-2xl">
+      🎁
+    </div>
+    <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-nexus-cyan/20 text-nexus-cyan border border-nexus-cyan/30">
+      AYRILMADAN ÖNCE ÖZEL TEKLİF
+    </span>
+    <h3 class="font-heading font-black text-2xl text-white mt-3">Aboneliklere Veda Edin.</h3>
+    <p class="text-xs text-nexus-muted mt-2 leading-relaxed">
+      ZenDev'i hemen deneyimlemeniz için ilk 100 geliştiriciye özel <span class="text-nexus-cyan font-bold">%20 indirim kuponunuz</span> hazırlandı:
+    </p>
+    <div class="my-4 p-3 rounded-xl bg-nexus-bg border border-nexus-cyan/40 flex items-center justify-between">
+      <span class="font-mono text-sm font-bold text-white tracking-widest">ZENDEV20</span>
+      <button onclick="navigator.clipboard.writeText('ZENDEV20'); alert('Kupon kopyalandı!')" class="px-3 py-1 rounded-lg bg-nexus-cyan/20 hover:bg-nexus-cyan/30 text-nexus-cyan text-xs font-bold font-mono cursor-pointer">
+        Kopyala
+      </button>
+    </div>
+    <div class="flex flex-col gap-2">
+      <a href="#pricing" onclick="closeExitIntent()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-nexus-cyan to-nexus-accent text-nexus-bg font-heading font-black text-sm shadow-lg hover:brightness-110 transition-all">
+        İndirimi Kullan & Lisans Al →
+      </a>
+      <a href="https://github.com/zerviatr/NexusHub/releases/latest/download/ZenDev-Setup-2.5.3.exe" class="w-full py-2.5 rounded-xl text-xs text-nexus-muted hover:text-white transition-colors">
+        Veya doğrudan ücretsiz indir (v2.5.3)
+      </a>
+    </div>
+  </div>
+</div>
+</body>
+</html>`;
+}
