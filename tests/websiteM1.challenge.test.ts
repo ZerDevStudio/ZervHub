@@ -15,8 +15,8 @@
  */
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import * as React from '../website/node_modules/react';
-import { renderToString } from '../website/node_modules/react-dom/server';
+import * as React from 'react';
+import { renderToString } from 'react-dom/server';
 import * as fs from 'fs';
 import * as path from 'path';
 
