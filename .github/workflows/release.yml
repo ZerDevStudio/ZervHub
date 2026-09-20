@@ -87,10 +87,12 @@ jobs:
           Write-Host "Created dist_release/latest.yml, $targetName, and $legacyName successfully."
 
       - name: Create GitHub Release
-        if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
         uses: softprops/action-gh-release@v2
         with:
-          draft: false
+          tag_name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'v2.5.5' }}
+          name: ZervHub v${{ startsWith(github.ref, 'refs/tags/') && replace(github.ref_name, 'v', '') || '2.5.5' }}
+          draft: ${{ github.event.inputs.draft == 'true' }}
           prerelease: false
           generate_release_notes: true
           make_latest: true
