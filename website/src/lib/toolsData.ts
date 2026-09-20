@@ -51,16 +51,16 @@ export const ZENDEV_TOOLS: ToolItem[] = [
     id: 'universal-decrypter',
     name: 'UniversalDecrypter',
     category: 'security',
-    titleTr: 'Evrensel Çoklu Kod Çözücü & Analizci',
-    titleEn: 'Universal Multi-Format Decrypter & Decoder',
-    descriptionTr: 'Base64, Hex, URL Encode, HTML Entities, Binary, ROT13 ve Sezar şifrelemelerini anında otomatik tespit edip tek tıkla çözün.',
-    descriptionEn: 'Auto-detect and decode Base64, Hex, URL Encode, HTML Entities, Binary, ROT13, and Caesar ciphers seamlessly in real-time.',
-    badgeTr: 'Canlı Demo Var',
-    badgeEn: 'Live Demo Available',
+    titleTr: 'Evrensel Link Çözücü & Takipçi Temizleyici',
+    titleEn: 'Universal Link Decrypter & Tracker Stripper',
+    descriptionTr: 'Kısaltılmış ve reklam yönlendirmeli bağlantıların gerçek hedefini yerel Rust bypasser.rs motoruyla çözün. UTM, FBCLID, affiliate gibi gözetim parametrelerini sıfır veri sızıntısıyla temizleyin ve özyinelemeli yönlendirmeleri anında arındırın.',
+    descriptionEn: 'Uncover true destinations of ad-shortened links using the native Rust bypasser.rs engine. Strip invasive tracking parameters (UTM, FBCLID, affiliate tags) with zero network leakage and unpack multi-hop redirects recursively.',
+    badgeTr: 'Rust Bypasser',
+    badgeEn: 'Rust Bypasser',
     icon: 'Unlock',
-    hasInBrowserDemo: true,
-    highlightTag: '7 Format Çözücü',
-    techSpecs: ['Base64 / Hex', 'URL & HTML Entity', 'Binary Byte Çevirici', 'Otomatik Biçim Algılama']
+    hasInBrowserDemo: false,
+    highlightTag: 'Rust Link Bypasser',
+    techSpecs: ['Rust bypasser.rs Motoru', 'UTM/FBCLID Tracker Temizliği', 'Çok Aşamalı POST El Sıkışması', 'Özyinelemeli Yönlendirme Çözücü']
   },
 
   // ── YAZILIM GELİŞTİRİCİ & APİ GÜÇ İSTASYONU ──────────────────

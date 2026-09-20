@@ -593,13 +593,13 @@ describe('Empirical Challenge: Milestone M1 Website Modernization', () => {
 
       expect(ZENDEV_RELEASE_CONFIG.version).toBe('2.5.5');
       expect(ZENDEV_RELEASE_CONFIG.setupExe).toBe(
-        'https://github.com/ZerDevStudio/ZervHub/releases/download/v2.5.5/ZenDev-Setup-2.5.5.exe'
+        'https://github.com/ZerDevStudio/ZervHub-App/releases/download/v2.5.5/ZenDev-Setup-2.5.5.exe'
       );
       expect(ZENDEV_RELEASE_CONFIG.portableExe).toBe(
-        'https://github.com/ZerDevStudio/ZervHub/releases/download/v2.5.5/ZenDev-Portable-2.5.5.exe'
+        'https://github.com/ZerDevStudio/ZervHub-App/releases/download/v2.5.5/ZenDev-Portable-2.5.5.exe'
       );
       expect(ZENDEV_RELEASE_CONFIG.fallbackLatestRelease).toBe(
-        'https://github.com/ZerDevStudio/ZervHub/releases/latest'
+        'https://github.com/ZerDevStudio/ZervHub-App/releases/latest'
       );
     });
 

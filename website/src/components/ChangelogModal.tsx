@@ -25,7 +25,7 @@ export const ChangelogModal: React.FC<ChangelogModalProps> = ({ isOpen, onClose,
                 {isTr ? 'ZenDev Sürüm Günlüğü & Yenilikler' : 'ZenDev Changelog & Release Notes'}
               </h3>
               <span className="text-xs text-gray-400 font-mono">
-                {isTr ? 'En son resmi sürüm: v2.5.3' : 'Latest official release: v2.5.3'}
+                {isTr ? 'En son resmi sürüm: v2.5.5' : 'Latest official release: v2.5.5'}
               </span>
             </div>
           </div>
@@ -40,16 +40,80 @@ export const ChangelogModal: React.FC<ChangelogModalProps> = ({ isOpen, onClose,
 
         {/* Modal Body Scroll */}
         <div className="p-6 overflow-y-auto space-y-8 font-mono text-xs">
-          {/* v2.5.3 - Maintenance & Stability Release */}
+          {/* v2.5.5 - Premier Release: Universal Link Decrypter, Tauri v2 & SaaS Compliance */}
           <div className="border-l-2 border-cyan-400 pl-4 space-y-2">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-sm font-bold text-cyan-300">
                 {isTr
-                  ? 'v2.5.3 — Kararlılık, SaaS Dönüşüm Direktifi & Sürüm Senkronizasyonu'
-                  : 'v2.5.3 — Stability, SaaS Transformation Directive & Release Sync'}
+                  ? 'v2.5.5 — Evrensel Link Çözücü Yenilemesi, Tauri v2 & SaaS Direktifi Uyumu'
+                  : 'v2.5.5 — Universal Link Decrypter Overhaul, Tauri v2 & SaaS Compliance'}
               </span>
               <span className="px-2 py-0.5 rounded bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 text-[10px]">
                 {isTr ? 'GÜNCEL SÜRÜM' : 'LATEST RELEASE'}
+              </span>
+              <span className="text-[10px] text-gray-500">
+                {isTr ? '18 Eylül 2026' : 'September 18, 2026'}
+              </span>
+            </div>
+            <p className="text-gray-300 font-sans text-xs leading-relaxed">
+              {isTr
+                ? 'ZenDev v2.5.5 ile Evrensel Link Çözücü (Universal Link Decrypter & Tracker Stripper) yerel Rust bypasser motoru ve iki aşamalı POST el sıkışma mimarisiyle baştan tasarlandı. Tauri v2 + Rust masaüstü altyapısı (<26 MB RAM, 0.35s açılış, 4.6 MB yükleyici) %100 çevrimdışı gizlilik güvencesiyle perçinlendi. SaaS Dönüşüm Direktifi (İlke 2) gereğince sistem müdahale araçlarının tasfiyesi tamamlandı.'
+                : 'ZenDev v2.5.5 overhauls the Universal Link Decrypter & Tracker Stripper with a native Rust bypass engine and two-step POST token handshake architecture. Hardened the Tauri v2 + Rust desktop foundation (<26 MB RAM, 0.35s cold start, 4.6 MB installer) with 100% offline-first privacy guarantees, and enforced full SaaS Transformation Directive compliance.'}
+            </p>
+            <ul className="space-y-1.5 pt-1 text-gray-300">
+              <li className="flex items-start gap-2">
+                <Check className="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5" />
+                <span>
+                  {isTr
+                    ? 'Gelişmiş Reklam Kısaltıcı Bypass Motoru: Çok aşamalı yönlendirme ağları (ay.live, aylink.co, bc.vc vb.) için erken meta-yenileme tuzaklarını engelleyen, çerez oturumu kalıcılığına sahip iki adımlı POST el sıkışma (/get/tk ve /links/go2) protokolü.'
+                    : 'Overhauled Ad-Shortener Bypass Engine: Defeated early meta-refresh traps across multi-hop networks (ay.live, aylink.co, bc.vc) using full two-step POST token handshake (/get/tk and /links/go2) with automatic cookie jar session persistence.'}
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5" />
+                <span>
+                  {isTr
+                    ? 'Özyinelemeli Yönlendirme & Ara Sayfa Çözümü: Ara reklam ve bildirim sayfalarını (bildirim.link/ph/...) otomatik açarak nihai gerçek hedef bağlantıyı (örn: disk.yandex.com.tr) tek tıkla izole eder.'
+                    : 'Recursive Redirect & Intermediate Landing Page Unwrapping: Automatically unpacks intermediate landing and notification hops (e.g. bildirim.link/ph/...) to extract real destination links in milliseconds.'}
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5" />
+                <span>
+                  {isTr
+                    ? 'Sıfır Ağ Takipçi Temizliği: Yerel Rust regex motoruyla UTM, FBCLID, GCLID, affiliate ve gözetim parametrelerini sıfır veri sızıntısıyla budar.'
+                    : 'Zero-Network Tracker Stripping: Strips UTM, FBCLID, GCLID, affiliate tags, and surveillance parameters instantly with 100% local Rust regex matching.'}
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5" />
+                <span>
+                  {isTr
+                    ? 'Tauri v2 + Rust Masaüstü Mimarisi: Chromium/Electron ek yükü olmadan <26 MB RAM tüketimi, 0.35 saniye soğuk açılış, 4.6 MB ultra kompakt yükleyici ve %100 çevrimdışı gizlilik garantisi.'
+                    : 'Tauri v2 + Rust Desktop Architecture: Eliminated Chromium/Electron overhead, achieving <26 MB RAM consumption, 0.35s boot latency, 4.6 MB standalone installer, and 100% offline-first privacy guarantee.'}
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5" />
+                <span>
+                  {isTr
+                    ? 'SaaS Dönüşüm Direktifi Uyumu: Port Killer, System Optimizer ve Temp Mail gibi sistem kurcalama ve suistimal riski taşıyan araçlar çekirdekten tamamen çıkarılarak 27 odaklı profesyonel geliştirici stüdyosuna kilitlenildi.'
+                    : 'SaaS Transformation Directive Compliance: Fully decoupled and purged Port Killer, System Optimizer, and Temp Mail to eliminate OS support liability and hone focus on 27 core developer studios.'}
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          {/* v2.5.3 - Maintenance & Stability Release */}
+          <div className="border-l-2 border-gray-700 pl-4 space-y-2">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-sm font-bold text-gray-300">
+                {isTr
+                  ? 'v2.5.3 — Kararlılık, SaaS Dönüşüm Direktifi & Sürüm Senkronizasyonu'
+                  : 'v2.5.3 — Stability, SaaS Transformation Directive & Release Sync'}
+              </span>
+              <span className="px-2 py-0.5 rounded bg-gray-900 border border-gray-700 text-gray-400 text-[10px]">
+                {isTr ? 'KARARLI SÜRÜM' : 'STABLE RELEASE'}
               </span>
               <span className="text-[10px] text-gray-500">
                 {isTr ? '17 Eylül 2026' : 'September 17, 2026'}

@@ -30,7 +30,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
                 Zen<span className="text-cyan-400">Dev</span>
               </span>
               <span className="text-[10px] px-2 py-0.5 rounded bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 font-bold">
-                v2.5.3
+                v2.5.5
               </span>
             </div>
             <p className="text-gray-400 text-xs max-w-md leading-relaxed">
@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a
-                href="https://github.com/ZerDevStudio/ZervHub"
+                href="https://github.com/ZerDevStudio/ZervHub-App"
                 target="_blank"
                 rel="noreferrer"
                 className="p-2 rounded-lg bg-[#0a0d18] border border-gray-800 hover:border-cyan-500/40 hover:text-white transition"

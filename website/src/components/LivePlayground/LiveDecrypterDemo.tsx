@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Unlock, ArrowRightLeft, Copy, Check } from 'lucide-react';
 
 export const LiveDecrypterDemo: React.FC = () => {
-  const [input, setInput] = useState('WmVuRGV2IHYyLjQuMyAtIEFib25lbGlrIFR1emHEn8SxbmEgU29uIQ==');
+  const [input, setInput] = useState('WmVuRGV2IHYyLjUuNSAtIEFib25lbGlrIFR1emHEn8SxbmEgU29uIQ==');
   const [format, setFormat] = useState<'base64' | 'hex' | 'url' | 'binary'>('base64');
   const [output, setOutput] = useState('');
   const [copied, setCopied] = useState(false);
