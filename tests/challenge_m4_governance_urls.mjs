@@ -55,7 +55,7 @@ const targetFiles = [
   '.github/PULL_REQUEST_TEMPLATE.md',
   'CONTRIBUTING.md',
   'SECURITY.md',
-  'PROFILE_README.md',
+  'docs/PROFILE_README.md',
   'scripts/setup-github-profile.mjs'
 ];
 
@@ -122,7 +122,8 @@ const officialHostWhitelist = [
   'sql.js.org',
   'vitest.dev',
   'conventionalcommits.org',
-  'capsule-render.vercel.app'
+  'capsule-render.vercel.app',
+  'zerdevstudio.github.io'
 ];
 
 const officialEmailWhitelist = [
@@ -214,7 +215,7 @@ check('System Architecture specifies Native Rust Backend', archSection.includes(
 check('System Architecture specifies Sandboxed Frontend Renderer (React 19)', archSection.includes('React 19') && archSection.includes('src/renderer'));
 
 // 3.3 Check other files for active Electron references
-const profileReadme = fileContents['PROFILE_README.md'] || '';
+const profileReadme = fileContents['docs/PROFILE_README.md'] || fileContents['PROFILE_README.md'] || '';
 const profileBadges = profileReadme.split('\n').slice(0, 50).join('\n');
 check('PROFILE_README active badges contain zero "electron"', !/electron/i.test(profileBadges));
 

@@ -17,7 +17,7 @@
  *   --target, --org <name>  Target organization or username (default: 'ZerDevStudio')
  *   --repo <name>           Target repository name (default: '.github')
  *   --path <path>           File path in repository (default: 'profile/README.md')
- *   --readme <path>         Local markdown file to deploy (default: 'PROFILE_README.md')
+ *   --readme <path>         Local markdown file to deploy (default: 'docs/PROFILE_README.md')
  *   --token <token>         GitHub Personal Access Token (or GITHUB_TOKEN / GH_TOKEN env)
  *   --dry-run               Simulate and validate configuration without making network changes
  *   --help, -h              Display this help menu
@@ -229,7 +229,7 @@ function parseArgs(args) {
     target: 'ZerDevStudio',
     repo: '.github',
     filePath: 'profile/README.md',
-    readmePath: 'PROFILE_README.md',
+    readmePath: 'docs/PROFILE_README.md',
     dryRun: false,
     token: process.env.GITHUB_TOKEN || process.env.GH_TOKEN || '',
     help: false
@@ -290,7 +290,7 @@ Options:
   --target, --org <name>  Target organization or username (default: 'ZerDevStudio')
   --repo <name>           Target repository name (default: '.github')
   --path <path>           File path in repository (default: 'profile/README.md')
-  --readme <path>         Local markdown file to deploy (default: 'PROFILE_README.md')
+  --readme <path>         Local markdown file to deploy (default: 'docs/PROFILE_README.md')
   --token <token>         GitHub Personal Access Token (or GITHUB_TOKEN / GH_TOKEN env)
   --dry-run               Simulate and validate configuration without making network changes
   --help, -h              Display this help menu
@@ -370,6 +370,7 @@ function loadReadmeContent(specifiedPath) {
   const candidatePaths = [
     path.isAbsolute(specifiedPath) ? specifiedPath : path.resolve(process.cwd(), specifiedPath),
     path.resolve(ROOT_DIR, specifiedPath),
+    path.resolve(ROOT_DIR, 'docs', 'PROFILE_README.md'),
     path.resolve(ROOT_DIR, 'PROFILE_README.md')
   ]
 

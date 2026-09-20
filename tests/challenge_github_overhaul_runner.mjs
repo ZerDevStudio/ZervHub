@@ -98,8 +98,8 @@ const pathRes = spawnSync('node', [scriptPath, '--dry-run', '--path=custom/path/
 check('--path=custom/path/README.md overrides file path', pathRes.status === 0 && pathRes.stdout.includes('• In-Repo Path:    custom/path/README.md'));
 
 // --readme
-const readmeRes = spawnSync('node', [scriptPath, '--dry-run', '--readme=PROFILE_README.md'], { encoding: 'utf8', cwd: ROOT_DIR });
-check('--readme=PROFILE_README.md loads PROFILE_README.md cleanly', readmeRes.status === 0 && readmeRes.stdout.includes('All mandatory sections verified'));
+const readmeRes = spawnSync('node', [scriptPath, '--dry-run', '--readme=docs/PROFILE_README.md'], { encoding: 'utf8', cwd: ROOT_DIR });
+check('--readme=docs/PROFILE_README.md loads PROFILE_README.md cleanly', readmeRes.status === 0 && readmeRes.stdout.includes('All mandatory sections verified'));
 
 // 1.4 Error handling & security checks
 console.log('\n--- Probing Script Error Handling & Security Enforcements ---');
@@ -147,7 +147,7 @@ const targetMdFiles = [
   '.github/PULL_REQUEST_TEMPLATE.md',
   'CONTRIBUTING.md',
   'SECURITY.md',
-  'PROFILE_README.md',
+  'docs/PROFILE_README.md',
   'README.md'
 ];
 
@@ -347,7 +347,10 @@ check('SECURITY.md defines Security Architecture boundaries (Tauri IPC, AES-256-
   security.includes('Tauri v2 IPC Bridge Boundary') && security.includes('AES-256-GCM') && security.includes('Safe Subprocesses'));
 
 // 4.6 PROFILE_README.md
-const profileReadme = fs.readFileSync(path.join(ROOT_DIR, 'PROFILE_README.md'), 'utf8');
+const profileReadmePath = fs.existsSync(path.join(ROOT_DIR, 'docs', 'PROFILE_README.md'))
+  ? path.join(ROOT_DIR, 'docs', 'PROFILE_README.md')
+  : path.join(ROOT_DIR, 'PROFILE_README.md');
+const profileReadme = fs.readFileSync(profileReadmePath, 'utf8');
 check('PROFILE_README.md contains ZerDevStudio cybernetic banner', profileReadme.includes('capsule-render.vercel.app') && profileReadme.includes('ZERDEV%20STUDIO'));
 check('PROFILE_README.md features ZervHub flagship with Tauri v2 + Rust badges', profileReadme.includes('ZervHub') && profileReadme.includes('Tauri v2 + Rust'));
 check('PROFILE_README.md highlights verified benchmarks (<26 MB RAM, 0.35s boot)', profileReadme.includes('0.35s') && profileReadme.includes('26 MB RAM'));

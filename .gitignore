@@ -70,5 +70,9 @@ electron-builder-cache/
 __pycache__/
 *.pyc
 
-# ECDSA Private Key
+# ECDSA Private Key — NEVER commit these
 keys/*private*.pem
+server/keys/*private*.pem
+*/keys/*private*.pem
+*private*.pem
+
