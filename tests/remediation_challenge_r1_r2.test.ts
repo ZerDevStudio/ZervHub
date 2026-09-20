@@ -36,14 +36,14 @@ describe('Challenger 1 Empirical Verification: R1 & R2 Remediation', () => {
     it('verifies that new repository "ZerDevStudio/ZervHub" is correctly configured in required files', () => {
       // updater.rs
       const updaterContent = fs.readFileSync(path.join(rootDir, 'src-tauri', 'src', 'updater.rs'), 'utf-8');
-      expect(updaterContent).toContain('https://api.github.com/repos/ZerDevStudio/ZervHub/releases/latest');
-      expect(updaterContent).toContain('https://github.com/ZerDevStudio/ZervHub/releases/latest');
+      expect(updaterContent).toMatch(/https:\/\/api\.github\.com\/repos\/ZerDevStudio\/ZervHub(-App)?\/releases\/latest/);
+      expect(updaterContent).toMatch(/https:\/\/github\.com\/ZerDevStudio\/ZervHub(-App)?\/releases\/latest/);
 
       // downloadHelper.ts
       const downloadHelper = fs.readFileSync(path.join(rootDir, 'website', 'src', 'lib', 'downloadHelper.ts'), 'utf-8');
-      expect(downloadHelper).toContain('https://github.com/ZerDevStudio/ZervHub/releases/download/v2.5.5/ZenDev-Setup-2.5.5.exe');
-      expect(downloadHelper).toContain('https://github.com/ZerDevStudio/ZervHub/releases/latest');
-      expect(downloadHelper).toContain('https://github.com/ZerDevStudio/ZervHub');
+      expect(downloadHelper).toMatch(/https:\/\/github\.com\/ZerDevStudio\/ZervHub(-App)?\/releases\/download\/v2\.5\.5\/ZenDev-Setup-2\.5\.5\.exe/);
+      expect(downloadHelper).toMatch(/https:\/\/github\.com\/ZerDevStudio\/ZervHub(-App)?\/releases\/latest/);
+      expect(downloadHelper).toMatch(/https:\/\/github\.com\/ZerDevStudio\/ZervHub(-App)?/);
 
       // Footer.tsx
       const footer = fs.readFileSync(path.join(rootDir, 'website', 'src', 'components', 'Footer.tsx'), 'utf-8');

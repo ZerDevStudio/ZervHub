@@ -152,6 +152,10 @@ export function loadOrGenerateKeyPair(keysDir?: string): {
   cachedPrivateKey = ephemeral.privateKey
   cachedPublicKey = ephemeral.publicKey
 
+  if (!process.env['ZENDEV_LICENSE_PUBLIC_KEY']) {
+    process.env['ZENDEV_LICENSE_PUBLIC_KEY'] = cachedPublicKey
+  }
+
   return { privateKey: cachedPrivateKey, publicKey: cachedPublicKey }
 }
 

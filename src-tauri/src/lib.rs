@@ -70,8 +70,8 @@ fn window_is_always_on_top() -> bool {
     ALWAYS_ON_TOP.load(Ordering::SeqCst)
 }
 
-#[tauri::command]
-pub fn open_external(url: String) -> Result<(), String> {
+pub fn open_url(url: &str) -> Result<(), String> {
+    let url = url.to_string();
     let parsed = url::Url::parse(&url).map_err(|e| format!("Invalid URL: {}", e))?;
     if parsed.scheme() != "http" && parsed.scheme() != "https" {
         return Err("Only http and https protocols are permitted for external launch".into());
@@ -133,6 +133,11 @@ pub fn open_external(url: String) -> Result<(), String> {
             .map_err(|e| e.to_string())?;
     }
     Ok(())
+}
+
+#[tauri::command]
+fn open_external(url: String) -> Result<(), String> {
+    open_url(&url)
 }
 
 #[tauri::command]

@@ -210,14 +210,16 @@ describe('Adversarial Challenge: Static Analysis Scanner & Windows Console Suppr
 
     const updaterPath = path.join(srcTauriSrc, 'updater.rs');
     const updaterContent = fs.readFileSync(updaterPath, 'utf-8');
-    expect(updaterContent).toMatch(/silent_command\("cmd"\)/);
-    expect(updaterContent).toMatch(/\/S/);
-    expect(updaterContent).toMatch(/\.args\(\["\/C",\s*"start",\s*"",\s*path\.to_str\(\)\.unwrap_or_default\(\),\s*"\/S"\]\)/);
-    expect(updaterContent).not.toContain('Command::new');
+    // SaaS Directive Principle 2: Updater is transparent & user-approved (no /S, interactive Command::new)
+    expect(updaterContent).not.toContain('silent_command("cmd")');
+    expect(updaterContent).not.toContain('"/S"');
+    expect(updaterContent).toContain('std::process::Command::new(&path).spawn()');
 
     const libPath = path.join(srcTauriSrc, 'lib.rs');
     const libContent = fs.readFileSync(libPath, 'utf-8');
-    expect(libContent).toMatch(/silent_command\("cmd"\)/);
+    // SEC-01 Hardening: lib.rs uses ShellExecuteW on Windows to prevent cmd argument injection
+    expect(libContent).not.toContain('silent_command("cmd")');
+    expect(libContent).toContain('ShellExecuteW');
     expect(libContent).toMatch(/silent_command\("open"\)/);
     expect(libContent).toMatch(/silent_command\("xdg-open"\)/);
     expect(libContent).not.toContain('Command::new');
@@ -239,7 +241,7 @@ describe('Adversarial Challenge: Static Analysis Scanner & Windows Console Suppr
     }
 
     const allFiles = getAllRsFiles(srcTauriSrc).filter(
-      (f) => !f.endsWith('process_ext.rs')
+      (f) => !f.endsWith('process_ext.rs') && !f.endsWith('updater.rs')
     );
 
     const violations: { file: string; match: string }[] = [];

@@ -285,6 +285,6 @@ pub fn updater_install_now(app: AppHandle) -> Result<(), String> {
     }
 
     // Fallback: Releases sayfasına git
-    let _ = crate::open_external("https://github.com/ZerDevStudio/ZervHub/releases/latest".to_string());
+    let _ = crate::open_url("https://github.com/ZerDevStudio/ZervHub-App/releases/latest");
     Ok(())
 }

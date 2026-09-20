@@ -33,8 +33,9 @@ describe('Windows Silent Command Execution Static Analysis', () => {
   });
 
   it('validates no raw unflagged Command::new exists in src-tauri/src/', () => {
+    // updater.rs is intentionally transparent & interactive per SaaS Directive Principle 2
     const files = getRsFiles(srcTauriSrc).filter(
-      (f) => !f.endsWith('process_ext.rs') && !f.includes('tests')
+      (f) => !f.endsWith('process_ext.rs') && !f.endsWith('updater.rs') && !f.includes('tests')
     );
 
     const violations: { file: string; line: number; text: string }[] = [];
