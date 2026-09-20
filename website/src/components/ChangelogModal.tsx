@@ -25,7 +25,7 @@ export const ChangelogModal: React.FC<ChangelogModalProps> = ({ isOpen, onClose,
                 {isTr ? 'ZenDev Sürüm Günlüğü & Yenilikler' : 'ZenDev Changelog & Release Notes'}
               </h3>
               <span className="text-xs text-gray-400 font-mono">
-                {isTr ? 'En son resmi sürüm: v2.5.5' : 'Latest official release: v2.5.5'}
+                {isTr ? 'En son resmi sürüm: v2.5.6' : 'Latest official release: v2.5.6'}
               </span>
             </div>
           </div>
@@ -40,8 +40,38 @@ export const ChangelogModal: React.FC<ChangelogModalProps> = ({ isOpen, onClose,
 
         {/* Modal Body Scroll */}
         <div className="p-6 overflow-y-auto space-y-8 font-mono text-xs">
-          {/* v2.5.5 - Premier Release: Universal Link Decrypter, Tauri v2 & SaaS Compliance */}
+          {/* v2.5.6 - Premier Release: Dual-Mode Workspace Architecture */}
           <div className="border-l-2 border-cyan-400 pl-4 space-y-2">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-sm font-bold text-cyan-300">
+                {isTr
+                  ? 'v2.5.6 — Çift Modlu Çalışma Alanı (Günlük Araçlar | Geliştirici) & Gelişmiş Güncelleyici'
+                  : 'v2.5.6 — Dual-Mode Workspace Architecture (Essential | Developer) & Enhanced Updater'}
+              </span>
+              <span className="px-2 py-0.5 rounded bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 text-[10px]">
+                {isTr ? 'GÜNCEL SÜRÜM' : 'LATEST RELEASE'}
+              </span>
+              <span className="text-[10px] text-gray-500">
+                {isTr ? '20 Eylül 2026' : 'September 20, 2026'}
+              </span>
+            </div>
+            <p className="text-gray-300 font-sans text-xs leading-relaxed">
+              {isTr
+                ? 'ZenDev v2.5.6 ile Çift Modlu Çalışma Alanı Mimarisi (Dual-Mode Workspace) tanıtıldı. Genel kullanıcılar için arayüz karmaşıklığını sıfırlayan ve varsayılan olarak gelen "🎯 Günlük Araçlar" modu (Evrensel Link Çözücü, Şifre Üretici, Kasa, PDF, Görsel, Dosya Düzenleme, QR Kod vb.) ve profesyoneller için "⚡ Geliştirici" modu tek tıkla veya Ctrl+M ile geçişe bağlandı. Masaüstü güncelleyicisi genel erişim ve arka planda otomatik indirme yetenekleriyle güçlendirildi.'
+                : 'ZenDev v2.5.6 introduces the Dual-Mode Workspace Architecture. Essential Tools mode is active by default to eliminate cognitive overload for everyday users, while Developer Mode brings the full 20-tool enterprise developer suite accessible in 1 click or via Ctrl+M. The desktop in-app updater now supports public release channels and seamless background streaming.'}
+            </p>
+            <div className="bg-[#050711] p-3 rounded-lg border border-gray-800/80 space-y-1 text-gray-400 font-sans">
+              <p className="text-gray-200 font-medium font-mono text-[11px]">
+                {isTr ? 'Öne Çıkan Değişiklikler:' : 'Key Highlights:'}
+              </p>
+              <ul className="list-disc list-inside space-y-0.5">
+                <li>{isTr ? 'Varsayılan Günlük Mod: Yalnızca 9 tüketici dostu pratik araç görüntülenir.' : 'Default Essential Mode: Exactly 9 curated everyday consumer tools visible.'}</li>
+                <li>{isTr ? 'Başlık Çubuğu Mod Butonu: [🎯 Günlük Araçlar | ⚡ Geliştirici] geçişi ve Ctrl+M kısayolu.' : 'Segmented Header Control: [🎯 Essential | ⚡ Developer] switcher with Ctrl+M shortcut.'}</li>
+                <li>{isTr ? 'Filtrelenmiş Arama ve Rota Koruması: Geliştirici komutları genel kullanıcıyı boğmaz.' : 'Filtered Command Palette & Route Protection: Prevents developer jargon overload.'}</li>
+                <li>{isTr ? 'Arka Planda Otomatik İndirme: Güncelleme bulunduğunda doğrudan inip kuruluma hazır hale gelir.' : 'Background Auto-Downloader: Updates stream directly to temp directory ready for 1-click install.'}</li>
+              </ul>
+            </div>
+          </div>
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-sm font-bold text-cyan-300">
                 {isTr

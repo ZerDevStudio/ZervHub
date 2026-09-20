@@ -17,9 +17,9 @@
  */
 
 export const ZENDEV_RELEASE_CONFIG = {
-  version: '2.5.5',
-  setupExe: 'https://github.com/ZerDevStudio/ZervHub-App/releases/download/v2.5.5/ZenDev-Setup-2.5.5.exe',
-  portableExe: 'https://github.com/ZerDevStudio/ZervHub-App/releases/download/v2.5.5/ZenDev-Portable-2.5.5.exe',
+  version: '2.5.6',
+  setupExe: 'https://github.com/ZerDevStudio/ZervHub-App/releases/download/v2.5.6/ZenDev-Setup-2.5.6.exe',
+  portableExe: 'https://github.com/ZerDevStudio/ZervHub-App/releases/download/v2.5.6/ZenDev-Portable-2.5.6.exe',
   fallbackLatestRelease: 'https://github.com/ZerDevStudio/ZervHub-App/releases/latest',
   repoUrl: 'https://github.com/ZerDevStudio/ZervHub-App'
 } as const;
