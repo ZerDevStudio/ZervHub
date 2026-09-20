@@ -1,0 +1,84 @@
+name: CI — Continuous Integration
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ────────────────────────────────────────────────────────────────────────────
+  # Frontend Check: Lint, TypeScript build & Vitest test suite
+  # ────────────────────────────────────────────────────────────────────────────
+  frontend-check:
+    name: Frontend (React 19 + TypeScript + Vitest)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build & Validate Types
+        run: npm run build
+
+      - name: Run Test Suite
+        run: npm test
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # Landing Page Check: Validate website/ build
+  # ────────────────────────────────────────────────────────────────────────────
+  website-check:
+    name: Showcase Website (Vite + Tailwind)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'website/package-lock.json'
+
+      - name: Install Website Dependencies
+        run: npm --prefix website ci
+
+      - name: Build Website
+        run: npm --prefix website run build
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # Backend Check: Rust / Tauri v2 compiler & cargo check
+  # ────────────────────────────────────────────────────────────────────────────
+  backend-check:
+    name: Rust Backend (Tauri v2 + Win32 Core)
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-pc-windows-msvc
+
+      - name: Rust Cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri -> target
+
+      - name: Cargo Check
+        run: cargo check --manifest-path src-tauri/Cargo.toml

@@ -5,9 +5,11 @@
 [![React Version](https://img.shields.io/badge/React-v19.1.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript Strict](https://img.shields.io/badge/TypeScript-5.8.3_Strict-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-v3.4-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![CI](https://github.com/ZerDevStudio/ZervHub/actions/workflows/ci.yml/badge.svg)](https://github.com/ZerDevStudio/ZervHub/actions/workflows/ci.yml)
 [![Tests Passing](https://img.shields.io/badge/Tests-691_Passed-2ea44f?logo=vitest&logoColor=white)](https://github.com/ZerDevStudio/ZervHub)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/ZerDevStudio/ZervHub/blob/main/LICENSE)
+[![Showcase](https://img.shields.io/badge/Showcase-Live_Website-blue?logo=github)](https://zerdevstudio.github.io/ZervHub)
 [![Release](https://img.shields.io/github/v/release/ZerDevStudio/ZervHub?color=7928CA&label=Release)](https://github.com/ZerDevStudio/ZervHub/releases/latest)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://github.com/ZerDevStudio/ZervHub/blob/main/LICENSE)
 
 > **ZenDev (ZervHub)** is an enterprise-grade, privacy-first desktop developer workstation engineered for backend engineers, full-stack architects, cybersecurity specialists, and API developers. Powered by **Tauri v2**, **Rust**, and **React 19**, ZenDev consolidates over 25 essential developer utilities into a unified, lightning-fast native binary. Operating 100% offline with zero external telemetry, hardware-bound credential protection, and mathematical tamper-evident cryptographic audit journaling.
 

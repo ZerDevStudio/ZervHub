@@ -1,0 +1,53 @@
+version: 2
+updates:
+  # Maintain dependencies for root npm (React 19, Vite, Tailwind, Tauri API)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "chore(deps)"
+    labels:
+      - "dependencies"
+      - "frontend"
+
+  # Maintain dependencies for website/ (Landing Page Vite + Tailwind v4)
+  - package-ecosystem: "npm"
+    directory: "/website"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps-website)"
+    labels:
+      - "dependencies"
+      - "website"
+
+  # Maintain dependencies for Tauri Rust backend (src-tauri/Cargo.toml)
+  - package-ecosystem: "cargo"
+    directory: "/src-tauri"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "chore(deps-rust)"
+    labels:
+      - "dependencies"
+      - "backend"
+      - "rust"
+
+  # Maintain GitHub Actions workflow dependencies
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci(actions)"
+    labels:
+      - "ci"
+      - "dependencies"
