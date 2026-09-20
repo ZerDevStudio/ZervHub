@@ -38,6 +38,9 @@
   <a href="https://github.com/ZerDevStudio/ZervHub">
     <img src="https://img.shields.io/badge/Telemetry-0.0%25%20Offline-f59e0b?style=for-the-badge&logo=aerospike&logoColor=white" alt="Zero Telemetry" />
   </a>
+  <a href="https://zerdevstudio.github.io/ZervHub/">
+    <img src="https://img.shields.io/badge/Live%20Showcase-GitHub%20Pages-2ea44f?style=for-the-badge&logo=github&logoColor=white" alt="Live Showcase" />
+  </a>
   <a href="https://github.com/ZerDevStudio/ZervHub/releases/latest">
     <img src="https://img.shields.io/badge/Platforms-Windows%20%E2%80%A2%20macOS%20%E2%80%A2%20Linux-3b82f6?style=for-the-badge&logo=linux&logoColor=white" alt="Cross Platform" />
   </a>
