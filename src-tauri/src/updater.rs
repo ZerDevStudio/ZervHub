@@ -93,11 +93,22 @@ pub async fn updater_check_now(app: AppHandle) -> Result<UpdateCheckResult, Stri
         .build()
         .map_err(|e| e.to_string())?;
 
-    let res = match client
-        .get("https://api.github.com/repos/ZerDevStudio/ZervHub/releases/latest")
+    // Prefer public distribution repository (ZervHub-App) for unauthenticated access, fallback to core (ZervHub)
+    let mut res = match client
+        .get("https://api.github.com/repos/ZerDevStudio/ZervHub-App/releases/latest")
         .send()
         .await
     {
+        Ok(r) if r.status().is_success() => Ok(r),
+        _ => {
+            client
+                .get("https://api.github.com/repos/ZerDevStudio/ZervHub/releases/latest")
+                .send()
+                .await
+        }
+    };
+
+    let res = match res {
         Ok(r) => r,
         Err(err) => {
             let _ = app.emit("updater:error", err.to_string());
@@ -153,15 +164,17 @@ pub async fn updater_check_now(app: AppHandle) -> Result<UpdateCheckResult, Stri
 
     let remote_version = release.tag_name.trim_start_matches('v').to_string();
     if is_newer_version(&remote_version, &current_version) {
-        let exe_asset = release.assets.into_iter().find(|a| {
+        let exe_asset = release.assets.iter().find(|a| {
             let n = a.name.to_lowercase();
-            n.ends_with(".exe") && (n.contains("setup") || n.contains("zendev"))
+            n.ends_with(".exe") && (n.contains("setup") || n.contains("zendev") || n.contains("zervhub"))
         });
 
         let download_url = exe_asset
             .as_ref()
             .map(|a| a.browser_download_url.clone())
             .unwrap_or_else(|| release.html_url.clone());
+
+        let total_size = exe_asset.as_ref().map(|a| a.size).unwrap_or(0);
 
         let notes = release
             .body
@@ -188,6 +201,16 @@ pub async fn updater_check_now(app: AppHandle) -> Result<UpdateCheckResult, Stri
                 "downloadUrl": download_url
             }),
         );
+
+        // Auto-download update asset in background if an exe is found
+        if exe_asset.is_some() {
+            let app_clone = app.clone();
+            let dl_url = download_url.clone();
+            let ver = remote_version.clone();
+            tokio::spawn(async move {
+                let _ = download_update_asset(app_clone, dl_url, total_size, ver).await;
+            });
+        }
 
         Ok(result)
     } else {
