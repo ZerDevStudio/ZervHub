@@ -44,9 +44,9 @@ describe('Internationalization (i18n) — 100% Key Parity & Elevation Verificati
   const trKeys = Object.keys(trFlat).sort()
 
   describe('1. Global Dictionary Parity & Cardinality', () => {
-    it('verifies exact total count of 784 keys in both en.json and tr.json', () => {
-      expect(enKeys.length).toBe(784)
-      expect(trKeys.length).toBe(784)
+    it('verifies exact total count of 785 keys in both en.json and tr.json', () => {
+      expect(enKeys.length).toBe(785)
+      expect(trKeys.length).toBe(785)
     })
 
     it('verifies zero missing keys in tr.json relative to en.json', () => {
@@ -102,12 +102,12 @@ describe('Internationalization (i18n) — 100% Key Parity & Elevation Verificati
       expect(enMermaid).toEqual(trMermaid)
     })
 
-    it('verifies encodingStudio namespace parity (32 keys)', () => {
+    it('verifies encodingStudio namespace parity (31 keys)', () => {
       const enEncoding = enKeys.filter((k) => k.startsWith('encodingStudio.'))
       const trEncoding = trKeys.filter((k) => k.startsWith('encodingStudio.'))
 
-      expect(enEncoding.length).toBe(32)
-      expect(trEncoding.length).toBe(32)
+      expect(enEncoding.length).toBe(31)
+      expect(trEncoding.length).toBe(31)
       expect(enEncoding).toEqual(trEncoding)
     })
   })
@@ -145,19 +145,21 @@ describe('Internationalization (i18n) — 100% Key Parity & Elevation Verificati
       expect(enNav).toContain('nav.tools.encodingStudio')
     })
 
-    it('verifies dashboard.tools namespace parity (12 keys)', () => {
+    it('verifies dashboard.tools namespace parity (14 keys)', () => {
       const enDash = enKeys.filter((k) => k.startsWith('dashboard.tools.'))
       const trDash = trKeys.filter((k) => k.startsWith('dashboard.tools.'))
 
-      expect(enDash.length).toBe(12)
-      expect(trDash.length).toBe(12)
+      expect(enDash.length).toBe(14)
+      expect(trDash.length).toBe(14)
       expect(enDash).toEqual(trDash)
 
-      // Ensure 4 new tools exist in dashboard descriptions
+      // Ensure new tools exist in dashboard descriptions
       expect(enDash).toContain('dashboard.tools.jwtStudio.desc')
       expect(enDash).toContain('dashboard.tools.cronStudio.desc')
       expect(enDash).toContain('dashboard.tools.mermaidStudio.desc')
       expect(enDash).toContain('dashboard.tools.encodingStudio.desc')
+      expect(enDash).toContain('dashboard.tools.colorStudio.desc')
+      expect(enDash).toContain('dashboard.tools.scratchpad.desc')
     })
   })
 

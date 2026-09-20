@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a
-                href="https://github.com/zerviatr/NexusHub"
+                href="https://github.com/ZerDevStudio/ZervHub"
                 target="_blank"
                 rel="noreferrer"
                 className="p-2 rounded-lg bg-[#0a0d18] border border-gray-800 hover:border-cyan-500/40 hover:text-white transition"

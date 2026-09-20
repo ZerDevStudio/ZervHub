@@ -601,7 +601,7 @@ export default function Sidebar() {
         ) : (
           <div className="glass-card p-2.5 text-center">
             <p className="text-[10px] text-nexus-muted font-mono font-semibold">ZenDev v{appVersion}</p>
-            <p className="text-[9px] text-nexus-muted/60 mt-0.5">Electron + React + TypeScript</p>
+            <p className="text-[9px] text-nexus-muted/60 mt-0.5">Tauri v2 + Rust + React</p>
           </div>
         )}
       </div>

@@ -94,7 +94,7 @@ pub async fn updater_check_now(app: AppHandle) -> Result<UpdateCheckResult, Stri
         .map_err(|e| e.to_string())?;
 
     let res = match client
-        .get("https://api.github.com/repos/zerviatr/NexusHub/releases/latest")
+        .get("https://api.github.com/repos/ZerDevStudio/ZervHub/releases/latest")
         .send()
         .await
     {
@@ -266,24 +266,25 @@ pub fn updater_install_now(app: AppHandle) -> Result<(), String> {
     let path_opt = DOWNLOADED_PATH.lock().unwrap().clone();
     if let Some(path) = path_opt {
         if path.exists() {
-            // SaaS Directive Principle 2: Launch installer transparently without silent /S flag
-            let _ = crate::open_external(path.to_string_lossy().to_string());
+            // SaaS Directive Principle 2: Launch installer transparently without silent background flags
+            #[cfg(target_os = "windows")]
+            {
+                let _ = std::process::Command::new(&path).spawn();
+            }
+            #[cfg(target_os = "macos")]
+            {
+                let _ = std::process::Command::new("open").arg(&path).spawn();
+            }
+            #[cfg(target_os = "linux")]
+            {
+                let _ = std::process::Command::new("xdg-open").arg(&path).spawn();
+            }
             std::thread::sleep(std::time::Duration::from_millis(500));
             std::process::exit(0);
         }
     }
 
     // Fallback: Releases sayfasına git
-    let _ = crate::open_external("https://github.com/zerviatr/NexusHub/releases/latest".to_string());
+    let _ = crate::open_external("https://github.com/ZerDevStudio/ZervHub/releases/latest".to_string());
     Ok(())
-}
-
-#[allow(dead_code)]
-fn _legacy_silent_install_reference(path: &std::path::Path) {
-    #[cfg(target_os = "windows")]
-    {
-        let _ = crate::process_ext::silent_command("cmd")
-            .args(["/C", "start", "", path.to_str().unwrap_or_default(), "/S"])
-            .spawn();
-    }
 }

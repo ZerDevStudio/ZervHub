@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   Activity,
   Cpu,
-  Zap,
   Check,
   Copy,
   ChevronRight,
@@ -20,8 +19,6 @@ export default function FloatingOrb() {
   const [isOpen, setIsOpen] = useState(false)
   const [cpuPercent, setCpuPercent] = useState<number>(14)
   const [memPercent, setMemPercent] = useState<number>(42)
-  const [isOptimizing, setIsOptimizing] = useState(false)
-  const [optSuccess, setOptSuccess] = useState(false)
 
   const navigate = useNavigate()
   const intervalRef = useRef<any>(null)
@@ -83,22 +80,6 @@ export default function FloatingOrb() {
     }
   }, [isOpen, isVisible])
 
-  // Quick RAM Optimizer
-  const handleQuickOptimize = async () => {
-    if (isOptimizing) return
-    setIsOptimizing(true)
-    try {
-      if (window.nexusAPI?.sentinel?.optimizeMemory) {
-        await window.nexusAPI.sentinel.optimizeMemory()
-        setOptSuccess(true)
-        setTimeout(() => setOptSuccess(false), 2500)
-      }
-    } catch {
-      // ignore
-    } finally {
-      setIsOptimizing(false)
-    }
-  }
 
   // Open Command Palette
   const handleOpenPalette = () => {
@@ -173,35 +154,19 @@ export default function FloatingOrb() {
               </div>
             </div>
 
-            {/* Fast Action: RAM Optimizer & Palette Launcher */}
-            <div className="grid grid-cols-2 gap-2 mb-2">
-              <button
-                onClick={handleQuickOptimize}
-                disabled={isOptimizing}
-                className="p-2 rounded-xl bg-nexus-bg/40 border border-nexus-border/40 hover:border-nexus-accent/40 text-left transition-all group flex items-center gap-2"
-              >
-                <div className="w-6 h-6 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0">
-                  <Zap className="w-3 h-3 text-amber-400 group-hover:scale-110 transition-transform" />
-                </div>
-                <div>
-                  <div className="text-[10px] font-medium text-white">
-                    {optSuccess ? 'Temizlendi!' : isOptimizing ? 'Temizleniyor...' : 'Bellek Boşalt'}
-                  </div>
-                  <div className="text-[9px] text-nexus-muted font-mono">RAM Flush</div>
-                </div>
-              </button>
-
+            {/* Fast Action: Palette Launcher */}
+            <div className="mb-2">
               <button
                 onClick={handleOpenPalette}
-                className="p-2 rounded-xl bg-nexus-bg/40 border border-nexus-border/40 hover:border-nexus-cyan/40 text-left transition-all group flex items-center gap-2"
+                className="w-full p-2.5 rounded-xl bg-nexus-bg/40 border border-nexus-border/40 hover:border-nexus-cyan/40 text-left transition-all group flex items-center justify-between"
               >
-                <div className="w-6 h-6 rounded-lg bg-nexus-cyan/10 border border-nexus-cyan/20 flex items-center justify-center shrink-0">
-                  <Search className="w-3 h-3 text-nexus-cyan group-hover:scale-110 transition-transform" />
-                </div>
-                <div>
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-lg bg-nexus-cyan/10 border border-nexus-cyan/20 flex items-center justify-center shrink-0">
+                    <Search className="w-3 h-3 text-nexus-cyan group-hover:scale-110 transition-transform" />
+                  </div>
                   <div className="text-[10px] font-medium text-white">Komut Paleti</div>
-                  <div className="text-[9px] text-nexus-muted font-mono">Ctrl + K</div>
                 </div>
+                <kbd className="text-[9px] text-nexus-muted font-mono px-1.5 py-0.5 rounded bg-nexus-border/40">Ctrl + K</kbd>
               </button>
             </div>
 

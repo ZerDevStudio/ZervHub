@@ -231,6 +231,12 @@
       },
       "encodingStudio": {
         "desc": "Universal text and media converter, Data-URL visualizer, and canonical hex dump inspector."
+      },
+      "colorStudio": {
+        "desc": "Color palettes, HEX, RGB, HSL conversions, and WCAG contrast ratio analysis."
+      },
+      "scratchpad": {
+        "desc": "Quick scratchpad notes, code snippet drafts, and Markdown preview."
       }
     }
   },
@@ -460,7 +466,7 @@
     "quickHash": "Instant Quick SHA-256 Calculator",
     "quickHashPlaceholder": "Type any text...",
     "copy": "Copy",
-    "searchPlaceholder": "Search tool or action (e.g. regex, optimizer, mock, mail)...",
+    "searchPlaceholder": "Search tool or action (e.g. regex, api, mock, jwt)...",
     "escToClose": "ESC to close"
   },
   "shortcutsModal": {
@@ -489,7 +495,7 @@
     "items": "items",
     "format": "Format",
     "minify": "Minify",
-    "openInDevSandbox": "Open in DevSandbox",
+    "openInApiStudio": "Open in API Studio",
     "openInJsonStudio": "JSON Studio",
     "jwtDetected": "JWT Token",
     "expired": "Expired",
@@ -893,8 +899,7 @@
     "tabs": {
       "text": "Text Converter",
       "file": "File & Data-URL",
-      "hexdump": "Hex Dump Viewer",
-      "hexDump": "Hex Dump Inspector"
+      "hexdump": "Hex Dump Viewer"
     },
     "inputText": "Input Text",
     "outputBase64": "Base64 Output",

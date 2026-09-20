@@ -75,7 +75,7 @@ export default function MiniHud() {
     { name: 'JSON & SQLite Studio', path: '/json-studio', icon: Braces, desc: 'JSON format, JWT decode & SQLite tablo inceleme' },
     { name: 'Regex Lab', path: '/regex-studio', icon: Terminal, desc: 'Canlı Regex test ve grup analizi' },
     { name: 'Fake Data', path: '/fake-data', icon: Zap, desc: 'Sahte kimlik & Mock test verisi' },
-    { name: 'cURL Runner', path: '/curl-runner', icon: Globe, desc: 'Micro HTTP API istek testi' },
+    { name: 'API Studio', path: '/api-studio', icon: Globe, desc: 'REST & GraphQL client, API test ve koleksiyonlar' },
     { name: 'Cyber Fortress', path: '/fortress', icon: Shield, desc: 'DoD 7-pass shredder & AES vault' },
   ]
 

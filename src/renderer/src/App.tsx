@@ -33,12 +33,9 @@ const QrCodeStudio = lazy(() => import('./pages/QrCodeStudio'))
 const JsonStudio = lazy(() => import('./pages/JsonStudio'))
 const HashStudio = lazy(() => import('./pages/HashStudio'))
 const ResourceSentinel = lazy(() => import('./pages/ResourceSentinel'))
-const DevSandbox = lazy(() => import('./pages/DevSandbox'))
 const CyberFortress = lazy(() => import('./pages/CyberFortress'))
 const RegexStudio = lazy(() => import('./pages/RegexStudio'))
 const FakeDataStudio = lazy(() => import('./pages/FakeDataStudio'))
-
-const CurlRunner = lazy(() => import('./pages/CurlRunner'))
 const ApiStudio = lazy(() => import('./pages/ApiStudio'))
 const ColorStudio = lazy(() => import('./pages/ColorStudio'))
 
@@ -363,8 +360,6 @@ export default function App() {
                       path="/api-studio"
                       element={isPro ? <ApiStudio /> : <ProLockGate toolName="API Studio Pro" toolDesc="Full REST & GraphQL client with automated test suites, environment vaults, and cURL exporters." />}
                     />
-                    <Route path="/curl-runner" element={<Navigate to="/api-studio" replace />} />
-                    
                     <Route path="/color-studio" element={<ColorStudio />} />
                     
                     <Route path="/scratchpad" element={<Scratchpad />} />
@@ -380,7 +375,6 @@ export default function App() {
                       path="/sentinel"
                       element={isPro ? <ResourceSentinel /> : <ProLockGate toolName="ResourceSentinel Radar" toolDesc="60 FPS real-time CPU, RAM, disk I/O velocity, and thermal telemetry hardware diagnostics." />}
                     />
-                    <Route path="/dev-sandbox" element={<Navigate to="/api-studio" replace />} />
                     <Route
                       path="/fortress"
                       element={isPro ? <CyberFortress /> : <ProLockGate toolName="Cyber Fortress" toolDesc="DoD 5220.22-M 7-pass file shredder and military-grade AES-256-GCM vault encryption." />}

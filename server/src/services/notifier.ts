@@ -112,7 +112,7 @@ export async function sendDiscord(webhookUrl: string, payload: {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         username: 'ZenDev Sentinel',
-        avatar_url: 'https://raw.githubusercontent.com/zerviatr/ZenDev/main/build/icons/icon.png',
+        avatar_url: 'https://raw.githubusercontent.com/ZerDevStudio/ZervHub/main/build/icons/icon.png',
         embeds: [
           {
             ...payload,

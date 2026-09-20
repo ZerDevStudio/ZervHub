@@ -18,6 +18,13 @@ src-tauri/target/
 dist_release/
 .agents/teamwork_preview_*/
 .agents/sentinel/
+.agents/auditor_*/
+.agents/challenger_*/
+.agents/explorer_*/
+.agents/orchestrator_*/
+.agents/reviewer_*/
+.agents/victory_auditor_*/
+.agents/worker_*/
 
 # Environment files — NEVER commit these
 .env

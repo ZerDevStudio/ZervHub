@@ -7,21 +7,17 @@ import {
   Zap,
   Shield,
   Sparkles,
-  Mail,
   ShieldCheck,
   FolderArchive,
   Key,
-  Clipboard,
   Globe,
   ImageIcon,
   QrCode,
   Braces,
   FileCheck,
   Activity,
-  Code2,
   ShieldAlert,
   Terminal,
-  Cpu,
   Send,
   Star,
   Palette,
@@ -47,9 +43,9 @@ export default function Dashboard() {
   const [pinnedIds, setPinnedIds] = useState<string[]>(() => {
     try {
       const saved = localStorage.getItem('nexus_pinned_tools')
-      return saved ? JSON.parse(saved) : ['color-studio', 'port-killer', 'scratchpad']
+      return saved ? JSON.parse(saved) : ['api-studio', 'jwt-studio', 'json-studio']
     } catch {
-      return ['color-studio', 'port-killer', 'scratchpad']
+      return ['api-studio', 'jwt-studio', 'json-studio']
     }
   })
 
@@ -157,11 +153,11 @@ export default function Dashboard() {
       status: 'Pro',
     },
     {
-      id: 'dev-sandbox',
-      path: '/dev-sandbox',
-      title: 'DevSandbox API Studio',
-      description: 'Hafif, ultra hızlı REST API ve Webhook test stüdyosu. GET/POST istekleri gönderin, gecikmeyi ölçün ve cURL çıktısı alın.',
-      icon: Code2,
+      id: 'api-studio',
+      path: '/api-studio',
+      title: t('nav.tools.apiStudio') || 'API Studio & cURL',
+      description: t('dashboard.tools.apiStudio.desc') || 'Full REST & GraphQL client with automated test suites, environment vaults, and cURL exporters.',
+      icon: Send,
       gradient: 'from-indigo-500 to-nexus-cyan',
       glowColor: 'rgba(99, 102, 241, 0.3)',
       status: 'Pro',
@@ -194,16 +190,6 @@ export default function Dashboard() {
       icon: Zap,
       gradient: 'from-cyan-600 to-teal-600',
       glowColor: 'rgba(20, 184, 166, 0.3)',
-      status: 'Yeni',
-    },
-    {
-      id: 'curl-runner',
-      path: '/curl-runner',
-      title: 'HTTP & cURL Micro Runner',
-      description: 'Hafif, anlık API istek testi, JSON yanıt ayrıştırıcı, HTTP durum kodları ve gecikme ölçer.',
-      icon: Send,
-      gradient: 'from-blue-600 to-indigo-600',
-      glowColor: 'rgba(59, 130, 246, 0.3)',
       status: 'Yeni',
     },
     {

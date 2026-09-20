@@ -14,8 +14,8 @@
 
 import axios from 'axios'
 
-const REPO_OWNER = 'zerviatr'
-const REPO_NAME = 'NexusHub'
+const REPO_OWNER = 'ZerDevStudio'
+const REPO_NAME = 'ZervHub'
 const TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN
 
 if (!TOKEN) {

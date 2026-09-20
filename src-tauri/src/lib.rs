@@ -71,25 +71,64 @@ fn window_is_always_on_top() -> bool {
 }
 
 #[tauri::command]
-fn open_external(url: String) -> Result<(), String> {
+pub fn open_external(url: String) -> Result<(), String> {
+    let parsed = url::Url::parse(&url).map_err(|e| format!("Invalid URL: {}", e))?;
+    if parsed.scheme() != "http" && parsed.scheme() != "https" {
+        return Err("Only http and https protocols are permitted for external launch".into());
+    }
+
     #[cfg(target_os = "windows")]
     {
-        silent_command("cmd")
-            .args(["/C", "start", "", &url])
-            .spawn()
-            .map_err(|e| e.to_string())?;
+        use std::ffi::OsStr;
+        use std::os::windows::ffi::OsStrExt;
+
+        let wide_url: Vec<u16> = OsStr::new(parsed.as_str())
+            .encode_wide()
+            .chain(std::iter::once(0))
+            .collect();
+        let wide_op: Vec<u16> = OsStr::new("open")
+            .encode_wide()
+            .chain(std::iter::once(0))
+            .collect();
+
+        #[link(name = "shell32")]
+        extern "system" {
+            fn ShellExecuteW(
+                hwnd: *mut std::ffi::c_void,
+                lpOperation: *const u16,
+                lpFile: *const u16,
+                lpParameters: *const u16,
+                lpDirectory: *const u16,
+                nShowCmd: i32,
+            ) -> isize;
+        }
+
+        const SW_SHOWNORMAL: i32 = 1;
+        let ret = unsafe {
+            ShellExecuteW(
+                std::ptr::null_mut(),
+                wide_op.as_ptr(),
+                wide_url.as_ptr(),
+                std::ptr::null(),
+                std::ptr::null(),
+                SW_SHOWNORMAL,
+            )
+        };
+        if ret <= 32 {
+            return Err(format!("ShellExecuteW failed with error code: {}", ret));
+        }
     }
     #[cfg(target_os = "macos")]
     {
         silent_command("open")
-            .arg(&url)
+            .arg(parsed.as_str())
             .spawn()
             .map_err(|e| e.to_string())?;
     }
     #[cfg(target_os = "linux")]
     {
         silent_command("xdg-open")
-            .arg(&url)
+            .arg(parsed.as_str())
             .spawn()
             .map_err(|e| e.to_string())?;
     }

@@ -7,11 +7,9 @@ import SmartPasteCard from './SmartPasteCard'
 import {
   Search,
   LayoutDashboard,
-  Mail,
   ShieldCheck,
   Key,
   FolderArchive,
-  Clipboard,
   Globe,
   ImageIcon,
   QrCode,
@@ -19,19 +17,15 @@ import {
   Settings,
   ArrowRight,
   Sparkles,
-  Command,
   FileCheck,
   Activity,
   ScrollText,
-  Code2,
   ShieldAlert,
   Terminal,
   Zap,
-  Cpu,
   Send,
   Palette,
   FileText,
-  Radio,
   Clock,
   KeyRound,
   GitBranch,
@@ -113,13 +107,13 @@ const PALETTE_ITEMS: PaletteItem[] = [
     keywords: ['fake', 'mock', 'data', 'identity', 'generator', 'tc', 'test', 'csv', 'json']
   },
   {
-    id: 'curl-runner',
-    title: 'HTTP & cURL Runner',
-    subtitle: 'Micro API testing client with latency benchmark and JSON viewer',
+    id: 'api-studio',
+    title: 'API Studio & Diagnostics',
+    subtitle: 'Full REST & GraphQL client with automated test suites, environment vaults, and cURL exporters',
     category: 'Tools',
-    path: '/curl-runner',
+    path: '/api-studio',
     icon: Send,
-    keywords: ['curl', 'http', 'api', 'postman', 'fetch', 'rest', 'request']
+    keywords: ['api', 'curl', 'http', 'rest', 'graphql', 'postman', 'fetch', 'request', 'diagnostics', 'endpoint']
   },
   {
     id: 'hash-studio',
@@ -196,20 +190,11 @@ const PALETTE_ITEMS: PaletteItem[] = [
   {
     id: 'sentinel',
     title: 'Resource Sentinel',
-    subtitle: 'Real-time CPU/RAM telemetry, per-core load, working set flush',
+    subtitle: 'Real-time CPU/RAM telemetry, per-core load, and hardware diagnostics',
     category: 'Tools',
     path: '/sentinel',
     icon: Activity,
-    keywords: ['sentinel', 'cpu', 'ram', 'memory', 'core', 'telemetry', 'hardware', 'performance', 'optimize']
-  },
-  {
-    id: 'dev-sandbox',
-    title: 'Dev Sandbox',
-    subtitle: 'Native HTTP/REST & Webhook studio, response inspection & cURL export',
-    category: 'Tools',
-    path: '/dev-sandbox',
-    icon: Code2,
-    keywords: ['dev', 'sandbox', 'http', 'api', 'rest', 'webhook', 'curl', 'headers', 'payload', 'fetch']
+    keywords: ['sentinel', 'cpu', 'ram', 'memory', 'core', 'telemetry', 'hardware', 'diagnostics']
   },
   {
     id: 'cyber-fortress',

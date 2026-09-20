@@ -36,7 +36,7 @@ export default function QrCodeStudio() {
 
   // QR Type & Input state
   const [qrType, setQrType] = useState<QrType>('url')
-  const [url, setUrl] = useState('https://github.com/zerviatr/ZenDev')
+  const [url, setUrl] = useState('https://github.com/ZerDevStudio/ZervHub')
   const [text, setText] = useState('ZenDev Premium Suite')
   
   // WiFi state

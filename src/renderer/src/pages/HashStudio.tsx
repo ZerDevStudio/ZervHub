@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import {
   FileCheck,
   Copy,
@@ -215,7 +215,8 @@ export default function HashStudio() {
   }>({ md5: '', sha1: '', sha256: '', sha512: '' })
 
   // Re-compute text hashes on input change
-  useMemo(() => {
+  useEffect(() => {
+    let isCurrent = true
     const encoder = new TextEncoder()
     const data = encoder.encode(textInput)
 
@@ -225,14 +226,26 @@ export default function HashStudio() {
       crypto.subtle.digest('SHA-1', data).then(bufferToHex),
       crypto.subtle.digest('SHA-256', data).then(bufferToHex),
       crypto.subtle.digest('SHA-512', data).then(bufferToHex)
-    ]).then(([sha1, sha256, sha512]) => {
-      setTextHashes({
-        md5: computedMd5,
-        sha1,
-        sha256,
-        sha512
+    ])
+      .then(([sha1, sha256, sha512]) => {
+        if (isCurrent) {
+          setTextHashes({
+            md5: computedMd5,
+            sha1,
+            sha256,
+            sha512
+          })
+        }
       })
-    })
+      .catch((err) => {
+        if (isCurrent) {
+          console.error('Text hash computation failed:', err)
+        }
+      })
+
+    return () => {
+      isCurrent = false
+    }
   }, [textInput])
 
   // Process File Hashing

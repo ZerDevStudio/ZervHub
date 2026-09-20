@@ -18,10 +18,10 @@
 
 export const ZENDEV_RELEASE_CONFIG = {
   version: '2.5.5',
-  setupExe: 'https://github.com/zerviatr/NexusHub/releases/download/v2.5.5/ZenDev-Setup-2.5.5.exe',
-  portableExe: 'https://github.com/zerviatr/NexusHub/releases/download/v2.5.5/ZenDev-Portable-2.5.5.exe',
-  fallbackLatestRelease: 'https://github.com/zerviatr/NexusHub/releases/latest',
-  repoUrl: 'https://github.com/zerviatr/NexusHub'
+  setupExe: 'https://github.com/ZerDevStudio/ZervHub/releases/download/v2.5.5/ZenDev-Setup-2.5.5.exe',
+  portableExe: 'https://github.com/ZerDevStudio/ZervHub/releases/download/v2.5.5/ZenDev-Portable-2.5.5.exe',
+  fallbackLatestRelease: 'https://github.com/ZerDevStudio/ZervHub/releases/latest',
+  repoUrl: 'https://github.com/ZerDevStudio/ZervHub'
 } as const;
 
 /**

@@ -43,10 +43,7 @@
   "plugins": {
     "updater": {
       "windows": {
-        "installMode": "passive",
-        "installerArgs": [
-          "/S"
-        ]
+        "installMode": "currentUser"
       }
     }
   }

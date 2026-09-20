@@ -231,6 +231,12 @@
       },
       "encodingStudio": {
         "desc": "Evrensel metin ve medya dönüştürücü, Data-URL önizleyici ve kanonik hex döküm görüntüleyici."
+      },
+      "colorStudio": {
+        "desc": "Renk paletleri, HEX, RGB, HSL dönüşümleri ve WCAG kontrast oran analizi."
+      },
+      "scratchpad": {
+        "desc": "Hızlı not alma, kod karalama defteri ve Markdown önizleme."
       }
     }
   },
@@ -460,7 +466,7 @@
     "quickHash": "Anlık Hızlı SHA-256 Hesaplayıcı",
     "quickHashPlaceholder": "Herhangi bir metin yaz...",
     "copy": "Kopyala",
-    "searchPlaceholder": "Araç veya işlem ara (örn: regex, optimizer, mock, mail)...",
+    "searchPlaceholder": "Araç veya işlem ara (örn: regex, api, mock, jwt)...",
     "escToClose": "ESC ile kapat"
   },
   "shortcutsModal": {
@@ -489,7 +495,7 @@
     "items": "öğe",
     "format": "Formatla",
     "minify": "Minify Et",
-    "openInDevSandbox": "DevSandbox'ta Aç",
+    "openInApiStudio": "API Studio'da Aç",
     "openInJsonStudio": "JSON Studio",
     "jwtDetected": "JWT Token",
     "expired": "Süresi Dolmuş",
@@ -510,7 +516,7 @@
     "unsupportedDesc": "Desteklenmeyen dosya formatı. Lütfen geçerli bir belge, görsel, veritabanı, kasa veya veri dosyası bırakın."
   },
   "apiStudio": {
-    "urlPlaceholder": "URL veya {{değişken}} girin (örn. https://api.example.com/v1/users)",
+    "urlPlaceholder": "URL veya {{variable}} girin (örn. https://api.example.com/v1/users)",
     "send": "Gönder",
     "sending": "Gönderiliyor...",
     "active": "aktif",
@@ -893,8 +899,7 @@
     "tabs": {
       "text": "Metin Dönüştürücü",
       "file": "Dosya & Data-URL",
-      "hexdump": "Hex Döküm Görüntüleyici",
-      "hexDump": "Hex Döküm Analizörü"
+      "hexdump": "Hex Döküm Görüntüleyici"
     },
     "inputText": "Girdi Metni",
     "outputBase64": "Base64 Çıktısı",

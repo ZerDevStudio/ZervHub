@@ -105,15 +105,15 @@ export default function SmartPasteCard({
             <span>{copiedAction === 'json_minify' ? 'Kopyalandı!' : t('smartPaste.minify')}</span>
           </button>
 
-          {/* DevSandbox'ta Aç */}
+          {/* API Studio'da Aç */}
           <button
             type="button"
-            onClick={() => navigateTo('/dev-sandbox', 'nexus_sandbox_body', result.raw)}
+            onClick={() => navigateTo('/api-studio', 'nexus_api_body', result.raw)}
             className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-xs font-medium text-nexus-cyan hover:bg-cyan-500/20 hover:border-cyan-500/60 transition-colors"
-            title="DevSandbox HTTP Body olarak yükle ve aç"
+            title="API Studio HTTP Body olarak yükle ve aç"
           >
             <ExternalLink className="w-3.5 h-3.5" />
-            <span>{t('smartPaste.openInDevSandbox')}</span>
+            <span>{t('smartPaste.openInApiStudio')}</span>
           </button>
 
           {/* JsonStudio'da Aç */}
@@ -191,10 +191,10 @@ export default function SmartPasteCard({
             <span>{showJwtPayload ? t('smartPaste.hidePayload') : t('smartPaste.viewPayload')}</span>
           </button>
 
-          {/* JSON Studio'da Aç */}
+          {/* JWT Studio'da Aç */}
           <button
             type="button"
-            onClick={() => navigateTo('/json-studio', 'nexus_jwt_input', result.raw)}
+            onClick={() => navigateTo('/jwt-studio', 'nexus_jwt_input', result.raw)}
             className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/30 text-xs font-medium text-amber-300 hover:bg-amber-500/20 transition-colors"
           >
             <ArrowRight className="w-3.5 h-3.5" />

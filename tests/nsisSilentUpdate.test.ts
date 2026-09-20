@@ -45,30 +45,36 @@ describe('Milestone M8: NSIS Silent Background Update & v2.5.2 Release Verificat
       expect(config.bundle.windows.nsis.installMode).toBe('currentUser');
     });
 
-    it('configures plugins.updater.windows with passive installMode and ["/S"] installerArgs', () => {
-      const config = JSON.parse(fs.readFileSync(tauriConfPath, 'utf-8'));
+    it('configures plugins.updater.windows with currentUser installMode and NO silent "/S" installerArgs', () => {
+      const raw = fs.readFileSync(tauriConfPath, 'utf-8');
+      const config = JSON.parse(raw);
       expect(config.plugins).toBeDefined();
       expect(config.plugins.updater).toBeDefined();
       expect(config.plugins.updater.windows).toBeDefined();
-      expect(config.plugins.updater.windows.installMode).toBe('passive');
-      expect(config.plugins.updater.windows.installerArgs).toEqual(['/S']);
+      expect(config.plugins.updater.windows.installMode).toBe('currentUser');
+      expect(config.plugins.updater.windows.installerArgs).toBeUndefined();
+      expect(raw).not.toContain('"/S"');
     });
   });
 
-  describe('2. Rust Updater Backend (src-tauri/src/updater.rs)', () => {
+  describe('2. Rust Updater Backend & EDR Hardening (src-tauri/src/updater.rs & lib.rs)', () => {
     const updaterPath = path.join(srcTauriDir, 'src', 'updater.rs');
+    const libPath = path.join(srcTauriDir, 'src', 'lib.rs');
 
-    it('invokes detached silent installer with "/S" flag', () => {
+    it('launches installer transparently and interactively without silent "/S" flag', () => {
       expect(fs.existsSync(updaterPath)).toBe(true);
       const code = fs.readFileSync(updaterPath, 'utf-8');
 
-      // Must use silent_command to prevent console window popup
-      expect(code).toMatch(/crate::process_ext::silent_command\("cmd"\)/);
+      // Must NOT contain silent /S flag or legacy silent helper
+      expect(code).not.toContain('"/S"');
+      expect(code).not.toContain('_legacy_silent_install_reference');
 
-      // Must pass ["/C", "start", "", path..., "/S"]
-      expect(code).toMatch(
-        /\.args\(\["\/C",\s*"start",\s*"",\s*path\.to_str\(\)\.unwrap_or_default\(\),\s*"\/S"\]\)/
-      );
+      // Must NOT invoke cmd.exe
+      expect(code).not.toMatch(/silent_command\("cmd"\)/);
+      expect(code).not.toContain('"cmd"');
+
+      // Must spawn interactive installer directly
+      expect(code).toMatch(/std::process::Command::new\(&path\)\.spawn\(\)/);
 
       // Must preserve sleep delay for clean process handoff
       expect(code).toMatch(/std::thread::sleep\(std::time::Duration::from_millis\(500\)\)/);
@@ -77,9 +83,11 @@ describe('Milestone M8: NSIS Silent Background Update & v2.5.2 Release Verificat
       expect(code).toMatch(/std::process::exit\(0\)/);
     });
 
-    it('has zero raw unflagged Command::new invocations in updater.rs', () => {
-      const code = fs.readFileSync(updaterPath, 'utf-8');
-      expect(code).not.toContain('Command::new');
+    it('verifies open_external in lib.rs does not spawn cmd.exe and validates URL protocols', () => {
+      const libCode = fs.readFileSync(libPath, 'utf-8');
+      expect(libCode).not.toMatch(/silent_command\("cmd"\)/);
+      expect(libCode).toContain('ShellExecuteW');
+      expect(libCode).toContain('url::Url::parse');
     });
   });
 
