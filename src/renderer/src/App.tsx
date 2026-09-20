@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Upload } from 'lucide-react'
+import { Upload, Zap } from 'lucide-react'
 import Sidebar from './components/Sidebar'
 import TitleBar from './components/TitleBar'
 import Dashboard from './pages/Dashboard'
@@ -18,6 +18,7 @@ import { cyberAudio } from './lib/cyberAudio'
 import ErrorBoundary from './components/ErrorBoundary'
 import { useLicense } from './lib/LicenseContext'
 import { useToast } from './lib/ToastContext'
+import { useWorkspaceMode } from './context/WorkspaceModeContext'
 import { useT } from './lib/i18n'
 import { resolveGatewayRoute, dispatchGatewayDrop, FileGatewayDropDetail } from './lib/fileGateway'
 
@@ -59,12 +60,41 @@ const pageTransition = {
   ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
 }
 
+const DEV_ONLY_ROUTES = [
+  '/api-studio',
+  '/json-studio',
+  '/jwt-studio',
+  '/regex-studio',
+  '/cron-studio',
+  '/mermaid-studio',
+  '/encoding-studio',
+  '/hash-studio',
+  '/network',
+  '/sentinel',
+  '/fake-data',
+]
+
 export default function App() {
   const location = useLocation()
   const navigate = useNavigate()
   const { status } = useLicense()
-  const { warning: showToastWarning } = useToast()
+  const { warning: showToastWarning, info: showToastInfo, success: showToastSuccess } = useToast()
   const { t } = useT()
+  const { mode, setMode, isEssential } = useWorkspaceMode()
+  const isDevRoute = DEV_ONLY_ROUTES.includes(location.pathname)
+  const lastToastedRouteRef = useRef<string | null>(null)
+
+  useEffect(() => {
+    if (isEssential && isDevRoute && lastToastedRouteRef.current !== location.pathname) {
+      lastToastedRouteRef.current = location.pathname
+      showToastInfo(
+        t('workspace.developerRequiredTitle') || 'Geliştirici Modu Gerekli',
+        t('workspace.switchToDeveloperDesc') || 'Geliştirici stüdyolarına erişmek için Geliştirici Moduna geçin.'
+      )
+    } else if (!isDevRoute) {
+      lastToastedRouteRef.current = null
+    }
+  }, [location.pathname, isEssential, isDevRoute, showToastInfo, t])
 
   // Listen to desktop tray navigation and global shortcut events
   useEffect(() => {
@@ -321,6 +351,47 @@ export default function App() {
               transition={pageTransition}
               className="relative z-10 p-8"
             >
+              {/* Dual-Mode Workspace Cyber Banner for Dev Routes in Essential Mode */}
+              {isEssential && isDevRoute && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="mb-6 p-4 rounded-2xl bg-gradient-to-r from-amber-500/10 via-purple-500/10 to-nexus-cyan/10 border border-nexus-cyan/30 shadow-xl backdrop-blur-xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-xl bg-nexus-cyan/20 border border-nexus-cyan/40 flex items-center justify-center text-nexus-cyan shrink-0">
+                      <Zap className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-white flex items-center gap-1.5">
+                        <span>{t('workspace.developerRequiredTitle') || 'Geliştirici Modu Gerekli'}</span>
+                        <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                          PRO DEV
+                        </span>
+                      </p>
+                      <p className="text-[11px] text-nexus-muted mt-0.5">
+                        {t('workspace.switchToDeveloperDesc') || 'Bu aracı tam yetkiyle kullanmak ve sol menüde görmek için Geliştirici Modunu etkinleştirin.'}
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      try { cyberAudio.click() } catch {}
+                      setMode('developer')
+                      showToastSuccess(
+                        t('workspace.developer') || 'Geliştirici',
+                        t('workspace.switchToDeveloperDesc') || 'Geliştirici Modu etkinleştirildi.'
+                      )
+                    }}
+                    className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-nexus-cyan via-nexus-accent to-purple-600 text-black font-bold text-xs shadow-lg shadow-nexus-cyan/20 hover:brightness-110 active:scale-95 transition-all cursor-pointer whitespace-nowrap self-start sm:self-auto"
+                  >
+                    {t('workspace.switchToDeveloper') || 'Geliştirici Moduna Geç'}
+                  </button>
+                </motion.div>
+              )}
+
               <ErrorBoundary fallbackType="inline">
                 <Suspense
                   fallback={

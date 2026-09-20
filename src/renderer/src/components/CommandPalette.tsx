@@ -31,15 +31,19 @@ import {
   GitBranch,
   Binary,
 } from 'lucide-react'
+import { useWorkspaceMode } from '../context/WorkspaceModeContext'
+import { useT } from '../lib/i18n'
 
-interface PaletteItem {
+export interface PaletteItem {
   id: string
   title: string
   subtitle: string
   category: 'Tools' | 'Preferences'
-  path: string
+  path?: string
   icon: React.ElementType
   keywords: string[]
+  developerOnly?: boolean
+  action?: () => void
 }
 
 const PALETTE_ITEMS: PaletteItem[] = [
@@ -59,7 +63,8 @@ const PALETTE_ITEMS: PaletteItem[] = [
     category: 'Tools',
     path: '/activity-feed',
     icon: ScrollText,
-    keywords: ['activity', 'feed', 'audit', 'journal', 'log', 'history', 'tamper', 'sha256', 'hash', 'chain', 'verification', 'security']
+    keywords: ['activity', 'feed', 'audit', 'journal', 'log', 'history', 'tamper', 'sha256', 'hash', 'chain', 'verification', 'security'],
+    developerOnly: true
   },
   {
     id: 'color-studio',
@@ -95,7 +100,8 @@ const PALETTE_ITEMS: PaletteItem[] = [
     category: 'Tools',
     path: '/regex-studio',
     icon: Terminal,
-    keywords: ['regex', 'regular', 'expression', 'test', 'tester', 'pattern', 'match']
+    keywords: ['regex', 'regular', 'expression', 'test', 'tester', 'pattern', 'match'],
+    developerOnly: true
   },
   {
     id: 'fake-data',
@@ -104,7 +110,8 @@ const PALETTE_ITEMS: PaletteItem[] = [
     category: 'Tools',
     path: '/fake-data',
     icon: Zap,
-    keywords: ['fake', 'mock', 'data', 'identity', 'generator', 'tc', 'test', 'csv', 'json']
+    keywords: ['fake', 'mock', 'data', 'identity', 'generator', 'tc', 'test', 'csv', 'json'],
+    developerOnly: true
   },
   {
     id: 'api-studio',
@@ -113,7 +120,8 @@ const PALETTE_ITEMS: PaletteItem[] = [
     category: 'Tools',
     path: '/api-studio',
     icon: Send,
-    keywords: ['api', 'curl', 'http', 'rest', 'graphql', 'postman', 'fetch', 'request', 'diagnostics', 'endpoint']
+    keywords: ['api', 'curl', 'http', 'rest', 'graphql', 'postman', 'fetch', 'request', 'diagnostics', 'endpoint'],
+    developerOnly: true
   },
   {
     id: 'hash-studio',
@@ -122,7 +130,8 @@ const PALETTE_ITEMS: PaletteItem[] = [
     category: 'Tools',
     path: '/hash-studio',
     icon: FileCheck,
-    keywords: ['hash', 'md5', 'sha256', 'sha512', 'checksum', 'verify', 'integrity']
+    keywords: ['hash', 'md5', 'sha256', 'sha512', 'checksum', 'verify', 'integrity'],
+    developerOnly: true
   },
   {
     id: 'qr-code',
@@ -140,7 +149,8 @@ const PALETTE_ITEMS: PaletteItem[] = [
     category: 'Tools',
     path: '/json-studio',
     icon: Braces,
-    keywords: ['json', 'jwt', 'token', 'format', 'minify', 'beautify', 'decode', 'sqlite', 'sql', 'db', 'table', 'database']
+    keywords: ['json', 'jwt', 'token', 'format', 'minify', 'beautify', 'decode', 'sqlite', 'sql', 'db', 'table', 'database'],
+    developerOnly: true
   },
   {
     id: 'decrypter',
@@ -176,7 +186,8 @@ const PALETTE_ITEMS: PaletteItem[] = [
     category: 'Tools',
     path: '/network',
     icon: Globe,
-    keywords: ['ping', 'dns', 'port', 'scan', 'network', 'ip', 'host']
+    keywords: ['ping', 'dns', 'port', 'scan', 'network', 'ip', 'host'],
+    developerOnly: true
   },
   {
     id: 'image',
@@ -194,7 +205,8 @@ const PALETTE_ITEMS: PaletteItem[] = [
     category: 'Tools',
     path: '/sentinel',
     icon: Activity,
-    keywords: ['sentinel', 'cpu', 'ram', 'memory', 'core', 'telemetry', 'hardware', 'diagnostics']
+    keywords: ['sentinel', 'cpu', 'ram', 'memory', 'core', 'telemetry', 'hardware', 'diagnostics'],
+    developerOnly: true
   },
   {
     id: 'cyber-fortress',
@@ -212,7 +224,8 @@ const PALETTE_ITEMS: PaletteItem[] = [
     category: 'Tools',
     path: '/jwt-studio',
     icon: KeyRound,
-    keywords: ['jwt', 'token', 'json', 'hmac', 'sha256', 'decode', 'verify', 'bearer', 'auth']
+    keywords: ['jwt', 'token', 'json', 'hmac', 'sha256', 'decode', 'verify', 'bearer', 'auth'],
+    developerOnly: true
   },
   {
     id: 'cron-studio',
@@ -221,7 +234,8 @@ const PALETTE_ITEMS: PaletteItem[] = [
     category: 'Tools',
     path: '/cron-studio',
     icon: Clock,
-    keywords: ['cron', 'schedule', 'tab', 'timer', 'crontab', 'builder', 'interval', 'job']
+    keywords: ['cron', 'schedule', 'tab', 'timer', 'crontab', 'builder', 'interval', 'job'],
+    developerOnly: true
   },
   {
     id: 'mermaid-studio',
@@ -230,7 +244,8 @@ const PALETTE_ITEMS: PaletteItem[] = [
     category: 'Tools',
     path: '/mermaid-studio',
     icon: GitBranch,
-    keywords: ['mermaid', 'diagram', 'flowchart', 'sequence', 'erd', 'architecture', 'canvas', 'svg', 'png']
+    keywords: ['mermaid', 'diagram', 'flowchart', 'sequence', 'erd', 'architecture', 'canvas', 'svg', 'png'],
+    developerOnly: true
   },
   {
     id: 'encoding-studio',
@@ -239,7 +254,8 @@ const PALETTE_ITEMS: PaletteItem[] = [
     category: 'Tools',
     path: '/encoding-studio',
     icon: Binary,
-    keywords: ['base64', 'hex', 'dataurl', 'encode', 'decode', 'dump', 'binary', 'ascii', 'mime']
+    keywords: ['base64', 'hex', 'dataurl', 'encode', 'decode', 'dump', 'binary', 'ascii', 'mime'],
+    developerOnly: true
   },
   {
     id: 'account',
@@ -259,6 +275,8 @@ export default function CommandPalette() {
   const [recentIds, setRecentIds] = useState<string[]>([])
   const navigate = useNavigate()
   const inputRef = useRef<HTMLInputElement>(null)
+  const { mode, setMode } = useWorkspaceMode()
+  const { t } = useT()
 
   // Context-aware Smart Paste / Input detector
   const smartPasteResult = useMemo(() => detectSmartPaste(query), [query])
@@ -274,6 +292,46 @@ export default function CommandPalette() {
       console.error(e)
     }
   }, [isOpen])
+
+  // Dynamic mode toggle action
+  const modeActionItem = useMemo<PaletteItem>(() => {
+    if (mode === 'essential') {
+      return {
+        id: 'toggle-workspace-mode',
+        title: t('workspace.switchToDeveloper') || 'Geliştirici Moduna Geç',
+        subtitle: t('workspace.switchToDeveloperDesc') || 'Tüm profesyonel API, JSON, JWT, Regex ve sistem stüdyolarını etkinleştirin',
+        category: 'Preferences',
+        icon: Zap,
+        keywords: ['geliştirici', 'mod', 'switch', 'developer', 'mode', 'dev', 'pro', 'api', 'stüdyo', 'workspace'],
+        action: () => {
+          setMode('developer')
+        },
+      }
+    } else {
+      return {
+        id: 'toggle-workspace-mode',
+        title: t('workspace.switchToEssential') || 'Günlük Moduna Geç',
+        subtitle: t('workspace.switchToEssentialDesc') || 'Temel ve sade günlük üretkenlik araçlarına geçin',
+        category: 'Preferences',
+        icon: Sparkles,
+        keywords: ['günlük', 'sade', 'essential', 'mode', 'basic', 'tools', 'temiz', 'workspace'],
+        action: () => {
+          setMode('essential')
+        },
+      }
+    }
+  }, [mode, setMode, t])
+
+  // Available items filtered by workspace mode
+  const availableItems = useMemo(() => {
+    const baseItems = PALETTE_ITEMS.filter((item) => {
+      if (mode === 'essential' && item.developerOnly) {
+        return false
+      }
+      return true
+    })
+    return [modeActionItem, ...baseItems]
+  }, [mode, modeActionItem])
 
   // Listen for Ctrl+K / Cmd+K and custom event
   useEffect(() => {
@@ -308,24 +366,43 @@ export default function CommandPalette() {
   }, [isOpen])
 
   // Filter & sort items based on query + recents
-  const filteredItems = (() => {
+  const filteredItems = useMemo(() => {
     if (!query.trim()) {
-      // Put recent items first
+      // Put recent items first (filtering recentIds to only available items)
       const recents = recentIds
-        .map((id) => PALETTE_ITEMS.find((item) => item.id === id))
+        .map((id) => availableItems.find((item) => item.id === id))
         .filter(Boolean) as PaletteItem[]
-      const others = PALETTE_ITEMS.filter((item) => !recentIds.includes(item.id))
+      const others = availableItems.filter((item) => !recentIds.includes(item.id))
       return [...recents, ...others]
     }
     const q = query.toLowerCase()
-    return PALETTE_ITEMS.filter((item) => {
+    return availableItems.filter((item) => {
       return (
         item.title.toLowerCase().includes(q) ||
         item.subtitle.toLowerCase().includes(q) ||
         item.keywords.some((k) => k.toLowerCase().includes(q))
       )
     })
-  })()
+  }, [query, recentIds, availableItems])
+
+  const handleSelectItem = (item: PaletteItem) => {
+    if (item.action) {
+      item.action()
+      try { cyberAudio.click() } catch {}
+      setIsOpen(false)
+      return
+    }
+    if (item.path) {
+      try {
+        const nextRecents = [item.id, ...recentIds.filter((x) => x !== item.id)].slice(0, 5)
+        localStorage.setItem('nexus_recent_tools', JSON.stringify(nextRecents))
+      } catch (e) {
+        console.error(e)
+      }
+      navigate(item.path)
+      setIsOpen(false)
+    }
+  }
 
   // Keyboard navigation inside palette
   const handleInputKeyDown = (e: React.KeyboardEvent) => {
@@ -344,20 +421,9 @@ export default function CommandPalette() {
         return
       }
       if (filteredItems[selectedIndex]) {
-        handleSelectItem(filteredItems[selectedIndex].id, filteredItems[selectedIndex].path)
+        handleSelectItem(filteredItems[selectedIndex])
       }
     }
-  }
-
-  const handleSelectItem = (id: string, path: string) => {
-    try {
-      const nextRecents = [id, ...recentIds.filter((x) => x !== id)].slice(0, 5)
-      localStorage.setItem('nexus_recent_tools', JSON.stringify(nextRecents))
-    } catch (e) {
-      console.error(e)
-    }
-    navigate(path)
-    setIsOpen(false)
   }
 
   return (
@@ -426,7 +492,7 @@ export default function CommandPalette() {
                     <button
                       key={item.id}
                       type="button"
-                      onClick={() => handleSelectItem(item.id, item.path)}
+                      onClick={() => handleSelectItem(item)}
                       onMouseEnter={() => setSelectedIndex(index)}
                       className={`w-full flex items-center justify-between p-3 rounded-xl text-left transition-all ${
                         isSelected

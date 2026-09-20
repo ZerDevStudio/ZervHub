@@ -6,7 +6,9 @@
       "privacy": "Gizlilik & Güvenlik",
       "developer": "Geliştirici & Araçlar",
       "files": "Dosyalar & Medya",
-      "network": "Ağ"
+      "network": "Ağ",
+      "documents": "Belgeler & Medya",
+      "practical": "Pratik Araçlar"
     },
     "tools": {
       "decrypter": "Evrensel Link Çözücü & Tracker Temizleyici",
@@ -997,5 +999,21 @@
       "copyAllSuccessTitle": "Tümü Kopyalandı",
       "copyAllSuccessDesc": "{{count}} temiz bağlantı panoya aktarıldı."
     }
+  },
+  "workspace": {
+    "mode": "Çalışma Alanı Modu",
+    "essential": "Günlük Araçlar",
+    "essentialShort": "Günlük",
+    "essentialDesc": "Tüketici odaklı ve temiz günlük üretkenlik araçları",
+    "developer": "Geliştirici",
+    "developerShort": "Geliştirici",
+    "developerDesc": "Profesyonel API, kod ve sistem geliştirici stüdyoları",
+    "switchToDeveloper": "Geliştirici Moduna Geç",
+    "switchToDeveloperDesc": "Tüm profesyonel API, JSON, JWT, Regex ve sistem stüdyolarını etkinleştirin",
+    "switchToEssential": "Günlük Moduna Geç",
+    "switchToEssentialDesc": "Temel ve sade günlük üretkenlik araçlarına geçin",
+    "toggleShortcut": "Mod Değiştir (Ctrl+M)",
+    "shortcutHint": "Ctrl+M ile geçiş yapın",
+    "developerRequiredTitle": "Geliştirici Modu Gerekli"
   }
 }

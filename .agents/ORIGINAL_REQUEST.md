@@ -336,3 +336,122 @@ Synthesize all findings into a structured, unified master audit document (`AUDIT
 ### Master Report & Roadmap
 - [ ] Master audit report is delivered with an executive summary, itemized findings with file links, and severity ratings.
 - [ ] A prioritized, step-by-step remediation action plan is generated, mapping required fixes to `YAPILACAKLAR.md` phases.
+
+## 2026-09-20T01:15:36Z
+
+Perform a comprehensive synchronization and overhaul of the ZenDev showcase website (`website/`) and its live production deployment repository (`ZerDevStudio/ZerDevStudio.github.io`) to reflect all recent architectural transformations, version advancements (v2.5.5), public release channels, and studio updates.
+
+Working directory: c:\Users\BERKE\.gemini\antigravity\scratch\NexusHub
+Integrity mode: development
+
+## Requirements
+
+### R1. Comprehensive Version Synchronization to v2.5.5
+Update all version strings, badges, download buttons, and modal dialogs from v2.5.3 to **v2.5.5** across the website codebase:
+- `HeroSection.tsx`: Header tag pill, direct Windows setup and portable download buttons, title tooltips, simulator title bar, and performance comparison table.
+- `Navbar.tsx`: Header version pill for changelog, desktop and mobile download buttons, and mobile menu links.
+- `Footer.tsx`: Brand version badge and copyright text.
+- `CommandPalette.tsx`: Quick action command labels and installer download triggers.
+- `WaitlistModal.tsx` & `SimulatedCheckoutModal.tsx`: Product version tags in discount notifications and post-checkout instructions.
+- `ShortcutsDrawer.tsx`: Cheatsheet header and version badge.
+- `ToolCatalog.tsx`: Suite bundle badge ("ZenDev v2.5.5 ile Yerleşik Gelir").
+- `LivePlayground/` demos: Update preset strings and version text in `LiveBase64Demo.tsx`, `LiveHashDemo.tsx`, `LiveQrDemo.tsx`, `LiveRegexDemo.tsx`, and `LivePlayground.tsx`.
+
+### R2. Public Distribution & Download Links Realignment
+Update `website/src/lib/downloadHelper.ts` and UI links to point to the dedicated public release repository (`ZerDevStudio/ZervHub-App`) instead of the private core repository:
+- `setupExe`: Point directly to `https://github.com/ZerDevStudio/ZervHub-App/releases/download/v2.5.5/ZenDev-Setup-2.5.5.exe`.
+- `portableExe`: Point to `https://github.com/ZerDevStudio/ZervHub-App/releases/download/v2.5.5/ZenDev-Portable-2.5.5.exe`.
+- `fallbackLatestRelease`: Point to `https://github.com/ZerDevStudio/ZervHub-App/releases/latest`.
+- `repoUrl` & Footer GitHub link: Direct public visitors to `https://github.com/ZerDevStudio/ZervHub-App` or `https://github.com/ZerDevStudio` to guarantee zero 404 errors for external users.
+
+### R3. Changelog & Feature Spotlight Elevation (v2.5.5)
+In `website/src/components/ChangelogModal.tsx`:
+- Add a new premier top-level entry for **v2.5.5** (released September 18, 2026) marked with the "LATEST RELEASE" / "GÜNCEL SÜRÜM" badge.
+- Detail the overhauled **Universal Link Decrypter (Bypasser)**: ad-shortener bypass engine, two-step POST token handshake, multi-step redirect resolution, and intermediate landing page unwrapping.
+- Highlight the Tauri v2 + Rust desktop architecture (<26 MB RAM, 0.35s boot, 4.6 MB installer) and the 100% offline-first privacy guarantee.
+- Note the SaaS Transformation Directive compliance and the permanent deprecation of Port Killer, System Optimizer, and Temp Mail.
+
+### R4. Universal Link Decrypter Identity & Tool Catalog Accuracy
+In `website/src/lib/toolsData.ts`:
+- Update the `universal-decrypter` entry from the legacy Base64 description to the true **Universal Link Decrypter & Tracker Stripper** (Evrensel Link Çözücü & Takipçi Temizleyici).
+- Describe its native Rust `bypasser.rs` regex engine, zero-network tracking parameter stripping (UTM, FBCLID, affiliate tags), recursive redirect unpacking, and link unshortening capabilities.
+
+### R5. Website Build Verification & GitHub Pages Production Sync
+- Verify that `website/` builds cleanly without any TypeScript or Vite packaging errors (`npm --prefix website run build`).
+- Synchronize all updated website sources to the public `ZerDevStudio.github.io` repository and push to branch `main` to ensure the live website at `https://zerdevstudio.github.io/` immediately serves the updated content.
+
+## Acceptance Criteria
+
+### Version & Download Consistency
+- [ ] Every user-facing version indicator on the website displays `v2.5.5`.
+- [ ] Direct download buttons in `HeroSection` and `Navbar` initiate downloads targeting `ZerDevStudio/ZervHub-App/releases/download/v2.5.5/`.
+- [ ] GitHub links point to public endpoints (`ZerDevStudio/ZervHub-App` or `ZerDevStudio`), preventing any 404 access errors.
+
+### Changelog & Content Integrity
+- [ ] `ChangelogModal.tsx` features v2.5.5 at the top with both Turkish and English release notes detailing the Universal Link Decrypter overhaul and Tauri v2 architecture.
+- [ ] `toolsData.ts` accurately describes `UniversalDecrypter` as a link decrypter and tracker stripper.
+- [ ] No prohibited modules (Port Killer, System Optimizer, Temp Mail, Clipboard Manager) are advertised as core features.
+
+### Build & Deployment
+- [ ] `npm --prefix website run build` exits with code 0.
+- [ ] All updated website assets are pushed to `https://github.com/ZerDevStudio/ZerDevStudio.github.io.git` on branch `main`.
+
+## 2026-09-20T06:25:33Z
+
+Implement a persistent Dual-Mode Workspace architecture (Essential Daily Productivity vs. Pro Developer Studios) in ZenDev to deliver an uncluttered, intuitive experience for everyday users while preserving the full enterprise SaaS developer suite.
+
+Working directory: c:\Users\BERKE\.gemini\antigravity\scratch\NexusHub
+Integrity mode: development
+
+## Requirements
+
+### R1. Dual-Mode Workspace State & Persistence
+Create a reactive `WorkspaceModeContext` (`essential` vs `developer`) that persists the user's preference in `localStorage` (defaulting to `essential` to prevent first-time cognitive overload) and broadcasts mode changes across all components with zero page reloads.
+
+### R2. Header Segmented Mode Switcher
+In `src/renderer/src/components/TitleBar.tsx` (and an accessible indicator in `Sidebar.tsx`), integrate a sleek, cyberpunk-styled segmented control button:
+- `[ 🎯 Günlük Araçlar | ⚡ Geliştirici ]` (Turkish) / `[ 🎯 Essential Tools | ⚡ Developer ]` (English).
+- Animate tab transitions cleanly with Framer Motion.
+- Provide a global keyboard shortcut (`Ctrl+M` / `Cmd+M`) to toggle modes seamlessly.
+
+### R3. Navigation & Sidebar Categorization
+Restructure `NAV_GROUPS` in `src/renderer/src/components/Sidebar.tsx`:
+- **Essential Mode (`essential`):** Hide technical developer jargon (API Studio, JSON, JWT, Regex, Cron, Mermaid, Encoding, Network) and present only consumer-friendly everyday tools organized into clean, intuitive sections:
+  - *Gizlilik & Güvenlik (Privacy & Security):* Evrensel Link Çözücü (`/decrypter`), Güvenli Kasa (`/fortress`), Güçlü Şifre Üretici (`/password`).
+  - *Belgeler & Medya (Documents & Media):* PDF Stüdyosu (`/pdf-studio`), Görsel Araçları (`/image`), Dosya Düzenleyici (`/organizer`).
+  - *Pratik Araçlar (Practical Utilities):* QR Kod Stüdyosu (`/qr-code`), Hızlı Notlar (`/scratchpad`), Renk Paleti (`/color-studio`).
+- **Developer Mode (`developer`):** Display the full power suite (API Studio, JSON Master, JWT Inspector, Regex Lab, Cron Studio, Mermaid Studio, Encoding Studio, Hash Studio, Network Tools, Resource Sentinel, Cloud Sync).
+
+### R4. Command Palette & Dashboard Alignment
+Update `CommandPalette.tsx` and `Dashboard.tsx` to respect the active workspace mode:
+- In Essential mode, filter out developer commands from quick search results so non-technical users are not confused by cURL, JWT, or Regex actions.
+- Provide a direct Command Palette action: `"Geliştirici Moduna Geç"` / `"Switch to Developer Mode"`.
+
+### R5. Bilingual Localization & Test Suite Parity
+- Add all mode switcher, tooltip, and group labels to both `src/renderer/src/locales/tr.json` and `src/renderer/src/locales/en.json` with 100% key parity.
+- Create automated test suite `tests/workspaceMode.test.ts` verifying mode switching, localStorage persistence, filtered navigation item counts, and keyboard shortcut events.
+
+## Acceptance Criteria
+
+### Workspace Mode State & Persistence
+- [ ] `WorkspaceModeContext` initializes with stored preference from `localStorage` or defaults to `'essential'`.
+- [ ] Switching modes persists immediately to `localStorage` under key `'zendev_workspace_mode'`.
+- [ ] Pressing `Ctrl+M` or `Cmd+M` toggles between `'essential'` and `'developer'` modes and triggers audible UI feedback.
+
+### Header Switcher UI
+- [ ] TitleBar displays the segmented toggle with active glow styling matching the ZenDev cybernetic theme.
+- [ ] Clicking either segment switches the active mode instantly without page refresh or layout shift.
+
+### Sidebar & Navigation Filtering
+- [ ] In `'essential'` mode, exactly the consumer-friendly tools (Link Decrypter, Password, CyberFortress, PDF, Image, Organizer, QR Code, Scratchpad, Color Studio) are visible; no developer tools (API Studio, JSON, JWT, Regex, Cron, Mermaid) appear in the sidebar.
+- [ ] In `'developer'` mode, all tools and developer studios are fully accessible.
+- [ ] Route navigation to an unlisted developer tool while in essential mode gracefully offers a toast or banner to switch to Developer Mode.
+
+### Command Palette & Dashboard Consistency
+- [ ] Command Palette (`Ctrl+K`) query results exclude developer-only commands when in essential mode.
+- [ ] Dashboard quick launcher cards reflect the active mode's curated toolset.
+
+### Localization & Quality Assurance
+- [ ] `tr.json` and `en.json` maintain 100% key parity with zero missing translation warnings.
+- [ ] `npm test` and `node tests/run_i18n_test.mjs` pass with 0 failures.
+- [ ] `npm run build` completes with code 0 (zero TypeScript or Vite compilation errors).

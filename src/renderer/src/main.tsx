@@ -7,6 +7,7 @@ import ErrorBoundary from './components/ErrorBoundary'
 import { I18nProvider } from './lib/i18n'
 import { LicenseProvider } from './lib/LicenseContext'
 import { ToastProvider } from './lib/ToastContext'
+import { WorkspaceModeProvider } from './context/WorkspaceModeContext'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -16,7 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <LicenseProvider>
           <ToastProvider>
             <HashRouter>
-              <App />
+              <WorkspaceModeProvider>
+                <App />
+              </WorkspaceModeProvider>
             </HashRouter>
           </ToastProvider>
         </LicenseProvider>

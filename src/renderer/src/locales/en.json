@@ -6,7 +6,9 @@
       "privacy": "Privacy & Security",
       "developer": "Developer & Utilities",
       "files": "Files & Media",
-      "network": "Network"
+      "network": "Network",
+      "documents": "Documents & Media",
+      "practical": "Practical Utilities"
     },
     "tools": {
       "decrypter": "Universal Link Decrypter & Cleaner",
@@ -997,5 +999,21 @@
       "copyAllSuccessTitle": "All Copied",
       "copyAllSuccessDesc": "{{count}} clean links copied to clipboard."
     }
+  },
+  "workspace": {
+    "mode": "Workspace Mode",
+    "essential": "Essential Tools",
+    "essentialShort": "Essential",
+    "essentialDesc": "Consumer-friendly and clean daily productivity tools",
+    "developer": "Developer",
+    "developerShort": "Developer",
+    "developerDesc": "Professional API, code, and system developer studios",
+    "switchToDeveloper": "Switch to Developer Mode",
+    "switchToDeveloperDesc": "Enable all professional API, JSON, JWT, Regex, and system studios",
+    "switchToEssential": "Switch to Essential Mode",
+    "switchToEssentialDesc": "Switch to clean, everyday productivity tools",
+    "toggleShortcut": "Toggle Mode (Ctrl+M)",
+    "shortcutHint": "Toggle with Ctrl+M",
+    "developerRequiredTitle": "Developer Mode Required"
   }
 }

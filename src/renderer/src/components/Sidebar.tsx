@@ -35,6 +35,7 @@ import {
 import { useT } from '../lib/i18n'
 import { cyberAudio } from '../lib/cyberAudio'
 import { useLicense } from '../lib/LicenseContext'
+import { useWorkspaceMode } from '../context/WorkspaceModeContext'
 
 type NavItem = {
   path: string
@@ -49,48 +50,77 @@ type NavGroup = {
 }
 
 // Translation keys only — labels resolved at render time via t()
-const NAV_GROUPS: NavGroup[] = [
+export const ESSENTIAL_NAV_GROUPS: NavGroup[] = [
   {
     labelKey: 'nav.groups.privacy',
     items: [
-             { path: '/decrypter',  labelKey: 'nav.tools.decrypter',         icon: ShieldCheck, isPro: true },
-      { path: '/password',   labelKey: 'nav.tools.passwordGenerator',  icon: Key },
-      { path: '/fortress',   labelKey: 'nav.tools.cyberFortress',     icon: ShieldAlert, isPro: true },
+      { path: '/decrypter', labelKey: 'nav.tools.decrypter', icon: ShieldCheck, isPro: true },
+      { path: '/fortress', labelKey: 'nav.tools.cyberFortress', icon: ShieldAlert, isPro: true },
+      { path: '/password', labelKey: 'nav.tools.passwordGenerator', icon: Key },
+    ],
+  },
+  {
+    labelKey: 'nav.groups.documents',
+    items: [
+      { path: '/pdf-studio', labelKey: 'nav.tools.pdfStudio', icon: FileText, isPro: true },
+      { path: '/image', labelKey: 'nav.tools.imageToolkit', icon: ImageIcon, isPro: true },
+      { path: '/organizer', labelKey: 'nav.tools.bulkOrganizer', icon: FolderArchive, isPro: true },
+    ],
+  },
+  {
+    labelKey: 'nav.groups.practical',
+    items: [
+      { path: '/qr-code', labelKey: 'nav.tools.qrCode', icon: QrCode },
+      { path: '/scratchpad', labelKey: 'nav.tools.scratchpad', icon: FileText },
+      { path: '/color-studio', labelKey: 'nav.tools.colorStudio', icon: Palette },
+    ],
+  },
+]
+
+export const DEVELOPER_NAV_GROUPS: NavGroup[] = [
+  {
+    labelKey: 'nav.groups.privacy',
+    items: [
+      { path: '/decrypter', labelKey: 'nav.tools.decrypter', icon: ShieldCheck, isPro: true },
+      { path: '/password', labelKey: 'nav.tools.passwordGenerator', icon: Key },
+      { path: '/fortress', labelKey: 'nav.tools.cyberFortress', icon: ShieldAlert, isPro: true },
     ],
   },
   {
     labelKey: 'nav.groups.developer',
     items: [
-      { path: '/scratchpad',   labelKey: 'nav.tools.scratchpad',   icon: FileText },
-      { path: '/color-studio', labelKey: 'nav.tools.colorStudio',  icon: Palette },
-      { path: '/regex-studio', labelKey: 'nav.tools.regexStudio',  icon: Terminal },
-      { path: '/fake-data',    labelKey: 'nav.tools.fakeData',     icon: Zap },
-      { path: '/api-studio',   labelKey: 'nav.tools.apiStudio',    icon: Send, isPro: true },
-      { path: '/qr-code',      labelKey: 'nav.tools.qrCode',       icon: QrCode },
-      { path: '/json-studio',  labelKey: 'nav.tools.jsonStudio',   icon: Braces },
-      { path: '/hash-studio',  labelKey: 'nav.tools.hashStudio',   icon: FileCheck },
-      { path: '/jwt-studio',      labelKey: 'nav.tools.jwtStudio',      icon: KeyRound },
-      { path: '/cron-studio',     labelKey: 'nav.tools.cronStudio',     icon: Clock },
-      { path: '/mermaid-studio',  labelKey: 'nav.tools.mermaidStudio',  icon: GitBranch },
+      { path: '/api-studio', labelKey: 'nav.tools.apiStudio', icon: Send, isPro: true },
+      { path: '/json-studio', labelKey: 'nav.tools.jsonStudio', icon: Braces },
+      { path: '/jwt-studio', labelKey: 'nav.tools.jwtStudio', icon: KeyRound },
+      { path: '/regex-studio', labelKey: 'nav.tools.regexStudio', icon: Terminal },
+      { path: '/cron-studio', labelKey: 'nav.tools.cronStudio', icon: Clock },
+      { path: '/mermaid-studio', labelKey: 'nav.tools.mermaidStudio', icon: GitBranch },
       { path: '/encoding-studio', labelKey: 'nav.tools.encodingStudio', icon: Binary },
+      { path: '/hash-studio', labelKey: 'nav.tools.hashStudio', icon: FileCheck },
+      { path: '/fake-data', labelKey: 'nav.tools.fakeData', icon: Zap },
+      { path: '/scratchpad', labelKey: 'nav.tools.scratchpad', icon: FileText },
+      { path: '/color-studio', labelKey: 'nav.tools.colorStudio', icon: Palette },
+      { path: '/qr-code', labelKey: 'nav.tools.qrCode', icon: QrCode },
     ],
   },
   {
     labelKey: 'nav.groups.files',
     items: [
-      { path: '/pdf-studio', labelKey: 'nav.tools.pdfStudio',        icon: FileText, isPro: true },
-      { path: '/organizer',  labelKey: 'nav.tools.bulkOrganizer',    icon: FolderArchive, isPro: true },
-             { path: '/image',      labelKey: 'nav.tools.imageToolkit',     icon: ImageIcon, isPro: true },
+      { path: '/pdf-studio', labelKey: 'nav.tools.pdfStudio', icon: FileText, isPro: true },
+      { path: '/organizer', labelKey: 'nav.tools.bulkOrganizer', icon: FolderArchive, isPro: true },
+      { path: '/image', labelKey: 'nav.tools.imageToolkit', icon: ImageIcon, isPro: true },
     ],
   },
   {
     labelKey: 'nav.groups.network',
     items: [
-                    { path: '/network',          labelKey: 'nav.tools.networkTools',     icon: Globe, isPro: true },
-      { path: '/sentinel',         labelKey: 'nav.tools.sentinel',         icon: Activity, isPro: true },
+      { path: '/network', labelKey: 'nav.tools.networkTools', icon: Globe, isPro: true },
+      { path: '/sentinel', labelKey: 'nav.tools.sentinel', icon: Activity, isPro: true },
     ],
   },
 ]
+
+export const NAV_GROUPS: NavGroup[] = DEVELOPER_NAV_GROUPS
 
 // ─── Shared active-pill motion IDs ────────────────────────────────────────────
 function ActivePill() {
@@ -270,6 +300,8 @@ export default function Sidebar() {
   const navigate = useNavigate()
   const { t } = useT()
   const { status } = useLicense()
+  const { mode, toggleMode } = useWorkspaceMode()
+  const activeNavGroups = mode === 'essential' ? ESSENTIAL_NAV_GROUPS : DEVELOPER_NAV_GROUPS
   const isPro = status === 'active'
   const isHome = location.pathname === '/'
   const isActivity = location.pathname === '/activity-feed'
@@ -496,11 +528,54 @@ export default function Sidebar() {
             </span>
           </button>
         )}
+
+        {/* Workspace Mode Indicator Switcher */}
+        {collapsed ? (
+          <div className="relative group flex justify-center pt-1">
+            <button
+              type="button"
+              onClick={toggleMode}
+              className="w-full flex items-center justify-center p-2 rounded-lg bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 text-xs transition-all no-drag cursor-pointer"
+              title={`${mode === 'essential' ? t('workspace.essential') : t('workspace.developer')} (Ctrl+M)`}
+              aria-label={`Workspace mode: ${mode}. Click to switch.`}
+              role="switch"
+              aria-checked={mode === 'developer'}
+            >
+              <span className="text-xs">{mode === 'essential' ? '🎯' : '⚡'}</span>
+            </button>
+            <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 px-2.5 py-1 bg-nexus-surface border border-nexus-border/80 text-white text-xs rounded-lg shadow-xl whitespace-nowrap pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity z-50 flex items-center gap-1.5">
+              <span>{mode === 'essential' ? t('workspace.essential') : t('workspace.developer')}</span>
+              <span className="text-[10px] font-mono text-nexus-cyan font-bold">(Ctrl+M)</span>
+            </div>
+          </div>
+        ) : (
+          <div className="pt-1">
+            <button
+              type="button"
+              onClick={toggleMode}
+              className="w-full flex items-center justify-between px-3 py-1.5 rounded-lg bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 text-xs transition-all no-drag cursor-pointer group"
+              title={t('workspace.toggleShortcut') || 'Toggle Mode (Ctrl+M)'}
+              aria-label={`Workspace mode: ${mode}. Click to switch.`}
+              role="switch"
+              aria-checked={mode === 'developer'}
+            >
+              <div className="flex items-center gap-2">
+                <span className="text-xs">{mode === 'essential' ? '🎯' : '⚡'}</span>
+                <span className="text-[11px] font-semibold text-nexus-text group-hover:text-white transition-colors">
+                  {mode === 'essential' ? t('workspace.essentialShort') : t('workspace.developerShort')}
+                </span>
+              </div>
+              <span className="px-1.5 py-0.5 rounded bg-black/40 border border-white/10 text-[10px] font-mono text-nexus-muted">
+                Ctrl M
+              </span>
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Scrollable grouped nav */}
       <nav className={`flex-1 overflow-y-auto ${collapsed ? 'px-2' : 'px-3'} pb-2 space-y-2 scrollbar-hidden`}>
-        {NAV_GROUPS.map((group) => (
+        {activeNavGroups.map((group) => (
           <NavGroupSection
             key={group.labelKey}
             group={group}

@@ -184,8 +184,8 @@ assert(!apiStudioContent.includes("from 'axios'"), 'R4.15: ApiStudio.tsx does no
 console.log('\nSub-suite: Sidebar.tsx Branding');
 const sidebarContent = fs.readFileSync('src/renderer/src/components/Sidebar.tsx', 'utf8');
 const sidebarLines = sidebarContent.split(/\r?\n/);
-const brandingLine = sidebarLines[603] || ''; // 1-indexed line 604 is index 603
-assert(brandingLine.includes('Tauri v2 + Rust + React'), 'R4.16: Sidebar.tsx line 604 displays "Tauri v2 + Rust + React"', `Line 604 content: "${brandingLine.trim()}"`);
+const brandingLine = sidebarLines.find(l => l.includes('Tauri v2 + Rust + React')) || sidebarLines[603] || '';
+assert(brandingLine.includes('Tauri v2 + Rust + React'), 'R4.16: Sidebar.tsx displays "Tauri v2 + Rust + React"', `Line content: "${brandingLine.trim()}"`);
 assert(!sidebarContent.includes('Electron + React + TypeScript'), 'R4.17: Sidebar.tsx contains no "Electron + React + TypeScript" legacy branding');
 
 // 2.4 i18n Parity Verification
@@ -215,8 +215,8 @@ const enFlat = flattenKeys(enJson);
 const trKeys = Object.keys(trFlat).sort();
 const enKeys = Object.keys(enFlat).sort();
 
-assert(trKeys.length === 785, `R4.18: tr.json key cardinality is exactly 785 (actual: ${trKeys.length})`);
-assert(enKeys.length === 785, `R4.19: en.json key cardinality is exactly 785 (actual: ${enKeys.length})`);
+assert(trKeys.length === 801, `R4.18: tr.json key cardinality is exactly 801 (actual: ${trKeys.length})`);
+assert(enKeys.length === 801, `R4.19: en.json key cardinality is exactly 801 (actual: ${enKeys.length})`);
 
 const missingInTr = enKeys.filter(k => !(k in trFlat));
 const missingInEn = trKeys.filter(k => !(k in enFlat));

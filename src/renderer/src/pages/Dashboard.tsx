@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import SpotlightCard from '../components/SpotlightCard'
@@ -29,7 +29,7 @@ import {
 } from 'lucide-react'
 import { useT } from '../lib/i18n'
 import { cyberAudio } from '../lib/cyberAudio'
-
+import { useWorkspaceMode } from '../context/WorkspaceModeContext'
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -39,6 +39,7 @@ const fadeUp = {
 export default function Dashboard() {
   const navigate = useNavigate()
   const { t, locale } = useT()
+  const { mode, setMode } = useWorkspaceMode()
 
   const [pinnedIds, setPinnedIds] = useState<string[]>(() => {
     try {
@@ -101,6 +102,7 @@ export default function Dashboard() {
       gradient: 'from-emerald-500 to-cyan-600',
       glowColor: 'rgba(16, 185, 129, 0.3)',
       status: t('dashboard.status.ready') || 'Ready',
+      developerOnly: true,
     },
     {
       id: 'image-toolkit',
@@ -131,6 +133,7 @@ export default function Dashboard() {
       gradient: 'from-indigo-500 to-cyan-500',
       glowColor: 'rgba(99, 102, 241, 0.3)',
       status: t('dashboard.status.active') || 'Active',
+      developerOnly: true,
     },
     {
       id: 'hash-studio',
@@ -141,6 +144,7 @@ export default function Dashboard() {
       gradient: 'from-emerald-500 to-teal-600',
       glowColor: 'rgba(16, 185, 129, 0.3)',
       status: t('dashboard.status.live') || 'Live',
+      developerOnly: true,
     },
     {
       id: 'sentinel',
@@ -151,6 +155,7 @@ export default function Dashboard() {
       gradient: 'from-cyan-500 to-emerald-600',
       glowColor: 'rgba(6, 182, 212, 0.3)',
       status: 'Pro',
+      developerOnly: true,
     },
     {
       id: 'api-studio',
@@ -161,6 +166,7 @@ export default function Dashboard() {
       gradient: 'from-indigo-500 to-nexus-cyan',
       glowColor: 'rgba(99, 102, 241, 0.3)',
       status: 'Pro',
+      developerOnly: true,
     },
     {
       id: 'cyber-fortress',
@@ -181,6 +187,7 @@ export default function Dashboard() {
       gradient: 'from-violet-600 to-purple-600',
       glowColor: 'rgba(139, 92, 246, 0.3)',
       status: 'Yeni',
+      developerOnly: true,
     },
     {
       id: 'fake-data',
@@ -191,6 +198,7 @@ export default function Dashboard() {
       gradient: 'from-cyan-600 to-teal-600',
       glowColor: 'rgba(20, 184, 166, 0.3)',
       status: 'Yeni',
+      developerOnly: true,
     },
     {
       id: 'color-studio',
@@ -233,6 +241,7 @@ export default function Dashboard() {
       gradient: 'from-violet-600 to-indigo-600',
       glowColor: 'rgba(139, 92, 246, 0.3)',
       status: t('dashboard.status.ready') || 'Ready',
+      developerOnly: true,
     },
     {
       id: 'cron-studio',
@@ -243,6 +252,7 @@ export default function Dashboard() {
       gradient: 'from-amber-500 to-orange-600',
       glowColor: 'rgba(245, 158, 11, 0.3)',
       status: t('dashboard.status.ready') || 'Ready',
+      developerOnly: true,
     },
     {
       id: 'mermaid-studio',
@@ -253,6 +263,7 @@ export default function Dashboard() {
       gradient: 'from-cyan-500 to-blue-600',
       glowColor: 'rgba(6, 182, 212, 0.3)',
       status: t('dashboard.status.ready') || 'Ready',
+      developerOnly: true,
     },
     {
       id: 'encoding-studio',
@@ -263,8 +274,17 @@ export default function Dashboard() {
       gradient: 'from-emerald-500 to-teal-600',
       glowColor: 'rgba(16, 185, 129, 0.3)',
       status: t('dashboard.status.ready') || 'Ready',
+      developerOnly: true,
     },
   ]
+
+  const visibleTools = useMemo(() => {
+    return mode === 'essential' ? tools.filter((t) => !t.developerOnly) : tools
+  }, [mode, tools])
+
+  const visiblePinnedTools = useMemo(() => {
+    return visibleTools.filter((t) => pinnedIds.includes(t.id))
+  }, [visibleTools, pinnedIds])
 
   return (
     <div className="max-w-5xl mx-auto">
@@ -317,7 +337,7 @@ export default function Dashboard() {
         className="grid grid-cols-3 gap-4 mb-10"
       >
         {[
-          { icon: Zap, label: t('dashboard.stats.activeTools') || 'Active Tools', value: `${tools.length} ${locale === 'tr' ? 'Modül' : 'Tools'}`, color: 'text-nexus-cyan', spotColor: 'rgba(6, 182, 212, 0.15)' },
+          { icon: Zap, label: t('dashboard.stats.activeTools') || 'Active Tools', value: `${visibleTools.length} ${locale === 'tr' ? 'Modül' : 'Tools'}`, color: 'text-nexus-cyan', spotColor: 'rgba(6, 182, 212, 0.15)' },
           { icon: Shield, label: t('dashboard.stats.security') || 'Security Guard', value: t('dashboard.stats.ipcIsolated') || 'IPC Isolated', color: 'text-emerald-400', spotColor: 'rgba(16, 185, 129, 0.15)' },
           {
             icon: Sparkles,
@@ -348,7 +368,7 @@ export default function Dashboard() {
       </motion.div>
 
       {/* Pinned favorites section */}
-      {pinnedIds.length > 0 && (
+      {visiblePinnedTools.length > 0 && (
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-4">
             <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
@@ -357,35 +377,33 @@ export default function Dashboard() {
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {tools
-              .filter((t) => pinnedIds.includes(t.id))
-              .map((tool) => (
-                <div
-                  key={`pin_${tool.id}`}
-                  onClick={() => navigate(tool.path)}
-                  className="p-3.5 rounded-2xl bg-nexus-card/80 border border-nexus-accent/30 hover:border-nexus-cyan/50 flex items-center justify-between cursor-pointer transition-all hover:scale-[1.02] shadow-lg shadow-black/30 group"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${tool.gradient} flex items-center justify-center text-white shrink-0`}>
-                      <tool.icon className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="text-xs font-bold text-white group-hover:text-nexus-cyan transition-colors truncate max-w-[150px]">
-                        {tool.title}
-                      </h4>
-                      <span className="text-[10px] text-nexus-muted font-mono">{tool.status}</span>
-                    </div>
+            {visiblePinnedTools.map((tool) => (
+              <div
+                key={`pin_${tool.id}`}
+                onClick={() => navigate(tool.path)}
+                className="p-3.5 rounded-2xl bg-nexus-card/80 border border-nexus-accent/30 hover:border-nexus-cyan/50 flex items-center justify-between cursor-pointer transition-all hover:scale-[1.02] shadow-lg shadow-black/30 group"
+              >
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${tool.gradient} flex items-center justify-center text-white shrink-0`}>
+                    <tool.icon className="w-5 h-5" />
                   </div>
-                  <button
-                    type="button"
-                    onClick={(e) => togglePin(tool.id, e)}
-                    className="p-1.5 rounded-lg text-amber-400 hover:text-amber-300"
-                    title="Favorilerden Çıkar"
-                  >
-                    <Star className="w-4 h-4 fill-amber-400" />
-                  </button>
+                  <div>
+                    <h4 className="text-xs font-bold text-white group-hover:text-nexus-cyan transition-colors truncate max-w-[150px]">
+                      {tool.title}
+                    </h4>
+                    <span className="text-[10px] text-nexus-muted font-mono">{tool.status}</span>
+                  </div>
                 </div>
-              ))}
+                <button
+                  type="button"
+                  onClick={(e) => togglePin(tool.id, e)}
+                  className="p-1.5 rounded-lg text-amber-400 hover:text-amber-300"
+                  title="Favorilerden Çıkar"
+                >
+                  <Star className="w-4 h-4 fill-amber-400" />
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       )}
@@ -404,13 +422,13 @@ export default function Dashboard() {
             <p className="text-xs text-nexus-muted/60 mt-0.5">High-performance native desktop utilities</p>
           </div>
           <span className="text-xs font-mono text-nexus-muted px-2.5 py-1 rounded-lg bg-white/5 border border-white/5">
-            {tools.length} Modules Installed
+            {visibleTools.length} Modules Installed
           </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {/* Tool cards */}
-          {tools.map((tool, index) => (
+          {visibleTools.map((tool, index) => (
             <SpotlightCard
               key={tool.id}
               spotlightColor={tool.glowColor}
@@ -463,6 +481,45 @@ export default function Dashboard() {
             </SpotlightCard>
           ))}
         </div>
+
+        {/* Essential Mode Pro Discovery Banner */}
+        {mode === 'essential' && (
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+            className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-nexus-cyan/10 via-nexus-accent/10 to-transparent border border-nexus-cyan/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-nexus-cyan/20 border border-nexus-cyan/40 flex items-center justify-center text-nexus-cyan shrink-0">
+                <Zap className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-sm font-bold text-white tracking-wide">
+                  {locale === 'tr' ? '⚡ Pro Geliştirici Stüdyoları Gizlendi' : '⚡ Pro Developer Studios Hidden'}
+                </h3>
+                <p className="text-xs text-nexus-muted mt-1 max-w-xl">
+                  {locale === 'tr'
+                    ? 'API Studio, JSON & JWT, Regex Lab, Cron Studio, Mermaid, Hash & Network gibi 11 profesyonel geliştirici modülüne erişmek için Geliştirici Moduna geçin.'
+                    : 'Switch to Developer Mode to access 11 professional engineering studios including API Studio, JWT, Regex Lab, Cron Studio, Mermaid, and Network Tools.'}
+                </p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                try {
+                  cyberAudio.click()
+                } catch {}
+                setMode('developer')
+              }}
+              className="px-4 py-2 rounded-xl bg-nexus-cyan/20 hover:bg-nexus-cyan/30 text-nexus-cyan border border-nexus-cyan/40 font-semibold text-xs tracking-wider transition-all flex items-center gap-2 shrink-0 group hover:shadow-lg hover:shadow-nexus-cyan/20"
+            >
+              <span>{locale === 'tr' ? 'Geliştirici Moduna Geç' : 'Switch to Developer Mode'}</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </button>
+          </motion.div>
+        )}
       </motion.div>
     </div>
   )
