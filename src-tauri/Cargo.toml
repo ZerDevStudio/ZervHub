@@ -49,5 +49,5 @@ rustls-pki-types = "1"
 x509-parser = "0.17"
 
 [target.'cfg(windows)'.dependencies]
-winreg = "0.52"
+winreg = "0.55"
 
