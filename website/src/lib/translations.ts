@@ -7,14 +7,14 @@ export const translations = {
       calculator: 'Tasarruf Hesabı',
       pricing: 'Fiyatlandırma',
       portal: 'Lisans Portalı',
-      downloadBtn: 'Hemen İndir v2.5.5',
-      whatsNew: 'v2.5.5 Yenilikler'
+      downloadBtn: 'Hemen İndir v2.5.6',
+      whatsNew: 'v2.5.6 Yenilikler'
     },
     hero: {
-      tag: '⚡ API & YAZILIM EKİPLERİ İÇİN MASAÜSTÜ GELİŞTİRİCİ SAAS',
+      tag: '⚡ ÇİFT MODLU MASAÜSTÜ ÜRETKENLİK & DEVELOPER SAAS',
       titleHighlight: 'Dağınık Web Araçlarına Son.',
-      titleMain: 'API, JSON, JWT, Cron & Diyagram Gücü Tek Masaüstü SaaS Platformunda.',
-      subtitle: 'cURL/REST istemcisi, JSON ağaç editörü, JWT imzalayıcı, görsel Cron mimarı, Mermaid şema tuvali ve çok modlu encoding stüdyoları. %100 yerel gizlilik, ultra hızlı Rust motoru ve takımlar arası kesintisiz koleksiyon senkronizasyonu.',
+      titleMain: 'Hem Günlük Pratik Araçlar Hem Geliştirici Stüdyoları Tek Çatıda.',
+      subtitle: 'Çift Modlu Çalışma Alanı: Genel kullanıcılar için sade ve pratik "Günlük Araçlar", yazılım ekipleri için cURL/REST, JSON, JWT, Cron ve Mermaid içeren "Geliştirici Stüdyoları". %100 yerel gizlilik ve ultra hızlı Rust motoru.',
       downloadNsis: 'Windows Yükleyici İndir (x64)',
       downloadPortable: 'Portable .exe İndir',
       checksumLabel: 'SHA-256 Doğrulama',
@@ -59,7 +59,7 @@ export const translations = {
     radar: {
       tag: 'MİMARİ KARŞILAŞTIRMA',
       title: 'Tauri v2 + Rust: Neden Klasik Electron\'u Terk Ettik?',
-      subtitle: 'ZenDev v2.5.5 ile tüm mimariyi baştan aşağı Rust ile yeniden inşa ettik. İşte somut donanım rakamları:',
+      subtitle: 'ZenDev v2.5.6 ile tüm mimariyi baştan aşağı Rust ile yeniden inşa ettik. İşte somut donanım rakamları:',
       metrics: {
         ram: {
           title: 'Bellek (RAM) Tüketimi',
@@ -140,14 +140,14 @@ export const translations = {
       calculator: 'ROI Calculator',
       pricing: 'Pricing',
       portal: 'License Portal',
-      downloadBtn: 'Download v2.5.5',
-      whatsNew: 'v2.5.5 What\'s New'
+      downloadBtn: 'Download v2.5.6',
+      whatsNew: 'v2.5.6 What\'s New'
     },
     hero: {
-      tag: '⚡ DESKTOP DEVELOPER SAAS FOR API & ENGINEERING TEAMS',
+      tag: '⚡ DUAL-MODE DESKTOP PRODUCTIVITY & DEVELOPER SAAS',
       titleHighlight: 'Stop Fragmented Web Tools.',
-      titleMain: 'API, JSON, JWT, Cron & Diagrams Unified in One Desktop SaaS.',
-      subtitle: 'Offline REST & cURL client, JSON tree editor, JWT signer & inspector, visual Cron builder, Mermaid architecture canvas, and multi-modal encoding labs. Ultra-fast Rust engine with team workspace sync.',
+      titleMain: 'Essential Daily Utilities & Power Developer Studios Unified.',
+      subtitle: 'Dual-Mode Workspace: Clean and intuitive "Essential Tools" for everyday productivity, plus a full 20-tool "Developer Suite" (cURL/REST, JSON, JWT, Cron, Mermaid) for software engineers. 100% offline-first privacy.',
       downloadNsis: 'Download Windows Setup (x64)',
       downloadPortable: 'Download Portable .exe',
       checksumLabel: 'Verify SHA-256',
@@ -192,7 +192,7 @@ export const translations = {
     radar: {
       tag: 'ARCHITECTURE BENCHMARK',
       title: 'Tauri v2 + Rust: Why We Ditched Traditional Electron',
-      subtitle: 'With ZenDev v2.5.5, we rebuilt our core foundation with Rust. Here are the real hardware benchmarks:',
+      subtitle: 'With ZenDev v2.5.6, we rebuilt our core foundation with Rust. Here are the real hardware benchmarks:',
       metrics: {
         ram: {
           title: 'Memory (RAM) Footprint',

@@ -32,6 +32,7 @@ interface ShortcutItem {
 
 const SHORTCUTS: ShortcutItem[] = [
   { keys: ['Ctrl', 'K'], actionTr: 'Küresel Omni-Arama Konsolu (Tüm Araçlar)', actionEn: 'Global Omni-Launcher Console (All Tools)', category: 'global' },
+  { keys: ['Ctrl', 'M'], actionTr: 'Çalışma Alanı Modunu Değiştir (Günlük ↔ Geliştirici)', actionEn: 'Toggle Workspace Mode (Essential ↔ Developer)', category: 'global' },
   { keys: ['Alt', 'Space'], actionTr: 'MiniHud Yüzen Pencere (Hızlı Dönüştürücü)', actionEn: 'MiniHud Floating Widget (Instant Converter)', category: 'global' },
   { keys: ['Ctrl', 'Shift', 'J'], actionTr: 'JWT Studio Hızlı Başlatıcı', actionEn: 'JWT Studio Direct Invocation', category: 'tools' },
   { keys: ['Ctrl', 'Shift', 'L'], actionTr: 'Acil Kilit (CyberFortress AES-256 Kasa)', actionEn: 'Emergency Lock (CyberFortress AES Vault)', category: 'tools' },
@@ -95,7 +96,7 @@ export const ShortcutsDrawer: React.FC<ShortcutsDrawerProps> = ({
             </div>
             <div>
               <h3 className="text-base font-bold text-white font-mono flex items-center gap-2">
-                <span>{isTr ? 'ZenDev v2.5.5 Kısayol & CLI Kılavuzu' : 'ZenDev v2.5.5 Cheatsheet & CLI'}</span>
+                <span>{isTr ? 'ZenDev v2.5.6 Kısayol & CLI Kılavuzu' : 'ZenDev v2.5.6 Cheatsheet & CLI'}</span>
                 <span className="text-[10px] px-2 py-0.5 rounded-full bg-cyan-950 border border-cyan-500/40 text-cyan-300">
                   CheatSheet
                 </span>

@@ -46,8 +46,8 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   const quickActions = [
     {
       id: 'action-download',
-      labelTr: 'ZenDev v2.5.5 Yükleyiciyi İndir',
-      labelEn: 'Download ZenDev v2.5.5 Installer',
+      labelTr: 'ZenDev v2.5.6 Yükleyiciyi İndir',
+      labelEn: 'Download ZenDev v2.5.6 Installer',
       icon: Download,
       href: '#download'
     },

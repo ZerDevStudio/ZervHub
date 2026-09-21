@@ -8,10 +8,35 @@
 [![CI](https://github.com/ZerDevStudio/ZervHub/actions/workflows/ci.yml/badge.svg)](https://github.com/ZerDevStudio/ZervHub/actions/workflows/ci.yml)
 [![Tests Passing](https://img.shields.io/badge/Tests-691_Passed-2ea44f?logo=vitest&logoColor=white)](https://github.com/ZerDevStudio/ZervHub)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/ZerDevStudio/ZervHub/blob/main/LICENSE)
-[![Showcase](https://img.shields.io/badge/Showcase-Live_Website-blue?logo=github)](https://zerdevstudio.github.io/ZervHub)
-[![Release](https://img.shields.io/github/v/release/ZerDevStudio/ZervHub?color=7928CA&label=Release)](https://github.com/ZerDevStudio/ZervHub/releases/latest)
+[![Showcase](https://img.shields.io/badge/Showcase-Live_Website-blue?logo=github)](https://zerdevstudio.github.io/)
+[![Release](https://img.shields.io/github/v/release/ZerDevStudio/ZervHub-App?color=7928CA&label=Release)](https://github.com/ZerDevStudio/ZervHub-App/releases/latest)
 
-> **ZenDev (ZervHub)** is an enterprise-grade, privacy-first desktop developer workstation engineered for backend engineers, full-stack architects, cybersecurity specialists, and API developers. Powered by **Tauri v2**, **Rust**, and **React 19**, ZenDev consolidates over 25 essential developer utilities into a unified, lightning-fast native binary. Operating 100% offline with zero external telemetry, hardware-bound credential protection, and mathematical tamper-evident cryptographic audit journaling.
+> **ZenDev (ZervHub)** is an enterprise-grade, privacy-first desktop application engineered for both everyday productivity and software engineering teams. Powered by **Tauri v2**, **Rust**, and **React 19**, ZenDev consolidates over 25 essential tools into a unified, lightning-fast native binary (<26 MB RAM, 0.35s boot). Operating 100% offline with zero external telemetry, hardware-bound credential protection, and mathematical tamper-evident cryptographic audit journaling.
+
+---
+
+## 🎯 Dual-Mode Workspace Architecture
+
+ZenDev adapts to every user profile through its reactive, persistent **Dual-Mode Workspace** (`Ctrl + M`):
+
+```
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│  [ZenDev Logo]          [ 🎯 Günlük Araçlar | ⚡ Geliştirici ]          [_ □ X]  │
+├──────────────┬───────────────────────────────────────────────────────────────────┤
+│ 🎯 ESSENTIAL │  • Privacy & Security: Universal Link Decrypter, CyberFortress,   │
+│   (Default)  │    Strong Password Generator                                      │
+│              │  • Documents & Media: PDF Studio, Image Toolkit, Bulk Organizer   │
+│              │  • Practical Utilities: QR Code Studio, Scratchpad, Color Studio │
+├──────────────┼───────────────────────────────────────────────────────────────────┤
+│ ⚡ DEVELOPER │  • Full 20-Tool Power Suite: API Studio (REST/cURL), JSON Master, │
+│   (Pro Mode) │    JWT Inspector, Regex Lab, Cron Studio, Mermaid Architecture,   │
+│              │    Encoding Studio, Hash Studio, Network Recon, Resource Sentinel │
+└──────────────┴───────────────────────────────────────────────────────────────────┘
+```
+
+- **🎯 Essential Mode (`essential`):** Activated by default for non-technical and daily users. Hides complex developer jargon (cURL, JWT, Regex, Cron, Mermaid) and presents only the 9 essential everyday consumer utilities.
+- **⚡ Developer Mode (`developer`):** Unlocks the full 20-tool native developer workstation with 1 click or via global shortcut `Ctrl + M` (`Cmd + M`).
+- **Zero-Friction Search & Guard:** The Command Palette (`Ctrl + K`) and route guards intelligently partition technical actions based on active mode.
 
 ---
 

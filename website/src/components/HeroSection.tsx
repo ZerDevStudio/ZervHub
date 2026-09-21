@@ -34,7 +34,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang }) => {
             <Zap className="w-4 h-4 text-cyan-400 animate-pulse" />
             <span>{t.tag}</span>
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-            <span className="text-gray-400 font-normal">v2.5.5 LATEST</span>
+            <span className="text-gray-400 font-normal">v2.5.6 LATEST</span>
           </div>
 
           {/* Main Title */}
@@ -55,9 +55,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang }) => {
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href={ZENDEV_RELEASE_CONFIG.setupExe}
-              download="ZenDev-Setup-2.5.5.exe"
+              download="ZenDev-Setup-2.5.6.exe"
               onClick={() => cyberAudio.playSuccess()}
-              title="Download ZenDev v2.5.5 Setup (.exe)"
+              title="Download ZenDev v2.5.6 Setup (.exe)"
               className="w-full sm:w-auto flex items-center justify-center gap-2.5 px-8 py-4 text-sm font-bold font-mono text-black bg-gradient-to-r from-cyan-400 via-sky-400 to-cyan-300 hover:from-cyan-300 hover:to-sky-200 rounded-xl shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/45 transition transform hover:-translate-y-0.5 cursor-pointer"
             >
               <Download className="w-5 h-5" />
@@ -66,9 +66,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang }) => {
 
             <a
               href={ZENDEV_RELEASE_CONFIG.portableExe}
-              download="ZenDev-Portable-2.5.5.exe"
+              download="ZenDev-Portable-2.5.6.exe"
               onClick={() => cyberAudio.playClick()}
-              title="Download ZenDev v2.5.5 Portable (.exe)"
+              title="Download ZenDev v2.5.6 Portable (.exe)"
               className="w-full sm:w-auto flex items-center justify-center gap-2.5 px-6 py-4 text-sm font-semibold font-mono text-gray-200 bg-[#0d1222] hover:bg-[#12182d] border border-gray-700 hover:border-cyan-500/50 rounded-xl transition cursor-pointer"
             >
               <Terminal className="w-4 h-4 text-cyan-400" />
@@ -132,13 +132,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang }) => {
                 <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
                 <span className="w-3 h-3 rounded-full bg-green-500/80" />
                 <span className="text-xs font-mono text-gray-400 ml-2">
-                  ZenDev Desktop v2.5.5 [Tauri Rust Engine]
+                  ZenDev Desktop v2.5.6 [Tauri Rust Engine]
                 </span>
               </div>
               <div className="flex items-center gap-3 text-xs font-mono text-gray-400">
+                <div className="hidden sm:flex items-center bg-[#0d1222] p-0.5 rounded-lg border border-cyan-500/30 text-[10px]">
+                  <span className="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-semibold">🎯 Günlük</span>
+                  <span className="px-2 py-0.5 text-gray-400">⚡ Geliştirici</span>
+                </div>
                 <span className="hidden sm:inline text-emerald-400">● 100% Offline Mode</span>
                 <span className="px-2 py-0.5 rounded bg-cyan-950/60 border border-cyan-500/30 text-cyan-300">
-                  RAM: 34.2 MB
+                  RAM: 24.8 MB
                 </span>
               </div>
             </div>
@@ -340,8 +344,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang }) => {
                         <tbody>
                           <tr className="border-b border-gray-800/50">
                             <td className="p-1.5">1</td>
-                            <td className="p-1.5">ZenDev v2.5.5 (Tauri)</td>
-                            <td className="p-1.5 text-emerald-400 font-bold">34.8 MB</td>
+                            <td className="p-1.5">ZenDev v2.5.6 (Tauri)</td>
+                            <td className="p-1.5 text-emerald-400 font-bold">24.8 MB</td>
                           </tr>
                           <tr>
                             <td className="p-1.5">2</td>
@@ -355,7 +359,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang }) => {
                 )}
 
                 <div className="mt-4 pt-3 border-t border-gray-800/80 flex items-center justify-between text-xs font-mono text-gray-400">
-                  <span>ZenDev v2.5.5 Masaüstü Sürümünü İndirin</span>
+                  <span>ZenDev v2.5.6 Masaüstü Sürümünü İndirin</span>
                   <a
                     href="#arsenal"
                     className="text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-bold"
