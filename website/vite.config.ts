@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 
 export default defineConfig({
-  base: './',
+  base: '/',
   plugins: [
     react(),
     tailwindcss()
@@ -20,7 +20,7 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: '../server/public',
+    outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
       output: {

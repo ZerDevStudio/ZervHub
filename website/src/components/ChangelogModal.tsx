@@ -72,14 +72,17 @@ export const ChangelogModal: React.FC<ChangelogModalProps> = ({ isOpen, onClose,
               </ul>
             </div>
           </div>
+
+          {/* v2.5.5 - Previous Release: Universal Link Decrypter, Tauri v2 & SaaS Compliance */}
+          <div className="border-l-2 border-gray-700 pl-4 space-y-2">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-sm font-bold text-cyan-300">
+              <span className="text-sm font-bold text-gray-300">
                 {isTr
                   ? 'v2.5.5 — Evrensel Link Çözücü Yenilemesi, Tauri v2 & SaaS Direktifi Uyumu'
                   : 'v2.5.5 — Universal Link Decrypter Overhaul, Tauri v2 & SaaS Compliance'}
               </span>
-              <span className="px-2 py-0.5 rounded bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 text-[10px]">
-                {isTr ? 'GÜNCEL SÜRÜM' : 'LATEST RELEASE'}
+              <span className="px-2 py-0.5 rounded bg-gray-900 border border-gray-700 text-gray-400 text-[10px]">
+                {isTr ? 'ÖNCEKİ SÜRÜM' : 'PREVIOUS RELEASE'}
               </span>
               <span className="text-[10px] text-gray-500">
                 {isTr ? '18 Eylül 2026' : 'September 18, 2026'}
