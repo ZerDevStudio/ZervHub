@@ -12,7 +12,13 @@ import {
   Eye,
   EyeOff,
   Sparkles,
-  Zap
+  Zap,
+  Send,
+  AlertTriangle,
+  Database,
+  ShieldAlert,
+  Binary,
+  Wrench
 } from 'lucide-react'
 import { SmartPasteResult } from '../lib/smartPasteDetector'
 import { cyberAudio } from '../lib/cyberAudio'
@@ -344,6 +350,212 @@ export default function SmartPasteCard({
               </button>
             )}
           </div>
+        </div>
+      </div>
+    )
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 5. cURL COMMAND RENDER
+  // ─────────────────────────────────────────────────────────────────────────
+  if (result.type === 'curl') {
+    return (
+      <div className="mx-3 my-2 p-3 rounded-xl bg-gradient-to-r from-sky-500/10 via-nexus-surface to-cyan-500/10 border border-sky-500/30 shadow-lg shadow-sky-500/5 transition-all">
+        <div className="flex items-center justify-between gap-2 mb-2">
+          <div className="flex items-center gap-2">
+            <span className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-sky-500/20 border border-sky-500/40 text-[10px] font-mono font-bold text-sky-300 uppercase tracking-wider">
+              <Send className="w-3 h-3 text-sky-400" />
+              [cURL İSTEĞİ]
+            </span>
+            <span className="text-[11px] text-nexus-muted font-mono truncate max-w-xs">
+              {result.summary}
+            </span>
+          </div>
+          <span className="text-[10px] text-sky-400 font-mono hidden sm:inline">AI Smart Dispatch</span>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-1.5 pt-1">
+          <button
+            type="button"
+            onClick={() => {
+              try {
+                localStorage.setItem('nexus_curl_import', result.raw)
+              } catch {}
+              navigateTo('/api-studio')
+            }}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-sky-500/20 border border-sky-500/40 text-xs font-bold text-sky-200 hover:bg-sky-500/30 hover:border-sky-500/60 transition-colors"
+          >
+            <Zap className="w-3.5 h-3.5 text-sky-400" />
+            <span>API Studio'da Çalıştır</span>
+            <ArrowRight className="w-3 h-3" />
+          </button>
+
+          <button
+            type="button"
+            onClick={() => triggerCopy(result.raw, 'curl_copy')}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-nexus-surface border border-sky-500/30 text-xs font-medium text-nexus-muted hover:text-white hover:bg-white/10 transition-colors"
+          >
+            {copiedAction === 'curl_copy' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-nexus-muted" />}
+            <span>{copiedAction === 'curl_copy' ? 'Kopyalandı!' : 'Komutu Kopyala'}</span>
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 6. MALFORMED JSON RENDER (WITH AUTO-REPAIR)
+  // ─────────────────────────────────────────────────────────────────────────
+  if (result.type === 'malformed_json') {
+    return (
+      <div className="mx-3 my-2 p-3 rounded-xl bg-gradient-to-r from-amber-500/10 via-nexus-surface to-red-500/10 border border-amber-500/30 shadow-lg shadow-amber-500/5 transition-all">
+        <div className="flex items-center justify-between gap-2 mb-2">
+          <div className="flex items-center gap-2">
+            <span className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-500/20 border border-amber-500/40 text-[10px] font-mono font-bold text-amber-300 uppercase tracking-wider">
+              <AlertTriangle className="w-3 h-3 text-amber-400" />
+              [BOZUK JSON - ONARIM MEVCUT]
+            </span>
+            <span className="text-[11px] text-amber-200/80 font-mono truncate max-w-xs">
+              {result.repairReason || result.errorSnippet}
+            </span>
+          </div>
+          <span className="text-[10px] text-amber-400 font-mono hidden sm:inline">AI Auto-Repair</span>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-1.5 pt-1">
+          {result.canAutoRepair && result.repairedText && (
+            <button
+              type="button"
+              onClick={() => triggerCopy(result.repairedText!, 'json_repair_copy')}
+              className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-xs font-bold text-emerald-200 hover:bg-emerald-500/30 hover:border-emerald-500/60 transition-colors"
+            >
+              {copiedAction === 'json_repair_copy' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Wrench className="w-3.5 h-3.5 text-emerald-400" />}
+              <span>{copiedAction === 'json_repair_copy' ? 'Onarıldı & Kopyalandı!' : "Onarılmış JSON'u Kopyala"}</span>
+            </button>
+          )}
+
+          <button
+            type="button"
+            onClick={() => {
+              if (result.repairedText) {
+                try { localStorage.setItem('nexus_json_import', result.repairedText) } catch {}
+              }
+              navigateTo('/json-studio')
+            }}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-nexus-surface border border-amber-500/30 text-xs font-medium text-amber-200 hover:bg-amber-500/20 transition-colors"
+          >
+            <span>JSON Studio'da Aç</span>
+            <ArrowRight className="w-3 h-3" />
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 7. SQL QUERY RENDER
+  // ─────────────────────────────────────────────────────────────────────────
+  if (result.type === 'sql') {
+    return (
+      <div className="mx-3 my-2 p-3 rounded-xl bg-gradient-to-r from-indigo-500/10 via-nexus-surface to-cyan-500/10 border border-indigo-500/30 shadow-lg shadow-indigo-500/5 transition-all">
+        <div className="flex items-center justify-between gap-2 mb-2">
+          <div className="flex items-center gap-2">
+            <span className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-indigo-500/20 border border-indigo-500/40 text-[10px] font-mono font-bold text-indigo-300 uppercase tracking-wider">
+              <Database className="w-3 h-3 text-indigo-400" />
+              [SQL SORGUSU]
+            </span>
+            <span className="text-[11px] text-nexus-muted font-mono">
+              {result.statementType} {result.tables.length > 0 ? `• Tablolar: ${result.tables.join(', ')}` : ''}
+            </span>
+          </div>
+          <span className="text-[10px] text-indigo-400 font-mono hidden sm:inline">SQL Analyzer</span>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-1.5 pt-1">
+          <button
+            type="button"
+            onClick={() => triggerCopy(result.formatted, 'sql_copy')}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-indigo-500/20 border border-indigo-500/40 text-xs font-bold text-indigo-200 hover:bg-indigo-500/30 transition-colors"
+          >
+            {copiedAction === 'sql_copy' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-indigo-400" />}
+            <span>{copiedAction === 'sql_copy' ? 'Kopyalandı!' : 'Sorguyu Kopyala'}</span>
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 8. STACKTRACE / ERROR LOG RENDER
+  // ─────────────────────────────────────────────────────────────────────────
+  if (result.type === 'stacktrace') {
+    return (
+      <div className="mx-3 my-2 p-3 rounded-xl bg-gradient-to-r from-rose-500/10 via-nexus-surface to-red-500/10 border border-rose-500/30 shadow-lg shadow-rose-500/5 transition-all">
+        <div className="flex items-center justify-between gap-2 mb-2">
+          <div className="flex items-center gap-2">
+            <span className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-rose-500/20 border border-rose-500/40 text-[10px] font-mono font-bold text-rose-300 uppercase tracking-wider">
+              <ShieldAlert className="w-3 h-3 text-rose-400" />
+              [STACKTRACE / HATA RAPORU]
+            </span>
+            <span className="text-[11px] text-rose-200/80 font-mono truncate max-w-xs">
+              {result.culpritFile ? `${result.culpritFile}:${result.culpritLine}` : result.errorName}
+            </span>
+          </div>
+          <span className="text-[10px] text-rose-400 font-mono hidden sm:inline">Diagnostic AI</span>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-1.5 pt-1">
+          <button
+            type="button"
+            onClick={() => triggerCopy(result.sanitized, 'stack_copy')}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-rose-500/20 border border-rose-500/40 text-xs font-bold text-rose-200 hover:bg-rose-500/30 transition-colors"
+          >
+            {copiedAction === 'stack_copy' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-rose-400" />}
+            <span>{copiedAction === 'stack_copy' ? 'Maskelendi & Kopyalandı!' : 'PII Maskelenmiş Kopyala'}</span>
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 9. BASE64 & CRYPTO HASH RENDER
+  // ─────────────────────────────────────────────────────────────────────────
+  if (result.type === 'base64_hex') {
+    return (
+      <div className="mx-3 my-2 p-3 rounded-xl bg-gradient-to-r from-emerald-500/10 via-nexus-surface to-cyan-500/10 border border-emerald-500/30 shadow-lg shadow-emerald-500/5 transition-all">
+        <div className="flex items-center justify-between gap-2 mb-2">
+          <div className="flex items-center gap-2">
+            <span className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-500/20 border border-emerald-500/40 text-[10px] font-mono font-bold text-emerald-300 uppercase tracking-wider">
+              <Binary className="w-3 h-3 text-emerald-400" />
+              [{result.format.toUpperCase()} VERİ]
+            </span>
+            <span className="text-[11px] text-nexus-muted font-mono truncate max-w-xs">
+              {result.decodedPreview ? `Önizleme: ${result.decodedPreview}` : `${result.raw.length} karakter`}
+            </span>
+          </div>
+          <span className="text-[10px] text-emerald-400 font-mono hidden sm:inline">Encoding Studio</span>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-1.5 pt-1">
+          <button
+            type="button"
+            onClick={() => navigateTo(result.targetRoute)}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-xs font-bold text-emerald-200 hover:bg-emerald-500/30 transition-colors"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+            <span>{result.format === 'base64' ? "Encoding Studio'da Çöz" : "Hash Studio'da Doğrula"}</span>
+            <ArrowRight className="w-3 h-3" />
+          </button>
+
+          <button
+            type="button"
+            onClick={() => triggerCopy(result.decodedPreview || result.raw, 'b64_copy')}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-nexus-surface border border-emerald-500/30 text-xs font-medium text-nexus-muted hover:text-white hover:bg-white/10 transition-colors"
+          >
+            {copiedAction === 'b64_copy' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-nexus-muted" />}
+            <span>{copiedAction === 'b64_copy' ? 'Kopyalandı!' : 'Metni Kopyala'}</span>
+          </button>
         </div>
       </div>
     )

@@ -66,12 +66,13 @@
     - *Mermaid Mimarileri:* OAuth2 + PKCE protokol akışı ve Olay Tabanlı Webhook Topolojisi (`col_mermaid_arch`).
   - Takım İzinleri (RBAC) Entegrasyonu: Owner/Admin/Member yazma ve içe aktarma yetkisine sahipken Viewer rolü salt okunur kısıtlamasına tabidir.
   - TitleBar takım koleksiyonu durum rozeti (`TeamCollectionsBadge.tsx`), modal arayüzü (`TeamCollectionsModal.tsx`), Komut Paleti eylemi ve 10/10 birim test doğrulaması (`tests/run_team_collections_test.mjs`).
-- [ ] **AI Destekli Akıllı Ayrıştırıcı (AI Smart Dispatcher):**
-  - Kullanıcının panosuna kopyaladığı veya editöre yapıştırdığı veriyi otomatik olarak analiz eden akıllı katman:
-    - JWT token'ı algılayıp doğrudan `JwtStudio`'da çözümleme ve süre sonu uyarısı verme.
-    - cURL komutunu algılayıp `ApiStudio`'da hazır istek formatına dönüştürme.
-    - Bozuk JSON'u algılayıp sözdizimi onarımı önerme.
-    - SQL sorgusu, stacktrace veya Base64 dizisini tanıyıp uygun aksiyonu önerme.
+- [x] **AI Destekli Akıllı Ayrıştırıcı (AI Smart Dispatcher):**
+  - Panodaki ve arama çubuğundaki veriyi otomatik tanıyan, stüdyolara anlık akıllı yönlendirme ve onarım öneren yerel motor (`SmartDispatcherEngine.ts`, `smartPasteDetector.ts`).
+  - *cURL Analizcisi:* cURL komutlarını (`-X`, `-H`, `-d`, URL) anında ayrıştırıp `ApiStudio` hazır istek formatına dönüştürme.
+  - *Bozuk JSON Akıllı Onarımı:* Tek tırnakları, tırnaksız nesne anahtarlarını, fazlalık virgülleri ve eksik parantezleri tespit edip otomatik onarım (`canAutoRepair`) önerisi sunma.
+  - *JWT Süre Denetimi:* Token yükünü ve başlığını çözümleyip geçmiş zaman damgalı (`exp`) tokenlar için süre aşımı uyarısı üretme ve `JwtStudio`'ya aktarma.
+  - *SQL, Stacktrace & Kriptografik Özet:* SQL sorgu tiplerini/tablolarını tanıma, hata yollarından kullanıcı adlarını maskeleyen PII temizliği ve SHA-256/MD5/Base64 çözümleri.
+  - Zengin siber arayüz kartları (`SmartPasteCard.tsx`), Komut Paleti entegrasyonu ve 13/13 birim test onayı (`tests/run_smart_dispatcher_test.mjs`).
 
 ---
 

@@ -9,7 +9,25 @@
  *    plus unit & currency conversions (100 USD to EUR, 10 GB to MB, etc.)
  */
 
-export type SmartPasteType = 'json' | 'jwt' | 'color' | 'math'
+import {
+  CurlDispatchedPayload,
+  MalformedJsonDispatchedPayload,
+  SqlDispatchedPayload,
+  StacktraceDispatchedPayload,
+  Base64HexDispatchedPayload,
+  SmartDispatcherEngine
+} from './smartDispatcher'
+
+export type SmartPasteType =
+  | 'json'
+  | 'jwt'
+  | 'color'
+  | 'math'
+  | 'curl'
+  | 'malformed_json'
+  | 'sql'
+  | 'stacktrace'
+  | 'base64_hex'
 
 export interface SmartPasteJson {
   type: 'json'
@@ -59,6 +77,11 @@ export type SmartPasteResult =
   | SmartPasteJwt
   | SmartPasteColor
   | SmartPasteMath
+  | CurlDispatchedPayload
+  | MalformedJsonDispatchedPayload
+  | SqlDispatchedPayload
+  | StacktraceDispatchedPayload
+  | Base64HexDispatchedPayload
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 1. JSON DETECTION
@@ -707,25 +730,45 @@ function safeCalculate(expr: string): number | null {
 export function detectSmartPaste(input: string): SmartPasteResult | null {
   if (!input || !input.trim()) return null
 
-  // 1. Check Color (very specific regex)
+  // 1. Check cURL Command
+  const curl = SmartDispatcherEngine.detectCurl(input)
+  if (curl) return curl
+
+  // 2. Check Color (very specific regex)
   const color = detectColor(input)
   if (color) return color
 
-  // 2. Check Unit / Currency conversion (e.g. 100 USD to EUR, 10 GB to MB)
+  // 3. Check Unit / Currency conversion (e.g. 100 USD to EUR, 10 GB to MB)
   const unitConv = detectUnitOrCurrencyConversion(input)
   if (unitConv) return unitConv
 
-  // 3. Check Math (e.g. (120 * 45) + 18%)
+  // 4. Check Math (e.g. (120 * 45) + 18%)
   const math = evaluateMathExpression(input)
   if (math) return math
 
-  // 4. Check JWT (3-part segment)
+  // 5. Check JWT (3-part segment)
   const jwt = detectJwt(input)
   if (jwt) return jwt
 
-  // 5. Check JSON (object / array)
+  // 6. Check JSON (object / array)
   const json = detectJson(input)
   if (json) return json
+
+  // 7. Check Malformed JSON with Smart Auto-Repair
+  const malformed = SmartDispatcherEngine.detectMalformedJson(input)
+  if (malformed) return malformed
+
+  // 8. Check SQL Query
+  const sql = SmartDispatcherEngine.detectSql(input)
+  if (sql) return sql
+
+  // 9. Check Stacktrace / Error log
+  const stack = SmartDispatcherEngine.detectStacktrace(input)
+  if (stack) return stack
+
+  // 10. Check Base64 / Hex
+  const b64hex = SmartDispatcherEngine.detectBase64OrHex(input)
+  if (b64hex) return b64hex
 
   return null
 }
