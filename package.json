@@ -27,7 +27,7 @@
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "@types/sql.js": "^1.4.11",
-    "@vitejs/plugin-react": "^4.5.2",
+    "@vitejs/plugin-react": "^6.1.1",
     "autoprefixer": "^10.4.21",
     "dompurify": "^3.4.15",
     "framer-motion": "^12.12.0",
