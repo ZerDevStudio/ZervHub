@@ -56,6 +56,14 @@ export function validateHmacLicenseKey(rawKey: string, secret: string = DEFAULT_
     return { valid: false, reason: 'License key is missing or empty' }
   }
 
+  // Reject leaked dev secret in production
+  if (process.env.NODE_ENV === 'production' && secret === 'NEXUS_DEV_SECRET_DO_NOT_USE_IN_PROD') {
+    return {
+      valid: false,
+      reason: 'Legacy dev secret cannot be used in production. Please upgrade to a ZENDEV- asymmetric key.',
+    }
+  }
+
   // Normalise: strip everything except alphanumeric, uppercase
   const stripped = rawKey.toUpperCase().replace(/[^A-Z0-9]/g, '')
 

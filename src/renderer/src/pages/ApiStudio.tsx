@@ -61,6 +61,7 @@ import { useT } from '../lib/i18n'
 import { useToast } from '../lib/ToastContext'
 import { cyberAudio } from '../lib/cyberAudio'
 import { logActivity } from '../lib/activityLogger'
+import { tauriNexusAPI } from '../lib/tauriBridge'
 
 // Default Environments
 const DEFAULT_ENVIRONMENTS: ApiEnvironment[] = [
@@ -128,7 +129,7 @@ export default function ApiStudio() {
   const [isSending, setIsSending] = useState(false)
   const [response, setResponse] = useState<ApiResponse | null>(null)
 
-  // ─── Environments State ─────────────────────────────────────────────────────
+  // ─── Environments State with SafeStorage Encryption ────────────────────────
   const [environments, setEnvironments] = useState<ApiEnvironment[]>(() => {
     try {
       const saved = localStorage.getItem('nexus_api_environments')
@@ -136,6 +137,26 @@ export default function ApiStudio() {
     } catch {}
     return DEFAULT_ENVIRONMENTS
   })
+
+  // Load environments from hardware-encrypted safeStorage (DPAPI / AES-GCM) on mount
+  useEffect(() => {
+    let isMounted = true
+    const loadSecureEnvironments = async () => {
+      try {
+        const secureData = await tauriNexusAPI.safeStorage.retrieve('nexus_api_environments')
+        if (secureData && isMounted) {
+          const parsed = JSON.parse(secureData)
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            setEnvironments(parsed)
+          }
+        }
+      } catch {}
+    }
+    loadSecureEnvironments()
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   const [activeEnvId, setActiveEnvId] = useState<string>(() => {
     try {
@@ -145,10 +166,12 @@ export default function ApiStudio() {
     }
   })
 
-  // Save environments to localStorage
+  // Save environments to encrypted safeStorage and synchronized localStorage
   useEffect(() => {
     try {
-      localStorage.setItem('nexus_api_environments', JSON.stringify(environments))
+      const serialized = JSON.stringify(environments)
+      localStorage.setItem('nexus_api_environments', serialized)
+      tauriNexusAPI.safeStorage.store('nexus_api_environments', serialized).catch(() => {})
     } catch {}
   }, [environments])
 
@@ -172,7 +195,7 @@ export default function ApiStudio() {
     return dict
   }, [environments, activeEnvId])
 
-  // ─── Saved Requests & Collections ───────────────────────────────────────────
+  // ─── Saved Requests & Collections with SafeStorage Encryption ───────────────
   const [savedRequests, setSavedRequests] = useState<SavedRequest[]>(() => {
     try {
       const saved = localStorage.getItem('nexus_api_collections')
@@ -194,9 +217,31 @@ export default function ApiStudio() {
     ]
   })
 
+  // Load collections from hardware-encrypted safeStorage on mount
+  useEffect(() => {
+    let isMounted = true
+    const loadSecureCollections = async () => {
+      try {
+        const secureData = await tauriNexusAPI.safeStorage.retrieve('nexus_api_collections')
+        if (secureData && isMounted) {
+          const parsed = JSON.parse(secureData)
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            setSavedRequests(parsed)
+          }
+        }
+      } catch {}
+    }
+    loadSecureCollections()
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
   useEffect(() => {
     try {
-      localStorage.setItem('nexus_api_collections', JSON.stringify(savedRequests))
+      const serialized = JSON.stringify(savedRequests)
+      localStorage.setItem('nexus_api_collections', serialized)
+      tauriNexusAPI.safeStorage.store('nexus_api_collections', serialized).catch(() => {})
     } catch {}
   }, [savedRequests])
 

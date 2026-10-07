@@ -11,7 +11,8 @@ export const LiveRegexDemo: React.FC = () => {
   const { matches, error } = useMemo(() => {
     if (!pattern) return { matches: [], error: null };
     try {
-      const reg = new RegExp(pattern, flags);
+      const effectiveFlags = flags.includes('g') ? flags : `${flags}g`;
+      const reg = new RegExp(pattern, effectiveFlags);
       const allMatches = Array.from(testString.matchAll(reg));
       return { matches: allMatches, error: null };
     } catch (err: any) {

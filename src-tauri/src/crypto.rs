@@ -32,6 +32,7 @@ use aes_gcm::{
 };
 use rand::RngCore;
 use serde::{Deserialize, Serialize};
+use zeroize::Zeroizing;
 
 pub const MAGIC_HEADER: &[u8; 7] = b"NEXUSV1";
 pub const HEADER_LEN: usize = 51; // 7 magic + 16 salt + 12 nonce + 16 tag
@@ -41,6 +42,7 @@ pub const SALT_LEN: usize = 16;
 pub const NONCE_LEN: usize = 12;
 pub const TAG_LEN: usize = 16;
 pub const CHUNK_SIZE: usize = 64 * 1024; // 64 KB
+pub const MAX_VAULT_FILE_BYTES: u64 = 500 * 1024 * 1024; // 500 MB in-memory safety limit
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 #[serde(rename_all = "camelCase")]
@@ -125,13 +127,14 @@ pub struct SelectedFile {
 }
 
 /// Derives a 32-byte AES-256 key using PBKDF2-HMAC-SHA256 with 100,000 iterations.
-pub fn derive_key(passphrase: &str, salt: &[u8]) -> [u8; 32] {
-    let mut key = [0u8; 32];
+/// Returned key is wrapped in `Zeroizing` to automatically scrub sensitive key material from RAM when dropped.
+pub fn derive_key(passphrase: &str, salt: &[u8]) -> Zeroizing<[u8; 32]> {
+    let mut key = Zeroizing::new([0u8; 32]);
     pbkdf2::pbkdf2_hmac::<sha2::Sha256>(
         passphrase.as_bytes(),
         salt,
         PBKDF2_ROUNDS,
-        &mut key,
+        &mut *key,
     );
     key
 }
@@ -278,6 +281,18 @@ pub fn encrypt_file(
         return Ok(VaultOpResult::err("Parola en az 4 karakter olmalıdır."));
     }
 
+    let metadata = match std::fs::metadata(file_path) {
+        Ok(m) => m,
+        Err(e) => return Ok(VaultOpResult::err(format!("Dosya meta verisi okunamadı: {}", e))),
+    };
+
+    if metadata.len() > MAX_VAULT_FILE_BYTES {
+        return Ok(VaultOpResult::err(format!(
+            "Dosya boyutu çok büyük ({:.1} MB). Bellek güvenliği için tek seferde en fazla 500 MB boyutundaki dosyalar şifrelenebilir.",
+            metadata.len() as f64 / (1024.0 * 1024.0)
+        )));
+    }
+
     let plaintext = match std::fs::read(file_path) {
         Ok(data) => data,
         Err(e) => return Ok(VaultOpResult::err(format!("Dosya okunamadı: {}", e))),
@@ -386,6 +401,18 @@ pub fn decrypt_file(
 
     if !file_path.exists() {
         return Ok(VaultOpResult::err("Dosya bulunamadı."));
+    }
+
+    let metadata = match std::fs::metadata(file_path) {
+        Ok(m) => m,
+        Err(e) => return Ok(VaultOpResult::err(format!("Dosya meta verisi okunamadı: {}", e))),
+    };
+
+    if metadata.len() > MAX_VAULT_FILE_BYTES + HEADER_LEN as u64 {
+        return Ok(VaultOpResult::err(format!(
+            "Kasa dosyası boyutu çok büyük ({:.1} MB). Bellek güvenliği için tek seferde en fazla 500 MB boyutundaki kasalar işlenebilir.",
+            metadata.len() as f64 / (1024.0 * 1024.0)
+        )));
     }
 
     let file_bytes = match std::fs::read(file_path) {

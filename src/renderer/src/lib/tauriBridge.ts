@@ -146,8 +146,21 @@ export const tauriNexusAPI = {
 
   // ── 14. Settings ──
   settings: {
-    getAutoLaunch: () => safeInvoke('settings_get_auto_launch', {}, false),
-    setAutoLaunch: (enable: boolean) => safeInvoke('settings_set_auto_launch', { enable }, true),
+    getAutoLaunch: async () => {
+      try {
+        return localStorage.getItem('zendev_auto_launch') === 'true'
+      } catch {
+        return false
+      }
+    },
+    setAutoLaunch: async (enable: boolean) => {
+      try {
+        localStorage.setItem('zendev_auto_launch', enable ? 'true' : 'false')
+        return true
+      } catch {
+        return false
+      }
+    },
   },
 
   // ── 16. Safe Storage ──
@@ -190,12 +203,15 @@ export const tauriNexusAPI = {
     onActivity: (cb: (entry: any) => void) => setupEventListener('journal:new-entry', cb),
   },
 
-  // ── 19. Pub/Sub ──
+  // ── 19. Pub/Sub (Client-Side Reactive Event Bus) ──
   pubsub: {
-    publish: (topic: string, data: any) => { safeInvoke('pubsub_publish', { topic, data }) },
+    publish: (topic: string, data: any) => {
+      window.dispatchEvent(new CustomEvent(`zendev:pubsub:${topic}`, { detail: data }))
+    },
     subscribe: (topic: string, cb: (data: any) => void) => {
-      safeInvoke('pubsub_subscribe', { topic }).catch(() => {})
-      return setupEventListener(`pubsub:message:${topic}`, cb)
+      const handler = (e: any) => cb(e.detail)
+      window.addEventListener(`zendev:pubsub:${topic}`, handler)
+      return () => window.removeEventListener(`zendev:pubsub:${topic}`, handler)
     },
   },
 

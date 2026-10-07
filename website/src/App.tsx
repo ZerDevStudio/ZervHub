@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { Language, Currency, ToolItem } from './lib/types';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
@@ -25,11 +25,20 @@ import { PricingSection } from './components/PricingSection';
 import { FaqSection } from './components/FaqSection';
 import { LicensePortal } from './components/LicensePortal';
 import { Footer } from './components/Footer';
-import { ChangelogModal } from './components/ChangelogModal';
-import { CommandPalette } from './components/CommandPalette';
-import { LiveActivityTicker } from './components/LiveActivityTicker';
-import { ShortcutsDrawer } from './components/ShortcutsDrawer';
-import { WaitlistModal } from './components/WaitlistModal';
+
+// Code-split heavy interactive modals using React.lazy to optimize initial bundle size
+const ChangelogModal = React.lazy(() =>
+  import('./components/ChangelogModal').then((m) => ({ default: m.ChangelogModal }))
+);
+const CommandPalette = React.lazy(() =>
+  import('./components/CommandPalette').then((m) => ({ default: m.CommandPalette }))
+);
+const ShortcutsDrawer = React.lazy(() =>
+  import('./components/ShortcutsDrawer').then((m) => ({ default: m.ShortcutsDrawer }))
+);
+const WaitlistModal = React.lazy(() =>
+  import('./components/WaitlistModal').then((m) => ({ default: m.WaitlistModal }))
+);
 
 export const App: React.FC = () => {
   const [lang, setLang] = useState<Language>('tr');
@@ -117,33 +126,49 @@ export const App: React.FC = () => {
       {/* <LiveActivityTicker lang={lang} /> */}
 
       {/* Global Command Palette (Ctrl+K) */}
-      <CommandPalette
-        isOpen={commandPaletteOpen}
-        onClose={() => setCommandPaletteOpen(false)}
-        onSelectTool={handleSelectToolFromPalette}
-        lang={lang}
-      />
+      <Suspense fallback={null}>
+        {commandPaletteOpen && (
+          <CommandPalette
+            isOpen={commandPaletteOpen}
+            onClose={() => setCommandPaletteOpen(false)}
+            onSelectTool={handleSelectToolFromPalette}
+            lang={lang}
+          />
+        )}
+      </Suspense>
 
       {/* Keyboard Shortcuts & CLI Cheatsheet Drawer */}
-      <ShortcutsDrawer
-        isOpen={shortcutsOpen}
-        onClose={() => setShortcutsOpen(false)}
-        lang={lang}
-      />
+      <Suspense fallback={null}>
+        {shortcutsOpen && (
+          <ShortcutsDrawer
+            isOpen={shortcutsOpen}
+            onClose={() => setShortcutsOpen(false)}
+            lang={lang}
+          />
+        )}
+      </Suspense>
 
       {/* 20% Discount Early Access Waitlist Modal */}
-      <WaitlistModal
-        isOpen={waitlistOpen}
-        onClose={() => setWaitlistOpen(false)}
-        lang={lang}
-      />
+      <Suspense fallback={null}>
+        {waitlistOpen && (
+          <WaitlistModal
+            isOpen={waitlistOpen}
+            onClose={() => setWaitlistOpen(false)}
+            lang={lang}
+          />
+        )}
+      </Suspense>
 
       {/* What's New & Release Notes Modal */}
-      <ChangelogModal
-        isOpen={changelogOpen}
-        onClose={() => setChangelogOpen(false)}
-        lang={lang}
-      />
+      <Suspense fallback={null}>
+        {changelogOpen && (
+          <ChangelogModal
+            isOpen={changelogOpen}
+            onClose={() => setChangelogOpen(false)}
+            lang={lang}
+          />
+        )}
+      </Suspense>
     </div>
   );
 };

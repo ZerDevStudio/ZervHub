@@ -1,7 +1,7 @@
 export const translations = {
   tr: {
     nav: {
-      tools: '27+ Araç',
+      tools: '21+ Araç',
       playground: 'Canlı Demo',
       performance: 'Tauri v2 Hızı',
       calculator: 'Tasarruf Hesabı',
@@ -21,7 +21,7 @@ export const translations = {
       copied: 'Kopyalandı!',
       cleanCodeBadge: 'VirusTotal 0/72 Temiz Kod Raporu',
       stats: {
-        tools: '27+ Geliştirici Stüdyosu',
+        tools: '21+ Geliştirici Stüdyosu',
         ram: '<26 MB RAM',
         boot: '0.35s Açılış',
         license: 'Geliştirici & Takım SaaS'
@@ -44,9 +44,9 @@ export const translations = {
     catalog: {
       tag: 'TAM CEPHANELİK',
       title: 'Geliştiricinin ve Mühendislik Ekiplerinin İhtiyacı Olan Her Şey',
-      subtitle: 'Birbirinden bağımsız çalışan, arayüzü tek tip ve siberpunk hızında tasarlanmış 27 profesyonel geliştirici stüdyosu.',
+      subtitle: 'Birbirinden bağımsız çalışan, arayüzü tek tip ve siberpunk hızında tasarlanmış 21 profesyonel geliştirici stüdyosu.',
       categories: {
-        all: 'Tümü (27)',
+        all: 'Tümü (21)',
         developer: 'API & Geliştirici Stüdyoları',
         security: 'Kriptografi & Güvenlik',
         productivity: 'İş Akışı & Diyagram',
@@ -111,7 +111,7 @@ export const translations = {
     pricing: {
       tag: 'ŞEFFAF SAAS FİYATLANDIRMASI',
       title: 'Öngörülebilir, Esnek ve Güçlü Geliştirici Aboneliği',
-      subtitle: 'Tüm 27+ güce, bulut senkronizasyonuna ve sürekli gelen yeni araçlara kesintisiz erişin. Taahhüt yok, istediğiniz an iptal edin.',
+      subtitle: 'Tüm 21+ güce, bulut senkronizasyonuna ve sürekli gelen yeni araçlara kesintisiz erişin. Taahhüt yok, istediğiniz an iptal edin.',
       billingToggleMonthly: 'Aylık Faturalandırma',
       billingToggleYearly: 'Yıllık Faturalandırma',
       saveBadge: '%33 Tasarruf • 2+ Ay Bedava',
@@ -134,7 +134,7 @@ export const translations = {
   },
   en: {
     nav: {
-      tools: '27+ Tools',
+      tools: '21+ Tools',
       playground: 'Live Demo',
       performance: 'Tauri v2 Speed',
       calculator: 'ROI Calculator',
@@ -154,7 +154,7 @@ export const translations = {
       copied: 'Copied!',
       cleanCodeBadge: 'VirusTotal 0/72 Clean Code Report',
       stats: {
-        tools: '27+ Developer Studios',
+        tools: '21+ Developer Studios',
         ram: '<26 MB RAM',
         boot: '0.35s Cold Start',
         license: 'Dev & Team SaaS'
@@ -177,9 +177,9 @@ export const translations = {
     catalog: {
       tag: 'THE FULL ARSENAL',
       title: 'Everything Software Engineers & Dev Teams Need',
-      subtitle: '27 specialized developer workstations designed with unified cyberpunk aesthetics and lightning responsiveness.',
+      subtitle: '21 specialized developer workstations designed with unified cyberpunk aesthetics and lightning responsiveness.',
       categories: {
-        all: 'All Studios (27)',
+        all: 'All Studios (21)',
         developer: 'API & Developer Studios',
         security: 'Cryptography & Security',
         productivity: 'Workflow & Diagrams',
@@ -244,7 +244,7 @@ export const translations = {
     pricing: {
       tag: 'TRANSPARENT SAAS PRICING',
       title: 'Predictable, Flexible & Powerful Developer Subscription',
-      subtitle: 'Continuous access to 27+ cyber developer tools, cloud sync, and automatic feature drops. Cancel anytime with zero lock-in.',
+      subtitle: 'Continuous access to 21+ cyber developer tools, cloud sync, and automatic feature drops. Cancel anytime with zero lock-in.',
       billingToggleMonthly: 'Monthly Billing',
       billingToggleYearly: 'Annual Billing',
       saveBadge: 'Save 33% • 2 Months Free',

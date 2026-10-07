@@ -397,6 +397,15 @@ pub fn validate_license_key(
     if clean.starts_with("ZENDEV") {
         validate_ecdsa_license_key(raw_key, hwid, None)
     } else {
+        #[cfg(not(debug_assertions))]
+        {
+            let env_secret = std::env::var("NEXUS_LICENSE_SECRET").ok();
+            let effective_secret = secret.or(env_secret.as_deref());
+            if effective_secret.is_none() || effective_secret == Some(DEFAULT_LICENSE_SECRET) {
+                return Err("Legacy HMAC license format is disabled in production without an explicit NEXUS_LICENSE_SECRET. Please use an authentic ZENDEV- asymmetric license key.".into());
+            }
+        }
+
         let sec = secret.unwrap_or_else(|| DEFAULT_LICENSE_SECRET);
         validate_hmac_license_key(raw_key, sec)
     }

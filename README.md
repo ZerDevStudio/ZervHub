@@ -11,7 +11,7 @@
 [![Showcase](https://img.shields.io/badge/Showcase-Live_Website-blue?logo=github)](https://zerdevstudio.github.io/)
 [![Release](https://img.shields.io/github/v/release/ZerDevStudio/ZervHub-App?color=7928CA&label=Release)](https://github.com/ZerDevStudio/ZervHub-App/releases/latest)
 
-> **ZenDev (ZervHub)** is an enterprise-grade, privacy-first desktop application engineered for both everyday productivity and software engineering teams. Powered by **Tauri v2**, **Rust**, and **React 19**, ZenDev consolidates over 25 essential tools into a unified, lightning-fast native binary (<26 MB RAM, 0.35s boot). Operating 100% offline with zero external telemetry, hardware-bound credential protection, and mathematical tamper-evident cryptographic audit journaling.
+> **ZenDev (ZervHub)** is an enterprise-grade, privacy-first desktop application engineered for both everyday productivity and software engineering teams. Powered by **Tauri v2**, **Rust**, and **React 19**, ZenDev consolidates 21 featured tools (9 essential consumer utilities & 20 full developer studios) into a unified, lightning-fast native binary (<26 MB RAM, 0.35s boot). Operating 100% offline with zero external telemetry, hardware-bound credential protection, and mathematical tamper-evident cryptographic audit journaling.
 
 ---
 
@@ -218,4 +218,4 @@ Contributions are welcomed! Before opening a pull request:
 
 ## 📜 License
 
-Copyright © 2026 ZerDevStudio. Distributed under the [Apache License, Version 2.0](https://github.com/ZerDevStudio/ZervHub/blob/main/LICENSE).
+Copyright © 2026 ZerDevStudio. Distributed under the [MIT License](https://github.com/ZerDevStudio/ZervHub/blob/main/LICENSE).

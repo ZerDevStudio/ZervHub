@@ -12,21 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { Sparkles, Binary, KeyRound, Regex, Database, Unlock, Palette, QrCode, Shuffle, ShieldAlert, Code2 } from 'lucide-react';
 import { Language } from '../../lib/types';
 import { translations } from '../../lib/translations';
 import { cyberAudio } from '../../lib/cyberAudio';
-import { LiveRegexDemo } from './LiveRegexDemo';
-import { LiveHashDemo } from './LiveHashDemo';
-import { LiveBase64Demo } from './LiveBase64Demo';
-import { LiveQrDemo } from './LiveQrDemo';
-import { LiveJwtDemo } from './LiveJwtDemo';
-import { LiveDecrypterDemo } from './LiveDecrypterDemo';
-import { LivePasswordDemo } from './LivePasswordDemo';
-import { LiveColorDemo } from './LiveColorDemo';
-import { LiveFakeDataDemo } from './LiveFakeDataDemo';
-import { LiveShredderDemo } from './LiveShredderDemo';
+
+// Code-split all interactive playground demos to shrink initial bundle size (<200KB)
+const LiveRegexDemo = React.lazy(() => import('./LiveRegexDemo').then((m) => ({ default: m.LiveRegexDemo })));
+const LiveHashDemo = React.lazy(() => import('./LiveHashDemo').then((m) => ({ default: m.LiveHashDemo })));
+const LiveBase64Demo = React.lazy(() => import('./LiveBase64Demo').then((m) => ({ default: m.LiveBase64Demo })));
+const LiveQrDemo = React.lazy(() => import('./LiveQrDemo').then((m) => ({ default: m.LiveQrDemo })));
+const LiveJwtDemo = React.lazy(() => import('./LiveJwtDemo').then((m) => ({ default: m.LiveJwtDemo })));
+const LiveDecrypterDemo = React.lazy(() => import('./LiveDecrypterDemo').then((m) => ({ default: m.LiveDecrypterDemo })));
+const LivePasswordDemo = React.lazy(() => import('./LivePasswordDemo').then((m) => ({ default: m.LivePasswordDemo })));
+const LiveColorDemo = React.lazy(() => import('./LiveColorDemo').then((m) => ({ default: m.LiveColorDemo })));
+const LiveFakeDataDemo = React.lazy(() => import('./LiveFakeDataDemo').then((m) => ({ default: m.LiveFakeDataDemo })));
+const LiveShredderDemo = React.lazy(() => import('./LiveShredderDemo').then((m) => ({ default: m.LiveShredderDemo })));
 
 interface LivePlaygroundProps {
   lang: Language;
@@ -116,16 +118,27 @@ export const LivePlayground: React.FC<LivePlaygroundProps> = ({ lang }) => {
 
           {/* Demo Content Area */}
           <div className="p-6 sm:p-8 min-h-[310px] flex flex-col justify-center">
-            {activeTab === 'regex' && <LiveRegexDemo />}
-            {activeTab === 'hash' && <LiveHashDemo />}
-            {activeTab === 'base64' && <LiveBase64Demo />}
-            {activeTab === 'qr' && <LiveQrDemo />}
-            {activeTab === 'jwt' && <LiveJwtDemo />}
-            {activeTab === 'decoder' && <LiveDecrypterDemo />}
-            {activeTab === 'password' && <LivePasswordDemo />}
-            {activeTab === 'color' && <LiveColorDemo />}
-            {activeTab === 'fakeData' && <LiveFakeDataDemo />}
-            {activeTab === 'shredder' && <LiveShredderDemo />}
+            <Suspense
+              fallback={
+                <div className="flex flex-col items-center justify-center p-12 text-center">
+                  <div className="w-6 h-6 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin mb-3" />
+                  <span className="text-xs font-mono text-cyan-400/80">
+                    ⚡ {lang === 'tr' ? 'Modül yükleniyor...' : 'Loading studio module...'}
+                  </span>
+                </div>
+              }
+            >
+              {activeTab === 'regex' && <LiveRegexDemo />}
+              {activeTab === 'hash' && <LiveHashDemo />}
+              {activeTab === 'base64' && <LiveBase64Demo />}
+              {activeTab === 'qr' && <LiveQrDemo />}
+              {activeTab === 'jwt' && <LiveJwtDemo />}
+              {activeTab === 'decoder' && <LiveDecrypterDemo />}
+              {activeTab === 'password' && <LivePasswordDemo />}
+              {activeTab === 'color' && <LiveColorDemo />}
+              {activeTab === 'fakeData' && <LiveFakeDataDemo />}
+              {activeTab === 'shredder' && <LiveShredderDemo />}
+            </Suspense>
           </div>
         </div>
       </div>

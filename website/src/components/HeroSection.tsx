@@ -104,7 +104,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang }) => {
           {/* Quick Metrics Bar */}
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
             <div className="bg-[#0b0e1b]/80 border border-cyan-500/20 rounded-xl p-4 text-center">
-              <div className="text-2xl font-black text-cyan-400 font-mono">27+</div>
+              <div className="text-2xl font-black text-cyan-400 font-mono">21+</div>
               <div className="text-xs text-gray-400 font-mono mt-1">{t.stats.tools}</div>
             </div>
             <div className="bg-[#0b0e1b]/80 border border-purple-500/20 rounded-xl p-4 text-center">
@@ -127,15 +127,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang }) => {
           <div className="relative rounded-2xl bg-[#090c18] border border-cyan-500/30 shadow-2xl shadow-cyan-500/10 overflow-hidden">
             {/* Top Windows Titlebar */}
             <div className="bg-[#060812] border-b border-gray-800 px-4 py-3 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-red-500/80" />
-                <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <span className="w-3 h-3 rounded-full bg-green-500/80" />
-                <span className="text-xs font-mono text-gray-400 ml-2">
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="w-3 h-3 shrink-0 rounded-full bg-red-500/80" />
+                <span className="w-3 h-3 shrink-0 rounded-full bg-yellow-500/80" />
+                <span className="w-3 h-3 shrink-0 rounded-full bg-green-500/80" />
+                <span className="text-xs font-mono text-gray-400 ml-2 truncate max-w-[150px] sm:max-w-none">
                   ZenDev Desktop v2.5.6 [Tauri Rust Engine]
                 </span>
               </div>
-              <div className="flex items-center gap-3 text-xs font-mono text-gray-400">
+              <div className="flex items-center gap-3 text-xs font-mono text-gray-400 shrink-0">
                 <div className="hidden sm:flex items-center bg-[#0d1222] p-0.5 rounded-lg border border-cyan-500/30 text-[10px]">
                   <span className="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-semibold">🎯 Günlük</span>
                   <span className="px-2 py-0.5 text-gray-400">⚡ Geliştirici</span>

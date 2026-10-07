@@ -331,7 +331,7 @@ export const ZENDEV_TOOLS: ToolItem[] = [
  * Total active native developer workstations in ZenDev v2.5.6 suite.
  * Synchronized across website Navbar, Hero, Catalog, CommandPalette, and Pricing.
  */
-export const TOTAL_TOOLS_COUNT = 27;
+export const TOTAL_TOOLS_COUNT = 21;
 
 export const PRICING_PLANS: PricingPlan[] = [
   {
@@ -387,8 +387,8 @@ export const PRICING_PLANS: PricingPlan[] = [
     nameEn: 'ZenDev Pro Developer SaaS',
     badgeTr: 'En Popüler / Geliştirici SaaS',
     badgeEn: 'Most Popular / Developer SaaS',
-    descriptionTr: 'Tüm 27+ güce tam erişim. Sürekli yeni araç güncellemeleri, bulut senkronizasyonu ve öncelikli destek.',
-    descriptionEn: 'Full access to all 27+ power tools. Continuous drops, cloud sync, and priority engineering support.',
+    descriptionTr: 'Tüm 21+ güce tam erişim. Sürekli yeni araç güncellemeleri, bulut senkronizasyonu ve öncelikli destek.',
+    descriptionEn: 'Full access to all 21+ power tools. Continuous drops, cloud sync, and priority engineering support.',
     recommended: true,
     prices: {
       TRY: { monthly: 149, yearly: 1190, monthlyEquivalent: 99, symbol: '₺' },
@@ -396,7 +396,7 @@ export const PRICING_PLANS: PricingPlan[] = [
       EUR: { monthly: 8.99, yearly: 69, monthlyEquivalent: 5.75, symbol: '€' }
     },
     featuresTr: [
-      '27+ Geliştirici Stüdyosunun Tamamına Kesintisiz Erişim',
+      '21+ Geliştirici Stüdyosunun Tamamına Kesintisiz Erişim',
       'ApiStudio REST & cURL İstasyonları Kilitsiz',
       'E2EE Uçtan Uca Şifreli Cihazlar Arası Bulut Senkronizasyonu',
       'Workflow Chains & AI Smart Dispatcher Önizleme Erişimi',
@@ -407,7 +407,7 @@ export const PRICING_PLANS: PricingPlan[] = [
       'Esnek Faturalandırma & İstediğin Zaman Tek Tıkla İptal'
     ],
     featuresEn: [
-      'Continuous access to all 27+ developer studios',
+      'Continuous access to all 21+ developer studios',
       'Unlocked ApiStudio REST & cURL bridge',
       'E2EE cross-device cloud synchronization',
       'Workflow Chains & AI Smart Dispatcher preview',

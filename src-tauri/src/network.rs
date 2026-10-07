@@ -580,35 +580,33 @@ pub async fn network_ip_lookup(host: String) -> IpLookupResult {
 
     let target = resolved_ip.as_deref().unwrap_or(sanitized);
 
-    // 2. Query ip-api.com for rich geolocation data
+    // 2. Query encrypted HTTPS geolocation service (zero cleartext query leakage)
     let client = reqwest::Client::builder()
         .timeout(Duration::from_secs(5))
         .build()
         .unwrap_or_default();
 
-    let api_url = format!(
-        "http://ip-api.com/json/{}?fields=status,message,country,countryCode,region,regionName,city,lat,lon,timezone,isp,org,query",
-        target
-    );
+    let api_url = format!("https://ipwhois.app/json/{}", target);
 
     if let Ok(resp) = client.get(&api_url).send().await {
         if let Ok(json) = resp.json::<serde_json::Value>().await {
-            if json.get("status").and_then(|s| s.as_str()) == Some("success") {
-                let ip_str = json.get("query").and_then(|v| v.as_str()).map(String::from).or(resolved_ip.clone());
+            let is_success = json.get("success").and_then(|s| s.as_bool()).unwrap_or(false);
+            if is_success {
+                let ip_str = json.get("ip").and_then(|v| v.as_str()).map(String::from).or(resolved_ip.clone());
                 return IpLookupResult {
                     success: true,
                     host: sanitized.to_string(),
                     ip: ip_str,
                     family,
                     city: json.get("city").and_then(|v| v.as_str()).map(String::from),
-                    region: json.get("regionName").and_then(|v| v.as_str()).map(String::from),
+                    region: json.get("region").and_then(|v| v.as_str()).map(String::from),
                     country: json.get("country").and_then(|v| v.as_str()).map(String::from),
-                    country_code: json.get("countryCode").and_then(|v| v.as_str()).map(String::from),
+                    country_code: json.get("country_code").and_then(|v| v.as_str()).map(String::from),
                     org: json.get("org").and_then(|v| v.as_str()).map(String::from),
                     timezone: json.get("timezone").and_then(|v| v.as_str()).map(String::from),
                     isp: json.get("isp").and_then(|v| v.as_str()).map(String::from),
-                    lat: json.get("lat").and_then(|v| v.as_f64()),
-                    lon: json.get("lon").and_then(|v| v.as_f64()),
+                    lat: json.get("latitude").and_then(|v| v.as_f64()),
+                    lon: json.get("longitude").and_then(|v| v.as_f64()),
                     error: None,
                 };
             }

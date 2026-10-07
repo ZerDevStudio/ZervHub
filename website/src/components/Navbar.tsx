@@ -225,15 +225,16 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Mobile Action Row */}
-        <div className="flex lg:hidden items-center gap-2">
+        <div className="flex lg:hidden items-center gap-1.5">
           {/* Quick Search trigger on mobile */}
           <button
             onClick={() => {
               cyberAudio.playClick();
               onOpenSearch();
             }}
-            className="p-2 text-cyan-400 rounded-lg bg-[#0d1222] border border-gray-800"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-cyan-400 rounded-lg bg-[#0d1222] border border-gray-800 hover:border-cyan-500/40 cursor-pointer"
             title="Search"
+            aria-label="Search"
           >
             <Search className="w-4 h-4" />
           </button>
@@ -241,23 +242,29 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Audio toggle on mobile */}
           <button
             onClick={toggleAudio}
-            className={`p-2 rounded-lg border ${
+            className={`min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg border cursor-pointer ${
               audioActive ? 'text-cyan-300 border-cyan-500/40 bg-cyan-950/50' : 'text-gray-500 border-gray-800 bg-[#0d1222]'
             }`}
+            title="Audio Effects"
+            aria-label="Toggle Audio Effects"
           >
             {audioActive ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
           </button>
 
           <button
             onClick={() => setLang(lang === 'tr' ? 'en' : 'tr')}
-            className="text-xs font-mono text-gray-300 px-2 py-1.5 rounded bg-[#0d1222] border border-gray-800"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-xs font-mono text-gray-300 rounded bg-[#0d1222] border border-gray-800 hover:border-cyan-500/40 cursor-pointer"
+            title="Language"
+            aria-label="Switch Language"
           >
             {lang.toUpperCase()}
           </button>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2 text-gray-300 hover:text-white rounded-lg bg-[#0d1222] border border-gray-800"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-gray-300 hover:text-white rounded-lg bg-[#0d1222] border border-gray-800 hover:border-cyan-500/40 cursor-pointer"
+            title="Menu"
+            aria-label="Open Navigation Menu"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
