@@ -30,6 +30,8 @@ import {
   KeyRound,
   GitBranch,
   Binary,
+  CreditCard,
+  Cloud,
 } from 'lucide-react'
 import { useWorkspaceMode } from '../context/WorkspaceModeContext'
 import { useT } from '../lib/i18n'
@@ -265,6 +267,28 @@ const PALETTE_ITEMS: PaletteItem[] = [
     path: '/account',
     icon: Settings,
     keywords: ['license', 'key', 'activate', 'tier', 'settings', 'account', 'language']
+  },
+  {
+    id: 'billing',
+    title: 'Abonelik & Fiyatlandırma (Billing)',
+    subtitle: 'Pro/Team lisans yönetimi, fiyatlandırma ve Stripe faturalandırma',
+    category: 'Preferences',
+    icon: CreditCard,
+    keywords: ['billing', 'subscription', 'pro', 'team', 'pricing', 'stripe', 'lisans', 'ödeme', 'fatura', 'upgrade'],
+    action: () => {
+      window.dispatchEvent(new CustomEvent('nexus:open-billing'))
+    }
+  },
+  {
+    id: 'cloud-sync',
+    title: 'E2EE Cloud Sync & Çalışma Alanları',
+    subtitle: 'Uçtan uca şifreli (AES-256) bulut senkronizasyonu ve kasa yönetimi',
+    category: 'Preferences',
+    icon: Cloud,
+    keywords: ['cloud', 'sync', 'e2ee', 'vault', 'senkron', 'kasa', 'workspace', 'alan', 'şifreleme'],
+    action: () => {
+      window.dispatchEvent(new CustomEvent('nexus:open-cloud-sync'))
+    }
   }
 ]
 

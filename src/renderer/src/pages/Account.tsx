@@ -332,10 +332,14 @@ export default function Account() {
             <div className="pt-2">
               <button
                 type="button"
-                onClick={() => window.nexusAPI?.openExternal('https://zendev-production-4a5b.up.railway.app#pricing')}
-                className="w-full py-2 text-xs font-semibold rounded-lg bg-nexus-surface hover:bg-white/10 border border-nexus-border text-nexus-cyan transition flex items-center justify-center gap-1.5 cursor-pointer"
+                onClick={() => {
+                  try { cyberAudio.click() } catch {}
+                  window.dispatchEvent(new CustomEvent('nexus:open-billing'))
+                }}
+                className="w-full py-2.5 text-xs font-bold rounded-xl bg-gradient-to-r from-nexus-cyan/20 to-nexus-accent/20 hover:brightness-125 border border-nexus-cyan/40 text-white transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm shadow-nexus-cyan/10"
               >
-                <span>{locale === 'tr' ? 'Aboneliği Yönet & Plan Değiştir' : 'Manage Subscription & Plans'}</span>
+                <CreditCard className="w-3.5 h-3.5 text-nexus-cyan" />
+                <span>{locale === 'tr' ? 'Aboneliği Yönet & Plan Yükselt' : 'Manage Subscription & Plans'}</span>
               </button>
             </div>
           </div>

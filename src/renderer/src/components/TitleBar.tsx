@@ -67,11 +67,32 @@ export default function TitleBar() {
       <div className="flex items-center gap-2 pl-4">
         <span className="text-xs text-nexus-muted font-medium tracking-wide">ZenDev</span>
         <SyncStatusBadge />
-        {tier === 'trial' && (
-          <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1 font-mono font-medium animate-pulse">
+        {tier === 'trial' ? (
+          <button
+            type="button"
+            onClick={() => {
+              try { cyberAudio.click() } catch {}
+              window.dispatchEvent(new CustomEvent('nexus:open-billing'))
+            }}
+            className="no-drag text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1 font-mono font-medium animate-pulse hover:bg-amber-500/30 cursor-pointer transition-all"
+            title="Abonelik Planları ve Yükseltme"
+          >
             ★ PRO TRIAL {trialHoursLeft !== null ? `(${trialHoursLeft}h)` : ''}
-          </span>
-        )}
+          </button>
+        ) : tier !== 'pro' && tier !== 'team' && tier !== 'lifetime' ? (
+          <button
+            type="button"
+            onClick={() => {
+              try { cyberAudio.click() } catch {}
+              window.dispatchEvent(new CustomEvent('nexus:open-billing'))
+            }}
+            className="no-drag text-[10px] px-2 py-0.5 rounded-full bg-gradient-to-r from-nexus-cyan/20 to-nexus-accent/20 text-nexus-cyan border border-nexus-cyan/40 hover:brightness-125 flex items-center gap-1 font-mono font-bold cursor-pointer transition-all"
+            title="ZenDev Pro / Team Yükselt"
+          >
+            <Zap className="w-2.5 h-2.5 text-nexus-cyan" />
+            <span>PRO</span>
+          </button>
+        ) : null}
         {isPinned && (
           <span className="text-[10px] px-1.5 py-0.5 rounded bg-nexus-accent/20 text-nexus-accent border border-nexus-accent/30 flex items-center gap-1 font-mono">
             PINNED

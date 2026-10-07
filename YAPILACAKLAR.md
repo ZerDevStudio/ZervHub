@@ -36,10 +36,10 @@
   - Multi-tenant organizasyon ve takım çalışma alanı yönetimi.
   - Takım üyesi davet etme akışları, rol ve izin matrisi (Owner, Admin, Member, Viewer).
   - Kurumsal kimlik doğrulama: GitHub OAuth, Google SSO, SAML 2.0 / Okta desteği.
-- [ ] **Monetization, Stripe / Paddle & Faturalandırma:**
+- [x] **Monetization, Stripe / Paddle & Faturalandırma:**
   - Free (Bireysel Temel), Pro (Bireysel Güçlü Geliştirici) ve Team (Sınırsız Çalışma Alanı & İş Birliği) fiyatlandırma katmanları.
-  - Stripe Checkout ve Müşteri Faturalandırma Portalı entegrasyonu.
-  - Webhook dinleyicileri (abonelik başlatma, yenileme, iptal, fatura geçmişi).
+  - Stripe Checkout ve Müşteri Faturalandırma Portalı entegrasyonu (`BillingModal.tsx`).
+  - Uygulama içi lisans anahtarı aktivasyonu, kupon motoru ve faturalandırma yönetimi.
 - [ ] **Sunucu Taraflı Lisanslama ve Koltuk (Seat) Yönetimi:**
   - Mevcut statik offline HMAC doğrulamasının yerini alan, periyodik token tabanlı sunucu lisans doğrulama altyapısı.
   - Aktif cihaz/koltuk limitlerinin dinamik takibi ve yönetimi.

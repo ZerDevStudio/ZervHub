@@ -28,20 +28,19 @@ export default function ProLockGate({ toolName, toolDesc }: ProLockGateProps) {
   const isTr = locale === 'tr'
 
   const handleBuy = () => {
-    const storeUrl = (import.meta as any).env?.VITE_STORE_URL || 'https://zendev-production-4a5b.up.railway.app#pricing'
-    window.nexusAPI?.openExternal(storeUrl)
+    window.dispatchEvent(new CustomEvent('nexus:open-billing'))
   }
 
   const perks = isTr ? [
-    '27+ Geliştirici ve Siber Güvenlik Aracının Tamamı',
+    '21+ Geliştirici ve Siber Güvenlik Aracının Tamamı',
     'ApiStudio, JwtStudio, ResourceSentinel & PdfStudio',
-    'Sürekli Yeni Araç Güncellemeleri & Eklenti Paketleri',
+    'Uçtan Uca Şifreli (E2EE) Sınırsız Cloud Sync',
     '2 Kişisel Bilgisayarda Eşzamanlı Kullanım',
     'Taahhütsüz İstediğin Zaman Tek Tıkla İptal'
   ] : [
-    'Complete access to all 27+ developer & cyber tools',
+    'Complete access to all 21+ developer & cyber tools',
     'Unlocked ApiStudio, JwtStudio, ResourceSentinel & PdfStudio',
-    'Continuous tool updates & automatic feature drops',
+    'End-to-End Encrypted (E2EE) Unlimited Cloud Sync',
     'Activate on 2 personal machines simultaneously',
     'Cancel anytime with zero long-term commitment'
   ]
