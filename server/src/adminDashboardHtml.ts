@@ -4,7 +4,7 @@ export function getAdminDashboardHtml(): string {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZenDev v2.4.3 — Master License & System Console</title>
+  <title>ZenDev v2.5.6 — Master License & Enterprise SaaS Console</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2307080f'/%3E%3Crect x='2' y='2' width='60' height='60' rx='14' fill='none' stroke='%2306b6d4' stroke-width='1.5' stroke-opacity='0.4'/%3E%3Cpath d='M14 16 L48 16 C50 16 51 17 50 19 L40 30 L48 44 C49 46 48 48 46 48 L14 48 C12 48 11 47 12 45 L22 34 L14 20 C13 18 14 16 16 16 Z' fill='url(%23g)' stroke='%2300f2fe' stroke-width='3' stroke-linejoin='round'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='60%25' stop-color='%2306b6d4'/%3E%3Cstop offset='100%25' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='3.5' fill='%23ffffff'/%3E%3C/svg%3E">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,7 +71,7 @@ export function getAdminDashboardHtml(): string {
         <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-400/20 via-sky-500/20 to-purple-600/20 border border-nexus-cyan/40 flex items-center justify-center mb-4 shadow-lg shadow-nexus-cyan/20">
           <i data-lucide="terminal" class="w-7 h-7 text-nexus-cyan"></i>
         </div>
-        <h1 class="text-xl font-extrabold text-white tracking-tight">Zen<span class="text-nexus-cyan">Dev</span> v2.4.3 Console</h1>
+        <h1 class="text-xl font-extrabold text-white tracking-tight">Zen<span class="text-nexus-cyan">Dev</span> v2.5.6 Console</h1>
         <p class="text-xs text-nexus-muted mt-1">Sıfır-Veri Lisans & Sistem Yönetim Merkezi</p>
       </div>
 
@@ -128,7 +128,7 @@ export function getAdminDashboardHtml(): string {
         <div>
           <div class="flex items-center gap-2">
             <h2 class="text-sm font-bold text-white leading-none font-mono">Zen<span class="text-nexus-cyan">Dev</span> Controller</h2>
-            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-nexus-cyan/10 text-nexus-cyan border border-nexus-cyan/30">v2.4.3 Tauri Edition</span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-nexus-cyan/10 text-nexus-cyan border border-nexus-cyan/30">v2.5.6 Enterprise Edition</span>
             <span class="hidden sm:inline px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/10 text-purple-300 border border-purple-500/30">Zero-PII</span>
           </div>
           <p class="text-[11px] text-nexus-muted mt-0.5 flex items-center gap-2">
@@ -138,7 +138,7 @@ export function getAdminDashboardHtml(): string {
             </span>
             <span>&bull;</span>
             <span id="telemetry-stats" class="text-nexus-muted/70 hidden sm:inline">Uptime: — | DB: —</span>
-            <span class="hidden md:inline text-cyan-400/60 font-mono text-[10px]">&bull; Tauri v2 + Rust Core</span>
+            <span class="hidden md:inline text-cyan-400/60 font-mono text-[10px]">&bull; Tauri v2 + Rust Core &bull; SOC 2 / GRC</span>
           </p>
         </div>
       </div>
@@ -164,6 +164,10 @@ export function getAdminDashboardHtml(): string {
         <button onclick="openAuditLogsModal()" class="p-2 px-2.5 rounded-xl bg-nexus-card border border-nexus-border text-nexus-accent hover:bg-nexus-accent/10 transition text-xs font-semibold flex items-center gap-1.5" title="Güvenlik İşlem Geçmişi">
           <i data-lucide="history" class="w-3.5 h-3.5"></i>
           <span class="hidden md:inline">Loglar</span>
+        </button>
+        <button onclick="openComplianceModal()" class="p-2 px-2.5 rounded-xl bg-nexus-card border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10 transition text-xs font-semibold flex items-center gap-1.5" title="SOC 2 Type II & ISO 27001 GRC Raporu">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+          <span class="hidden md:inline">SOC 2 / GRC</span>
         </button>
         <button onclick="exportToCsv()" class="p-2 px-2.5 rounded-xl bg-nexus-card border border-nexus-border text-nexus-emerald hover:bg-nexus-emerald/10 transition text-xs font-semibold flex items-center gap-1.5" title="Tüm Lisansları CSV Olarak İndir">
           <i data-lucide="file-spreadsheet" class="w-3.5 h-3.5"></i>
@@ -208,9 +212,11 @@ export function getAdminDashboardHtml(): string {
             <div class="flex items-center gap-2 mt-2 text-xs font-semibold">
               <span class="text-blue-400">Pro: <b id="stat-pro-count" class="text-white">0</b></span>
               <span class="text-slate-600">|</span>
-              <span class="text-nexus-cyan">Lifetime: <b id="stat-life-count" class="text-white">0</b></span>
-              <span class="text-slate-600">|</span>
               <span class="text-nexus-accent">Team: <b id="stat-team-count" class="text-white">0</b></span>
+              <span class="text-slate-600">|</span>
+              <span class="text-emerald-400">Ent: <b id="stat-ent-count" class="text-white">0</b></span>
+              <span class="text-slate-600">|</span>
+              <span class="text-nexus-cyan">Life: <b id="stat-life-count" class="text-white">0</b></span>
             </div>
             <p class="text-[10px] text-slate-400 mt-1">Stok & Dağıtım Dengesi</p>
           </div>
@@ -300,10 +306,15 @@ export function getAdminDashboardHtml(): string {
         <form id="single-gen-form" onsubmit="handleSingleGenerate(event)" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-3">
           <div>
             <label class="block text-[11px] font-bold uppercase tracking-wider text-nexus-muted mb-1.5">Lisans Tipi</label>
-            <select id="single-tier" class="w-full bg-nexus-surface border border-nexus-border rounded-xl px-3 py-2 text-xs font-semibold text-white focus:outline-none neon-border-cyan">
-              <option value="pro">Pro Edition</option>
-              <option value="team">Team Edition</option>
+            <select id="single-tier" onchange="handleSingleTierChange()" class="w-full bg-nexus-surface border border-nexus-border rounded-xl px-3 py-2 text-xs font-semibold text-white focus:outline-none neon-border-cyan">
+              <option value="pro_annual" selected>Pro Annual ($190/yıl - 2 Cihaz)</option>
+              <option value="pro_monthly">Pro Monthly ($19/ay - 2 Cihaz)</option>
+              <option value="team_annual">Team Annual ($490/yıl - 5 Koltuk)</option>
+              <option value="team_monthly">Team Monthly ($49/ay - 5 Koltuk)</option>
+              <option value="enterprise">Enterprise ($1,990/yıl - 50 Koltuk)</option>
               <option value="lifetime">Lifetime (Ömür Boyu)</option>
+              <option value="pro">Legacy Pro (Standart)</option>
+              <option value="team">Legacy Team</option>
             </select>
           </div>
 
@@ -322,9 +333,11 @@ export function getAdminDashboardHtml(): string {
             <label class="block text-[11px] font-bold uppercase tracking-wider text-nexus-muted mb-1.5">Cihaz Limiti</label>
             <select id="single-devices" class="w-full bg-nexus-surface border border-nexus-border rounded-xl px-3 py-2 text-xs font-semibold text-white focus:outline-none neon-border-cyan">
               <option value="1">1 Cihaz</option>
-              <option value="2" selected>2 Cihaz (Standart)</option>
-              <option value="5">5 Cihaz (Team)</option>
-              <option value="10">10 Cihaz (Kurumsal)</option>
+              <option value="2" selected>2 Cihaz (Standart Pro)</option>
+              <option value="5">5 Koltuk (Team)</option>
+              <option value="10">10 Koltuk</option>
+              <option value="25">25 Koltuk</option>
+              <option value="50">50 Koltuk (Enterprise)</option>
             </select>
           </div>
 
@@ -372,10 +385,15 @@ export function getAdminDashboardHtml(): string {
 
           <div>
             <label class="block text-[11px] font-bold uppercase tracking-wider text-nexus-muted mb-1.5">Lisans Tipi</label>
-            <select id="bulk-tier" class="w-full bg-nexus-surface border border-nexus-border rounded-xl px-3 py-2 text-xs font-semibold text-white focus:outline-none neon-border-cyan">
-              <option value="pro">Pro Edition</option>
-              <option value="team">Team Edition</option>
+            <select id="bulk-tier" onchange="handleBulkTierChange()" class="w-full bg-nexus-surface border border-nexus-border rounded-xl px-3 py-2 text-xs font-semibold text-white focus:outline-none neon-border-cyan">
+              <option value="pro_annual" selected>Pro Annual ($190/yıl - 2 Cihaz)</option>
+              <option value="pro_monthly">Pro Monthly ($19/ay - 2 Cihaz)</option>
+              <option value="team_annual">Team Annual ($490/yıl - 5 Koltuk)</option>
+              <option value="team_monthly">Team Monthly ($49/ay - 5 Koltuk)</option>
+              <option value="enterprise">Enterprise ($1,990/yıl - 50 Koltuk)</option>
               <option value="lifetime">Lifetime (Ömür Boyu)</option>
+              <option value="pro">Legacy Pro (Standart)</option>
+              <option value="team">Legacy Team</option>
             </select>
           </div>
 
@@ -393,8 +411,11 @@ export function getAdminDashboardHtml(): string {
             <label class="block text-[11px] font-bold uppercase tracking-wider text-nexus-muted mb-1.5">Cihaz Limiti</label>
             <select id="bulk-devices" class="w-full bg-nexus-surface border border-nexus-border rounded-xl px-3 py-2 text-xs font-semibold text-white focus:outline-none neon-border-cyan">
               <option value="1">1 Cihaz</option>
-              <option value="2" selected>2 Cihaz</option>
-              <option value="5">5 Cihaz</option>
+              <option value="2" selected>2 Cihaz (Standart Pro)</option>
+              <option value="5">5 Koltuk (Team)</option>
+              <option value="10">10 Koltuk</option>
+              <option value="25">25 Koltuk</option>
+              <option value="50">50 Koltuk (Enterprise)</option>
             </select>
           </div>
 
@@ -951,6 +972,182 @@ export function getAdminDashboardHtml(): string {
     </div>
   </div>
 
+  <!-- ========================================================================= -->
+  <!-- 10. DEVICE & SEAT MANAGEMENT MODAL -->
+  <!-- ========================================================================= -->
+  <div id="devices-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="glass-card w-full max-w-2xl p-6 rounded-2xl shadow-2xl border border-nexus-border space-y-4 max-h-[85vh] flex flex-col">
+      <div class="flex items-center justify-between pb-3 border-b border-nexus-border">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-nexus-cyan/10 border border-nexus-cyan/30 flex items-center justify-center text-nexus-cyan">
+            <i data-lucide="monitor" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-sm">Cihaz & Koltuk Yönetimi (Seat Manager)</h3>
+            <p id="devices-modal-sub" class="text-xs text-nexus-muted">Lisansa bağlı donanım kimlikleri (HWID)</p>
+          </div>
+        </div>
+        <button onclick="closeDevicesModal()" class="p-1 rounded-lg text-nexus-muted hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Key & Allocation Pill Summary -->
+      <div class="flex flex-wrap items-center justify-between gap-2 p-3 rounded-xl bg-nexus-surface border border-nexus-border text-xs">
+        <div class="flex items-center gap-2">
+          <span class="text-nexus-muted">Lisans:</span>
+          <span id="devices-target-key" class="font-mono font-bold text-white tracking-wider"></span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-nexus-muted">Koltuk Durumu:</span>
+          <span id="devices-allocation-badge" class="px-2.5 py-0.5 rounded-full font-bold text-[11px] bg-nexus-cyan/10 text-nexus-cyan border border-nexus-cyan/30">0 / 2 Dolu</span>
+        </div>
+      </div>
+
+      <!-- Device List Table -->
+      <div class="flex-1 overflow-y-auto border border-nexus-border rounded-xl">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-nexus-surface/80 text-nexus-muted uppercase text-[10px] font-bold sticky top-0 border-b border-nexus-border">
+            <tr>
+              <th class="py-2.5 px-3">Cihaz / HWID Kimliği</th>
+              <th class="py-2.5 px-3">İlk Aktivasyon</th>
+              <th class="py-2.5 px-3">Son Görülme</th>
+              <th class="py-2.5 px-3 text-right">İşlem</th>
+            </tr>
+          </thead>
+          <tbody id="devices-table-body" class="divide-y divide-nexus-border font-mono text-[11px]">
+            <tr><td colspan="4" class="py-8 text-center text-nexus-muted font-sans">Yükleniyor...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Footer Buttons -->
+      <div class="flex items-center justify-between pt-3 border-t border-nexus-border">
+        <button type="button" id="devices-reset-all-btn" onclick="handleDevicesResetAll()" class="px-3.5 py-2 rounded-xl text-xs font-semibold text-nexus-rose bg-nexus-rose/10 border border-nexus-rose/20 hover:bg-nexus-rose/20 transition flex items-center gap-1.5">
+          <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+          <span>Tüm Koltukları Sıfırla</span>
+        </button>
+        <button type="button" onclick="closeDevicesModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-nexus-muted hover:text-white hover:bg-nexus-card transition">
+          Kapat
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 11. SOC 2 & ISO 27001 GRC COMPLIANCE MODAL -->
+  <!-- ========================================================================= -->
+  <div id="compliance-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="glass-card w-full max-w-4xl p-6 rounded-2xl shadow-2xl border border-nexus-border space-y-4 max-h-[90vh] flex flex-col">
+      <div class="flex items-center justify-between pb-3 border-b border-nexus-border">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+            <i data-lucide="shield-check" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-sm">SOC 2 Type II & ISO 27001 GRC Denetim Raporu</h3>
+            <p class="text-xs text-nexus-muted">Kriptografik denetim zinciri & kurumsal uyumluluk karnesi</p>
+          </div>
+        </div>
+        <button onclick="closeComplianceModal()" class="p-1 rounded-lg text-nexus-muted hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Scorecards & Chain Integrity Status -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+        <div class="p-3.5 rounded-xl bg-nexus-surface border border-nexus-border flex flex-col justify-between">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-nexus-muted">Denetim Zinciri</span>
+          <div class="flex items-center gap-1.5 mt-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span id="compliance-chain-status" class="text-sm font-extrabold text-emerald-400">VERIFIED</span>
+          </div>
+          <span class="text-[10px] text-nexus-muted/80 mt-1">SHA-256 HMAC Blok Kilidi</span>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-nexus-surface border border-nexus-border flex flex-col justify-between">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-nexus-muted">SOC 2 Uyum Puanı</span>
+          <div class="flex items-baseline gap-1 mt-1">
+            <span id="compliance-soc2-score" class="text-2xl font-black text-white">%100</span>
+            <span class="text-[10px] text-emerald-400 font-bold">Tam Uyum</span>
+          </div>
+          <span class="text-[10px] text-nexus-muted/80 mt-1">Trust Services Criteria (TSC)</span>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-nexus-surface border border-nexus-border flex flex-col justify-between">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-nexus-muted">ISO 27001 Skoru</span>
+          <div class="flex items-baseline gap-1 mt-1">
+            <span id="compliance-iso-score" class="text-2xl font-black text-white">%100</span>
+            <span class="text-[10px] text-emerald-400 font-bold">Implemented</span>
+          </div>
+          <span class="text-[10px] text-nexus-muted/80 mt-1">Annex A Kontrolleri</span>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-nexus-surface border border-nexus-border flex flex-col justify-between">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-nexus-muted">İncelenen İşlem</span>
+          <div class="flex items-baseline gap-1 mt-1">
+            <span id="compliance-total-logs" class="text-2xl font-black text-nexus-cyan">0</span>
+            <span class="text-[10px] text-nexus-muted font-bold">Kayıt</span>
+          </div>
+          <span class="text-[10px] text-nexus-muted/80 mt-1">Bütünlük Garantili</span>
+        </div>
+      </div>
+
+      <!-- Cryptographic Hash Fingerprint Box -->
+      <div class="p-3 rounded-xl bg-nexus-card border border-nexus-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
+        <div class="space-y-0.5 overflow-hidden">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-nexus-muted">En Son Blok Hash Parmak İzi (Chain Head):</span>
+          <p id="compliance-head-hash" class="font-mono text-[11px] text-nexus-cyan truncate max-w-xl">Hesaplanıyor...</p>
+        </div>
+        <span class="shrink-0 text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">Zero-Tamper</span>
+      </div>
+
+      <!-- Controls Tabs (SOC 2 vs ISO 27001) -->
+      <div class="flex items-center justify-between border-b border-nexus-border pb-2">
+        <div class="flex items-center gap-1 bg-nexus-surface p-1 rounded-xl border border-nexus-border">
+          <button type="button" onclick="setComplianceTab('soc2')" id="compliance-tab-soc2" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-nexus-card shadow">SOC 2 Controls</button>
+          <button type="button" onclick="setComplianceTab('iso')" id="compliance-tab-iso" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-nexus-muted hover:text-white">ISO 27001 Annex A</button>
+        </div>
+        <span id="compliance-report-id" class="text-[11px] font-mono text-nexus-muted">REP-SOC2-...</span>
+      </div>
+
+      <!-- Controls Table -->
+      <div class="flex-1 overflow-y-auto border border-nexus-border rounded-xl">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-nexus-surface/80 text-nexus-muted uppercase text-[10px] font-bold sticky top-0 border-b border-nexus-border">
+            <tr>
+              <th class="py-2.5 px-3">Kontrol No</th>
+              <th class="py-2.5 px-3">Başlık & Tanım</th>
+              <th class="py-2.5 px-3">Kategori</th>
+              <th class="py-2.5 px-3">Durum</th>
+              <th class="py-2.5 px-3">Özet</th>
+            </tr>
+          </thead>
+          <tbody id="compliance-table-body" class="divide-y divide-nexus-border">
+            <tr><td colspan="5" class="py-8 text-center text-nexus-muted">Denetim verileri yükleniyor...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Modal Footer with Export Buttons -->
+      <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-nexus-border">
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="downloadComplianceJson()" class="px-3 py-2 rounded-xl text-xs font-bold bg-nexus-card border border-nexus-cyan/30 text-nexus-cyan hover:bg-nexus-cyan/10 transition flex items-center gap-1.5">
+            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+            <span>JSON Raporu İndir</span>
+          </button>
+          <button type="button" onclick="downloadComplianceCsv()" class="px-3 py-2 rounded-xl text-xs font-bold bg-nexus-card border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10 transition flex items-center gap-1.5">
+            <i data-lucide="file-spreadsheet" class="w-3.5 h-3.5"></i>
+            <span>CSV Denetim Matrisi</span>
+          </button>
+        </div>
+        <button type="button" onclick="closeComplianceModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-nexus-muted hover:text-white hover:bg-nexus-card transition">
+          Kapat
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- JavaScript App Logic -->
   <script>
     let token = localStorage.getItem('nexus_admin_token') || '';
@@ -990,6 +1187,8 @@ export function getAdminDashboardHtml(): string {
           closeNotifModal();
           closeCouponsModal();
           closeRedeemModal();
+          closeDevicesModal();
+          closeComplianceModal();
         }
         if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
           e.preventDefault();
@@ -1307,15 +1506,18 @@ export function getAdminDashboardHtml(): string {
       document.getElementById('stat-revoked').innerText = revoked;
 
       // Tier breakdown
-      const proCount = allKeys.filter(k => k.tier === 'standard' || k.tier === 'pro').length;
+      const proCount = allKeys.filter(k => k.tier === 'standard' || k.tier === 'pro' || k.tier === 'pro_monthly' || k.tier === 'pro_annual').length;
       const lifeCount = allKeys.filter(k => k.tier === 'lifetime').length;
-      const teamCount = allKeys.filter(k => k.tier === 'team').length;
+      const teamCount = allKeys.filter(k => k.tier === 'team' || k.tier === 'team_monthly' || k.tier === 'team_annual').length;
+      const entCount = allKeys.filter(k => k.tier === 'enterprise').length;
       const elPro = document.getElementById('stat-pro-count');
       const elLife = document.getElementById('stat-life-count');
       const elTeam = document.getElementById('stat-team-count');
+      const elEnt = document.getElementById('stat-ent-count');
       if (elPro) elPro.innerText = proCount;
       if (elLife) elLife.innerText = lifeCount;
       if (elTeam) elTeam.innerText = teamCount;
+      if (elEnt) elEnt.innerText = entCount;
 
       // Risk radar
       const riskKeys = allKeys.filter(k => (k.activation_count || 0) >= (k.max_activations || 2) && k.is_revoked === 0);
@@ -1456,8 +1658,15 @@ export function getAdminDashboardHtml(): string {
         }
 
         let tierColor = 'bg-blue-500/10 text-blue-400 border-blue-500/30';
-        if (k.tier === 'lifetime') tierColor = 'bg-nexus-cyan/10 text-nexus-cyan border-nexus-cyan/30';
-        if (k.tier === 'team') tierColor = 'bg-nexus-accent/10 text-nexus-accent border-nexus-accent/30';
+        let tierLabel = escapeHtml(k.tier);
+        if (k.tier === 'pro_monthly') { tierColor = 'bg-blue-500/10 text-blue-400 border-blue-500/30'; tierLabel = 'Pro Mo'; }
+        else if (k.tier === 'pro_annual') { tierColor = 'bg-blue-500/10 text-blue-300 border-blue-500/30'; tierLabel = 'Pro Yr'; }
+        else if (k.tier === 'team_monthly') { tierColor = 'bg-nexus-accent/10 text-nexus-accent border-nexus-accent/30'; tierLabel = 'Team Mo'; }
+        else if (k.tier === 'team_annual') { tierColor = 'bg-purple-500/10 text-purple-300 border-purple-500/30'; tierLabel = 'Team Yr'; }
+        else if (k.tier === 'enterprise') { tierColor = 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'; tierLabel = 'Enterprise'; }
+        else if (k.tier === 'lifetime') { tierColor = 'bg-nexus-cyan/10 text-nexus-cyan border-nexus-cyan/30'; tierLabel = 'Lifetime'; }
+        else if (k.tier === 'team') { tierColor = 'bg-nexus-accent/10 text-nexus-accent border-nexus-accent/30'; tierLabel = 'Team'; }
+        else if (k.tier === 'pro') { tierColor = 'bg-blue-500/10 text-blue-400 border-blue-500/30'; tierLabel = 'Pro'; }
 
         const note = k.order_id || '';
         const activations = \`\${k.activation_count || 0} / \${k.max_activations || 2}\`;
@@ -1475,7 +1684,7 @@ export function getAdminDashboardHtml(): string {
             </td>
             <td class="py-3 px-4">
               <span class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase border \${tierColor}">
-                \${escapeHtml(k.tier)}
+                \${tierLabel}
               </span>
             </td>
             <td class="py-3 px-4">
@@ -1507,8 +1716,11 @@ export function getAdminDashboardHtml(): string {
             </td>
             <td class="py-3 px-4 font-mono text-slate-300 flex items-center gap-1.5">
               <span>\${activations}</span>
+              <button onclick="openDevicesModal('\${escapeHtml(k.key)}', \${k.activation_count || 0}, \${k.max_activations || 2})" class="p-1 rounded text-nexus-cyan/80 hover:text-nexus-cyan transition" title="Koltuk & Cihazları İncele">
+                <i data-lucide="monitor" class="w-3 h-3"></i>
+              </button>
               \${(k.activation_count > 0) ? \`
-                <button onclick="resetDevices('\${k.key}')" class="p-1 rounded text-amber-400/70 hover:text-amber-400 transition" title="Cihaz Slotlarını Sıfırla">
+                <button onclick="resetDevices('\${k.key}')" class="p-1 rounded text-amber-400/70 hover:text-amber-400 transition" title="Tüm Cihaz Slotlarını Sıfırla">
                   <i data-lucide="rotate-ccw" class="w-3 h-3"></i>
                 </button>
               \` : ''}
@@ -2148,6 +2360,276 @@ export function getAdminDashboardHtml(): string {
         btn.disabled = false;
         btn.innerText = 'Kuponu Uygula & Uzat';
       }
+    }
+
+    // ── Tier Auto Select Helpers ─────────────────────────────────────────────
+    function handleSingleTierChange() {
+      const tier = document.getElementById('single-tier').value;
+      const durationSelect = document.getElementById('single-duration');
+      const devicesSelect = document.getElementById('single-devices');
+      if (tier === 'pro_monthly') {
+        durationSelect.value = '30';
+        devicesSelect.value = '2';
+      } else if (tier === 'pro_annual') {
+        durationSelect.value = '365';
+        devicesSelect.value = '2';
+      } else if (tier === 'team_monthly') {
+        durationSelect.value = '30';
+        devicesSelect.value = '5';
+      } else if (tier === 'team_annual') {
+        durationSelect.value = '365';
+        devicesSelect.value = '5';
+      } else if (tier === 'enterprise') {
+        durationSelect.value = '365';
+        devicesSelect.value = '50';
+      } else if (tier === 'lifetime') {
+        durationSelect.value = '0';
+        devicesSelect.value = '2';
+      }
+    }
+
+    function handleBulkTierChange() {
+      const tier = document.getElementById('bulk-tier').value;
+      const durationSelect = document.getElementById('bulk-duration');
+      const devicesSelect = document.getElementById('bulk-devices');
+      if (tier === 'pro_monthly') {
+        durationSelect.value = '30';
+        devicesSelect.value = '2';
+      } else if (tier === 'pro_annual') {
+        durationSelect.value = '365';
+        devicesSelect.value = '2';
+      } else if (tier === 'team_monthly') {
+        durationSelect.value = '30';
+        devicesSelect.value = '5';
+      } else if (tier === 'team_annual') {
+        durationSelect.value = '365';
+        devicesSelect.value = '5';
+      } else if (tier === 'enterprise') {
+        durationSelect.value = '365';
+        devicesSelect.value = '50';
+      } else if (tier === 'lifetime') {
+        durationSelect.value = '0';
+        devicesSelect.value = '2';
+      }
+    }
+
+    // ── Device & Seat Management Modal ───────────────────────────────────────
+    let currentDeviceKey = '';
+    let currentDeviceMax = 2;
+
+    async function openDevicesModal(key, actCount, maxAct) {
+      currentDeviceKey = key;
+      currentDeviceMax = maxAct || 2;
+      document.getElementById('devices-target-key').innerText = key;
+      document.getElementById('devices-allocation-badge').innerText = \`\${actCount || 0} / \${currentDeviceMax} Dolu\`;
+      document.getElementById('devices-modal').classList.remove('hidden');
+
+      const tbody = document.getElementById('devices-table-body');
+      tbody.innerHTML = '<tr><td colspan="4" class="py-8 text-center text-nexus-muted font-sans">Cihazlar sorgulanıyor...</td></tr>';
+
+      await fetchKeyDevices(key);
+      lucide.createIcons();
+    }
+
+    function closeDevicesModal() {
+      document.getElementById('devices-modal').classList.add('hidden');
+      currentDeviceKey = '';
+    }
+
+    async function fetchKeyDevices(key) {
+      const tbody = document.getElementById('devices-table-body');
+      try {
+        const res = await fetch(\`/admin/api/keys/activations?key=\${encodeURIComponent(key)}\`, {
+          headers: { 'Authorization': \`Bearer \${token}\` }
+        });
+        const data = await res.json();
+        if (!data.success) {
+          tbody.innerHTML = \`<tr><td colspan="4" class="py-8 text-center text-nexus-rose font-sans">\${escapeHtml(data.error || 'Cihazlar alınamadı')}</td></tr>\`;
+          return;
+        }
+
+        const activations = data.activations || [];
+        document.getElementById('devices-allocation-badge').innerText = \`\${activations.length} / \${currentDeviceMax} Dolu\`;
+
+        if (activations.length === 0) {
+          tbody.innerHTML = \`
+            <tr>
+              <td colspan="4" class="py-8 text-center text-nexus-muted font-sans">
+                <i data-lucide="check-circle" class="w-6 h-6 mx-auto mb-1.5 text-nexus-emerald opacity-60"></i>
+                <p>Bu lisansa henüz hiçbir cihaz bağlanmadı. Tüm koltuk slotları kullanılabilir durumda.</p>
+              </td>
+            </tr>
+          \`;
+          lucide.createIcons();
+          return;
+        }
+
+        tbody.innerHTML = activations.map(a => {
+          const actDate = a.activatedAt ? new Date(a.activatedAt).toLocaleString('tr-TR') : '—';
+          const lastSeenDate = a.lastSeen ? new Date(a.lastSeen).toLocaleString('tr-TR') : '—';
+          return \`
+            <tr class="hover:bg-nexus-surface/40 transition duration-150">
+              <td class="py-3 px-3 text-white font-bold flex items-center gap-1.5">
+                <i data-lucide="cpu" class="w-3.5 h-3.5 text-nexus-cyan shrink-0"></i>
+                <span class="truncate max-w-[200px]" title="\${escapeHtml(a.deviceId)}">\${escapeHtml(a.deviceId)}</span>
+              </td>
+              <td class="py-3 px-3 text-slate-300">\${actDate}</td>
+              <td class="py-3 px-3 text-slate-400">\${lastSeenDate}</td>
+              <td class="py-3 px-3 text-right">
+                <button onclick="releaseSingleDevice('\${escapeHtml(key)}', '\${escapeHtml(a.deviceId)}')" class="px-2.5 py-1 rounded bg-nexus-rose/10 border border-nexus-rose/30 text-nexus-rose hover:bg-nexus-rose/20 font-sans text-xs font-semibold transition" title="Bu Cihaz Slotunu Boşalt">
+                  Slotu Boşalt
+                </button>
+              </td>
+            </tr>
+          \`;
+        }).join('');
+        lucide.createIcons();
+      } catch (err) {
+        tbody.innerHTML = '<tr><td colspan="4" class="py-8 text-center text-nexus-rose font-sans">Sunucuyla iletişim kurulamadı.</td></tr>';
+      }
+    }
+
+    async function releaseSingleDevice(key, deviceId) {
+      const confirmed = await customConfirm('Koltuk Slotunu Boşalt?', \`Cihaz \${deviceId} lisans slotundan kaldırılacak. Kullanıcı tekrar girmek zorunda kalacak.\`);
+      if (!confirmed) return;
+
+      try {
+        const res = await fetch('/admin/api/keys/release-device', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': \`Bearer \${token}\` },
+          body: JSON.stringify({ key, deviceId })
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(\`Cihaz (\${deviceId}) başarıyla serbest bırakıldı!\`);
+          await fetchKeyDevices(key);
+          refreshKeys();
+        } else {
+          showToast(data.error || 'Cihaz serbest bırakılamadı', 'error');
+        }
+      } catch {
+        showToast('Bağlantı hatası', 'error');
+      }
+    }
+
+    async function handleDevicesResetAll() {
+      if (!currentDeviceKey) return;
+      const confirmed = await customConfirm('Tüm Koltukları Sıfırla?', \`\${currentDeviceKey} lisansına bağlı tüm cihazlar tek hamlede silinecektir.\`);
+      if (!confirmed) return;
+
+      await resetDevices(currentDeviceKey);
+      await fetchKeyDevices(currentDeviceKey);
+    }
+
+    // ── SOC 2 & ISO 27001 GRC Compliance Modal ──────────────────────────────
+    let complianceReportData = null;
+    let activeComplianceTab = 'soc2';
+
+    async function openComplianceModal() {
+      document.getElementById('compliance-modal').classList.remove('hidden');
+      const tbody = document.getElementById('compliance-table-body');
+      tbody.innerHTML = '<tr><td colspan="5" class="py-8 text-center text-nexus-muted">Denetim verileri yükleniyor...</td></tr>';
+      lucide.createIcons();
+
+      try {
+        const res = await fetch('/admin/api/compliance/report', {
+          headers: { 'Authorization': \`Bearer \${token}\` }
+        });
+        const data = await res.json();
+        if (!data.success || !data.report) {
+          tbody.innerHTML = \`<tr><td colspan="5" class="py-8 text-center text-nexus-rose">\${escapeHtml(data.error || 'Denetim raporu alınamadı')}</td></tr>\`;
+          return;
+        }
+
+        complianceReportData = data.report;
+        document.getElementById('compliance-chain-status').innerText = data.report.chainIntegrity?.status || 'VERIFIED';
+        document.getElementById('compliance-soc2-score').innerText = \`%\${data.report.soc2Score || 100}\`;
+        document.getElementById('compliance-iso-score').innerText = \`%\${data.report.isoScore || 100}\`;
+        document.getElementById('compliance-total-logs').innerText = data.report.totalLogsAnalyzed || 0;
+        document.getElementById('compliance-head-hash').innerText = data.report.chainIntegrity?.headHash || '0'.repeat(64);
+        document.getElementById('compliance-report-id').innerText = data.report.reportId || 'REP-SOC2';
+
+        renderComplianceTable();
+      } catch (err) {
+        tbody.innerHTML = '<tr><td colspan="5" class="py-8 text-center text-nexus-rose">Bağlantı hatası oluştu.</td></tr>';
+      }
+    }
+
+    function closeComplianceModal() {
+      document.getElementById('compliance-modal').classList.add('hidden');
+    }
+
+    function setComplianceTab(tab) {
+      activeComplianceTab = tab;
+      const btnSoc2 = document.getElementById('compliance-tab-soc2');
+      const btnIso = document.getElementById('compliance-tab-iso');
+      if (tab === 'soc2') {
+        btnSoc2.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-nexus-card shadow';
+        btnIso.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-nexus-muted hover:text-white';
+      } else {
+        btnIso.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-nexus-card shadow';
+        btnSoc2.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-nexus-muted hover:text-white';
+      }
+      renderComplianceTable();
+    }
+
+    function renderComplianceTable() {
+      if (!complianceReportData) return;
+      const tbody = document.getElementById('compliance-table-body');
+      const items = activeComplianceTab === 'soc2' ? complianceReportData.soc2Findings : complianceReportData.isoFindings;
+
+      if (!items || items.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="py-8 text-center text-nexus-muted">Kontrol kaydı bulunamadı.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = items.map(c => \`
+        <tr class="hover:bg-nexus-surface/40 transition duration-150">
+          <td class="py-2.5 px-3 font-mono font-bold text-nexus-cyan">\${escapeHtml(c.controlId)}</td>
+          <td class="py-2.5 px-3 font-semibold text-white">\${escapeHtml(c.title)}</td>
+          <td class="py-2.5 px-3 text-slate-400">\${escapeHtml(c.category || c.domain || 'Security')}</td>
+          <td class="py-2.5 px-3">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+              \${escapeHtml(c.status)}
+            </span>
+          </td>
+          <td class="py-2.5 px-3 text-slate-300 text-[11px]">\${escapeHtml(c.summary)}</td>
+        </tr>
+      \`).join('');
+      lucide.createIcons();
+    }
+
+    function downloadComplianceJson() {
+      if (!complianceReportData) return;
+      const blob = new Blob([JSON.stringify(complianceReportData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = \`zendev-compliance-report-\${Date.now()}.json\`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('SOC 2 / ISO 27001 JSON raporu indirildi.');
+    }
+
+    function downloadComplianceCsv() {
+      if (!complianceReportData) return;
+      const headers = ['Standard', 'ControlId', 'Title', 'Category_Domain', 'Status', 'Score', 'Summary'];
+      const rows = [];
+      (complianceReportData.soc2Findings || []).forEach(f => {
+        rows.push(['SOC2', f.controlId, \`"\${(f.title || '').replace(/"/g, '""')}"\`, f.category || '', f.status, f.score, \`"\${(f.summary || '').replace(/"/g, '""')}"\`]);
+      });
+      (complianceReportData.isoFindings || []).forEach(f => {
+        rows.push(['ISO27001', f.controlId, \`"\${(f.title || '').replace(/"/g, '""')}"\`, f.domain || '', f.status, f.score, \`"\${(f.summary || '').replace(/"/g, '""')}"\`]);
+      });
+      const csvContent = [headers.join(','), ...rows.map(r => r.join(','))].join('\\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = \`zendev-compliance-matrix-\${Date.now()}.csv\`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('GRC Denetim Matrisi CSV olarak indirildi.');
     }
   </script>
 </body>

@@ -35,6 +35,7 @@ const TIER_CHAR: Record<string, string> = {
   team:         'T',
   team_monthly: 'T',
   team_annual:  'T',
+  enterprise:   'E',
   lifetime:     'L',
 }
 
