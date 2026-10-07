@@ -52,10 +52,11 @@
 ### Faz 3 — Diferansiyasyon & B2B Moat (Workflow Chains, Team Collections, AI Dispatcher)
 *Amaç: ZenDev'i web sitelerinden ve ücretsiz rakiplerinden ayıran, düzenli abonelik ödemesini haklı çıkaran rekabet kalkanı.*
 
-- [ ] **Workflow Chains (İş Akışı Zincirleri Motoru):**
-  - Geliştirici stüdyolarını görsel veya script ile birbirine bağlayan pipeline çalıştırma motoru.
-  - *Örnek Akış:* cURL ile API endpoint'ini çağır → Yanıttaki JSON'dan belirli alanı jq ile filtrele → Base64 dönüştür → HMAC-SHA256 ile imzala → Webhook'a ilet.
-  - Önceden tanımlı hazır zincir şablonları (OAuth token yenileme, Webhook payload imzalama, API test zincirleri).
+- [x] **Workflow Chains (İş Akışı Zincirleri Motoru):**
+  - Geliştirici stüdyolarını görsel ve script ile birbirine bağlayan reaktif pipeline çalıştırma motoru (`chainExecutor.ts`, `chainStore.ts`, `WorkflowChains.tsx`).
+  - Dinamik değişken interpolasyonu (`{{variables.KEY}}`, `{{step_id.output}}`), dot-path JSON filtreleme ve assertions motoru (`workflowChainsEngine.test.ts`).
+  - WebCrypto tabanlı HMAC-SHA256/SHA512 ve SHA-256 dijital imzalama, Base64/Hex/URL veri dönüştürücüler.
+  - Hazır kurumsal şablonlar (HMAC-SHA256 Webhook İmzalama & Gönderim, OAuth2 Token Handshake & Korumalı API, Kriptografik Veri Boru Hattı) ve 16/16 birim test onayı (`tests/run_workflow_chains_test.mjs`).
 - [ ] **Paylaşılabilir Takım Koleksiyonları (Team Collections):**
   - Git-dostu JSON/YAML formatında saklanan, ekipler arası anında senkronize olan paylaşımlı API koleksiyonları.
   - Takım regex kütüphanesi, paylaşımlı Cron görev takvimleri, Mermaid mimari diyagram depoları.

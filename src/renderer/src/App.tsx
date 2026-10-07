@@ -53,6 +53,7 @@ const JwtStudio = lazy(() => import('./pages/JwtStudio'))
 const CronStudio = lazy(() => import('./pages/CronStudio'))
 const MermaidStudio = lazy(() => import('./pages/MermaidStudio'))
 const EncodingStudio = lazy(() => import('./pages/EncodingStudio'))
+const WorkflowChains = lazy(() => import('./pages/WorkflowChains'))
 
 const pageVariants = {
   initial: { opacity: 0, y: 20, scale: 0.98 },
@@ -77,6 +78,7 @@ const DEV_ONLY_ROUTES = [
   '/network',
   '/sentinel',
   '/fake-data',
+  '/workflow-chains',
 ]
 
 export default function App() {
@@ -465,6 +467,7 @@ export default function App() {
                     <Route path="/cron-studio" element={<CronStudio />} />
                     <Route path="/mermaid-studio" element={<MermaidStudio />} />
                     <Route path="/encoding-studio" element={<EncodingStudio />} />
+                    <Route path="/workflow-chains" element={<WorkflowChains />} />
                     <Route path="/account" element={<Account />} />
                     <Route path="*" element={<Navigate to="/" replace />} />
                   </Routes>

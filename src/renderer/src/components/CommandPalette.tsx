@@ -262,6 +262,16 @@ const PALETTE_ITEMS: PaletteItem[] = [
     developerOnly: true
   },
   {
+    id: 'workflow-chains',
+    title: 'Workflow Chains & Pipelines',
+    subtitle: 'Visual multi-studio pipeline chaining (cURL -> JSON -> Transform -> HMAC -> Webhook)',
+    category: 'Tools',
+    path: '/workflow-chains',
+    icon: GitBranch,
+    keywords: ['workflow', 'chain', 'pipeline', 'curl', 'webhook', 'hmac', 'automate', 'transform', 'flow'],
+    developerOnly: true
+  },
+  {
     id: 'account',
     title: 'Account Settings',
     subtitle: 'Manage license tier, activation, and language',
