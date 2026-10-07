@@ -1015,5 +1015,17 @@
     "toggleShortcut": "Toggle Mode (Ctrl+M)",
     "shortcutHint": "Toggle with Ctrl+M",
     "developerRequiredTitle": "Developer Mode Required"
+  },
+  "cloudSync": {
+    "title": "E2EE Cloud Sync",
+    "statusLocked": "E2EE Locked",
+    "statusSyncing": "Syncing...",
+    "statusError": "Sync Error",
+    "statusOffline": "Local Vault",
+    "statusSynced": "E2EE Synced",
+    "unlockedTitle": "Vault Unlocked",
+    "unlockedDesc": "E2EE Vault unlocked successfully.",
+    "unlockError": "Unlock Failed",
+    "weakPassphrase": "Weak Passphrase"
   }
 }

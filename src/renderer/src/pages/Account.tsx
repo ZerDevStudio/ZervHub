@@ -1,8 +1,9 @@
 import { useToast } from '../lib/ToastContext'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Settings, Key, Shield, LogOut, Clock, Infinity, RefreshCw, Check, Download, AlertCircle, Sparkles, Bot } from 'lucide-react'
+import { Settings, Key, Shield, LogOut, Clock, Infinity, RefreshCw, Check, Download, AlertCircle, Sparkles, Bot, Cloud, Layers } from 'lucide-react'
 import { useLicense } from '../lib/LicenseContext'
+import { useCloudSync } from '../lib/cloudSync/CloudSyncContext'
 import { useT } from '../lib/i18n'
 import { cyberAudio, AudioProfile } from '../lib/cyberAudio'
 import { getAIConfig, saveAIConfig, type AIConfig, type AIProvider } from '../lib/aiClient'
@@ -10,6 +11,7 @@ import { getAIConfig, saveAIConfig, type AIConfig, type AIProvider } from '../li
 export default function Account() {
   const { success: showToastSuccess, error: showToastError } = useToast()
   const { tier, key, expiresAt, deactivate } = useLicense()
+  const { currentWorkspace, isUnlocked, status: syncStatus } = useCloudSync()
   const { t, locale, setLocale } = useT()
 
   const [audioEnabled, setAudioEnabled] = useState(() => {
@@ -580,9 +582,38 @@ export default function Account() {
               </div>
             </div>
           )}
+        {/* E2EE Cloud Sync & Workspaces Section */}
+        <div className="pt-4 border-t border-nexus-border/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2">
+              <Cloud className="w-4 h-4 text-nexus-cyan" />
+              <h3 className="font-semibold text-nexus-text text-sm">
+                {locale === 'tr' ? 'E2EE Cloud Sync & Çalışma Alanları' : 'E2EE Cloud Sync & Workspaces'}
+              </h3>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-nexus-cyan/15 text-nexus-cyan border border-nexus-cyan/30">
+                AES-256
+              </span>
+            </div>
+            <p className="text-xs text-nexus-muted mt-0.5">
+              {locale === 'tr'
+                ? `Aktif Alan: ${currentWorkspace.name} • Kasa: ${isUnlocked ? 'Kilit Açık (Aktif)' : 'Kilitli'}`
+                : `Active: ${currentWorkspace.name} • Vault: ${isUnlocked ? 'Unlocked' : 'Locked'}`}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              try { cyberAudio.click() } catch {}
+              window.dispatchEvent(new CustomEvent('nexus:open-cloud-sync'))
+            }}
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-nexus-cyan/15 hover:bg-nexus-cyan/25 border border-nexus-cyan/40 text-nexus-cyan text-xs font-semibold transition-all cursor-pointer shadow-sm hover:shadow-nexus-cyan/10"
+          >
+            <Layers className="w-3.5 h-3.5" />
+            <span>{locale === 'tr' ? 'Çalışma Alanlarını Yönet' : 'Manage Workspaces'}</span>
+          </button>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-4 border-t border-nexus-border/30">
           <div>
             <h3 className="font-semibold text-nexus-text text-sm">Veri ve Ayar Yedekleme (Backup & Restore)</h3>
             <p className="text-xs text-nexus-muted mt-0.5">Tüm yerel ayarları, geçmişi ve tercihleri tek tıkla dışa/içe aktar</p>

@@ -29,7 +29,7 @@
 ### Faz 2 — Table Stakes SaaS Altyapısı (Cloud, Auth, Billing & Licensing)
 *Amaç: B2B ve Pro kullanıcıların para ödemeye hazır olduğu kurumsal temel servislerin inşası.*
 
-- [ ] **Cloud Sync Motoru (Uçtan Uca Şifreli Bulut Senkronizasyonu):**
+- [x] **Cloud Sync Motoru (Uçtan Uca Şifreli Bulut Senkronizasyonu):**
   - Geliştirici çalışma alanları, API ortam değişkenleri (`environments`), istek koleksiyonları, regex kuralları ve mock veri şablonlarının cihazlar arası güvenli senkronizasyonu.
   - Yerel-öncelikli (offline-first) çalışan, internet bağlandığında E2EE (Zero-Knowledge AES-256-GCM) ile sunucuya senkronize olan veri mimarisi.
 - [ ] **Team Auth, Workspaces & RBAC:**

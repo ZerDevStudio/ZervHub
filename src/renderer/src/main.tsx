@@ -8,6 +8,7 @@ import { I18nProvider } from './lib/i18n'
 import { LicenseProvider } from './lib/LicenseContext'
 import { ToastProvider } from './lib/ToastContext'
 import { WorkspaceModeProvider } from './context/WorkspaceModeContext'
+import { CloudSyncProvider } from './lib/cloudSync/CloudSyncContext'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -18,7 +19,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <ToastProvider>
             <HashRouter>
               <WorkspaceModeProvider>
-                <App />
+                <CloudSyncProvider>
+                  <App />
+                </CloudSyncProvider>
               </WorkspaceModeProvider>
             </HashRouter>
           </ToastProvider>

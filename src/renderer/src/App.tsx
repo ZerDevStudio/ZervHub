@@ -11,6 +11,7 @@ import OnboardingTour from './components/OnboardingTour'
 import CommandPalette from './components/CommandPalette'
 import MiniHud from './components/MiniHud'
 import KeyboardShortcutsModal from './components/KeyboardShortcutsModal'
+import { CloudSyncModal } from './components/CloudSync'
 import ProLockGate from './components/ProLockGate'
 import FloatingOrb from './components/FloatingOrb'
 import UpdateManager from './components/UpdateManager'
@@ -330,6 +331,7 @@ export default function App() {
       <CommandPalette />
       <MiniHud />
       <KeyboardShortcutsModal />
+      <CloudSyncModal />
       {!hasCompletedTour && <OnboardingTour onComplete={handleCompleteTour} />}
       <TitleBar />
       <div className="flex flex-1 overflow-hidden">

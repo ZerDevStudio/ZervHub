@@ -1015,5 +1015,17 @@
     "toggleShortcut": "Mod Değiştir (Ctrl+M)",
     "shortcutHint": "Ctrl+M ile geçiş yapın",
     "developerRequiredTitle": "Geliştirici Modu Gerekli"
+  },
+  "cloudSync": {
+    "title": "E2EE Cloud Sync",
+    "statusLocked": "E2EE Kilitli",
+    "statusSyncing": "Eşitleniyor...",
+    "statusError": "Hata",
+    "statusOffline": "Yerel Kasa",
+    "statusSynced": "E2EE Senkron",
+    "unlockedTitle": "Kasa Açıldı",
+    "unlockedDesc": "E2EE Kasa kilidi başarıyla açıldı.",
+    "unlockError": "Kilit Açılamadı",
+    "weakPassphrase": "Zayıf Parola"
   }
 }

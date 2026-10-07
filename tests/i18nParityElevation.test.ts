@@ -44,9 +44,9 @@ describe('Internationalization (i18n) — 100% Key Parity & Elevation Verificati
   const trKeys = Object.keys(trFlat).sort()
 
   describe('1. Global Dictionary Parity & Cardinality', () => {
-    it('verifies exact total count of 801 keys in both en.json and tr.json', () => {
-      expect(enKeys.length).toBe(801)
-      expect(trKeys.length).toBe(801)
+    it('verifies exact total count of 811 keys in both en.json and tr.json', () => {
+      expect(enKeys.length).toBe(811)
+      expect(trKeys.length).toBe(811)
     })
 
     it('verifies zero missing keys in tr.json relative to en.json', () => {
@@ -160,6 +160,15 @@ describe('Internationalization (i18n) — 100% Key Parity & Elevation Verificati
       expect(enDash).toContain('dashboard.tools.encodingStudio.desc')
       expect(enDash).toContain('dashboard.tools.colorStudio.desc')
       expect(enDash).toContain('dashboard.tools.scratchpad.desc')
+    })
+
+    it('verifies cloudSync namespace parity (10 keys)', () => {
+      const enCloud = enKeys.filter((k) => k.startsWith('cloudSync.'))
+      const trCloud = trKeys.filter((k) => k.startsWith('cloudSync.'))
+
+      expect(enCloud.length).toBe(10)
+      expect(trCloud.length).toBe(10)
+      expect(enCloud).toEqual(trCloud)
     })
   })
 
