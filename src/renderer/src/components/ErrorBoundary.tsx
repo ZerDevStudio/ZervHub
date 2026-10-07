@@ -1,5 +1,6 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react'
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react'
+import { telemetryManager } from '../lib/telemetry/telemetryManager'
 
 interface Props {
   children: ReactNode
@@ -23,6 +24,9 @@ export default class ErrorBoundary extends Component<Props, State> {
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('[ZenDev ErrorBoundary caught]:', error, errorInfo)
+    try {
+      telemetryManager.captureError(error, errorInfo.componentStack || undefined)
+    } catch {}
   }
 
   private handleReset = () => {

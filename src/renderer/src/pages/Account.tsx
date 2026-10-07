@@ -1,7 +1,7 @@
 import { useToast } from '../lib/ToastContext'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Settings, Key, Shield, LogOut, Clock, Infinity, RefreshCw, Check, Download, AlertCircle, Sparkles, Bot, Cloud, Layers, Users, Monitor, CreditCard } from 'lucide-react'
+import { Settings, Key, Shield, LogOut, Clock, Infinity, RefreshCw, Check, Download, AlertCircle, Sparkles, Bot, Cloud, Layers, Users, Monitor, CreditCard, ShieldCheck } from 'lucide-react'
 import { useLicense } from '../lib/LicenseContext'
 import { useCloudSync } from '../lib/cloudSync/CloudSyncContext'
 import { useT } from '../lib/i18n'
@@ -676,6 +676,37 @@ export default function Account() {
           >
             <Monitor className="w-3.5 h-3.5" />
             <span>{locale === 'tr' ? 'Cihazları Yönet' : 'Manage Seats'}</span>
+          </button>
+        </div>
+
+        {/* Transparent Telemetry & Crash Reporting Section */}
+        <div className="pt-4 border-t border-nexus-border/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <h3 className="font-semibold text-nexus-text text-sm">
+                {locale === 'tr' ? 'Şeffaf Telemetri & Çökme Raporlama' : 'Transparent Telemetry & Crash Reporting'}
+              </h3>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                GDPR OPT-IN
+              </span>
+            </div>
+            <p className="text-xs text-nexus-muted mt-0.5">
+              {locale === 'tr'
+                ? 'Kullanıcı onayına bağlı, sıfır PII (kişisel veri) sızdıran şeffaf hata analitiği ve tanı denetim kaydı'
+                : 'Opt-in only, zero-PII transparent crash analytics, and live diagnostic audit inspector'}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              try { cyberAudio.click() } catch {}
+              window.dispatchEvent(new CustomEvent('nexus:open-telemetry-modal'))
+            }}
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-300 text-xs font-semibold transition-all cursor-pointer shadow-sm hover:shadow-emerald-500/10"
+          >
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>{locale === 'tr' ? 'Telemetriyi İncele' : 'Inspect Telemetry'}</span>
           </button>
         </div>
 

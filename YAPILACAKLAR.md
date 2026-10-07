@@ -43,8 +43,9 @@
 - [x] **Sunucu Taraflı Lisanslama ve Koltuk (Seat) Yönetimi:**
   - Dinamik cihaz/koltuk limitlerinin takibi, lisans koltuğu devri ve anlık serbest bırakma altyapısı (`seatLicenseManager.ts`, `SeatManagementModal.tsx`, `SeatUsageCard.tsx`).
   - 24 saatlik kriptografik lease token ve 7 günlük çevrimdışı kullanım izin süresi (offline grace period) motoru (`seatLicenseEngine.test.ts`).
-- [ ] **Şeffaf ve Gizlilik Odaklı Telemetri:**
-  - Kullanıcı onayına bağlı (opt-in), KVKK/GDPR uyumlu anonimleştirilmiş hata ve çökme raporlama (Sentry / OpenTelemetry).
+- [x] **Şeffaf ve Gizlilik Odaklı Telemetri:**
+  - Kullanıcı onayına bağlı (opt-in), KVKK/GDPR uyumlu anonimleştirilmiş hata ve çökme raporlama (`telemetryManager.ts`, `TelemetryModal.tsx`, `TelemetrySettingsCard.tsx`).
+  - Dosya yollarından kullanıcı adlarını, e-postaları, JWT ve API tokenlarını maskeleyen sıkı PII temizleme motoru ve canlı tanı denetim kaydı (`telemetryEngine.test.ts`).
 
 ---
 

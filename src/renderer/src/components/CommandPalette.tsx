@@ -313,6 +313,17 @@ const PALETTE_ITEMS: PaletteItem[] = [
     action: () => {
       window.dispatchEvent(new CustomEvent('nexus:open-seat-modal'))
     }
+  },
+  {
+    id: 'telemetry-settings',
+    title: 'Şeffaf Telemetri & Gizlilik (Privacy & Telemetry)',
+    subtitle: 'KVKK/GDPR uyumlu anonim çökme raporları ve tanı denetim kaydı',
+    category: 'Preferences',
+    icon: ShieldCheck,
+    keywords: ['telemetry', 'telemetri', 'privacy', 'gizlilik', 'crash', 'hata', 'çökme', 'audit', 'gdpr', 'kvkk'],
+    action: () => {
+      window.dispatchEvent(new CustomEvent('nexus:open-telemetry-modal'))
+    }
   }
 ]
 
