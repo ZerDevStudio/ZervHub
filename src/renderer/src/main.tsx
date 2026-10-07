@@ -9,6 +9,7 @@ import { LicenseProvider } from './lib/LicenseContext'
 import { ToastProvider } from './lib/ToastContext'
 import { WorkspaceModeProvider } from './context/WorkspaceModeContext'
 import { CloudSyncProvider } from './lib/cloudSync/CloudSyncContext'
+import { TeamAuthProvider } from './lib/teamAuth/TeamAuthContext'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -20,7 +21,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <HashRouter>
               <WorkspaceModeProvider>
                 <CloudSyncProvider>
-                  <App />
+                  <TeamAuthProvider>
+                    <App />
+                  </TeamAuthProvider>
                 </CloudSyncProvider>
               </WorkspaceModeProvider>
             </HashRouter>

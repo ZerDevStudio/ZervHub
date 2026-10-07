@@ -6,6 +6,7 @@ import { cyberAudio } from '../lib/cyberAudio'
 import { useLicense } from '../lib/LicenseContext'
 import { useWorkspaceMode } from '../context/WorkspaceModeContext'
 import { SyncStatusBadge } from './CloudSync'
+import { TeamBadge } from './TeamAuth'
 import { useT } from '../lib/i18n'
 
 export default function TitleBar() {
@@ -67,6 +68,7 @@ export default function TitleBar() {
       <div className="flex items-center gap-2 pl-4">
         <span className="text-xs text-nexus-muted font-medium tracking-wide">ZenDev</span>
         <SyncStatusBadge />
+        <TeamBadge />
         {tier === 'trial' ? (
           <button
             type="button"

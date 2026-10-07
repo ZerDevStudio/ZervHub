@@ -32,6 +32,7 @@ import {
   Binary,
   CreditCard,
   Cloud,
+  Users,
 } from 'lucide-react'
 import { useWorkspaceMode } from '../context/WorkspaceModeContext'
 import { useT } from '../lib/i18n'
@@ -288,6 +289,17 @@ const PALETTE_ITEMS: PaletteItem[] = [
     keywords: ['cloud', 'sync', 'e2ee', 'vault', 'senkron', 'kasa', 'workspace', 'alan', 'şifreleme'],
     action: () => {
       window.dispatchEvent(new CustomEvent('nexus:open-cloud-sync'))
+    }
+  },
+  {
+    id: 'team-manage',
+    title: 'Takım & Rol Yönetimi (Team & RBAC)',
+    subtitle: 'Çalışma alanı üyeleri, roller (Owner/Admin/Member/Viewer) ve davetler',
+    category: 'Preferences',
+    icon: Users,
+    keywords: ['team', 'takım', 'rbac', 'members', 'üyeler', 'roles', 'workspace', 'owner', 'admin', 'viewer'],
+    action: () => {
+      window.dispatchEvent(new CustomEvent('nexus:open-team-modal'))
     }
   }
 ]

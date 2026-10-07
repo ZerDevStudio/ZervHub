@@ -1,7 +1,7 @@
 import { useToast } from '../lib/ToastContext'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Settings, Key, Shield, LogOut, Clock, Infinity, RefreshCw, Check, Download, AlertCircle, Sparkles, Bot, Cloud, Layers } from 'lucide-react'
+import { Settings, Key, Shield, LogOut, Clock, Infinity, RefreshCw, Check, Download, AlertCircle, Sparkles, Bot, Cloud, Layers, Users } from 'lucide-react'
 import { useLicense } from '../lib/LicenseContext'
 import { useCloudSync } from '../lib/cloudSync/CloudSyncContext'
 import { useT } from '../lib/i18n'
@@ -614,6 +614,37 @@ export default function Account() {
           >
             <Layers className="w-3.5 h-3.5" />
             <span>{locale === 'tr' ? 'Çalışma Alanlarını Yönet' : 'Manage Workspaces'}</span>
+          </button>
+        </div>
+
+        {/* Team Collaboration & RBAC Section */}
+        <div className="pt-4 border-t border-nexus-border/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2">
+              <Users className="w-4 h-4 text-purple-400" />
+              <h3 className="font-semibold text-nexus-text text-sm">
+                {locale === 'tr' ? 'Takım Çalışma Alanı & RBAC Yetkilendirme' : 'Team Workspace & RBAC Roles'}
+              </h3>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-300 border border-purple-500/30">
+                TEAM
+              </span>
+            </div>
+            <p className="text-xs text-nexus-muted mt-0.5">
+              {locale === 'tr'
+                ? 'Çoklu kullanıcı davetleri, Owner/Admin/Member/Viewer izin matrisi ve kurumsal SSO'
+                : 'Multi-seat invitations, Owner/Admin/Member/Viewer permission matrix, and enterprise SSO'}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              try { cyberAudio.click() } catch {}
+              window.dispatchEvent(new CustomEvent('nexus:open-team-modal'))
+            }}
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-500/15 hover:bg-purple-500/25 border border-purple-500/40 text-purple-300 text-xs font-semibold transition-all cursor-pointer shadow-sm hover:shadow-purple-500/10"
+          >
+            <Users className="w-3.5 h-3.5" />
+            <span>{locale === 'tr' ? 'Takımı Yönet' : 'Manage Team'}</span>
           </button>
         </div>
 

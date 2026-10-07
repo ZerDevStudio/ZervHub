@@ -32,10 +32,10 @@
 - [x] **Cloud Sync Motoru (Uçtan Uca Şifreli Bulut Senkronizasyonu):**
   - Geliştirici çalışma alanları, API ortam değişkenleri (`environments`), istek koleksiyonları, regex kuralları ve mock veri şablonlarının cihazlar arası güvenli senkronizasyonu.
   - Yerel-öncelikli (offline-first) çalışan, internet bağlandığında E2EE (Zero-Knowledge AES-256-GCM) ile sunucuya senkronize olan veri mimarisi.
-- [ ] **Team Auth, Workspaces & RBAC:**
-  - Multi-tenant organizasyon ve takım çalışma alanı yönetimi.
-  - Takım üyesi davet etme akışları, rol ve izin matrisi (Owner, Admin, Member, Viewer).
-  - Kurumsal kimlik doğrulama: GitHub OAuth, Google SSO, SAML 2.0 / Okta desteği.
+- [x] **Team Auth, Workspaces & RBAC:**
+  - Multi-tenant organizasyon ve takım çalışma alanı yönetimi (`TeamAuthContext.tsx`, `TeamMembersModal.tsx`).
+  - Takım üyesi davet etme akışları, rol ve izin matrisi (Owner, Admin, Member, Viewer) ve koltuk koruması (`teamRbacEngine.test.ts`).
+  - Kurumsal kimlik doğrulama: GitHub OAuth, Google SSO, SAML 2.0 / Okta desteği ve TitleBar takım rozeti entegrasyonu.
 - [x] **Monetization, Stripe / Paddle & Faturalandırma:**
   - Free (Bireysel Temel), Pro (Bireysel Güçlü Geliştirici) ve Team (Sınırsız Çalışma Alanı & İş Birliği) fiyatlandırma katmanları.
   - Stripe Checkout ve Müşteri Faturalandırma Portalı entegrasyonu (`BillingModal.tsx`).
