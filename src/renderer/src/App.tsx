@@ -16,6 +16,7 @@ import { BillingModal } from './components/Billing'
 import { TeamMembersModal } from './components/TeamAuth'
 import { SeatManagementModal } from './components/SeatLicense'
 import { TelemetryModal } from './components/Telemetry'
+import { TeamCollectionsModal } from './components/TeamCollections'
 import ProLockGate from './components/ProLockGate'
 import FloatingOrb from './components/FloatingOrb'
 import UpdateManager from './components/UpdateManager'
@@ -342,6 +343,7 @@ export default function App() {
       <TeamMembersModal />
       <SeatManagementModal />
       <TelemetryModal />
+      <TeamCollectionsModal />
       {!hasCompletedTour && <OnboardingTour onComplete={handleCompleteTour} />}
       <TitleBar />
       <div className="flex flex-1 overflow-hidden">

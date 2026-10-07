@@ -7,6 +7,7 @@ import { useLicense } from '../lib/LicenseContext'
 import { useWorkspaceMode } from '../context/WorkspaceModeContext'
 import { SyncStatusBadge } from './CloudSync'
 import { TeamBadge } from './TeamAuth'
+import { TeamCollectionsBadge } from './TeamCollections'
 import { useT } from '../lib/i18n'
 
 export default function TitleBar() {
@@ -69,6 +70,7 @@ export default function TitleBar() {
         <span className="text-xs text-nexus-muted font-medium tracking-wide">ZenDev</span>
         <SyncStatusBadge />
         <TeamBadge />
+        <TeamCollectionsBadge />
         {tier === 'trial' ? (
           <button
             type="button"

@@ -34,6 +34,7 @@ import {
   Cloud,
   Users,
   Monitor,
+  FolderGit2,
 } from 'lucide-react'
 import { useWorkspaceMode } from '../context/WorkspaceModeContext'
 import { useT } from '../lib/i18n'
@@ -333,6 +334,17 @@ const PALETTE_ITEMS: PaletteItem[] = [
     keywords: ['telemetry', 'telemetri', 'privacy', 'gizlilik', 'crash', 'hata', 'çökme', 'audit', 'gdpr', 'kvkk'],
     action: () => {
       window.dispatchEvent(new CustomEvent('nexus:open-telemetry-modal'))
+    }
+  },
+  {
+    id: 'team-collections',
+    title: 'Paylaşılabilir Takım Koleksiyonları (Team Collections)',
+    subtitle: 'Paylaşımlı API koleksiyonları, Regex kütüphaneleri, Cron görevleri ve Mermaid mimarileri',
+    category: 'Preferences',
+    icon: FolderGit2,
+    keywords: ['collection', 'koleksiyon', 'team', 'takım', 'api', 'regex', 'cron', 'mermaid', 'git', 'share'],
+    action: () => {
+      window.dispatchEvent(new CustomEvent('nexus:open-team-collections'))
     }
   }
 ]

@@ -12,6 +12,7 @@ import { CloudSyncProvider } from './lib/cloudSync/CloudSyncContext'
 import { TeamAuthProvider } from './lib/teamAuth/TeamAuthContext'
 import { SeatLicenseProvider } from './lib/seatLicense/SeatLicenseContext'
 import { TelemetryProvider } from './lib/telemetry/TelemetryContext'
+import { TeamCollectionsProvider } from './lib/teamCollections/TeamCollectionsContext'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -26,7 +27,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <TeamAuthProvider>
                     <SeatLicenseProvider>
                       <TelemetryProvider>
-                        <App />
+                        <TeamCollectionsProvider>
+                          <App />
+                        </TeamCollectionsProvider>
                       </TelemetryProvider>
                     </SeatLicenseProvider>
                   </TeamAuthProvider>

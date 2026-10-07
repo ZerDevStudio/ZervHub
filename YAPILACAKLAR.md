@@ -57,9 +57,15 @@
   - Dinamik değişken interpolasyonu (`{{variables.KEY}}`, `{{step_id.output}}`), dot-path JSON filtreleme ve assertions motoru (`workflowChainsEngine.test.ts`).
   - WebCrypto tabanlı HMAC-SHA256/SHA512 ve SHA-256 dijital imzalama, Base64/Hex/URL veri dönüştürücüler.
   - Hazır kurumsal şablonlar (HMAC-SHA256 Webhook İmzalama & Gönderim, OAuth2 Token Handshake & Korumalı API, Kriptografik Veri Boru Hattı) ve 16/16 birim test onayı (`tests/run_workflow_chains_test.mjs`).
-- [ ] **Paylaşılabilir Takım Koleksiyonları (Team Collections):**
-  - Git-dostu JSON/YAML formatında saklanan, ekipler arası anında senkronize olan paylaşımlı API koleksiyonları.
-  - Takım regex kütüphanesi, paylaşımlı Cron görev takvimleri, Mermaid mimari diyagram depoları.
+- [x] **Paylaşılabilir Takım Koleksiyonları (Team Collections):**
+  - Git-dostu JSON formatında saklanan, versiyon kontrollü (SemVer) ve SHA-256 bütünlük imzalı paylaşımlı takım koleksiyonları (`teamCollectionManager.ts`, `TeamCollectionsContext.tsx`).
+  - 4 Çekirdek Geliştirici Stüdyosu için hazır kurumsal şablonlar (`defaultPresets.ts`):
+    - *API Koleksiyonu:* Mikroservis REST ve HMAC Webhook uç noktaları (`col_api_gateway`).
+    - *Regex Kütüphanesi:* RFC 5322 Email, TCKN ve UUID v4 kuralları (`col_regex_secops`).
+    - *Cron Takvimi:* Gece yarısı veritabanı yedeği, saatlik token süpürme ve Cuma raporları (`col_cron_devops`).
+    - *Mermaid Mimarileri:* OAuth2 + PKCE protokol akışı ve Olay Tabanlı Webhook Topolojisi (`col_mermaid_arch`).
+  - Takım İzinleri (RBAC) Entegrasyonu: Owner/Admin/Member yazma ve içe aktarma yetkisine sahipken Viewer rolü salt okunur kısıtlamasına tabidir.
+  - TitleBar takım koleksiyonu durum rozeti (`TeamCollectionsBadge.tsx`), modal arayüzü (`TeamCollectionsModal.tsx`), Komut Paleti eylemi ve 10/10 birim test doğrulaması (`tests/run_team_collections_test.mjs`).
 - [ ] **AI Destekli Akıllı Ayrıştırıcı (AI Smart Dispatcher):**
   - Kullanıcının panosuna kopyaladığı veya editöre yapıştırdığı veriyi otomatik olarak analiz eden akıllı katman:
     - JWT token'ı algılayıp doğrudan `JwtStudio`'da çözümleme ve süre sonu uyarısı verme.
