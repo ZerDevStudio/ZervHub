@@ -79,12 +79,21 @@
 ### Faz 4 — Güvenlik, Uyumluluk & Dağıtım Mükemmeliyeti
 *Amaç: Kurumsal BT ve güvenlik departmanlarından sıfır engelle onay almak.*
 
-- [ ] **Genişletilmiş Kod İmzalama (EV Code Signing):**
-  - Windows SmartScreen ve macOS Notarization uyarılarını tamamen kaldıran kurumsal sertifikasyon.
-- [ ] **EDR & Antivirüs Temizliği:**
-  - Windows Defender, CrowdStrike, SentinelOne gibi kurumsal güvenlik yazılımlarında 0 false-positive skoru.
-- [ ] **Kurumsal Denetim İzi (Audit Log):**
-  - Takım çalışma alanlarında yapılan kritik değişiklikler (anahtar güncelleme, ortam değişkeni silme vb.) için denetim kaydı.
+- [x] **Genişletilmiş Kod İmzalama (EV Code Signing & Azure Trusted Signing):**
+  - Windows SmartScreen ve macOS Notarization uyarılarını tamamen kaldıran kurumsal sertifikasyon mimarisi (`docs/ENTERPRISE_CODE_SIGNING.md`).
+  - Microsoft Azure Trusted Signing (FIPS 140-2 Level 2 Cloud HSM) entegrasyonu, RFC 3161 SHA-256 çift zaman damgası ve CI/CD pipeline otomasyonu.
+  - Apple Developer ID Application kod imzalama, Hardened Runtime ve `notarytool` otomatik noter onay mekanizması.
+- [x] **EDR & Antivirüs Temizliği (Zero False-Positive Hardening):**
+  - Windows Defender, CrowdStrike Falcon, SentinelOne Singularity, Cortex XDR ve Sophos Intercept X kurumsal güvenlik yazılımlarında 0 false-positive skoru (`docs/SECURITY_EDR_COMPLIANCE.md`).
+  - Arka planda sessiz otonom güncelleme (`CREATE_NO_WINDOW` / silent `/S`) davranışı kalıcı olarak yasaklandı; şeffaf, sürüm notlu ve kullanıcı onaylı interaktif modal akışı uygulandı.
+  - Sistem müdahale araçları (`Port Killer`, `System Optimizer`, `Temp Mail`) çekirdekten tamamen arındırıldı.
+  - Rust derleme seviyesinde ASLR, DEP/NX, CFG (Control Flow Guard) ve SafeSEH ikili sertleştirme bayrakları.
+  - Kayıt öncesi yerel PII ve gizli anahtar (Private Key, JWT, Luhn-valid Credit Card, API Keys) otomatik maskeleme ve 9/9 test doğrulaması (`tests/run_edr_antivirus_compliance_test.mjs`).
+- [x] **Kurumsal Denetim İzi (Tamper-Evident Audit Log & SOC 2 / ISO 27001 Reporter):**
+  - SHA-256 blok zinciri tabanlı kriptografik yerel denetim günlüğü (`src/shared/auditIntegrity.ts`).
+  - Takım çalışma alanlarında yapılan kritik değişiklikler için otomatik audit kaydı: Takım kimlik doğrulaması (`teamAuthManager.ts`), paylaşılan koleksiyonlar (`teamCollectionManager.ts`), koltuk lisans yönetimi (`seatLicenseManager.ts`) ve E2EE kasa senkronizasyonu (`syncManager.ts`).
+  - SOC 2 Type II (CC6.1, CC6.2, CC6.6, CC7.2, CC8.1) ve ISO/IEC 27001:2022 (A.5.15, A.8.15, A.8.24, A.8.7, A.8.8) uyumluluk denetim motoru (`src/renderer/src/lib/auditCompliance/auditReporter.ts`).
+  - Tahrifat tespit algoritması, GRC platformları (Vanta, Drata, Secureframe) için JSON ve RFC uyumlu CSV dışa aktarımı ve 12/12 birim test onayı (`tests/run_audit_reporter_test.mjs`, `tests/auditReporter.test.ts`).
 
 ---
 

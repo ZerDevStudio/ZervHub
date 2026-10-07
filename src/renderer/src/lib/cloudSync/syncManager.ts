@@ -17,6 +17,7 @@ import {
   decryptSyncPayload,
   computeSha256
 } from './cryptoE2EE'
+import { logActivity } from '../activityLogger'
 
 const STORAGE_KEYS = {
   WORKSPACES: 'zendev_workspaces',
@@ -161,6 +162,13 @@ class SyncManager {
     this.saveEnvelope(envelope)
     this.status = 'synced'
     this.addLog('unlock', 'success', 'E2EE Kasa parolası yapılandırıldı ve ilk şifreleme tamamlandı.')
+    logActivity({
+      toolId: 'cloud_sync',
+      action: 'vault_passphrase_configured',
+      category: 'crypto',
+      status: 'success',
+      details: 'E2EE Kasa parolası yapılandırıldı ve ilk şifreleme tamamlandı'
+    })
     this.broadcastStatus()
   }
 
@@ -178,12 +186,26 @@ class SyncManager {
       this.status = 'synced'
       this.applyInboundPayload(payload)
       this.addLog('unlock', 'success', 'E2EE Kasa kilidi açıldı.')
+      logActivity({
+        toolId: 'cloud_sync',
+        action: 'vault_unlocked',
+        category: 'security',
+        status: 'success',
+        details: 'E2EE Kasa kilidi başarıyla açıldı'
+      })
       this.broadcastStatus()
       return true
     } catch (err: any) {
       this.status = 'locked'
       this.broadcastStatus()
       this.addLog('unlock', 'failed', 'Kasa kilidi açılamadı: Hatalı parola.')
+      logActivity({
+        toolId: 'cloud_sync',
+        action: 'vault_unlock_failed',
+        category: 'security',
+        status: 'failure',
+        details: 'E2EE Kasa kilidi açma denemesi başarısız: Hatalı parola'
+      })
       throw err
     }
   }
@@ -192,6 +214,13 @@ class SyncManager {
     this.activePassphrase = null
     this.status = 'locked'
     this.addLog('lock', 'info', 'E2EE Kasa kilitlendi. Bellekteki oturum anahtarları temizlendi.')
+    logActivity({
+      toolId: 'cloud_sync',
+      action: 'vault_locked',
+      category: 'security',
+      status: 'info',
+      details: 'E2EE Kasa kilitlendi. Oturum anahtarları bellekten temizlendi.'
+    })
     this.broadcastStatus()
   }
 
@@ -335,10 +364,26 @@ class SyncManager {
       localStorage.setItem(STORAGE_KEYS.LAST_SYNCED, String(now))
       this.status = 'synced'
       this.addLog('push', 'success', `Çalışma alanı verileri E2EE AES-256 ile başarıyla senkronize edildi (Revizyon #${currentRev}).`)
+      logActivity({
+        toolId: 'cloud_sync',
+        action: 'vault_synced',
+        category: 'crypto',
+        status: 'success',
+        details: `Çalışma alanı verileri E2EE AES-256 ile senkronize edildi (Revizyon #${currentRev})`,
+        metadata: { revision: currentRev, provider: cfg.provider }
+      })
       this.broadcastStatus()
     } catch (err: any) {
       this.status = 'error'
       this.addLog('push', 'failed', `Senkronizasyon başarısız oldu: ${err.message || err}`)
+      logActivity({
+        toolId: 'cloud_sync',
+        action: 'vault_sync_failed',
+        category: 'crypto',
+        status: 'failure',
+        details: `E2EE Kasa senkronizasyon hatası: ${err.message || err}`,
+        metadata: { error: String(err) }
+      })
       this.broadcastStatus()
       throw err
     }

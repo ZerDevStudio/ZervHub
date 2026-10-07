@@ -11,6 +11,7 @@ import {
   UserSession,
   AuthProvider
 } from './types'
+import { logActivity } from '../activityLogger'
 
 const STORAGE_KEYS = {
   SESSION: 'zendev_team_session',
@@ -180,6 +181,16 @@ class TeamAuthManager {
 
     const updated = [...members, newMember]
     this.saveMembers(updated)
+
+    logActivity({
+      toolId: 'team_auth',
+      action: 'member_invited',
+      category: 'security',
+      status: 'success',
+      details: `Takım üyesi davet edildi: ${cleanEmail} (Rol: ${role})`,
+      metadata: { email: cleanEmail, role, invitedBy: session.user.email }
+    })
+
     return newMember
   }
 
@@ -205,6 +216,15 @@ class TeamAuthManager {
     })
 
     this.saveMembers(updated)
+
+    logActivity({
+      toolId: 'team_auth',
+      action: 'role_updated',
+      category: 'security',
+      status: 'warning',
+      details: `Kullanıcı rolü güncellendi: ${target.email} -> ${newRole}`,
+      metadata: { memberId, oldRole: target.role, newRole, updatedBy: this.getSession().user.email }
+    })
   }
 
   public removeMember(memberId: string): void {
@@ -223,6 +243,15 @@ class TeamAuthManager {
 
     const updated = members.filter((m) => m.id !== memberId)
     this.saveMembers(updated)
+
+    logActivity({
+      toolId: 'team_auth',
+      action: 'member_removed',
+      category: 'security',
+      status: 'warning',
+      details: `Takım üyesi çıkarıldı: ${target.email}`,
+      metadata: { memberId, email: target.email, removedBy: this.getSession().user.email }
+    })
   }
 
   public login(provider: AuthProvider, email?: string, name?: string): UserSession {

@@ -13,6 +13,7 @@ import {
   ServerLicenseLease,
   DevicePlatform
 } from './types'
+import { logActivity } from '../activityLogger'
 
 const STORAGE_KEYS = {
   LICENSE_DATA: 'zendev_server_license_data',
@@ -190,12 +191,28 @@ export class SeatLicenseManager {
         activeLease: this.generateLease(now)
       }
       this.saveLicenseData(refreshed)
+      logActivity({
+        toolId: 'seat_license',
+        action: 'device_heartbeat',
+        category: 'security',
+        status: 'success',
+        details: `Cihaz lisans oturumu yenilendi: ${this.currentDeviceName} (${this.currentDeviceId})`,
+        metadata: { deviceId: this.currentDeviceId, deviceName: this.currentDeviceName }
+      })
       return { success: true, license: refreshed }
     }
 
     // Check quota
     const activeDevices = currentData.devices.filter((d) => d.status === 'active')
     if (activeDevices.length >= currentData.maxSeats) {
+      logActivity({
+        toolId: 'seat_license',
+        action: 'registration_rejected',
+        category: 'security',
+        status: 'warning',
+        details: `Koltuk kotası dolu: Maksimum ${currentData.maxSeats} koltuk dolu`,
+        metadata: { deviceId: this.currentDeviceId, maxSeats: currentData.maxSeats }
+      })
       return {
         success: false,
         errorCode: 'SEAT_QUOTA_EXCEEDED',
@@ -226,6 +243,20 @@ export class SeatLicenseManager {
     }
 
     this.saveLicenseData(refreshed)
+    logActivity({
+      toolId: 'seat_license',
+      action: 'device_registered',
+      category: 'security',
+      status: 'success',
+      details: `Yeni cihaz lisansa kaydedildi: ${this.currentDeviceName} (${this.currentDeviceId})`,
+      metadata: {
+        deviceId: this.currentDeviceId,
+        deviceName: this.currentDeviceName,
+        tier: refreshed.tier,
+        allocated: refreshed.allocatedSeats,
+        maxSeats: refreshed.maxSeats
+      }
+    })
     return { success: true, license: refreshed }
   }
 
@@ -256,6 +287,15 @@ export class SeatLicenseManager {
 
     this.saveLicenseData(refreshed)
 
+    logActivity({
+      toolId: 'seat_license',
+      action: 'seat_released',
+      category: 'security',
+      status: 'warning',
+      details: `Koltuk lisansı serbest bırakıldı: ${target.deviceName} (${deviceId})`,
+      metadata: { deviceId, deviceName: target.deviceName, remainingSeats: currentData.maxSeats - newAllocated }
+    })
+
     return {
       success: true,
       releasedDeviceId: deviceId,
@@ -276,6 +316,16 @@ export class SeatLicenseManager {
     }
 
     this.saveLicenseData(refreshed)
+
+    logActivity({
+      toolId: 'seat_license',
+      action: 'tier_upgraded',
+      category: 'security',
+      status: 'success',
+      details: `Lisans planı yükseltildi: ${currentData.tier} -> ${newTier} (${newMaxSeats} Koltuk)`,
+      metadata: { oldTier: currentData.tier, newTier, maxSeats: newMaxSeats }
+    })
+
     return refreshed
   }
 

@@ -8,6 +8,7 @@ import { TeamCollection, TeamCollectionItem, CollectionCategory, CollectionExpor
 import { DEFAULT_TEAM_COLLECTIONS } from './defaultPresets'
 import { TeamRole } from '../teamAuth/types'
 import { TeamAuthManager } from '../teamAuth/teamAuthManager'
+import { logActivity } from '../activityLogger'
 
 const STORAGE_KEY = 'zendev_team_collections'
 
@@ -92,6 +93,22 @@ export class TeamCollectionManager {
     }
 
     this.saveCollections(nextList)
+
+    logActivity({
+      toolId: 'team_collections',
+      action: index >= 0 ? 'collection_updated' : 'collection_created',
+      category: 'api',
+      status: 'success',
+      details: `Takım koleksiyonu kaydedildi: ${collection.name} (v${updated.version})`,
+      metadata: {
+        id: collection.id,
+        name: collection.name,
+        category: collection.category,
+        version: updated.version,
+        itemCount: updated.items.length
+      }
+    })
+
     return updated
   }
 
@@ -104,6 +121,15 @@ export class TeamCollectionManager {
     const collections = this.getCollections()
     const nextList = collections.filter((c) => c.id !== id)
     this.saveCollections(nextList)
+
+    logActivity({
+      toolId: 'team_collections',
+      action: 'collection_deleted',
+      category: 'api',
+      status: 'warning',
+      details: `Takım koleksiyonu silindi: ${id}`,
+      metadata: { id }
+    })
   }
 
   /**
