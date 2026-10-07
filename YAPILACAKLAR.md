@@ -15,7 +15,7 @@
   - UI ve API rotalarından kaldırılması veya harici, izole bir opsiyonel yardımcıya ayrıştırılması.
 - [x] **System Optimizer Tasfiyesi:**
   - DNS önbellek temizliği (`ipconfig /flushdns`) ve `%TEMP%` disk temizleme mantığının çekirdekten tasfiyesi.
-- [ ] **Sessiz Otonom Güncelleyicinin Şeffaf / Kullanıcı Onaylı Akışa Dönüştürülmesi:**
+- [x] **Sessiz Otonom Güncelleyicinin Şeffaf / Kullanıcı Onaylı Akışa Dönüştürülmesi:**
   - Arka planda `CREATE_NO_WINDOW` ile kullanıcının haberi olmadan çalışan otonom NSIS güncelleme akışının durdurulması.
   - Antivirüs ve EDR (Endpoint Detection and Response) sistemlerinde false-positive malware şüphesi yaratmayacak şeffaf modal akışına geçilmesi.
   - Yeni sürüm bulunduğunda changelog modalı gösterilmesi; indirme ve kurulumun yalnızca **açık kullanıcı onayı** ile başlatılması.
@@ -81,7 +81,7 @@
 
 ## 🏛️ Mevcut Durum & Çekirdek Stüdyo Envanteri (v2.5.6)
 
-ZenDev, **Tauri v2 + Rust + React 19** mimarisi üzerinde çalışan ve 27 stüdyo içeren güçlü bir çekirdeğe sahiptir:
+ZenDev, **Tauri v2 + Rust + React 19** mimarisi üzerinde çalışan, 21 öne çıkan araç ve 20 aktif stüdyo içeren güçlü bir çekirdeğe sahiptir:
 
 ### Aktif Çekirdek Geliştirici Stüdyoları
 - **JSON Studio:** Formatlama, küçültme, ayrıştırma ve JSON diff.
