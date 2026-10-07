@@ -588,15 +588,19 @@ describe('Empirical Challenge: Milestone M1 Website Modernization', () => {
   // TASK 4: Direct Release Download Integration & Fallback
   // =========================================================================
   describe('4. Direct Release Download Integration & Fallback', () => {
-    it('declares exact release URLs matching v2.5.5 binary specification', async () => {
+    it('declares exact release URLs matching current binary specification', async () => {
       const { ZENDEV_RELEASE_CONFIG } = await import('../website/src/lib/downloadHelper');
+      const pkgJson = JSON.parse(
+        fs.readFileSync(path.resolve(__dirname, '../package.json'), 'utf-8')
+      );
+      const currentVersion = pkgJson.version;
 
-      expect(ZENDEV_RELEASE_CONFIG.version).toBe('2.5.5');
+      expect(ZENDEV_RELEASE_CONFIG.version).toBe(currentVersion);
       expect(ZENDEV_RELEASE_CONFIG.setupExe).toBe(
-        'https://github.com/ZerDevStudio/ZervHub-App/releases/download/v2.5.5/ZenDev-Setup-2.5.5.exe'
+        `https://github.com/ZerDevStudio/ZervHub-App/releases/download/v${currentVersion}/ZenDev-Setup-${currentVersion}.exe`
       );
       expect(ZENDEV_RELEASE_CONFIG.portableExe).toBe(
-        'https://github.com/ZerDevStudio/ZervHub-App/releases/download/v2.5.5/ZenDev-Portable-2.5.5.exe'
+        `https://github.com/ZerDevStudio/ZervHub-App/releases/download/v${currentVersion}/ZenDev-Portable-${currentVersion}.exe`
       );
       expect(ZENDEV_RELEASE_CONFIG.fallbackLatestRelease).toBe(
         'https://github.com/ZerDevStudio/ZervHub-App/releases/latest'
