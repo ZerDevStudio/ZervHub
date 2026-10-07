@@ -11,6 +11,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.5.6] - 2026-09-20
+
+### Added
+- **Dual-Mode Workspace Architecture**:
+  - Persistent workspace mode toggle (`🎯 Günlük Araçlar / Essential Tools` vs `⚡ Geliştirici / Developer Suite`).
+  - Seamless `Ctrl+M` / `Cmd+M` global hotkey switching with `localStorage` persistence.
+  - Curated 9-tool daily workspace partition for general users, eliminating developer jargon overload.
+  - Interactive mode switcher simulator in web showcase with live demonstration.
+
+### Fixed
+- **In-App Updater & Security Hardening**:
+  - Modernized `updater.rs` with domain validation and user-consented download triggers.
+  - Eliminated unprompted background execution of installers.
+  - Resolved `bypasser.rs` batch join unwrap panic risk with safe error fallback.
+  - Corrected false-positive "Clean" password breach reports during network offline conditions.
+  - Synchronized public release channels and download helper endpoints for `v2.5.6`.
+
 ## [2.5.5] - 2026-09-18
 
 ### Fixed

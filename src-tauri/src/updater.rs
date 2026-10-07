@@ -202,16 +202,6 @@ pub async fn updater_check_now(app: AppHandle) -> Result<UpdateCheckResult, Stri
             }),
         );
 
-        // Auto-download update asset in background if an exe is found
-        if exe_asset.is_some() {
-            let app_clone = app.clone();
-            let dl_url = download_url.clone();
-            let ver = remote_version.clone();
-            tokio::spawn(async move {
-                let _ = download_update_asset(app_clone, dl_url, total_size, ver).await;
-            });
-        }
-
         Ok(result)
     } else {
         let _ = app.emit(
@@ -233,13 +223,32 @@ pub async fn updater_check_now(app: AppHandle) -> Result<UpdateCheckResult, Stri
     }
 }
 
-#[allow(dead_code)]
+#[tauri::command]
+pub async fn updater_download_now(
+    app: AppHandle,
+    url: String,
+    total_size: Option<u64>,
+    version: String,
+) -> Result<(), String> {
+    download_update_asset(app, url, total_size.unwrap_or(0), version).await
+}
+
 async fn download_update_asset(
     app: AppHandle,
     url: String,
     total_size: u64,
     version: String,
 ) -> Result<(), String> {
+    // Validate that URL originates from trusted GitHub domain and uses HTTPS
+    let parsed_url = url::Url::parse(&url).map_err(|e| e.to_string())?;
+    if parsed_url.scheme() != "https" {
+        return Err("Download URL must use secure HTTPS protocol".into());
+    }
+    let host = parsed_url.host_str().unwrap_or("");
+    if !host.ends_with("github.com") && !host.ends_with("githubusercontent.com") {
+        return Err("Download URL must originate from trusted GitHub release endpoints".into());
+    }
+
     if IS_DOWNLOADING.swap(true, Ordering::SeqCst) {
         return Ok(());
     }

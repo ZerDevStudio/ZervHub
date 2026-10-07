@@ -133,6 +133,8 @@ export const tauriNexusAPI = {
   // ── 12. Updater ──
   updater: {
     checkNow: () => safeInvoke('updater_check_now', {}, { hasUpdate: false, isLatest: true, currentVersion: '2.4.2' }),
+    downloadNow: (url: string, totalSize?: number, version?: string) =>
+      safeInvoke('updater_download_now', { url, totalSize: totalSize || null, version: version || '' }),
     installNow: () => { safeInvoke('updater_install_now') },
     onAvailable: (cb: (info: unknown) => void) => setupEventListener('updater:available', cb),
     onNotAvailable: (cb: (info: unknown) => void) => setupEventListener('updater:not-available', cb),

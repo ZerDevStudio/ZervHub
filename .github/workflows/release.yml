@@ -7,9 +7,9 @@ on:
   workflow_dispatch:        # Manual trigger for testing builds without a tag
     inputs:
       tag:
-        description: 'Release tag (e.g. v2.5.5)'
+        description: 'Release tag (e.g. v2.5.6)'
         required: false
-        default: 'v2.5.5'
+        default: 'v2.5.6'
       draft:
         description: 'Create as draft release'
         required: false
@@ -55,7 +55,7 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force -Path dist_release
           $inputTag = "${{ github.event.inputs.tag }}"
-          $tag = if ($inputTag) { $inputTag } elseif ($env:GITHUB_REF -like "refs/tags/*") { $env:GITHUB_REF.Replace("refs/tags/", "") } else { "v2.5.5" }
+          $tag = if ($inputTag) { $inputTag } elseif ($env:GITHUB_REF -like "refs/tags/*") { $env:GITHUB_REF.Replace("refs/tags/", "") } else { "v2.5.6" }
           $version = $tag.TrimStart("v")
           
           # Find Tauri output NSIS installer
@@ -73,14 +73,18 @@ jobs:
           $legacyName = "ZenDev-Setup-$version.exe"
           Copy-Item $nsisInstaller.FullName -Destination (Join-Path "dist_release" $legacyName)
 
-          # Find standalone executable for Portable releases
+          # Find or compile standalone executable for Portable releases
           $standaloneBinary = Get-ChildItem -Path "src-tauri/target/release/*.exe" -Exclude "*.d" | Where-Object { $_.Name -notlike "*setup*" -and $_.Name -notlike "*installer*" -and $_.Name -notlike "*build*" } | Select-Object -First 1
+          if (-not $standaloneBinary) {
+            cargo build --release --manifest-path src-tauri/Cargo.toml --bin zendev
+            $standaloneBinary = Get-ChildItem -Path "src-tauri/target/release/*.exe" -Exclude "*.d" | Where-Object { $_.Name -notlike "*setup*" -and $_.Name -notlike "*installer*" -and $_.Name -notlike "*build*" } | Select-Object -First 1
+          }
           if ($standaloneBinary) {
             Copy-Item $standaloneBinary.FullName -Destination (Join-Path "dist_release" "ZenDev-Portable-$version.exe")
             Copy-Item $standaloneBinary.FullName -Destination (Join-Path "dist_release" "ZervHub-Portable-$version.exe")
           } else {
-            Copy-Item $nsisInstaller.FullName -Destination (Join-Path "dist_release" "ZenDev-Portable-$version.exe")
-            Copy-Item $nsisInstaller.FullName -Destination (Join-Path "dist_release" "ZervHub-Portable-$version.exe")
+            Write-Error "Portable standalone executable could not be built or located"
+            exit 1
           }
           
           # Calculate SHA-512 for release manifests

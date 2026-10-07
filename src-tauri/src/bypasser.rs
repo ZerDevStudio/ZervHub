@@ -920,7 +920,20 @@ pub async fn decrypter_clean_batch(urls: Vec<String>) -> Vec<DecryptResult> {
         }
     }
 
-    results.into_iter().map(|r| r.unwrap()).collect()
+    results
+        .into_iter()
+        .map(|r| {
+            r.unwrap_or_else(|| DecryptResult {
+                success: false,
+                original_url: None,
+                final_url: None,
+                clean_url: None,
+                trackers_removed: None,
+                removed_list: None,
+                error: Some("Task execution failed or was cancelled".to_string()),
+            })
+        })
+        .collect()
 }
 
 #[cfg(test)]

@@ -79,7 +79,7 @@
 
 ---
 
-## 🏛️ Mevcut Durum & Çekirdek Stüdyo Envanteri (v2.5.3)
+## 🏛️ Mevcut Durum & Çekirdek Stüdyo Envanteri (v2.5.6)
 
 ZenDev, **Tauri v2 + Rust + React 19** mimarisi üzerinde çalışan ve 27 stüdyo içeren güçlü bir çekirdeğe sahiptir:
 

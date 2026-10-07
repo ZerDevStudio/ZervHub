@@ -69,8 +69,8 @@ export function calculateEntropy(pwd: string): number {
   return Math.round(pwd.length * Math.log2(pool))
 }
 
-export async function checkPwnedPassword(password: string): Promise<{ breached: boolean; count: number }> {
-  if (!password) return { breached: false, count: 0 }
+export async function checkPwnedPassword(password: string): Promise<{ status: 'breached' | 'clean' | 'error'; count: number }> {
+  if (!password) return { status: 'clean', count: 0 }
   try {
     const enc = new TextEncoder().encode(password)
     const hashBuffer = await crypto.subtle.digest('SHA-1', enc)
@@ -80,18 +80,18 @@ export async function checkPwnedPassword(password: string): Promise<{ breached: 
     const suffix = hashHex.slice(5)
 
     const res = await fetch(`https://api.pwnedpasswords.com/range/${prefix}`)
-    if (!res.ok) throw new Error('Pwned API error')
+    if (!res.ok) return { status: 'error', count: 0 }
     const text = await res.text()
     const lines = text.split('\n')
     for (const line of lines) {
       const [hashSuffix, countStr] = line.trim().split(':')
       if (hashSuffix === suffix) {
-        return { breached: true, count: parseInt(countStr, 10) || 1 }
+        return { status: 'breached', count: parseInt(countStr, 10) || 1 }
       }
     }
-    return { breached: false, count: 0 }
+    return { status: 'clean', count: 0 }
   } catch {
-    return { breached: false, count: 0 }
+    return { status: 'error', count: 0 }
   }
 }
 
@@ -241,8 +241,13 @@ export default function PasswordGenerator() {
     if (!generated || pwnedResult.loading) return
     setPwnedResult((prev) => ({ ...prev, loading: true }))
     const res = await checkPwnedPassword(generated)
-    setPwnedResult({ checked: true, breached: res.breached, count: res.count, loading: false })
-    if (res.breached) {
+    if (res.status === 'error') {
+      setPwnedResult({ checked: false, breached: false, count: 0, loading: false })
+      showToastError('Ağ Hatası', 'HaveIBeenPwned veritabanına bağlanılamadı. Çevrimdışı olabilirsiniz.')
+      return
+    }
+    setPwnedResult({ checked: true, breached: res.status === 'breached', count: res.count, loading: false })
+    if (res.status === 'breached') {
       showToastError('Sızıntı Tespiti!', `Bu parola ${res.count.toLocaleString()} farklı veri ihlalinde ele geçirilmiş!`)
     } else {
       showToastSuccess('Parola Temiz!', 'Harika! Bu parola bilinen hiçbir sızıntıda bulunamadı.')

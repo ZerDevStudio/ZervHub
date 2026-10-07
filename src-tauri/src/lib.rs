@@ -258,6 +258,7 @@ pub fn run() {
             journal::journal_get_stats,
             // Updater Commands
             updater::updater_check_now,
+            updater::updater_download_now,
             updater::updater_install_now
         ])
         .run(tauri::generate_context!())
