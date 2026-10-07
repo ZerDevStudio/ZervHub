@@ -37,7 +37,7 @@ lopdf = "0.34"
 image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp"] }
 sysinfo = "0.33"
 
-rfd = "0.15"
+rfd = "0.17"
 rand = "0.8"
 zeroize = { version = "1.7", features = ["derive"] }
 url = "2.5"
