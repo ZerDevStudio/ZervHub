@@ -32,7 +32,7 @@ use aes_gcm::{
 };
 use rand::RngCore;
 use serde::{Deserialize, Serialize};
-use zeroize::Zeroizing;
+use zeroize::Zeroize;
 
 pub const MAGIC_HEADER: &[u8; 7] = b"NEXUSV1";
 pub const HEADER_LEN: usize = 51; // 7 magic + 16 salt + 12 nonce + 16 tag
@@ -127,14 +127,13 @@ pub struct SelectedFile {
 }
 
 /// Derives a 32-byte AES-256 key using PBKDF2-HMAC-SHA256 with 100,000 iterations.
-/// Returned key is wrapped in `Zeroizing` to automatically scrub sensitive key material from RAM when dropped.
-pub fn derive_key(passphrase: &str, salt: &[u8]) -> Zeroizing<[u8; 32]> {
-    let mut key = Zeroizing::new([0u8; 32]);
+pub fn derive_key(passphrase: &str, salt: &[u8]) -> [u8; 32] {
+    let mut key = [0u8; 32];
     pbkdf2::pbkdf2_hmac::<sha2::Sha256>(
         passphrase.as_bytes(),
         salt,
         PBKDF2_ROUNDS,
-        &mut *key,
+        &mut key,
     );
     key
 }
@@ -317,11 +316,17 @@ pub fn encrypt_file(
     rand::thread_rng().fill_bytes(&mut nonce);
 
     // Derive 32-byte key via PBKDF2-SHA256 (100,000 iterations)
-    let key = derive_key(passphrase, &salt);
+    let mut key = derive_key(passphrase, &salt);
 
     let cipher = match Aes256Gcm::new_from_slice(&key) {
-        Ok(c) => c,
-        Err(e) => return Ok(VaultOpResult::err(format!("Şifreleme başlatılamadı: {}", e))),
+        Ok(c) => {
+            key.zeroize();
+            c
+        }
+        Err(e) => {
+            key.zeroize();
+            return Ok(VaultOpResult::err(format!("Şifreleme başlatılamadı: {}", e)));
+        }
     };
 
     let nonce_obj = Nonce::from_slice(&nonce);
@@ -439,11 +444,17 @@ pub fn decrypt_file(
     let ciphertext = &file_bytes[51..];
 
     // Derive 32-byte key via PBKDF2-SHA256 (100,000 iterations)
-    let key = derive_key(passphrase, salt);
+    let mut key = derive_key(passphrase, salt);
 
     let cipher = match Aes256Gcm::new_from_slice(&key) {
-        Ok(c) => c,
-        Err(e) => return Ok(VaultOpResult::err(format!("Şifre çözücü başlatılamadı: {}", e))),
+        Ok(c) => {
+            key.zeroize();
+            c
+        }
+        Err(e) => {
+            key.zeroize();
+            return Ok(VaultOpResult::err(format!("Şifre çözücü başlatılamadı: {}", e)));
+        }
     };
 
     let nonce_obj = Nonce::from_slice(nonce);
