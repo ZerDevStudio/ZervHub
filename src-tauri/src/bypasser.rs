@@ -1049,7 +1049,10 @@ mod tests {
         );
     }
 
+    // Live third-party network tests are excluded from CI (non-hermetic: the
+    // shortener blocks datacenter IPs). Run manually: `cargo test -- --ignored`.
     #[tokio::test]
+    #[ignore = "requires live access to ay.live (third-party, blocks CI runners)"]
     async fn test_live_aylink_bypass() {
         let res = bypass_ad_link("https://ay.live/G00114").await;
         println!("Live bypass result: {:?}", res);
@@ -1066,6 +1069,7 @@ mod tests {
     }
 
     #[tokio::test]
+    #[ignore = "requires live access to ay.live (third-party, blocks CI runners)"]
     async fn test_live_decrypter_clean() {
         let res = decrypter_clean("https://ay.live/G00114".to_string()).await;
         println!("Live decrypter_clean result: {:?}", res);

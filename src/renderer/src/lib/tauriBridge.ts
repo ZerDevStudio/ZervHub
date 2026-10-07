@@ -28,6 +28,16 @@ async function safeInvoke<T>(cmd: string, args?: Record<string, unknown>, fallba
   }
 }
 
+// Returns window only when it supports the EventTarget API (absent in non-DOM runtimes)
+function getEventTarget(): EventTarget | null {
+  if (typeof window === 'undefined') return null
+  const w = window as any
+  const ok = typeof w.addEventListener === 'function'
+    && typeof w.removeEventListener === 'function'
+    && typeof w.dispatchEvent === 'function'
+  return ok ? (w as EventTarget) : null
+}
+
 // Helper for synchronous unlisten returned in React useEffect
 function setupEventListener<T>(eventName: string, cb: (payload: T) => void): () => void {
   let isCleanedUp = false
@@ -206,12 +216,17 @@ export const tauriNexusAPI = {
   // ── 19. Pub/Sub (Client-Side Reactive Event Bus) ──
   pubsub: {
     publish: (topic: string, data: any) => {
-      window.dispatchEvent(new CustomEvent(`zendev:pubsub:${topic}`, { detail: data }))
+      const target = getEventTarget()
+      if (!target || typeof CustomEvent === 'undefined') return
+      target.dispatchEvent(new CustomEvent(`zendev:pubsub:${topic}`, { detail: data }))
     },
     subscribe: (topic: string, cb: (data: any) => void) => {
-      const handler = (e: any) => cb(e.detail)
-      window.addEventListener(`zendev:pubsub:${topic}`, handler)
-      return () => window.removeEventListener(`zendev:pubsub:${topic}`, handler)
+      const target = getEventTarget()
+      if (!target) return () => {}
+      const eventName = `zendev:pubsub:${topic}`
+      const handler = (e: any) => cb?.(e.detail)
+      target.addEventListener(eventName, handler)
+      return () => target.removeEventListener(eventName, handler)
     },
   },
 

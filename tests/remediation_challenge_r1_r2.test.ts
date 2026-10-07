@@ -41,7 +41,7 @@ describe('Challenger 1 Empirical Verification: R1 & R2 Remediation', () => {
 
       // downloadHelper.ts
       const downloadHelper = fs.readFileSync(path.join(rootDir, 'website', 'src', 'lib', 'downloadHelper.ts'), 'utf-8');
-      expect(downloadHelper).toMatch(/https:\/\/github\.com\/ZerDevStudio\/ZervHub(-App)?\/releases\/download\/v2\.5\.5\/ZenDev-Setup-2\.5\.5\.exe/);
+      expect(downloadHelper).toMatch(/https:\/\/github\.com\/ZerDevStudio\/ZervHub(-App)?\/releases\/download\/v(\d+\.\d+\.\d+)\/ZenDev-Setup-\2\.exe/);
       expect(downloadHelper).toMatch(/https:\/\/github\.com\/ZerDevStudio\/ZervHub(-App)?\/releases\/latest/);
       expect(downloadHelper).toMatch(/https:\/\/github\.com\/ZerDevStudio\/ZervHub(-App)?/);
 

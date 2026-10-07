@@ -7,7 +7,7 @@
 import { TeamCollection, TeamCollectionItem, CollectionCategory, CollectionExportEnvelope } from './types'
 import { DEFAULT_TEAM_COLLECTIONS } from './defaultPresets'
 import { TeamRole } from '../teamAuth/types'
-import { TeamAuthManager } from '../teamAuth/teamAuthManager'
+import { teamAuthManager } from '../teamAuth/teamAuthManager'
 import { logActivity } from '../activityLogger'
 
 const STORAGE_KEY = 'zendev_team_collections'
@@ -64,7 +64,7 @@ export class TeamCollectionManager {
    * Asserts whether the given role has write permission to modify collections.
    */
   public static assertWritePermission(role?: TeamRole): void {
-    const activeRole = role ?? TeamAuthManager.getCurrentRole()
+    const activeRole = role ?? teamAuthManager.getCurrentUserRole()
     if (activeRole === 'viewer') {
       throw new Error('Yetki Hatası: "Viewer" rolündeki kullanıcılar takım koleksiyonlarında değişiklik yapamaz.')
     }

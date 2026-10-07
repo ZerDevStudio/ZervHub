@@ -586,6 +586,8 @@ export default function Account() {
               </div>
             </div>
           )}
+        </div>
+
         {/* E2EE Cloud Sync & Workspaces Section */}
         <div className="pt-4 border-t border-nexus-border/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
