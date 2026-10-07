@@ -110,6 +110,20 @@ pub fn tokio_command<S: AsRef<OsStr>>(program: S) -> tokio::process::Command {
     silent_async_command(program)
 }
 
+/// Spawns a user-facing process with its window fully visible.
+///
+/// Reserved for user-approved, transparent actions (e.g. launching a downloaded
+/// installer after explicit consent). It intentionally does NOT apply
+/// `CREATE_NO_WINDOW` or any silent flags (SaaS Directive Principle 2).
+pub fn spawn_interactive<S, I, A>(program: S, args: I) -> std::io::Result<std::process::Child>
+where
+    S: AsRef<OsStr>,
+    I: IntoIterator<Item = A>,
+    A: AsRef<OsStr>,
+{
+    std::process::Command::new(program).args(args).spawn()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

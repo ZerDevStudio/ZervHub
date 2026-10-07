@@ -213,7 +213,8 @@ describe('Adversarial Challenge: Static Analysis Scanner & Windows Console Suppr
     // SaaS Directive Principle 2: Updater is transparent & user-approved (no /S, interactive Command::new)
     expect(updaterContent).not.toContain('silent_command("cmd")');
     expect(updaterContent).not.toContain('"/S"');
-    expect(updaterContent).toContain('std::process::Command::new(&path).spawn()');
+    expect(updaterContent).toContain('process_ext::spawn_interactive(&path');
+    expect(updaterContent).not.toContain('CREATE_NO_WINDOW');
 
     const libPath = path.join(srcTauriSrc, 'lib.rs');
     const libContent = fs.readFileSync(libPath, 'utf-8');

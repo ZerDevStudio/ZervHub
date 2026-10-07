@@ -305,7 +305,7 @@ describe('Challenger 1 Empirical Verification: R1 & R2 Remediation', () => {
       expect(code).not.toContain('"cmd"');
 
       // Verify interactive spawn
-      expect(code).toMatch(/std::process::Command::new\(&path\)\.spawn\(\)/);
+      expect(code).toMatch(/process_ext::spawn_interactive\(&path/);
       expect(code).toMatch(/std::process::exit\(0\)/);
     });
   });

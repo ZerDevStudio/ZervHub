@@ -75,7 +75,7 @@ describe('Milestone M8: NSIS Silent Background Update & v2.5.2 Release Verificat
       expect(code).not.toContain('"cmd"');
 
       // Must spawn interactive installer directly
-      expect(code).toMatch(/std::process::Command::new\(&path\)\.spawn\(\)/);
+      expect(code).toMatch(/process_ext::spawn_interactive\(&path/);
 
       // Must preserve sleep delay for clean process handoff
       expect(code).toMatch(/std::thread::sleep\(std::time::Duration::from_millis\(500\)\)/);

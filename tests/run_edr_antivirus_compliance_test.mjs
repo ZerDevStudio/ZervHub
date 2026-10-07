@@ -112,11 +112,21 @@ async function runTests() {
       const updaterPath = path.join(rootDir, 'src-tauri', 'src', 'updater.rs');
       const content = fs.readFileSync(updaterPath, 'utf8');
 
-      // Must not spawn installer with stealth flags like /S or /SILENT
-      expect(content).toContain('Command::new(&path).spawn()');
+      // Must launch installer visibly via the audited interactive helper, never with stealth flags
+      expect(content).toContain('process_ext::spawn_interactive(&path');
       expect(content).notToContain('arg("/S")');
       expect(content).notToContain('arg("/SILENT")');
       expect(content).notToContain('arg("/qn")');
+      expect(content).notToContain('CREATE_NO_WINDOW');
+
+      const processExt = fs.readFileSync(path.join(rootDir, 'src-tauri', 'src', 'process_ext.rs'), 'utf8');
+      const helperStart = processExt.indexOf('pub fn spawn_interactive');
+      expect(helperStart > -1 ? 'found' : 'missing').toBe('found');
+      const rest = processExt.slice(helperStart);
+      const endMatch = rest.match(/\r?\n\}\r?\n/);
+      const helperBody = endMatch ? rest.slice(0, endMatch.index) : rest;
+      expect(helperBody).notToContain('creation_flags');
+      expect(helperBody).notToContain('silent');
     });
 
     await it('enforces HTTPS and trusted GitHub endpoints for update binary payloads', () => {

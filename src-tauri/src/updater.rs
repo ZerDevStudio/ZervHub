@@ -94,7 +94,7 @@ pub async fn updater_check_now(app: AppHandle) -> Result<UpdateCheckResult, Stri
         .map_err(|e| e.to_string())?;
 
     // Prefer public distribution repository (ZervHub-App) for unauthenticated access, fallback to core (ZervHub)
-    let mut res = match client
+    let res = match client
         .get("https://api.github.com/repos/ZerDevStudio/ZervHub-App/releases/latest")
         .send()
         .await
@@ -301,15 +301,15 @@ pub fn updater_install_now(app: AppHandle) -> Result<(), String> {
             // SaaS Directive Principle 2: Launch installer transparently without silent background flags
             #[cfg(target_os = "windows")]
             {
-                let _ = std::process::Command::new(&path).spawn();
+                let _ = crate::process_ext::spawn_interactive(&path, std::iter::empty::<&str>());
             }
             #[cfg(target_os = "macos")]
             {
-                let _ = std::process::Command::new("open").arg(&path).spawn();
+                let _ = crate::process_ext::spawn_interactive("open", [&path]);
             }
             #[cfg(target_os = "linux")]
             {
-                let _ = std::process::Command::new("xdg-open").arg(&path).spawn();
+                let _ = crate::process_ext::spawn_interactive("xdg-open", [&path]);
             }
             std::thread::sleep(std::time::Duration::from_millis(500));
             std::process::exit(0);

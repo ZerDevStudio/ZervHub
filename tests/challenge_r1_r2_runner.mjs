@@ -279,7 +279,7 @@ check('tauri.conf.json plugins updater installMode is currentUser', tauriConf?.p
 check('updater.rs has no _legacy_silent_install_reference', !updaterContent.includes('_legacy_silent_install_reference'));
 check('updater.rs has no "/S" flag', !updaterContent.includes('"/S"'));
 check('updater.rs has no "cmd" invocation', !updaterContent.includes('"cmd"') && !updaterContent.includes('silent_command'));
-check('updater.rs spawns interactive Command::new(&path)', updaterContent.includes('std::process::Command::new(&path).spawn()'));
+check('updater.rs spawns installer interactively via process_ext::spawn_interactive', updaterContent.includes('process_ext::spawn_interactive(&path'));
 
 // ---------------------------------------------------------------------------
 // 4. Execution of tests/nsisSilentUpdate.test.ts
