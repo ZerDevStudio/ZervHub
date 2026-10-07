@@ -33,6 +33,7 @@ import {
   CreditCard,
   Cloud,
   Users,
+  Monitor,
 } from 'lucide-react'
 import { useWorkspaceMode } from '../context/WorkspaceModeContext'
 import { useT } from '../lib/i18n'
@@ -300,6 +301,17 @@ const PALETTE_ITEMS: PaletteItem[] = [
     keywords: ['team', 'takım', 'rbac', 'members', 'üyeler', 'roles', 'workspace', 'owner', 'admin', 'viewer'],
     action: () => {
       window.dispatchEvent(new CustomEvent('nexus:open-team-modal'))
+    }
+  },
+  {
+    id: 'seats-manage',
+    title: 'Cihaz & Koltuk Yönetimi (Seats & Devices)',
+    subtitle: 'Aktif lisans bilgisayarları, donanım kimlikleri ve koltuk devri',
+    category: 'Preferences',
+    icon: Monitor,
+    keywords: ['seat', 'koltuk', 'device', 'cihaz', 'workstation', 'hardware', 'hwid', 'bilgisayar', 'lease'],
+    action: () => {
+      window.dispatchEvent(new CustomEvent('nexus:open-seat-modal'))
     }
   }
 ]

@@ -10,6 +10,7 @@ import { ToastProvider } from './lib/ToastContext'
 import { WorkspaceModeProvider } from './context/WorkspaceModeContext'
 import { CloudSyncProvider } from './lib/cloudSync/CloudSyncContext'
 import { TeamAuthProvider } from './lib/teamAuth/TeamAuthContext'
+import { SeatLicenseProvider } from './lib/seatLicense/SeatLicenseContext'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -22,7 +23,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <WorkspaceModeProvider>
                 <CloudSyncProvider>
                   <TeamAuthProvider>
-                    <App />
+                    <SeatLicenseProvider>
+                      <App />
+                    </SeatLicenseProvider>
                   </TeamAuthProvider>
                 </CloudSyncProvider>
               </WorkspaceModeProvider>

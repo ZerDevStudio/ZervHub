@@ -1,7 +1,7 @@
 import { useToast } from '../lib/ToastContext'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Settings, Key, Shield, LogOut, Clock, Infinity, RefreshCw, Check, Download, AlertCircle, Sparkles, Bot, Cloud, Layers, Users } from 'lucide-react'
+import { Settings, Key, Shield, LogOut, Clock, Infinity, RefreshCw, Check, Download, AlertCircle, Sparkles, Bot, Cloud, Layers, Users, Monitor, CreditCard } from 'lucide-react'
 import { useLicense } from '../lib/LicenseContext'
 import { useCloudSync } from '../lib/cloudSync/CloudSyncContext'
 import { useT } from '../lib/i18n'
@@ -645,6 +645,37 @@ export default function Account() {
           >
             <Users className="w-3.5 h-3.5" />
             <span>{locale === 'tr' ? 'Takımı Yönet' : 'Manage Team'}</span>
+          </button>
+        </div>
+
+        {/* Server-Side Seat & Device Management Section */}
+        <div className="pt-4 border-t border-nexus-border/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2">
+              <Monitor className="w-4 h-4 text-nexus-cyan" />
+              <h3 className="font-semibold text-nexus-text text-sm">
+                {locale === 'tr' ? 'Cihaz & Lisans Koltuk Yönetimi' : 'Workstations & Seat Management'}
+              </h3>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-nexus-cyan/15 text-nexus-cyan border border-nexus-cyan/30">
+                DYNAMIC SEATS
+              </span>
+            </div>
+            <p className="text-xs text-nexus-muted mt-0.5">
+              {locale === 'tr'
+                ? 'Sunucu tarafında lisansınıza kayıtlı aktif bilgisayarlar, donanım kimlikleri ve 7 günlük çevrimdışı izin süresi'
+                : 'Server-side registered active workstations, hardware IDs, and 7-day offline lease grace period'}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              try { cyberAudio.click() } catch {}
+              window.dispatchEvent(new CustomEvent('nexus:open-seat-modal'))
+            }}
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-nexus-cyan/15 hover:bg-nexus-cyan/25 border border-nexus-cyan/40 text-nexus-cyan text-xs font-semibold transition-all cursor-pointer shadow-sm hover:shadow-nexus-cyan/10"
+          >
+            <Monitor className="w-3.5 h-3.5" />
+            <span>{locale === 'tr' ? 'Cihazları Yönet' : 'Manage Seats'}</span>
           </button>
         </div>
 

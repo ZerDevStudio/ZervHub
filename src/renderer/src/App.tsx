@@ -14,6 +14,7 @@ import KeyboardShortcutsModal from './components/KeyboardShortcutsModal'
 import { CloudSyncModal } from './components/CloudSync'
 import { BillingModal } from './components/Billing'
 import { TeamMembersModal } from './components/TeamAuth'
+import { SeatManagementModal } from './components/SeatLicense'
 import ProLockGate from './components/ProLockGate'
 import FloatingOrb from './components/FloatingOrb'
 import UpdateManager from './components/UpdateManager'
@@ -336,6 +337,7 @@ export default function App() {
       <CloudSyncModal />
       <BillingModal />
       <TeamMembersModal />
+      <SeatManagementModal />
       {!hasCompletedTour && <OnboardingTour onComplete={handleCompleteTour} />}
       <TitleBar />
       <div className="flex flex-1 overflow-hidden">

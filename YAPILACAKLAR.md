@@ -40,9 +40,9 @@
   - Free (Bireysel Temel), Pro (Bireysel Güçlü Geliştirici) ve Team (Sınırsız Çalışma Alanı & İş Birliği) fiyatlandırma katmanları.
   - Stripe Checkout ve Müşteri Faturalandırma Portalı entegrasyonu (`BillingModal.tsx`).
   - Uygulama içi lisans anahtarı aktivasyonu, kupon motoru ve faturalandırma yönetimi.
-- [ ] **Sunucu Taraflı Lisanslama ve Koltuk (Seat) Yönetimi:**
-  - Mevcut statik offline HMAC doğrulamasının yerini alan, periyodik token tabanlı sunucu lisans doğrulama altyapısı.
-  - Aktif cihaz/koltuk limitlerinin dinamik takibi ve yönetimi.
+- [x] **Sunucu Taraflı Lisanslama ve Koltuk (Seat) Yönetimi:**
+  - Dinamik cihaz/koltuk limitlerinin takibi, lisans koltuğu devri ve anlık serbest bırakma altyapısı (`seatLicenseManager.ts`, `SeatManagementModal.tsx`, `SeatUsageCard.tsx`).
+  - 24 saatlik kriptografik lease token ve 7 günlük çevrimdışı kullanım izin süresi (offline grace period) motoru (`seatLicenseEngine.test.ts`).
 - [ ] **Şeffaf ve Gizlilik Odaklı Telemetri:**
   - Kullanıcı onayına bağlı (opt-in), KVKK/GDPR uyumlu anonimleştirilmiş hata ve çökme raporlama (Sentry / OpenTelemetry).
 
