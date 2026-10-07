@@ -68,6 +68,7 @@ export const ChangelogModal: React.FC<ChangelogModalProps> = ({ isOpen, onClose,
                 <li>{isTr ? 'Varsayılan Günlük Mod: Yalnızca 9 tüketici dostu pratik araç görüntülenir.' : 'Default Essential Mode: Exactly 9 curated everyday consumer tools visible.'}</li>
                 <li>{isTr ? 'Başlık Çubuğu Mod Butonu: [🎯 Günlük Araçlar | ⚡ Geliştirici] geçişi ve Ctrl+M kısayolu.' : 'Segmented Header Control: [🎯 Essential | ⚡ Developer] switcher with Ctrl+M shortcut.'}</li>
                 <li>{isTr ? 'Filtrelenmiş Arama ve Rota Koruması: Geliştirici komutları genel kullanıcıyı boğmaz.' : 'Filtered Command Palette & Route Protection: Prevents developer jargon overload.'}</li>
+                <li>{isTr ? 'E2EE Cloud Sync & Çoklu Alan: API ve ortam değişkenleri için sıfır-bilgili (AES-256-GCM) senkronizasyon motoru.' : 'E2EE Cloud Sync & Workspaces: Zero-knowledge (AES-256-GCM) cross-device sync for API collections and environments.'}</li>
                 <li>{isTr ? 'Arka Planda Otomatik İndirme: Güncelleme bulunduğunda doğrudan inip kuruluma hazır hale gelir.' : 'Background Auto-Downloader: Updates stream directly to temp directory ready for 1-click install.'}</li>
               </ul>
             </div>
