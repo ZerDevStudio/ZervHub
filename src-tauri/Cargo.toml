@@ -41,7 +41,7 @@ rfd = "0.15"
 rand = "0.8"
 zeroize = { version = "1.7", features = ["derive"] }
 url = "2.5"
-p256 = { version = "0.13", features = ["ecdsa", "pkcs8"] }
+p256 = { version = "0.14", features = ["ecdsa", "pkcs8"] }
 data-encoding = "2.5"
 tokio-rustls = { version = "0.26", default-features = false, features = ["ring", "logging"] }
 rustls = { version = "0.23", default-features = false, features = ["ring"] }
